@@ -190,36 +190,91 @@
     </nav>
     <div class="actions">
       <button class="btn primary">Tải App</button>
-      <button class="icon-btn">🔍</button>
     </div>
   </header>
 
-  <a href="/timkiem.html"><section class="search">
-    <input type="text" placeholder="Tìm kiếm địa điểm du lịch, ẩm thực" />
-    <button class="btn primary">Tìm kiếm</button>
+  <!-- Thanh tìm kiếm chính là công cụ tìm kiếm -->
+  <section class="search">
+    <div style="position:relative;width:100%;max-width:400px;">
+      <input type="text" id="mainSearchInput" placeholder="Tìm kiếm địa điểm du lịch, ẩm thực" autocomplete="off" style="width:100%;" />
+      <ul id="searchSuggestions" style="position:absolute;left:0;right:0;top:100%;z-index:10;background:#fff;border-radius:0 0 12px 12px;box-shadow:0 4px 16px rgba(0,0,0,0.08);margin:0;padding:0;list-style:none;display:none;max-height:220px;overflow-y:auto;"></ul>
+    </div>
+    <button class="btn primary" id="mainSearchButton">Tìm kiếm</button>
+  <script>
+    // Danh sách 34 tỉnh thành (có dấu, có thể mở rộng)
+    const provincesVN = [
+      "An Giang", "Bà Rịa - Vũng Tàu", "Bắc Giang", "Bắc Kạn", "Bạc Liêu", "Bắc Ninh", "Bến Tre", "Bình Định", "Bình Dương", "Bình Phước", "Bình Thuận", "Cà Mau", "Cần Thơ", "Cao Bằng", "Đà Nẵng", "Đắk Lắk", "Đắk Nông", "Điện Biên", "Đồng Nai", "Đồng Tháp", "Gia Lai", "Hà Giang", "Hà Nam", "Hà Nội", "Hà Tĩnh", "Hải Dương", "Hải Phòng", "Hậu Giang", "Hòa Bình", "Hưng Yên", "Khánh Hòa", "Kiên Giang", "Kon Tum", "Lai Châu", "Lâm Đồng"
+    ];
+  </script>
   </section>
-<a></a>
+
+
   <section class="places">
     <h2>Địa điểm phổ biến</h2>
     <div class="grid">
       <div class="card">
-        <a href="/pages/vinhhalong.html">
+        <a href="vinhhalong.html">
           <img src="https://i.ibb.co/nsgPc3vB/du-lich-vinh-Ha-Long-hinh-anh1-1625911963.jpg" alt="Vịnh Hạ Long">
-        <p>Vịnh Hạ Long</p>
+          <p>Vịnh Hạ Long</p>
         </a>
       </div>
       <div class="card">
-        <a href="/pages/hoian.html">
+        <a href="hoian.html">
           <img src="https://i.ibb.co/677nhwb6/du-lich-hoi-an-thang-10-11-12-1.jpg" alt="Hội An">
-        <p>Hội An</p>
+          <p>Hội An</p>
         </a>
       </div>
       <div class="card">
-        <a href="/pages/">
-        <img src="https://i.ibb.co/B5S8VPfQ/tat-tan-tat-kinh-nghiem-di-can-tho-ban-can-nho-truoc-khi-di-1650366577.jpg" alt="Ninh Kiều">
-        <p>Ninh Kiều</p>
+        <a href="ninhkieu.html">
+          <img src="https://i.ibb.co/B5S8VPfQ/tat-tan-tat-kinh-nghiem-di-can-tho-ban-can-nho-truoc-khi-di-1650366577.jpg" alt="Ninh Kiều">
+          <p>Ninh Kiều</p>
         </a>
       </div>
+      <div class="card hidden-card">
+        <a href="cantho.html">
+          <img src="/images/cantho.jpg" alt="Thành phố Cần Thơ">
+          <p>Thành phố Cần Thơ</p>
+        </a>
+      </div>
+      <div class="card hidden-card">
+        <a href="angiang.html">
+          <img src="/images/angiang.jpg" alt="Tỉnh An Giang">
+          <p>Tỉnh An Giang</p>
+        </a>
+      </div>
+      <div class="card hidden-card">
+        <a href="dienan.html">
+          <img src="/images/dienan.jpg" alt="Tỉnh Điện An">
+          <p>Tỉnh Điện An</p>
+        </a>
+      </div>
+      <div class="card hidden-card">
+        <a href="hanoi.html">
+          <img src="/images/hanoi.jpg" alt="Thành phố Hà Nội">
+          <p>Thành phố Hà Nội</p>
+        </a>
+      </div>
+      <div class="card hidden-card">
+        <a href="hue.html">
+          <img src="/images/hue.jpg" alt="Thành phố Huế">
+          <p>Thành phố Huế</p>
+        </a>
+      </div>
+      <div class="card hidden-card">
+        <a href="khanhhoa.html">
+          <img src="/images/khanhhoa.jpg" alt="Tỉnh Khánh Hòa">
+          <p>Tỉnh Khánh Hòa</p>
+        </a>
+      </div>
+      <div class="card hidden-card">
+        <a href="quangninh.html">
+          <img src="/images/quangninh.jpg" alt="Tỉnh Quảng Ninh">
+          <p>Tỉnh Quảng Ninh</p>
+        </a>
+      </div>
+    <style>
+      .hidden-card { display: none; }
+    </style>
     </div>
   </section>
 
@@ -235,5 +290,77 @@
       </div>
     </div>
   </section>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const searchInput = document.getElementById('mainSearchInput');
+      const searchButton = document.getElementById('mainSearchButton');
+      const placesGrid = document.querySelector('.places .grid');
+      const cards = placesGrid.querySelectorAll('.card');
+
+      // Hàm chuẩn hoá chuỗi: bỏ dấu và chuyển thường
+      function normalizeStr(s) {
+        return s && s.normalize ? s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase() : s;
+      }
+      // Gợi ý autocomplete
+      const suggestionBox = document.getElementById('searchSuggestions');
+      searchInput.addEventListener('input', function() {
+        const val = normalizeStr(this.value.trim());
+        if (!val) {
+          suggestionBox.style.display = 'none';
+          suggestionBox.innerHTML = '';
+          return;
+        }
+        const matches = provincesVN.filter(p => normalizeStr(p).includes(val));
+        if (matches.length === 0) {
+          suggestionBox.style.display = 'none';
+          suggestionBox.innerHTML = '';
+          return;
+        }
+        suggestionBox.innerHTML = matches.map(p => `<li style="padding:8px 16px;cursor:pointer;" tabindex="0">${p}</li>`).join('');
+        suggestionBox.style.display = 'block';
+      });
+      // Chọn suggestion
+      suggestionBox.addEventListener('mousedown', function(e) {
+        if (e.target.tagName === 'LI') {
+          searchInput.value = e.target.textContent;
+          suggestionBox.style.display = 'none';
+          filterCards();
+        }
+      });
+      // Ẩn suggestion khi blur
+      searchInput.addEventListener('blur', function() {
+        setTimeout(() => { suggestionBox.style.display = 'none'; }, 120);
+      });
+
+      function filterCards() {
+        const raw = searchInput.value.trim();
+        const searchTerm = normalizeStr(raw).toLowerCase();
+
+        // 3 card đầu luôn hiển thị nếu không tìm kiếm
+        if (searchTerm === '') {
+          cards.forEach((card, idx) => {
+            if(idx < 3) card.style.display = 'block';
+            else card.style.display = 'none';
+          });
+          return;
+        }
+
+        cards.forEach(card => {
+          const placeEl = card.querySelector('p');
+          const placeName = placeEl ? normalizeStr(placeEl.textContent).toLowerCase() : '';
+          if (placeName.includes(searchTerm)) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      }
+
+      searchInput && searchInput.addEventListener('keyup', (e) => {
+        filterCards();
+      });
+      searchButton && searchButton.addEventListener('click', filterCards);
+    });
+  </script>
 </body>
 </html>
