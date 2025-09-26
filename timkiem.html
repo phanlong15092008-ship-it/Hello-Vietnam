@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Hello-Vietnam (Chỉ dùng thanh tìm kiếm)</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #3B82F6;
+      --primary-hover: #2563eb;
+      --bg: #f9fafb;
+      --text: #111827;
+    }
+    body {
+      margin:0;
+      font-family:'Inter',sans-serif;
+      background:var(--bg);
+      color:var(--text);
+    }
+
+    /* --- NAVBAR --- */
+    .navbar {
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:12px 24px;
+      background:#fff;
+      border-bottom:1px solid #e5e7eb;
+      position:sticky;
+      top:0;
+      z-index:1000;
+    }
+    .logo {
+      display:flex;
+      align-items:center;
+      font-weight:700;
+      font-size:18px;
+      gap:8px;
+      color:#000;
+    }
+    .flag {
+      width:24px;
+      height:24px;
+      border-radius:2px;
+    }
+    .navbar nav a {
+      margin:0 12px;
+      text-decoration:none;
+      color:#374151;
+      font-weight:500;
+      transition:0.2s;
+    }
+    .navbar nav a:hover {
+      color:var(--primary);
+    }
+    .navbar nav a.active {
+      color:#000;
+    }
+
+    .actions {
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+    .btn {
+      border:none;
+      padding:8px 16px;
+      border-radius:20px;
+      cursor:pointer;
+      font-weight:600;
+      font-size:14px;
+      transition:0.2s;
+    }
+    .btn.primary {
+      background:var(--primary);
+      color:#fff;
+    }
+    .btn.primary:hover {
+      background:var(--primary-hover);
+    }
+    .icon-btn {
+      background:none;
+      border:none;
+      font-size:18px;
+      cursor:pointer;
+    }
+
+    /* --- SEARCH BOX --- */
+    .search {
+      display:flex;
+      justify-content:center;
+      padding:30px 20px;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .search input {
+      padding:12px 16px;
+      border-radius:30px;
+      border:1px solid #d1d5db;
+      min-width:300px;
+      outline:none;
+      font-size:14px;
+    }
+    .search button {
+      border-radius:30px;
+    }
+
+    /* --- PLACES --- */
+    .places {
+      padding:20px;
+    }
+    .places h2 {
+      text-align:center;
+      margin-bottom:20px;
+      font-size:22px;
+    }
+    .grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:20px;
+    }
+    .card {
+      background:#fff;
+      border-radius:12px;
+      overflow:hidden;
+      text-align:center;
+      box-shadow:0 2px 8px rgba(0,0,0,0.08);
+      transition:transform 0.2s;
+    }
+    .card:hover { transform:translateY(-4px); }
+    .card img {
+      width:100%;
+      height:160px;
+      object-fit:cover;
+      display:block;
+    }
+    .card p {
+      margin:12px 0;
+      font-weight:600;
+    }
+
+    /* Ẩn mặc định (ban đầu không hiển thị các thẻ) */
+    .hidden-on-load { display: none; }
+  </style>
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="logo">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg" alt="Cờ Việt Nam" class="flag" />
+      <span>Hello-Vietnam</span>
+    </div>
+    <nav>
+      <a href="#" class="active">Khám phá</a>
+      <a href="#">Cẩm nang</a>
+      <a href="#">Diễn đàn</a>
+    </nav>
+    <div class="actions">
+      <button class="btn primary">Tải App</button>
+      <button class="icon-btn">🔍</button>
+    </div>
+  </header>
+
+  <section class="search">
+    <input type="text" id="searchInput" placeholder="Tìm kiếm địa điểm du lịch, ẩm thực" />
+    <button class="btn primary" id="searchButton">Tìm kiếm</button>
+  </section>
+
+  <section class="places">
+    <!-- tiêu đề ẩn như bạn muốn -->
+    <h2 style="display: none;">Địa điểm phổ biến</h2>
+
+    <!-- Một grid duy nhất, id = placesGrid -->
+    <div class="grid" id="placesGrid">
+      <!-- Các thẻ địa điểm (mình để class hidden-on-load cho tất cả để JS điều khiển hiển thị) -->
+      <div class="card hidden-on-load">
+        <a href="/vinhhalong.html">
+          <img src="https://i.ibb.co/nsgPc3vB/du-lich-vinh-Ha-Long-hinh-anh1-1625911963.jpg" alt="Vịnh Hạ Long">
+          <p>Vịnh Hạ Long</p>
+        </a>
+      </div>
+
+      <div class="card hidden-on-load">
+        <a href="/hoian.html">
+          <img src="https://i.ibb.co/677nhwb6/du-lich-hoi-an-thang-10-11-12-1.jpg" alt="Phố cổ Hội An">
+          <p>Hội An</p>
+        </a>
+      </div>
+
+      <div class="card hidden-on-load">
+        <a href="/ninhkieu.html">
+          <img src="https://i.ibb.co/B5S8VPfQ/tat-tan-tat-kinh-nghiem-di-can-tho-ban-can-nho-truoc-khi-di-1650366577.jpg" alt="Bến Ninh Kiều">
+          <p>Ninh Kiều</p>
+        </a>
+      </div>
+
+      <div class="card hidden-on-load">
+        <a href="hanoi.html">
+          <img src="/images/hanoi.jpg" alt="Thành phố Hà Nội">
+          <p>Thành phố Hà Nội</p>
+        </a>
+      </div>
+
+      <div class="card hidden-on-load">
+        <a href="hue.html">
+          <img src="/images/hue.jpg" alt="Thành phố Huế">
+          <p>Thành phố Huế</p>
+        </a>
+      </div>
+
+      <div class="card hidden-on-load">
+        <a href="#">
+          <img src="/images/laichau.jpg" alt="Tỉnh Lai Châu">
+          <p>Tỉnh Lai Châu</p>
+        </a>
+      </div>
+
+      <div class="card hidden-on-load">
+        <a href="#">
+          <img src="/images/dienbien.jpg" alt="Tỉnh Điện Biên">
+          <p>Tỉnh Điện Biên</p>
+        </a>
+      </div>
+
+      <div class="card hidden-on-load">
+        <a href="#">
+          <img src="/images/sonla.jpg" alt="Tỉnh Sơn La">
+          <p>Tỉnh Sơn La</p>
+        </a>
+      </div>
+
+      <div class="card hidden-on-load">
+        <a href="#">
+          <img src="/images/langson.jpg" alt="Tỉnh Lạng Sơn">
+          <p>Tỉnh Lạng Sơn</p>
+        </a>
+      </div>
+
+      <div class="card hidden-on-load">
+        <a href="quangninh.html">
+          <img src="/images/quangninh.jpg" alt="Tỉnh Quảng Ninh">
+          <p>Tỉnh Quảng Ninh</p>
+        </a>
+      </div>
+
+      <div class="card hidden-on-load">
+        <a href="#">
+          <img src="/images/thanhhoa.jpg" alt="Tỉnh Thanh Hóa">
+          <p>Tỉnh Thanh Hóa</p>
+        </a>
+      </div>
+
+      <div class="card hidden-on-load">
+        <a href="#">
+          <img src="/images/nghean.jpg" alt="Tỉnh Nghệ An">
+          <p>Tỉnh Nghệ An</p>
+        </a>
+      </div>
+
+      <div class="card hidden-on-load">
+        <a href="#">
+          <img src="/images/hatinh.jpg" alt="Tỉnh Hà Tĩnh">
+          <p>Tỉnh Hà Tĩnh</p>
+        </a>
+      </div>
+
+      <div class="card hidden-on-load">
+        <a href="#">
+          <img src="/images/caobang.jpg" alt="Tỉnh Cao Bằng">
+          <p>Tỉnh Cao Bằng</p>
+        </a>
+      </div>
+
+      <div class="card hidden-on-load">
+        <a href="#">
+          <img src="/images/tuyenquang.jpg" alt="Tỉnh Tuyên Quang">
+          <p>Tỉnh Tuyên Quang</p>
+        </a>
+      </div>
+
+      <div class="card hidden-on-load">
+        <a href="#">
+          <img src="/images/laocai.jpg" alt="Tỉnh Lào Cai">
+          <p>Tỉnh Lào Cai</p>
+        </a>
+      </div>
+
+      <div class="card hidden-on-load">
+        <a href="#">
+          <img src="/images/thainuyen.jpg" alt="Tỉnh Thái Nguyên">
+          <p>Tỉnh Thái Nguyên</p>
+        </a>
+      </div>
+
+      <div class="card hidden-on-load">
+        <a href="#">
+          <img src="/images/phutho.jpg" alt="Tỉnh Phú Thọ">
+          <p>Tỉnh Phú Thọ</p>
+        </a>
+      </div>
+
+      <div class="card hidden-on-load">
+        <a href="#">
+          <img src="/images/bacninh.jpg" alt="Tỉnh Bắc Ninh">
+          <p>Tỉnh Bắc Ninh</p>
+        </a>
+      </div>
+
+      <div class="card hidden-on-load">
+        <a href="#">
+          <img src="/images/hungyen.jpg" alt="Tỉnh Hưng Yên">
+          <p>Tỉnh Hưng Yên</p>
+        </a>
+      </div>
+
+      <div class="card hidden-on-load">
+        <a href="#">
+          <img src="/images/haiphong.jpg" alt="Thành phố Hải Phòng">
+          <p>Thành phố Hải Phòng</p>
+        </a>
+      </div>
+
+      <div class="card hidden-on-load">
+        <a href="#">
+          <img src="/images/ninhbinh.jpg" alt="Tỉnh Ninh Bình">
+          <p>Tỉnh Ninh Bình</p>
+        </a>
+      </div>
+
+      <div class="card hidden-on-load">
+        <a href="#">
+          <img src="/images/quangtri.jpg" alt="Tỉnh Quảng Trị">
+          <p>Tỉnh Quảng Trị</p>
+        </a>
+      </div>
+
+      <!-- Miền Nam -->
+      <div class="card hidden-on-load">
+        <a href="cantho.html">
+          <img src="/images/cantho.jpg" alt="Thành phố Cần Thơ">
+          <p>Thành phố Cần Thơ</p>
+        </a>
+      </div>
+
+      <div class="card hidden-on-load">
+        <a href="#">
+          <img src="/images/vinhlong.jpg" alt="Tỉnh Vĩnh Long">
+          <p>Tỉnh Vĩnh Long</p>
+        </a>
+      </div>
+
+      <div class="card hidden-on-load">
+        <a href="#">
+          <img src="/images/dongthap.jpg" alt="Tỉnh Đồng Tháp">
+          <p>Tỉnh Đồng Tháp</p>
+        </a>
+      </div>
+
+      <div class="card hidden-on-load">
+        <a href="#">
+          <img src="/images/camau.jpg" alt="Tỉnh Cà Mau">
+          <p>Tỉnh Cà Mau</p>
+        </a>
+      </div>
+
+      <div class="card hidden-on-load">
+        <a href="angiang.html">
+          <img src="/images/angiang.jpg" alt="Tỉnh An Giang">
+          <p>Tỉnh An Giang</p>
+        </a>
+      </div>
+
+      <div class="card hidden-on-load">
+        <a href="#">
+          <img src="/images/gialai.jpg" alt="Tỉnh Gia Lai">
+          <p>Tỉnh Gia Lai</p>
+        </a>
+      </div>
+
+      <div class="card hidden-on-load">
+        <a href="#">
+          <img src="/images/daklak.jpg" alt="Tỉnh Đắk Lắk">
+          <p>Tỉnh Đắk Lắk</p>
+        </a>
+      </div>
+
+      <div class="card hidden-on-load">
+        <a href="khanhhoa.html">
+          <img src="/images/khanhhoa.jpg" alt="Tỉnh Khánh Hòa">
+          <p>Tỉnh Khánh Hòa</p>
+        </a>
+      </div>
+
+      <div class="card hidden-on-load">
+        <a href="#">
+          <img src="/images/lamdong.jpg" alt="Tỉnh Lâm Đồng">
+          <p>Tỉnh Lâm Đồng</p>
+        </a>
+      </div>
+
+      <div class="card hidden-on-load">
+        <a href="#">
+          <img src="/images/dongnai.jpg" alt="Tỉnh Đồng Nai">
+          <p>Tỉnh Đồng Nai</p>
+        </a>
+      </div>
+
+      <div class="card hidden-on-load">
+        <a href="#">
+          <img src="/images/tayninh.jpg" alt="Tỉnh Tây Ninh">
+          <p>Tỉnh Tây Ninh</p>
+        </a>
+      </div>
+
+      <div class="card hidden-on-load">
+        <a href="#">
+          <img src="/images/hochiminh.jpg" alt="Thành phố Hồ Chí Minh">
+          <p>Thành phố Hồ Chí Minh</p>
+        </a>
+      </div>
+    </div> <!-- end placesGrid -->
+  </section>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const searchInput = document.getElementById('searchInput');
+      const searchButton = document.getElementById('searchButton');
+      const placesGrid = document.getElementById('placesGrid');
+      const cards = placesGrid.querySelectorAll('.card');
+
+      // Ẩn tất cả các thẻ khi trang tải xong (class hidden-on-load đã làm việc ở CSS)
+      // (nếu muốn hiển thị mặc định một số thẻ, loại bỏ class hidden-on-load từ thẻ đó)
+      // cards.forEach(card => card.style.display = 'none'); // không cần vì CSS đã ẩn
+
+      // Hàm chuẩn hoá chuỗi: bỏ dấu và chuyển thường
+      function normalizeStr(s) {
+        return s
+          .normalize && s.normalize('NFD') // một số trình duyệt cũ không hỗ trợ normalize
+            ? s.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+            : s
+          ;
+      }
+
+      function filterCards() {
+        const raw = searchInput.value.trim();
+        const searchTerm = normalizeStr(raw).toLowerCase();
+
+        if (searchTerm === '') {
+          // Nếu ô tìm kiếm trống, ẩn tất cả (theo yêu cầu ban đầu)
+          cards.forEach(card => card.style.display = 'none');
+          return;
+        }
+
+        cards.forEach(card => {
+          const placeEl = card.querySelector('p');
+          const placeName = placeEl ? normalizeStr(placeEl.textContent).toLowerCase() : '';
+          if (placeName.includes(searchTerm)) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      }
+
+      // Gõ phím: thực hiện tìm kiếm tức thì (Enter cũng được)
+      searchInput.addEventListener('keyup', (e) => {
+        // nếu bạn muốn chỉ tìm khi bấm Enter: uncomment dòng bên dưới và comment filterCards()
+        // if (e.key === 'Enter') filterCards();
+        filterCards();
+      });
+
+      // Click nút tìm kiếm
+      searchButton.addEventListener('click', filterCards);
+
+      // Optional: khi submit form (nếu bạn bọc trong <form>), tránh reload
+      // Nếu muốn, có thể thêm xử lý focus, clear button, v.v.
+    });
+  </script>
+</body>
+</html>

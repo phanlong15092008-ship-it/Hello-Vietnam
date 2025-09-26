@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hello-Vietnam - Hà Nội</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f9fafb;
+      color: #111827;
+    }
+    .hero-section {
+      background-image: url('/images/hanoi.jpg');
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+    .hero-overlay {
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7));
+    }
+
+    .grid.overflow-x-auto {
+      display: flex;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+      scrollbar-color: #d1d5db #f3f4f6;
+      gap: 1.5rem;
+      padding-bottom: 1rem;
+    }
+    .grid.overflow-x-auto::-webkit-scrollbar {
+      height: 8px;
+      background-color: #f3f4f6;
+    }
+    .grid.overflow-x-auto::-webkit-scrollbar-thumb {
+      background-color: #d1d5db;
+      border-radius: 10px;
+    }
+
+    .grid.overflow-x-auto > .card {
+      flex-shrink: 0;
+      width: 300px;
+      height: 380px;
+      display: flex;
+      flex-direction: column;
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    .card .card-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 1rem;
+      gap: 0.5rem;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+    .card:hover img {
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 639px) {
+      .grid.overflow-x-auto {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+    }
+  </style>
+</head>
+<body class="text-gray-900">
+
+  <!-- Navbar -->
+  <header class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center space-x-2">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg" alt="Cờ Việt Nam" class="h-6 w-6 rounded">
+        <span class="text-lg font-semibold">Hello-Vietnam</span>
+      </div>
+      <nav class="hidden md:flex space-x-6">
+        <a href="#" class="text-gray-600 hover:text-blue-500 font-medium transition">Khám phá</a>
+        <a href="#" class="text-gray-600 hover:text-blue-500 font-medium transition">Cẩm nang</a>
+        <a href="#" class="text-gray-600 hover:text-blue-500 font-medium transition">Diễn đàn</a>
+      </nav>
+      <div class="flex items-center space-x-3">
+        <button class="bg-blue-500 hover:bg-blue-600 text-white font-medium px-4 py-2 rounded-full shadow transition-colors">Tải App</button>
+        <button class="text-gray-600 hover:text-blue-500 transition">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section text-white flex items-center justify-center text-center p-8 md:p-16 h-96 md:h-[500px] rounded-b-xl overflow-hidden">
+    <div class="absolute inset-0 hero-overlay"></div>
+    <div class="relative z-10">
+      <h1 class="text-4xl md:text-5xl font-extrabold leading-tight tracking-wide">
+        Hà Nội
+      </h1>
+      <p class="text-lg md:text-2xl mt-4 font-light">
+        Thủ đô ngàn năm văn hiến, trái tim của Việt Nam
+      </p>
+    </div>
+  </section>
+
+  <!-- Main Content Section -->
+  <main class="container mx-auto px-4 py-12">
+    <!-- Section: Giới thiệu -->
+    <section class="mb-16">
+      <h2 class="text-3xl font-bold text-center mb-6">Hà Nội – Trái tim của cả nước</h2>
+      <div class="bg-white p-6 md:p-10 rounded-xl shadow-lg leading-relaxed">
+        <p>
+         Hà Nội là thủ đô và cũng là trung tâm văn hóa, chính trị quan trọng của Việt Nam, nổi tiếng với những giá trị lịch sử - văn hóa lâu đời thể hiện qua các công trình.
+        </p>
+      </div>
+    </section>
+
+    <!-- Section: Địa điểm vui chơi -->
+    <section class="mb-16">
+      <h2 class="text-3xl font-bold text-center mb-6">Các địa điểm tham quan nổi bật</h2>
+      <div class="grid overflow-x-auto">
+        <a href="/pageshanoi/langchutichhochiminh.html" class="card">
+          <img src="/images/langbac.jpg" alt="Lăng Chủ tịch Hồ Chí Minh">
+          <div class="card-content">
+            <h3 class="text-lg font-semibold">Lăng Chủ tịch Hồ Chí Minh</h3>
+            <p class="text-sm text-gray-600">Công trình mang tính biểu tượng, nơi an nghỉ của Bác Hồ kính yêu.</p>
+          </div>
+        </a>
+        <a href="/pageshanoi/hoangthanhthanglong.html" class="card">
+          <img src="/images/hoangthanh.jpg" alt="Hoàng thành Thăng Long">
+          <div class="card-content">
+            <h3 class="text-lg font-semibold">Hoàng thành Thăng Long</h3>
+            <p class="text-sm text-gray-600">Di sản văn hóa thế giới, chứng tích lịch sử ngàn năm.</p>
+          </div>
+        </a>
+        <a href="/pageshanoi/chuamotcot.html" class="card">
+          <img src="/images/chua1cot.jpg" alt="Chùa Một Cột">
+          <div class="card-content">
+            <h3 class="text-lg font-semibold">Chùa Một Cột</h3>
+            <p class="text-sm text-gray-600">Ngôi chùa độc đáo với kiến trúc “đài sen nghìn tuổi”.</p>
+          </div>
+        </a>
+        <a href="/pageshanoi/hotay.html" class="card">
+          <img src="/images/hotay.jpg" alt="Hồ Tây">
+          <div class="card-content">
+            <h3 class="text-lg font-semibold">Hồ Tây</h3>
+            <p class="text-sm text-gray-600">Hồ nước lớn nhất Hà Nội, điểm hẹn lãng mạn cho du khách.</p>
+          </div>
+        </a>
+        <a href="/pageshanoi/vanmieuquoctugiam.html" class="card">
+          <img src="/images/vanmieu.jpg" alt="Văn Miếu Quốc Tử Giám">
+          <div class="card-content">
+            <h3 class="text-lg font-semibold">Văn Miếu Quốc Tử Giám</h3>
+            <p class="text-sm text-gray-600">Ngôi trường đại học đầu tiên của Việt Nam, biểu tượng hiếu học.</p>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Section: Ẩm thực -->
+    <section class="mb-16">
+      <h2 class="text-3xl font-bold text-center mb-6">
+        Những món ăn đặc trưng của Hà Nội
+      </h2>
+      <div class="grid overflow-x-auto">
+
+        <a href="/pageshanoi/bundau.html" class="card">
+          <img src="/images/bundau.jpg" alt="Bún đậu mắm tôm">
+          <div class="card-content">
+            <h3 class="text-lg font-semibold">Bún đậu mắm tôm</h3>
+            <p class="text-sm text-gray-600">Món ăn dân dã nhưng đậm đà, kết hợp bún, đậu rán và mắm tôm.</p>
+          </div>
+        </a>
+
+        <a href="/pageshanoi/bunthang.html" class="card">
+          <img src="/images/bunthang.jpg" alt="Bún thang">
+          <div class="card-content">
+            <h3 class="text-lg font-semibold">Bún thang</h3>
+            <p class="text-sm text-gray-600">Món ăn thanh nhã, kết hợp gà xé, giò lụa và trứng thái chỉ.</p>
+          </div>
+        </a>
+
+        <a href="/pageshanoi/buncha.html" class="card">
+          <img src="/images/buncha.jpg" alt="Bún chả Hà Nội">
+          <div class="card-content">
+            <h3 class="text-lg font-semibold">Bún chả Hà Nội</h3>
+            <p class="text-sm text-gray-600">Đặc sản nổi tiếng, kết hợp thịt nướng và nước chấm chua ngọt.</p>
+          </div>
+        </a>
+
+        <a href="/pageshanoi/phocuon.html" class="card">
+          <img src="/images/phocuon.jpg" alt="Phở cuốn">
+          <div class="card-content">
+            <h3 class="text-lg font-semibold">Phở cuốn</h3>
+            <p class="text-sm text-gray-600">Món phở biến tấu độc đáo, cuốn thịt bò và rau sống chấm mắm nêm.</p>
+          </div>
+        </a>
+
+        <a href="/pageshanoi/bunoc.html" class="card">
+          <img src="/images/bunoc.jpg" alt="Bún ốc Hà Nội">
+          <div class="card-content">
+            <h3 class="text-lg font-semibold">Bún ốc Hà Nội</h3>
+            <p class="text-sm text-gray-600">Món bún dân dã với hương vị chua cay, ốc giòn sần sật.</p>
+          </div>
+        </a>
+
+      </div>
+    </section>
+  </main>
+</body>
+</html>

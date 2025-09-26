@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hello-Vietnam - Quảng Ninh</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f9fafb;
+      color: #111827;
+    }
+    .hero-section {
+      background-image: url('/images/quangninh.jpg');
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+    .hero-overlay {
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7));
+    }
+
+    .grid.overflow-x-auto {
+      display: flex;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+      scrollbar-color: #d1d5db #f3f4f6;
+      gap: 1.5rem;
+      padding-bottom: 1rem;
+    }
+    .grid.overflow-x-auto::-webkit-scrollbar {
+      height: 8px;
+      background-color: #f3f4f6;
+    }
+    .grid.overflow-x-auto::-webkit-scrollbar-thumb {
+      background-color: #d1d5db;
+      border-radius: 10px;
+    }
+
+    .grid.overflow-x-auto > .card {
+      flex-shrink: 0;
+      width: 300px;
+      height: 380px;
+      display: flex;
+      flex-direction: column;
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    .card .card-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 1rem;
+      gap: 0.5rem;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+    .card:hover img {
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 639px) {
+      .grid.overflow-x-auto {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+    }
+  </style>
+</head>
+<body class="text-gray-900">
+
+  <!-- Navbar -->
+  <header class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center space-x-2">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg" alt="Cờ Việt Nam" class="h-6 w-6 rounded">
+        <span class="text-lg font-semibold">Hello-Vietnam</span>
+      </div>
+      <nav class="hidden md:flex space-x-6">
+        <a href="#" class="text-gray-600 hover:text-blue-500 font-medium transition">Khám phá</a>
+        <a href="#" class="text-gray-600 hover:text-blue-500 font-medium transition">Cẩm nang</a>
+        <a href="#" class="text-gray-600 hover:text-blue-500 font-medium transition">Diễn đàn</a>
+      </nav>
+      <div class="flex items-center space-x-3">
+        <button class="bg-blue-500 hover:bg-blue-600 text-white font-medium px-4 py-2 rounded-full shadow transition-colors">Tải App</button>
+        <button class="text-gray-600 hover:text-blue-500 transition">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section text-white flex items-center justify-center text-center p-8 md:p-16 h-96 md:h-[500px] rounded-b-xl overflow-hidden">
+    <div class="absolute inset-0 hero-overlay"></div>
+    <div class="relative z-10">
+      <h1 class="text-4xl md:text-5xl font-extrabold leading-tight tracking-wide">
+        Quảng Ninh
+      </h1>
+      <p class="text-lg md:text-2xl mt-4 font-light">
+        Vùng đất mỏ – Thiên đường du lịch biển đảo
+      </p>
+    </div>
+  </section>
+
+  <!-- Main Content Section -->
+  <main class="container mx-auto px-4 py-12">
+    <!-- Section: Giới thiệu -->
+    <section class="mb-16">
+      <h2 class="text-3xl font-bold text-center mb-6">Quảng Ninh – Viên ngọc xanh của Việt Nam</h2>
+      <div class="bg-white p-6 md:p-10 rounded-xl shadow-lg leading-relaxed">
+        <p>
+          Quảng Ninh nổi tiếng với những cảnh quan thiên nhiên hùng vĩ, đặc biệt là Vịnh Hạ Long – kỳ quan thiên nhiên thế giới. Không chỉ có biển đảo, nơi đây còn hấp dẫn với văn hóa ẩm thực phong phú và con người thân thiện.
+        </p>
+      </div>
+    </section>
+
+    <!-- Section: Địa điểm tham quan -->
+    <section class="mb-16">
+      <h2 class="text-3xl font-bold text-center mb-6">Các địa điểm tham quan nổi bật</h2>
+      <div class="grid overflow-x-auto">
+        <a href="/pages/vinhhalong.html" class="card">
+          <img src="/images/ha-long-bay-1-852.jpg" alt="Vịnh Hạ Long">
+          <div class="card-content">
+            <h3 class="text-lg font-semibold">Vịnh Hạ Long</h3>
+            <p class="text-sm text-gray-600">Kỳ quan thiên nhiên thế giới với hàng nghìn đảo đá vôi kỳ vĩ.</p>
+          </div>
+        </a>
+        <a href="/pagesquangninh/baichay.html" class="card">
+          <img src="/images/baichay.jpg" alt="Bãi Cháy">
+          <div class="card-content">
+            <h3 class="text-lg font-semibold">Bãi Cháy</h3>
+            <p class="text-sm text-gray-600">Bãi biển sôi động, trung tâm du lịch nghỉ dưỡng nổi tiếng.</p>
+          </div>
+        </a>
+        <a href="/pagesquangninh/daocoto.html" class="card">
+          <img src="/images/daocoto.jpg" alt="Đảo Cô Tô">
+          <div class="card-content">
+            <h3 class="text-lg font-semibold">Đảo Cô Tô</h3>
+            <p class="text-sm text-gray-600">Hòn đảo hoang sơ với biển xanh, cát trắng và nắng vàng.</p>
+          </div>
+        </a>
+        <a href="/pagesquangninh/vinhbaitulong.html" class="card">
+          <img src="/images/baitulong.jpg" alt="Vịnh Bái Tử Long">
+          <div class="card-content">
+            <h3 class="text-lg font-semibold">Vịnh Bái Tử Long</h3>
+            <p class="text-sm text-gray-600">Vẻ đẹp hoang sơ, yên bình ít dấu chân du khách.</p>
+          </div>
+        </a>
+        <a href="/pagesquangninh/thacmo.html" class="card">
+          <img src="/images/thacmo.jpg" alt="Thác Mơ">
+          <div class="card-content">
+            <h3 class="text-lg font-semibold">Thác Mơ</h3>
+            <p class="text-sm text-gray-600">Thác nước thơ mộng giữa núi rừng Quảng Ninh hùng vĩ.</p>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Section: Ẩm thực -->
+    <section class="mb-16">
+      <h2 class="text-3xl font-bold text-center mb-6">
+        Những món ăn đặc trưng của Quảng Ninh
+      </h2>
+      <div class="grid overflow-x-auto">
+        <a href="/pagesquangninh/chamuc.html" class="card">
+          <img src="/images/chamuc.jpg" alt="Chả mực Hạ Long">
+          <div class="card-content">
+            <h3 class="text-lg font-semibold">Chả mực Hạ Long</h3>
+            <p class="text-sm text-gray-600">Đặc sản trứ danh, thơm giòn, vàng ruộm hấp dẫn.</p>
+          </div>
+        </a>
+        <a href="/pagesquangninh/sasung.html" class="card">
+          <img src="/images/sasung.jpg" alt="Sá sùng">
+          <div class="card-content">
+            <h3 class="text-lg font-semibold">Sá sùng</h3>
+            <p class="text-sm text-gray-600">Loài hải sản quý hiếm, được ví như “vàng ròng” của biển.</p>
+          </div>
+        </a>
+        <a href="/pagesquangninh/charuoidongtrieu.html" class="card">
+          <img src="/images/charuoi.jpg" alt="Chả rươi Đông Triều">
+          <div class="card-content">
+            <h3 class="text-lg font-semibold">Chả rươi Đông Triều</h3>
+            <p class="text-sm text-gray-600">Món ăn mùa vụ độc đáo, béo ngậy, thơm mùi vỏ quýt.</p>
+          </div>
+        </a>
+        <a href="/pagesquangninh/sambien.html" class="card">
+          <img src="/images/sambien.jpg" alt="Sam biển">
+          <div class="card-content">
+            <h3 class="text-lg font-semibold">Sam biển</h3>
+            <p class="text-sm text-gray-600">Món ăn lạ miệng từ loài sam biển, chế biến đủ kiểu.</p>
+          </div>
+        </a>
+        <a href="/pagesquangninh/banhgatgu.html" class="card">
+          <img src="/images/banhgatgu.jpg" alt="Bánh gật gù">
+          <div class="card-content">
+            <h3 class="text-lg font-semibold">Bánh gật gù</h3>
+            <p class="text-sm text-gray-600">Đặc sản dân dã Tiên Yên, ăn kèm nước chấm đậm đà.</p>
+          </div>
+        </a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
