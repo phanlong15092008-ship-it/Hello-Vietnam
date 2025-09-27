@@ -1,56 +1,93 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thông tin về Hội An</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Hội An - Hello Vietnam</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 </head>
-<body>
-
-    <div class="container">
-        <div class="card">
-            <h3 class="card-title">Lịch sử 📜</h3>
-            <ul>
-                <li>
-                    <h4>Thành phố cổ:</h4>
-                    <p>Hội An là một thương cảng quốc tế sầm uất từ thế kỷ 15 đến thế kỷ 19, là nơi gặp gỡ của các thương nhân Nhật Bản, Trung Quốc và phương Tây.</p>
-                </li>
-                <li>
-                    <h4>Dấu ấn văn hóa:</h4>
-                    <p>Văn hóa Hội An là sự pha trộn độc đáo của văn hóa Việt Nam, Nhật Bản và Trung Quốc, thể hiện qua kiến trúc, ẩm thực và phong tục.</p>
-                </li>
-            </ul>
-        </div>
-
-        <div class="card">
-            <h3 class="card-title">Di sản 🏆</h3>
-            <ul>
-                <li>
-                    <h4>Di sản thế giới:</h4>
-                    <p>Được UNESCO công nhận là Di sản Văn hóa Thế giới vào năm 1999.</p>
-                </li>
-                <li>
-                    <h4>Kiến trúc đặc trưng:</h4>
-                    <p>Hội An nổi tiếng với các công trình kiến trúc cổ kính như Chùa Cầu, nhà cổ, và các hội quán.</p>
-                </li>
-            </ul>
-        </div>
-
-        <div class="card">
-            <h3 class="card-title">Kiến trúc đặc biệt 🏡</h3>
-            <ul>
-                <li>
-                    <h4>Phố cổ:</h4>
-                    <p>Khu phố cổ Hội An được bảo tồn nguyên vẹn với hơn 1.000 di tích kiến trúc từ nhà gỗ, đình chùa đến cầu, giếng cổ.</p>
-                </li>
-                <li>
-                    <h4>Mái ngói âm dương:</h4>
-                    <p>Kiến trúc đặc trưng với mái ngói đỏ, rêu phong, và những bức tường vàng đặc trưng của phố cổ.</p>
-                </li>
-            </ul>
-        </div>
+<body class="bg-gray-50">
+  <!-- Header -->
+  <header class="flex items-center justify-between px-6 py-3 bg-white shadow">
+    <div class="flex items-center space-x-2">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg" class="w-6 h-4" alt="VN">
+      <span class="font-semibold text-gray-800">Hello-Vietnam</span>
     </div>
 
+    <nav class="flex items-center space-x-6 text-gray-700">
+      <a href="#">Khám phá</a>
+      <a href="#">Cẩm nang</a>
+      <a href="#">Diễn đàn</a>
+    </nav>
+
+    <div class="flex items-center space-x-4">
+      <button class="bg-blue-500 text-white px-4 py-1 rounded-full">Tải App</button>
+      <button id="searchToggle" class="p-2 rounded-full hover:bg-gray-100">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M10.5 18a7.5 7.5 0 100-15 7.5 7.5 0 000 15z"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Search box -->
+    <div id="searchBox" class="hidden absolute right-6 top-14 w-[340px] bg-white shadow-lg rounded-full z-50 p-2">
+      <form id="searchForm" class="flex items-center gap-2">
+        <input id="searchInput" type="search" placeholder="Tìm kiếm..." class="flex-1 px-4 py-2 bg-transparent outline-none text-sm" />
+        <button type="submit" class="px-3 py-1 rounded-full bg-blue-500 text-white text-sm">Tìm</button>
+      </form>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="max-w-5xl mx-auto my-6 px-4">
+    <h1 class="text-3xl font-bold text-black mb-2">Hội An</h1>
+    <div class="flex items-center space-x-3 mb-4">
+      <div class="text-yellow-400 text-lg">★★★★★</div>
+      <div class="text-sm text-gray-600">4.8 (15k đánh giá)</div>
+    </div>
+
+    <div class="swiper mySwiper rounded-xl shadow-lg">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="/images/hoian1.jpg" class="w-full h-[500px] object-cover rounded-xl"></div>
+        <div class="swiper-slide"><img src="/images/hoian2.jpg" class="w-full h-[500px] object-cover rounded-xl"></div>
+        <div class="swiper-slide"><img src="/images/hoian3.jpg" class="w-full h-[500px] object-cover rounded-xl"></div>
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-pagination"></div>
+    </div>
+
+    <p class="mt-4 text-gray-700 leading-relaxed">
+      Hội An là phố cổ nổi tiếng với kiến trúc truyền thống, những chiếc đèn lồng rực rỡ và dòng sông Hoài thơ mộng. Đây là điểm đến không thể bỏ lỡ khi ghé thăm miền Trung.
+    </p>
+  </main>
+
+  <script>
+    new Swiper(".mySwiper", {
+      loop: true,
+      pagination: { el: ".swiper-pagination", clickable: true },
+      navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+    });
+
+    const searchToggle=document.getElementById('searchToggle');
+    const searchBox=document.getElementById('searchBox');
+    const searchInput=document.getElementById('searchInput');
+    const searchForm=document.getElementById('searchForm');
+
+    searchToggle.addEventListener('click',e=>{
+      e.stopPropagation();
+      const hidden=searchBox.classList.toggle('hidden');
+      if(!hidden) searchInput.focus();
+    });
+
+    document.addEventListener('click',()=>searchBox.classList.add('hidden'));
+    searchForm.addEventListener('submit',e=>{
+      e.preventDefault();
+      const q=searchInput.value.trim();
+      if(q) window.location.href='/search?q='+encodeURIComponent(q);
+    });
+  </script>
 </body>
 </html>

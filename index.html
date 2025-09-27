@@ -188,18 +188,28 @@
       <a href="">Cẩm nang</a>
       <a href="/diendan.html">Diễn đàn</a>
     </nav>
+    
+        <!-- Actions -->
     <div class="actions">
       <button class="btn primary">Tải App</button>
+      <button class="icon-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" 
+             fill="none" viewBox="0 0 24 24" 
+             stroke="currentColor" width="20" height="20">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                d="M21 21l-4.35-4.35M10.5 18a7.5 7.5 0 100-15 7.5 7.5 0 000 15z"/>
+        </svg>
+      </button>
     </div>
   </header>
 
   <!-- Thanh tìm kiếm chính là công cụ tìm kiếm -->
   <section class="search">
     <div style="position:relative;width:100%;max-width:400px;">
-      <input type="text" id="mainSearchInput" placeholder="Tìm kiếm địa điểm du lịch, ẩm thực" autocomplete="off" style="width:100%;" />
+      <input type="text" id="mainSearchInput" placeholder="Tìm kiếm địa điểm du lịch, ẩm thực" autocomplete="off" style="width:100%;cursor:pointer;" readonly />
       <ul id="searchSuggestions" style="position:absolute;left:0;right:0;top:100%;z-index:10;background:#fff;border-radius:0 0 12px 12px;box-shadow:0 4px 16px rgba(0,0,0,0.08);margin:0;padding:0;list-style:none;display:none;max-height:220px;overflow-y:auto;"></ul>
     </div>
-    <button class="btn primary" id="mainSearchButton">Tìm kiếm</button>
+    <button class="btn primary" id="mainSearchButton" type="button">Tìm kiếm</button>
   <script>
     // Danh sách 34 tỉnh thành (có dấu, có thể mở rộng)
     const provincesVN = [
@@ -210,22 +220,21 @@
 
 
   <section class="places">
-    <h2>Địa điểm phổ biến</h2>
     <div class="grid">
       <div class="card">
-        <a href="vinhhalong.html">
+        <a href="/pages/vinhhalong.html">
           <img src="https://i.ibb.co/nsgPc3vB/du-lich-vinh-Ha-Long-hinh-anh1-1625911963.jpg" alt="Vịnh Hạ Long">
           <p>Vịnh Hạ Long</p>
         </a>
       </div>
       <div class="card">
-        <a href="hoian.html">
+        <a href="/pages/hoian.html">
           <img src="https://i.ibb.co/677nhwb6/du-lich-hoi-an-thang-10-11-12-1.jpg" alt="Hội An">
           <p>Hội An</p>
         </a>
       </div>
       <div class="card">
-        <a href="ninhkieu.html">
+        <a href="/pagescantho/ninhkieu.html">
           <img src="https://i.ibb.co/B5S8VPfQ/tat-tan-tat-kinh-nghiem-di-can-tho-ban-can-nho-truoc-khi-di-1650366577.jpg" alt="Ninh Kiều">
           <p>Ninh Kiều</p>
         </a>
@@ -301,35 +310,15 @@
       function normalizeStr(s) {
         return s && s.normalize ? s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase() : s;
       }
-      // Gợi ý autocomplete
-      const suggestionBox = document.getElementById('searchSuggestions');
-      searchInput.addEventListener('input', function() {
-        const val = normalizeStr(this.value.trim());
-        if (!val) {
-          suggestionBox.style.display = 'none';
-          suggestionBox.innerHTML = '';
-          return;
-        }
-        const matches = provincesVN.filter(p => normalizeStr(p).includes(val));
-        if (matches.length === 0) {
-          suggestionBox.style.display = 'none';
-          suggestionBox.innerHTML = '';
-          return;
-        }
-        suggestionBox.innerHTML = matches.map(p => `<li style="padding:8px 16px;cursor:pointer;" tabindex="0">${p}</li>`).join('');
-        suggestionBox.style.display = 'block';
+      // Khi nhấn vào input hoặc nút tìm kiếm thì chuyển trang
+      searchInput.addEventListener('focus', function() {
+        window.location.href = 'timkiem.html';
       });
-      // Chọn suggestion
-      suggestionBox.addEventListener('mousedown', function(e) {
-        if (e.target.tagName === 'LI') {
-          searchInput.value = e.target.textContent;
-          suggestionBox.style.display = 'none';
-          filterCards();
-        }
+      searchInput.addEventListener('click', function() {
+        window.location.href = 'timkiem.html';
       });
-      // Ẩn suggestion khi blur
-      searchInput.addEventListener('blur', function() {
-        setTimeout(() => { suggestionBox.style.display = 'none'; }, 120);
+      searchButton.addEventListener('click', function() {
+        window.location.href = 'timkiem.html';
       });
 
       function filterCards() {
