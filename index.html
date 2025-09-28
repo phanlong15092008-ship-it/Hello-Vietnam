@@ -1,18 +1,23 @@
+<!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hello-Vietnam</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hello-Vietnam | Khám phá Du lịch Việt Nam</title>
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
   <style>
     :root {
-      --primary: #3B82F6;   /* xanh dương nhẹ */
-      --primary-hover: #2563eb;
+      --primary: #FF5722;
+      --primary-hover: #E64A19;
       --bg: #f9fafb;
       --text: #111827;
+      --secondary-text: #4b5563;
+      --card-bg: #fff;
+      --filter-bg: #FFFFFF;
+      --border-color: #e5e7eb;
     }
     body {
       margin:0;
@@ -20,336 +25,298 @@
       background:var(--bg);
       color:var(--text);
     }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
     /* --- NAVBAR --- */
-    .navbar {
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      padding:12px 24px;
-      background:#fff;
-      border-bottom:1px solid #e5e7eb;
-      position:sticky;
-      top:0;
-      z-index:1000;
-    }
-    .logo {
-      display:flex;
-      align-items:center;
-      font-weight:700;
-      font-size:18px;
-      gap:8px;
-      color:#000;
-    }
-    .flag {
-      width:24px;
-      height:24px;
-      border-radius:2px;
-    }
-    .navbar nav a {
-      margin:0 12px;
-      text-decoration:none;
-      color:#374151;
-      font-weight:500;
-      transition:0.2s;
-    }
-    .navbar nav a:hover {
-      color:var(--primary);
-    }
-    .navbar nav a.active {
-      color:#000; /* chỉ in đậm, không có gạch dưới */
-    }
+    .navbar { display:flex; justify-content:space-between; align-items:center; padding:12px 24px; background:var(--card-bg); border-bottom:1px solid var(--border-color); position:sticky; top:0; z-index:1000; }
+    .logo { display:flex; align-items:center; font-weight:800; font-size:20px; gap:8px; color:var(--primary); }
+    .flag { width:24px; height:24px; border-radius:2px; }
+    .navbar nav a { margin:0 12px; text-decoration:none; color:var(--secondary-text); font-weight:600; transition:0.2s; display:inline-flex; align-items:center; gap:5px;}
+    .navbar nav a:hover, .navbar nav a.active { color:var(--primary); }
+    .navbar nav a.active { font-weight:700; position:relative; }
+    .navbar nav a.active::after { content:''; position:absolute; bottom:-15px; left:0; width:100%; height:3px; background:var(--primary); border-radius:2px; }
+    .actions { display:flex; align-items:center; gap:10px; }
+    .btn { border:none; padding:8px 16px; border-radius:20px; cursor:pointer; font-weight:600; font-size:14px; transition:0.2s; text-decoration:none; display:inline-block; }
+    .btn.primary { background:var(--primary); color:#fff; white-space:nowrap; }
+    .btn.primary:hover { background:var(--primary-hover); }
+    .icon-btn { background:none; border:none; font-size:24px; cursor:pointer; color:var(--secondary-text); padding:0; }
 
-    .actions {
-      display:flex;
-      align-items:center;
-      gap:10px;
-    }
-    .btn {
-      border:none;
-      padding:8px 16px;
-      border-radius:20px;
-      cursor:pointer;
-      font-weight:600;
-      font-size:14px;
-      transition:0.2s;
-    }
-    .btn.primary {
-      background:var(--primary);
-      color:#fff;
-    }
-    .btn.primary:hover {
-      background:var(--primary-hover);
-    }
-    .icon-btn {
-      background:none;
-      border:none;
-      font-size:18px;
-      cursor:pointer;
-    }
+    /* --- HERO --- */
+    .hero { background: url('/images/vietnam.jpg') center/cover no-repeat; height:350px; display:flex;flex-direction:column;justify-content:center;align-items:center;color:#fff;text-align:center;position:relative; }
+    .hero::before { content:''; position:absolute; inset:0; background: rgba(0,0,0,0.3); z-index:1; }
+    .hero-content { z-index:2; padding:0 20px; }
+    .hero h1 { font-size:28px; font-weight:600; margin-bottom:25px; text-shadow:1px 1px 3px rgba(0,0,0,0.5); }
+    .search-box-hero { display:flex; background:#fff; border-radius:30px; overflow:hidden; width:100%; max-width:600px; box-shadow:0 4px 10px rgba(0,0,0,0.15); }
+    .search-box-hero input { flex-grow:1; padding:12px 20px; border:none; outline:none; font-size:16px; color:var(--text); }
+    .search-box-hero button { background:var(--primary); color:#fff; border:none; padding:12px 30px; cursor:pointer; font-size:15px; font-weight:600; transition:background-color 0.3s; }
+    .search-box-hero button:hover{ background:var(--primary-hover); }
 
-    /* --- SEARCH BOX --- */
-    .search {
-      display:flex;
-      justify-content:center;
-      padding:30px 20px;
-      gap:10px;
-      flex-wrap:wrap;
-    }
-    .search input {
-      padding:12px 16px;
-      border-radius:30px;
-      border:1px solid #d1d5db;
-      min-width:300px;
-      outline:none;
-      font-size:14px;
-    }
-    .search button {
-      border-radius:30px;
-    }
+    /* Quick filters */
+    .quick-filters { display:flex; justify-content:center; gap:15px; margin-top:-25px; z-index:3; position:relative; flex-wrap:wrap; }
+    .filter-tag { background:var(--filter-bg); color:var(--text); padding:10px 18px; border-radius:25px; font-weight:600; font-size:14px; box-shadow:0 4px 10px rgba(0,0,0,0.1); cursor:pointer; transition:all .3s; display:flex; align-items:center; border:1px solid var(--border-color); text-decoration:none; white-space:nowrap; }
+    .filter-tag:hover { background:#FFF3E0; border-color:var(--primary); transform:translateY(-2px); }
+    .filter-tag i { margin-right:8px; color:var(--primary); }
 
-    /* --- PLACES --- */
-    .places {
-      padding:20px;
-    }
-    .places h2 {
-      text-align:center;
-      margin-bottom:20px;
-      font-size:22px;
-    }
-    .grid {
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-      gap:20px;
-    }
-    .card {
-      background:#fff;
-      border-radius:12px;
-      overflow:hidden;
-      text-align:center;
-      box-shadow:0 2px 8px rgba(0,0,0,0.08);
-      transition:transform 0.2s;
-    }
-    .card:hover {
-      transform:translateY(-4px);
-    }
-    .card img {
-      width:100%;
-      height:160px;
-      object-fit:cover;
-    }
-    .card p {
-      margin:12px 0;
-      font-weight:600;
-    }
+    .section-title { font-size:24px; font-weight:800; margin:50px 0 20px; color:var(--text); }
 
-    /* --- SUGGEST --- */
-    .suggest {
-      padding:20px;
-      background:#fff;
-      margin:20px;
-      border-radius:12px;
+    /* --- CAROUSEL: scoped so it doesn't break other .mag-item rules --- */
+    .magazine-carousel { position: relative; margin: 40px 0; max-width: 900px; margin-left:auto; margin-right:auto; overflow:hidden; }
+    .magazine-carousel .carousel-wrapper { width:100%; }
+    .magazine-carousel .carousel-track { display:flex; transition: transform 0.6s ease; will-change: transform; }
+    .magazine-carousel .mag-item { flex: 0 0 100%; height: 400px; border-radius:8px; background-size:cover; background-position:center; position:relative; color:#fff; text-decoration:none; box-shadow:0 4px 10px rgba(0,0,0,0.1); overflow:hidden; }
+    .magazine-carousel .mag-item::before { content:''; position:absolute; inset:0; background: linear-gradient(to top, rgba(0,0,0,0.6), transparent); border-radius:8px; }
+    .magazine-carousel .mag-content { position:absolute; bottom:20px; left:20px; z-index:2; }
+    .magazine-carousel .carousel-btn { position:absolute; top:50%; transform:translateY(-50%); background: rgba(0,0,0,0.5); color:#fff; border:none; width:44px; height:44px; border-radius:50%; cursor:pointer; z-index:12; display:flex; align-items:center; justify-content:center; }
+    .magazine-carousel .carousel-btn:hover { background: rgba(0,0,0,0.8); }
+    .magazine-carousel .carousel-btn.prev { left: 12px; }
+    .magazine-carousel .carousel-btn.next { right: 12px; }
+
+    /* --- ĐẶT TOUR --- */
+    .tour-booking-section { background:var(--card-bg); border-radius:8px; padding:20px 25px; box-shadow:0 4px 10px rgba(0,0,0,0.05); margin-top:50px; margin-bottom:50px; border:1px solid var(--border-color); display:flex; flex-direction:column; gap:20px; }
+    .tour-booking-section h2 { font-size:24px; font-weight:800; margin:0; color:var(--text); }
+    .tour-form { display:flex; gap:15px; align-items:flex-end; }
+    .form-group { flex:1; display:flex; flex-direction:column; }
+    .form-group label { font-size:12px; font-weight:600; color:var(--secondary-text); margin-bottom:5px; text-transform:uppercase; }
+    .form-group select, .form-group input { padding:10px 12px; border:1px solid var(--border-color); border-radius:6px; font-size:15px; color:var(--text); outline:none; background-color:#fff; height:40px; box-sizing:border-box; }
+    .form-group select:focus, .form-group input:focus { border-color:var(--primary); }
+    .price-display { background:#FEF2F2; color:#B91C1C; padding:10px; border-radius:6px; font-weight:700; text-align:center; white-space:nowrap; display:flex; align-items:center; justify-content:center; height:40px; box-sizing:border-box; font-size:16px; }
+    .tour-search-btn { padding:10px 20px; height:40px; min-width:120px; align-self:flex-end; }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .navbar nav { display:none; }
+      .magazine-carousel .mag-item { height: 300px; }
+      .tour-form { flex-direction:column; align-items:stretch; }
+      .tour-search-btn { align-self:stretch; height:auto; padding:12px; }
     }
-    .suggest h3 {
-      margin-bottom:16px;
-    }
-    .suggest-content {
-      display:flex;
-      flex-direction:column;
-      gap:16px;
-    }
-    .suggest-item img {
-      width:100%;
-      border-radius:8px;
-      height:200px;
-      object-fit:cover;
-    }
-    @media (min-width:768px){
-      .suggest-content {
-        flex-direction:row;
-        justify-content:space-between;
-      }
-      .suggest-item {
-        flex:1;
-      }
+    @media (max-width: 600px) {
+      .filter-tag { padding:8px 12px; font-size:13px; }
+      .quick-filters { justify-content:flex-start; padding:0 20px; }
+      .search-box-hero { flex-direction:column; border-radius:10px; }
+      .search-box-hero input, .search-box-hero button { border-radius:0; padding:10px 20px; }
+      .search-box-hero input { border-radius:10px 10px 0 0; }
+      .search-box-hero button { border-radius:0 0 10px 10px; }
+      .hero h1 { font-size:24px; }
+      .magazine-carousel .mag-item { height: 250px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ---- HTML ở đây ---- -->
   <header class="navbar">
     <div class="logo">
       <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg" alt="VN Flag" class="flag" />
       <span>Hello-Vietnam</span>
     </div>
     <nav>
-      <a href="#" class="active">Khám phá</a>
-      <a href="">Cẩm nang</a>
-      <a href="/diendan.html">Diễn đàn</a>
+      <a href="../index.html" class="active">Khám phá</a>
+      <a href="../camnang.html">Cẩm nang</a>
+      <a href="../diendan.html">Diễn đàn</a>
     </nav>
-    
-        <!-- Actions -->
     <div class="actions">
-      <button class="btn primary">Tải App</button>
-      <button class="icon-btn">
-        <svg xmlns="http://www.w3.org/2000/svg" 
-             fill="none" viewBox="0 0 24 24" 
-             stroke="currentColor" width="20" height="20">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                d="M21 21l-4.35-4.35M10.5 18a7.5 7.5 0 100-15 7.5 7.5 0 000 15z"/>
-        </svg>
-      </button>
+      <a href="#" class="btn primary">Đăng Nhập</a>
+      <button class="icon-btn"><i class="fa-solid fa-user-circle"></i></button>
     </div>
   </header>
 
-  <!-- Thanh tìm kiếm chính là công cụ tìm kiếm -->
-  <section class="search">
-    <div style="position:relative;width:100%;max-width:400px;">
-      <input type="text" id="mainSearchInput" placeholder="Tìm kiếm địa điểm du lịch, ẩm thực" autocomplete="off" style="width:100%;cursor:pointer;" readonly />
-      <ul id="searchSuggestions" style="position:absolute;left:0;right:0;top:100%;z-index:10;background:#fff;border-radius:0 0 12px 12px;box-shadow:0 4px 16px rgba(0,0,0,0.08);margin:0;padding:0;list-style:none;display:none;max-height:220px;overflow-y:auto;"></ul>
+  <section class="hero">
+    <div class="hero-content">
+        <h1>Bạn muốn khám phá điều gì hôm nay?</h1>
+       <a href="/timkiem.html" class="search-link">
+       <div class="search-box-hero">
+            <input type="text" placeholder="Tìm kiếm địa điểm, món ăn, trải nghiệm...">
+            <button>Tìm Kiếm</button>
+        </div></a>
     </div>
-    <button class="btn primary" id="mainSearchButton" type="button">Tìm kiếm</button>
+  </section>
+
+  <div class="quick-filters">
+    <a href="#" class="filter-tag"><i class="fa-solid fa-utensils"></i>#ẨmThực</a>
+    <a href="#" class="filter-tag"><i class="fa-solid fa-camera-retro"></i>#TrảiNghiệm</a>
+    <a href="#" class="filter-tag"><i class="fa-solid fa-book-open-reader"></i>#CẩmNang</a>
+    <a href="#" class="filter-tag"><i class="fa-solid fa-route"></i>#DiChuyển</a>
+  </div>
+
+  <main class="container">
+    <h2 class="section-title">ĐỊA ĐIỂM NỔI TIẾNG</h2>
+
+    <!-- Carousel: 1 ảnh hiển thị, autoplay, infinite loop -->
+    <section class="magazine-carousel" id="magCarousel" aria-label="Carousel Địa điểm nổi tiếng">
+      <button class="carousel-btn prev" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button>
+
+      <div class="carousel-wrapper">
+        <div class="carousel-track">
+          <!-- Slide items (gốc) -->
+          <a href="pagescantho/ninhkieu.html" class="mag-item" style="background-image:url('/images/bnk.webp')">
+            <div class="mag-content"><h3>Bến Ninh Kiều - Cần Thơ</h3></div>
+          </a>
+          <a href="pageshanoi/vanmieuquoctugiam.html" class="mag-item" style="background-image:url('/images/vanmieu.jpg')">
+            <div class="mag-content"><h3>Văn Miếu Quốc Tử Giám - Hà Nội</h3></div>
+          </a>
+          <a href="pagesquangninh/vinhhalong.html" class="mag-item" style="background-image:url('/images/vinhhalong.jpg')">
+            <div class="mag-content"><h3>Vịnh Hạ Long - Quảng Ninh</h3></div>
+          </a>
+        </div>
+      </div>
+
+      <button class="carousel-btn next" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
+    </section>
+
+    <section class="tour-booking-section">
+        <h2>ĐẶT TOUR DU LỊCH TRỌN GÓI</h2>
+        <div class="tour-form">
+            <div class="form-group">
+                <label for="destination">Điểm đến</label>
+                <select id="destination">
+                    <option>Hạ Long (Mặc định)</option>
+                    <option>Hà Nội</option>
+                    <option>TP Hồ Chí Minh</option>
+                    <option>Đà Nẵng</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="startDate">Ngày đi</label>
+                <input type="date" id="startDate" value="2025-10-10">
+            </div>
+            <div class="form-group">
+                <label for="duration">Số ngày</label>
+                <select id="duration">
+                    <option>3 Ngày 2 Đêm</option>
+                    <option>4 Ngày 3 Đêm</option>
+                    <option>5 Ngày 4 Đêm</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Giá từ</label>
+                <div class="price-display">2.890.000 đ</div>
+            </div>
+            <button class="btn primary tour-search-btn">TÌM TOUR</button>
+        </div>
+    </section>
+  </main>
+
   <script>
-    // Danh sách 34 tỉnh thành (có dấu, có thể mở rộng)
-    const provincesVN = [
-      "An Giang", "Bà Rịa - Vũng Tàu", "Bắc Giang", "Bắc Kạn", "Bạc Liêu", "Bắc Ninh", "Bến Tre", "Bình Định", "Bình Dương", "Bình Phước", "Bình Thuận", "Cà Mau", "Cần Thơ", "Cao Bằng", "Đà Nẵng", "Đắk Lắk", "Đắk Nông", "Điện Biên", "Đồng Nai", "Đồng Tháp", "Gia Lai", "Hà Giang", "Hà Nam", "Hà Nội", "Hà Tĩnh", "Hải Dương", "Hải Phòng", "Hậu Giang", "Hòa Bình", "Hưng Yên", "Khánh Hòa", "Kiên Giang", "Kon Tum", "Lai Châu", "Lâm Đồng"
-    ];
-  </script>
-  </section>
+  (function () {
+    const carousel = document.getElementById('magCarousel');
+    const track = carousel.querySelector('.carousel-track');
+    const prevBtn = carousel.querySelector('.carousel-btn.prev');
+    const nextBtn = carousel.querySelector('.carousel-btn.next');
 
+    // original slides (before cloning)
+    const originalSlides = Array.from(track.querySelectorAll('.mag-item'));
 
-  <section class="places">
-    <div class="grid">
-      <div class="card">
-        <a href="/pages/vinhhalong.html">
-          <img src="https://i.ibb.co/nsgPc3vB/du-lich-vinh-Ha-Long-hinh-anh1-1625911963.jpg" alt="Vịnh Hạ Long">
-          <p>Vịnh Hạ Long</p>
-        </a>
-      </div>
-      <div class="card">
-        <a href="/pages/hoian.html">
-          <img src="https://i.ibb.co/677nhwb6/du-lich-hoi-an-thang-10-11-12-1.jpg" alt="Hội An">
-          <p>Hội An</p>
-        </a>
-      </div>
-      <div class="card">
-        <a href="/pagescantho/ninhkieu.html">
-          <img src="https://i.ibb.co/B5S8VPfQ/tat-tan-tat-kinh-nghiem-di-can-tho-ban-can-nho-truoc-khi-di-1650366577.jpg" alt="Ninh Kiều">
-          <p>Ninh Kiều</p>
-        </a>
-      </div>
-      <div class="card hidden-card">
-        <a href="cantho.html">
-          <img src="/images/cantho.jpg" alt="Thành phố Cần Thơ">
-          <p>Thành phố Cần Thơ</p>
-        </a>
-      </div>
-      <div class="card hidden-card">
-        <a href="angiang.html">
-          <img src="/images/angiang.jpg" alt="Tỉnh An Giang">
-          <p>Tỉnh An Giang</p>
-        </a>
-      </div>
-      <div class="card hidden-card">
-        <a href="dienan.html">
-          <img src="/images/dienan.jpg" alt="Tỉnh Điện An">
-          <p>Tỉnh Điện An</p>
-        </a>
-      </div>
-      <div class="card hidden-card">
-        <a href="hanoi.html">
-          <img src="/images/hanoi.jpg" alt="Thành phố Hà Nội">
-          <p>Thành phố Hà Nội</p>
-        </a>
-      </div>
-      <div class="card hidden-card">
-        <a href="hue.html">
-          <img src="/images/hue.jpg" alt="Thành phố Huế">
-          <p>Thành phố Huế</p>
-        </a>
-      </div>
-      <div class="card hidden-card">
-        <a href="khanhhoa.html">
-          <img src="/images/khanhhoa.jpg" alt="Tỉnh Khánh Hòa">
-          <p>Tỉnh Khánh Hòa</p>
-        </a>
-      </div>
-      <div class="card hidden-card">
-        <a href="quangninh.html">
-          <img src="/images/quangninh.jpg" alt="Tỉnh Quảng Ninh">
-          <p>Tỉnh Quảng Ninh</p>
-        </a>
-      </div>
-    <style>
-      .hidden-card { display: none; }
-    </style>
-    </div>
-  </section>
+    // If no slides, stop
+    if (!originalSlides.length) return;
 
-  <section class="suggest">
-    <h3>Gợi ý thông minh</h3>
-    <div class="suggest-content">
-      <div class="suggest-item">
-        <a href="/nhacobinhthuy.html">
-          <img src="https://i.ibb.co/spStHB48/nha-co-binh-thuy-03.jpg" alt="Nhà cổ Bình Thủy" />
-        <p>Khám Phá Nhà Cổ Bình Thủy</p>
-        </a>
-        <p>Hỏi đáp AI: Gợi ý món ăn truyền thống Cần Thơ</p>
-      </div>
-    </div>
-  </section>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const searchInput = document.getElementById('mainSearchInput');
-      const searchButton = document.getElementById('mainSearchButton');
-      const placesGrid = document.querySelector('.places .grid');
-      const cards = placesGrid.querySelectorAll('.card');
+    // clone first and last slide to create seamless infinite loop
+    const firstClone = originalSlides[0].cloneNode(true);
+    const lastClone = originalSlides[originalSlides.length - 1].cloneNode(true);
+    firstClone.classList.add('clone');
+    lastClone.classList.add('clone');
 
-      // Hàm chuẩn hoá chuỗi: bỏ dấu và chuyển thường
-      function normalizeStr(s) {
-        return s && s.normalize ? s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase() : s;
-      }
-      // Khi nhấn vào input hoặc nút tìm kiếm thì chuyển trang
-      searchInput.addEventListener('focus', function() {
-        window.location.href = 'timkiem.html';
-      });
-      searchInput.addEventListener('click', function() {
-        window.location.href = 'timkiem.html';
-      });
-      searchButton.addEventListener('click', function() {
-        window.location.href = 'timkiem.html';
-      });
+    track.appendChild(firstClone);
+    track.insertBefore(lastClone, track.firstChild);
 
-      function filterCards() {
-        const raw = searchInput.value.trim();
-        const searchTerm = normalizeStr(raw).toLowerCase();
+    let slides = Array.from(track.querySelectorAll('.mag-item'));
+    let index = 1; // start at the real first slide (since 0 is lastClone)
+    let slideWidth = carousel.clientWidth; // width of visible area
+    let isTransitioning = false;
+    const transitionTime = 600; // ms
+    const autoInterval = 3500;
+    let autoplayTimer = null;
 
-        // 3 card đầu luôn hiển thị nếu không tìm kiếm
-        if (searchTerm === '') {
-          cards.forEach((card, idx) => {
-            if(idx < 3) card.style.display = 'block';
-            else card.style.display = 'none';
-          });
-          return;
-        }
+    // ensure slides take full width (flex-basis 100% already set in CSS)
+    function setPositionNoAnim() {
+      slideWidth = carousel.clientWidth;
+      track.style.transition = 'none';
+      track.style.transform = `translateX(-${index * slideWidth}px)`;
+      // force reflow
+      track.getBoundingClientRect();
+      track.style.transition = '';
+    }
 
-        cards.forEach(card => {
-          const placeEl = card.querySelector('p');
-          const placeName = placeEl ? normalizeStr(placeEl.textContent).toLowerCase() : '';
-          if (placeName.includes(searchTerm)) {
-            card.style.display = 'block';
-          } else {
-            card.style.display = 'none';
-          }
-        });
-      }
+    // initialize position
+    setPositionNoAnim();
 
-      searchInput && searchInput.addEventListener('keyup', (e) => {
-        filterCards();
-      });
-      searchButton && searchButton.addEventListener('click', filterCards);
+    // handle window resize
+    window.addEventListener('resize', () => {
+      // small debounce
+      clearTimeout(window._carouselResizeTimeout);
+      window._carouselResizeTimeout = setTimeout(() => {
+        slideWidth = carousel.clientWidth;
+        track.style.transition = 'none';
+        track.style.transform = `translateX(-${index * slideWidth}px)`;
+        track.getBoundingClientRect();
+        track.style.transition = '';
+      }, 80);
     });
+
+    function goToIndex(i) {
+      if (isTransitioning) return;
+      isTransitioning = true;
+      index = i;
+      track.style.transition = `transform ${transitionTime}ms ease`;
+      track.style.transform = `translateX(-${index * slideWidth}px)`;
+    }
+
+    function next() { goToIndex(index + 1); }
+    function prev() { goToIndex(index - 1); }
+
+    nextBtn.addEventListener('click', () => { next(); resetAutoplay(); });
+    prevBtn.addEventListener('click', () => { prev(); resetAutoplay(); });
+
+    // When transition ends, if we are on a clone, jump to real slide without animation
+    track.addEventListener('transitionend', () => {
+      isTransitioning = false;
+      slides = Array.from(track.querySelectorAll('.mag-item'));
+      const total = slides.length;
+      if (index === total - 1) { // moved to firstClone (after last real)
+        track.style.transition = 'none';
+        index = 1;
+        track.style.transform = `translateX(-${index * slideWidth}px)`;
+        track.getBoundingClientRect();
+        track.style.transition = '';
+      } else if (index === 0) { // moved to lastClone (before first real)
+        track.style.transition = 'none';
+        index = total - 2;
+        track.style.transform = `translateX(-${index * slideWidth}px)`;
+        track.getBoundingClientRect();
+        track.style.transition = '';
+      }
+    });
+
+    // autoplay
+    function startAutoplay() {
+      stopAutoplay();
+      autoplayTimer = setInterval(() => {
+        next();
+      }, autoInterval);
+    }
+    function stopAutoplay() {
+      if (autoplayTimer) {
+        clearInterval(autoplayTimer);
+        autoplayTimer = null;
+      }
+    }
+    function resetAutoplay() {
+      stopAutoplay();
+      startAutoplay();
+    }
+
+    // pause on hover for better UX
+    carousel.addEventListener('mouseenter', stopAutoplay);
+    carousel.addEventListener('mouseleave', startAutoplay);
+
+    // start autoplay
+    startAutoplay();
+
+    // accessibility: arrow keys
+    carousel.setAttribute('tabindex', '0');
+    carousel.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') { prev(); resetAutoplay(); }
+      if (e.key === 'ArrowRight') { next(); resetAutoplay(); }
+    });
+  })();
   </script>
 </body>
 </html>

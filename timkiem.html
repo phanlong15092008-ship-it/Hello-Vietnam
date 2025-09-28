@@ -1,154 +1,186 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Hello-Vietnam (Chỉ dùng thanh tìm kiếm)</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hello-Vietnam</title>
 
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
-    :root {
-      --primary: #3B82F6;
-      --primary-hover: #2563eb;
-      --bg: #f9fafb;
-      --text: #111827;
-    }
-    body {
-      margin:0;
-      font-family:'Inter',sans-serif;
-      background:var(--bg);
-      color:var(--text);
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
     }
 
-    /* --- NAVBAR --- */
+    body {
+      background: #f9fafb;
+      color: #111827;
+    }
+
+    /* Navbar */
     .navbar {
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      padding:12px 24px;
-      background:#fff;
-      border-bottom:1px solid #e5e7eb;
-      position:sticky;
-      top:0;
-      z-index:1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 24px;
+      background: #fff;
+      border-bottom: 1px solid #e5e7eb;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
+
     .logo {
-      display:flex;
-      align-items:center;
-      font-weight:700;
-      font-size:18px;
-      gap:8px;
-      color:#000;
+      display: flex;
+      align-items: center;
+      font-weight: 700;
+      font-size: 18px;
+      gap: 8px;
+      color: #e11d48; /* đỏ */
     }
+
+    .logo span {
+      color: #e11d48; /* chữ Hello-Vietnam đỏ */
+    }
+
     .flag {
-      width:24px;
-      height:24px;
-      border-radius:2px;
+      width: 24px;
+      height: 24px;
+      border-radius: 2px;
     }
+
     .navbar nav a {
-      margin:0 12px;
-      text-decoration:none;
-      color:#374151;
-      font-weight:500;
-      transition:0.2s;
+      margin: 0 12px;
+      text-decoration: none;
+      color: #374151;
+      font-weight: 500;
+      transition: 0.2s;
     }
-    .navbar nav a:hover {
-      color:var(--primary);
-    }
+
     .navbar nav a.active {
-      color:#000;
+      font-weight: 600;
+      color: #000;
     }
 
     .actions {
-      display:flex;
-      align-items:center;
-      gap:10px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
-    .btn {
-      border:none;
-      padding:8px 16px;
-      border-radius:20px;
-      cursor:pointer;
-      font-weight:600;
-      font-size:14px;
-      transition:0.2s;
-    }
+
     .btn.primary {
-      background:var(--primary);
-      color:#fff;
+      background: #f97316; /* cam */
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-weight: 600;
+      text-decoration: none;
     }
+
     .btn.primary:hover {
-      background:var(--primary-hover);
-    }
-    .icon-btn {
-      background:none;
-      border:none;
-      font-size:18px;
-      cursor:pointer;
+      background: #ea580c;
     }
 
-    /* --- SEARCH BOX --- */
+    .avatar {
+      width: 32px;
+      height: 32px;
+      background: #374151;
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+
+    /* Container căn giữa */
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+      text-align: center;
+    }
+
+    /* Ô search căn giữa */
     .search {
-      display:flex;
-      justify-content:center;
-      padding:30px 20px;
-      gap:10px;
-      flex-wrap:wrap;
-    }
-    .search input {
-      padding:12px 16px;
-      border-radius:30px;
-      border:1px solid #d1d5db;
-      min-width:300px;
-      outline:none;
-      font-size:14px;
-    }
-    .search button {
-      border-radius:30px;
+      margin: 20px 0;
     }
 
-    /* --- PLACES --- */
-    .places {
-      padding:20px;
+    .search input {
+      width: 400px;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 25px;
+      outline: none;
     }
-    .places h2 {
-      text-align:center;
-      margin-bottom:20px;
-      font-size:22px;
+
+    .search button {
+      background: #f97316;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 25px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+
+    .search button:hover {
+      background: #ea580c;
+    }
+
+    /* Hình ảnh */
+    .content img {
+      max-width: 100%;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+
+    .content p {
+      margin-top: 10px;
+    }
+
+    .content a {
+      color: #1d4ed8;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .content a:hover {
+      text-decoration: underline;
     }
     .grid {
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-      gap:20px;
-    }
-    .card {
-      background:#fff;
-      border-radius:12px;
-      overflow:hidden;
-      text-align:center;
-      box-shadow:0 2px 8px rgba(0,0,0,0.08);
-      transition:transform 0.2s;
-    }
-    .card:hover { transform:translateY(-4px); }
-    .card img {
-      width:100%;
-      height:160px;
-      object-fit:cover;
-      display:block;
-    }
-    .card p {
-      margin:12px 0;
-      font-weight:600;
-    }
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
 
-    /* Ẩn mặc định (ban đầu không hiển thị các thẻ) */
-    .hidden-on-load { display: none; }
+.card {
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.card img {
+  width: 100%;
+  height: 150px;   /* ép ảnh cao bằng nhau */
+  object-fit: cover; /* cắt ảnh cho đẹp */
+  display: block;
+}
+
+.card p {
+  margin: 10px 0;
+  font-weight: bold;
+}
   </style>
 </head>
 <body>
-
+  <!-- Navbar -->
   <header class="navbar">
     <div class="logo">
       <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg" alt="Cờ Việt Nam" class="flag" />
@@ -160,18 +192,19 @@
       <a href="#">Diễn đàn</a>
     </nav>
     <div class="actions">
-      <button class="btn primary">Tải App</button>
-      <button class="icon-btn">🔍</button>
+      <a href="login.html" class="btn primary">Đăng Nhập</a>
+      <div class="avatar">👤</div>
     </div>
   </header>
 
-  <section class="search">
-    <input type="text" id="searchInput" placeholder="Tìm kiếm địa điểm du lịch, ẩm thực" />
-    <button class="btn primary" id="searchButton">Tìm kiếm</button>
-  </section>
-
-  <section class="places">
-
+  <!-- Container căn giữa -->
+  <main class="container">
+    <!-- Search -->
+    <section class="search">
+      <input type="text" id="searchInput" placeholder="Tìm kiếm địa điểm du lịch, ẩm thực" />
+      <button id="searchButton">Tìm kiếm</button>
+    </section>
+  </main>
 
     <!-- Một grid duy nhất, id = placesGrid -->
     <div class="grid" id="placesGrid">
@@ -290,7 +323,7 @@
 
       <div class="card hidden-on-load">
         <a href="#">
-          <img src="/images/thainuyen.jpg" alt="Tỉnh Thái Nguyên">
+          <img src="/images/thainguyen.jpg" alt="Tỉnh Thái Nguyên">
           <p>Tỉnh Thái Nguyên</p>
         </a>
       </div>

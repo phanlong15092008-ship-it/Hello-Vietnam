@@ -9,38 +9,67 @@
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 </head>
 <body class="bg-gray-50">
-  <!-- Header -->
-  <header class="flex items-center justify-between px-6 py-3 bg-white shadow">
+  <!-- Navbar -->
+<header class="bg-white shadow-sm sticky top-0 z-50">
+  <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+
     <!-- Logo -->
     <div class="flex items-center space-x-2">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg" class="w-6 h-4" alt="VN">
-      <span class="font-semibold text-gray-800">Hello-Vietnam</span>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg" 
+           alt="Cờ Việt Nam" class="h-6 w-6 rounded">
+      <span class="text-lg font-semibold text-orange-600">Hello-Vietnam</span>
     </div>
 
-    <!-- Nav -->
-    <nav class="flex items-center space-x-6 text-gray-700">
-      <a href="#">Khám phá</a>
-      <a href="#">Cẩm nang</a>
-      <a href="#">Diễn đàn</a>
+    <!-- Menu -->
+    <nav class="hidden md:flex space-x-8 font-medium relative">
+      <a href="../index.html" class="nav-link">Khám phá</a>
+      <a href="../camnang.html" class="nav-link">Cẩm nang</a>
+      <a href="../diendan.html" class="nav-link">Diễn đàn</a>
     </nav>
 
     <!-- Right -->
-    <div class="flex items-center space-x-4">
-      <button class="bg-blue-500 text-white px-4 py-1 rounded-full">Tải App</button>
-      <button id="searchToggle" class="p-2 rounded-full hover:bg-gray-100">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M10.5 18a7.5 7.5 0 100-15 7.5 7.5 0 000 15z"/>
-        </svg>
+    <div class="flex items-center space-x-3">
+      <button class="bg-orange-500 hover:bg-orange-600 text-white font-medium px-4 py-1.5 rounded-full shadow transition">
+        Đăng Nhập
       </button>
+      <div class="w-8 h-8 rounded-full bg-gray-600 flex items-center justify-center">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M10 10a4 4 0 100-8 4 4 0 000 8zm-6 8a6 6 0 1112 0H4z"/>
+        </svg>
+      </div>
     </div>
 
-    <!-- Search box -->
-    <div id="searchBox" class="hidden absolute right-6 top-14 w-[340px] bg-white shadow-lg rounded-full z-50 p-2">
-      <form id="searchForm" class="flex items-center gap-2">
-        <input id="searchInput" type="search" placeholder="Tìm kiếm..." class="flex-1 px-4 py-2 bg-transparent outline-none text-sm" />
-        <button type="submit" class="px-3 py-1 rounded-full bg-blue-500 text-white text-sm">Tìm</button>
-      </form>
-    </div>
+  </div>
+</header>
+
+<style>
+  .nav-link {
+    position: relative;
+    color: #374151; /* text-gray-700 */
+    transition: all 0.2s ease;
+  }
+  .nav-link:hover {
+    color: #f97316; /* orange-500 */
+  }
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    left: 0;
+    bottom: -4px;
+    background-color: #f97316;
+    transition: width 0.3s ease;
+  }
+  .nav-link:hover::after,
+  .nav-link.active::after {
+    width: 100%;
+  }
+  .nav-link.active {
+    color: #f97316;
+    font-weight: 600;
+  }
+</style>
   </header>
 
   <!-- Main -->

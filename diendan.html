@@ -2,397 +2,439 @@
 <html lang="vi">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diễn Đàn Du Lịch | Check-in Việt Nam</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        /* ==================================== */
-        /* 1. CSS STYLING (Toàn Cục và Bố Cục) */
-        /* ==================================== */
-        .avatar {
-            width: 40px;
-            /* nhỏ hơn */
-            height: 40px;
-            border-radius: 50%;
-            /* bo tròn */
-            object-fit: cover;
-            /* ảnh không bị méo */
-            margin-right: 10px;
-            /* cách chữ */
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diễn Đàn Du Lịch | Check-in Việt Nam</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f7f6;
-            /* Nền xám nhạt */
-            margin: 0;
-            padding: 40px 20px;
-        }
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f7f6;
+      margin: 0;
+      padding: 0;
+    }
 
-        .main-layout {
-            display: flex;
-            max-width: 1100px;
-            margin: 0 auto;
-            gap: 25px;
-        }
+    /* NAVBAR */
+    nav {
+      background-color: #fff;
+      border-bottom: 1px solid #ddd;
+      padding: 12px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
 
-        .content-feed {
-            flex: 2;
-        }
+    nav .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
 
-        .sidebar {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
+    nav .logo img {
+      width: 28px;
+      height: 20px;
+      border-radius: 3px;
+    }
 
-        .module-card {
-            background: #fff;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-            padding: 20px;
-        }
+    nav .logo span {
+      color: #f4511e;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
 
-        /* Thêm hiệu ứng hover cho các thành phần có thể bấm */
-        .clickable,
-        .post-footer span,
-        .challenge-item,
-        .trending-item a {
-            cursor: pointer;
-            transition: opacity 0.2s;
-        }
+    nav .menu {
+      display: flex;
+      gap: 30px;
+      font-size: 1em;
+      font-weight: 500;
+    }
 
-        .clickable:hover,
-        .post-footer span:hover,
-        .challenge-item:hover,
-        .trending-item a:hover {
-            opacity: 0.8;
-        }
+    nav .menu a {
+      text-decoration: none;
+      color: #333;
+      transition: 0.2s;
+    }
 
-        /* ==================================== */
-        /* 2. FEED SECTION (Cột Nội dung)     */
-        /* ==================================== */
+    nav .menu a.active {
+      color: #f4511e;
+      border-bottom: 2px solid #f4511e;
+      padding-bottom: 2px;
+    }
+    /* Khi rê chuột vào menu nào cũng sáng cam */
+nav .menu a:hover {
+  color: #f4511e;
+}
 
-        .create-post-box {
-            display: flex;
-            align-items: center;
-            padding: 15px;
-            margin-bottom: 20px;
-            gap: 15px;
-        }
+     nav .actions {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
 
-        .create-post-box .avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
+    nav .actions button {
+      background-color: #f4511e;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      padding: 8px 18px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+    }
 
-        .create-post-box .input-area {
-            flex-grow: 1;
-            padding: 10px;
-            border-radius: 20px;
-            background-color: #f0f2f5;
-            color: #606770;
-            /* Giữ nguyên cursor: pointer; */
-        }
+    nav .actions button:hover {
+      opacity: 0.9;
+    }
 
-        .create-post-box .icons {
-            font-size: 1.5em;
-            color: #606770;
-            display: flex;
-            gap: 10px;
-        }
+    nav .actions .avatar {
+      width: 35px;
+      height: 35px;
+      background-color: #555;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-        .post-card {
-            background: #fff;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            margin-bottom: 20px;
-            overflow: hidden;
-        }
+    /* MAIN LAYOUT */
+    .main-layout {
+      display: flex;
+      max-width: 1300px;
+      margin: 20px auto;
+      padding: 0 20px;
+      gap: 25px;
+    }
 
-        .checkin-label {
-            position: absolute;
-            top: 0;
-            right: 0;
-            background-color: #ff6f00;
-            color: white;
-            padding: 8px 15px;
-            font-size: 0.9em;
-            font-weight: bold;
-            border-bottom-left-radius: 12px;
-            z-index: 10;
-        }
+    .content-feed {
+      flex: 2;
+    }
 
-        .post-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-            object-fit: cover;
-        }
+    .sidebar {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
 
-        .post-footer {
-            padding: 10px 15px;
-            border-top: 1px solid #eee;
-            display: flex;
-            gap: 25px;
-            color: #606770;
-        }
+    .module-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      padding: 20px;
+    }
 
-        .mini-collection {
-            display: flex;
-            gap: 5px;
-            overflow: hidden;
-            border-radius: 8px;
-        }
+    /* CREATE POST BOX */
+    .create-post-box {
+      display: flex;
+      align-items: center;
+      padding: 15px;
+      margin-bottom: 20px;
+      gap: 15px;
+    }
 
-        .mini-collection img {
-            width: 33.33%;
-            height: 120px;
-            object-fit: cover;
-            border-radius: 8px;
-        }
+    .create-post-box .avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
 
-        /* ==================================== */
-        /* 3. SIDEBAR SECTION (Cột Profile)   */
-        /* ==================================== */
+    .create-post-box .input-area {
+      flex-grow: 1;
+      padding: 10px 15px;
+      border-radius: 20px;
+      background-color: #f0f2f5;
+      color: #606770;
+      cursor: pointer;
+    }
 
-        .profile-module {
-            text-align: center;
-        }
+    .create-post-box .icons {
+      font-size: 1.3em;
+      color: #606770;
+      display: flex;
+      gap: 12px;
+    }
 
-        .profile-module .main-avatar {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            margin-bottom: 10px;
-        }
+    /* POST CARD */
+    .post-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
 
-        .progress-bar-container {
-            width: 80%;
-            height: 10px;
-            background-color: #e0e0e0;
-            border-radius: 10px;
-            overflow: hidden;
-            margin: 10px auto;
-        }
+    .post-card .post-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 15px;
+    }
 
-        .progress-fill {
-            height: 100%;
-            background-color: #4CAF50;
-            width: 26%;
-        }
+    .post-card .avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
 
-        .progress-text {
-            font-weight: bold;
-            color: #388e3c;
-            margin-bottom: 15px;
-        }
+    .username {
+      font-weight: 600;
+    }
 
-        .challenge-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-        }
+    .status {
+      font-size: 0.9em;
+      color: #666;
+      display: block;
+    }
 
-        .challenge-item {
-            border-radius: 8px;
-            overflow: hidden;
-            position: relative;
-        }
+    .post-image img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      display: block;
+    }
 
-        .challenge-item img {
-            width: 100%;
-            height: 100px;
-            object-fit: cover;
-            filter: brightness(70%);
-        }
+    .post-body {
+      padding: 0 15px 10px;
+    }
 
-        .challenge-item .text {
-            position: absolute;
-            bottom: 5px;
-            left: 5px;
-            color: white;
-            font-size: 0.85em;
-            font-weight: 600;
-        }
+    .post-footer {
+      padding: 10px 15px;
+      border-top: 1px solid #eee;
+      display: flex;
+      gap: 25px;
+      color: #606770;
+    }
 
-        .trending-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 8px;
-        }
+    .post-footer span {
+      cursor: pointer;
+    }
 
-        .trending-item a {
-            color: #0288d1;
-            text-decoration: none;
-            font-weight: 500;
-        }
-    </style>
+    .post-footer span:hover {
+      opacity: 0.7;
+    }
+
+    .mini-collection {
+      display: flex;
+      gap: 5px;
+      padding: 10px;
+    }
+
+    .mini-collection img {
+      width: 33.33%;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    /* SIDEBAR */
+    .profile-module {
+      text-align: center;
+    }
+
+    .profile-module .main-avatar {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      margin-bottom: 10px;
+    }
+
+    .progress-bar-container {
+      width: 80%;
+      height: 10px;
+      background-color: #e0e0e0;
+      border-radius: 10px;
+      margin: 10px auto;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      width: 26%;
+      height: 100%;
+      background-color: #4CAF50;
+    }
+
+    .progress-text {
+      font-weight: bold;
+      color: #388e3c;
+      margin-bottom: 10px;
+    }
+
+    .challenge-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .challenge-item {
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .challenge-item img {
+      width: 100%;
+      height: 100px;
+      object-fit: cover;
+      filter: brightness(70%);
+    }
+
+    .challenge-item .text {
+      position: absolute;
+      bottom: 5px;
+      left: 5px;
+      color: white;
+      font-size: 0.85em;
+      font-weight: bold;
+    }
+
+    .trending-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .trending-item a {
+      color: #0288d1;
+      font-weight: 500;
+      text-decoration: none;
+    }
+  </style>
 </head>
 
 <body>
 
-    <div class="main-layout">
-
-        <div class="content-feed">
-
-            <div class="module-card create-post-box">
-                <img src="https://i.pravatar.cc/150?img=5" alt="Avatar" class="avatar">
-                <div class="input-area clickable" onclick="handlePostCreation()">Share your travel adventures...</div>
-                <div class="icons">
-                    <i class="fas fa-image clickable" onclick="handleUpload('Ảnh')"></i>
-                    <i class="fas fa-video clickable" onclick="handleUpload('Video')"></i>
-                    <i class="fas fa-map-marker-alt clickable" style="color: #4CAF50;"
-                        onclick="handleCheckinStart()"></i>
-                </div>
-            </div>
-
-            <div class="post-card">
-                <div class="checkin-label">
-                    CHECK-IN tại **Vịnh Hạ Long, Quảng Ninh**
-                </div>
-                <div class="post-image">
-                    <img src="https://picsum.photos/800/450?random=10" alt="Ảnh Check-in Hạ Long">
-                </div>
-                <div class="post-header clickable" onclick="viewUserProfile('Mai Phương Nguyễn')">
-                    <div class="user-info">
-                        <img src="https://i.pravatar.cc/150?img=4" alt="Avatar" class="avatar">
-                        <span class="username">Mai Phương Nguyễn <i class="fas fa-check-circle"
-                                style="color: #0288d1; font-size: 0.8em;"></i></span>
-                        <span class="status">Rau Xanh Content Writer</span>
-                    </div>
-                </div>
-                <div class="post-body">
-                    <p>Không thể tin được vẻ đẹp hùng vĩ này! 🤩🛶 Cảnh sắc siêu thực, đúng là kỳ quan thiên nhiên du
-                        lịch Việt Nam.</p>
-                    <div class="hashtags">
-                        #checkin #CheckinQuangNinh #HalongBay #TravelVietNam
-                    </div>
-                </div>
-                <div class="post-footer">
-                    <span onclick="handleInteraction('Thích')"><i class="fas fa-thumbs-up"></i> 2.5K Likes</span>
-                    <span onclick="handleInteraction('Bình luận')"><i class="fas fa-comment"></i> 350 Comments</span>
-                    <span onclick="handleInteraction('Chia sẻ')"><i class="fas fa-share"></i> 5 Share</span>
-                </div>
-            </div>
-
-            <div class="post-card">
-                <div class="post-header clickable" onclick="viewUserProfile('Bách Thủ Lữ Khách')">
-                    <div class="user-info">
-                        <img src="https://i.pravatar.cc/150?img=3" alt="Avatar" class="avatar">
-                        <span class="username">Bách Thủ Lữ Khách</span>
-                        <span class="status">Travel Blogger</span>
-                    </div>
-                </div>
-                <div class="mini-collection">
-                    <img src="https://picsum.photos/400/300?random=11" alt="Ảnh 1">
-                    <img src="https://picsum.photos/400/300?random=12" alt="Ảnh 2">
-                    <img src="https://picsum.photos/400/300?random=13" alt="Ảnh 3">
-                </div>
-                <div class="post-body">
-                    <p>Cảm ơn các bạn đã gợi ý món bún chả Hà Nội ngon tuyệt này! Ăn no căng bụng rồi lên đường khám phá
-                        tiếp thôi! 🍜🛵</p>
-                </div>
-                <div class="post-footer">
-                    <span onclick="handleInteraction('Thích')"><i class="fas fa-thumbs-up"></i> 1.8K Likes</span>
-                    <span onclick="handleInteraction('Bình luận')"><i class="fas fa-comment"></i> 210 Comments</span>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="sidebar">
-
-            <div class="module-card profile-module clickable" onclick="viewUserProfile('Mai Phương Nguyễn')">
-                <h4 style="float: right; cursor: pointer; color: #777;"><i class="fas fa-times"></i></h4>
-                <img src="https://i.pravatar.cc/150?img=4" alt="Profile Avatar" class="main-avatar">
-                <h3>Mai Phương Nguyễn</h3>
-                <p class="status">Extratta | Elite Traveller</p>
-
-                <p class="progress-text">9/34 Tỉnh (26%)</p>
-                <div class="progress-bar-container">
-                    <div class="progress-fill"></div>
-                </div>
-
-                <p style="color: #ffc107; font-size: 1.2em; margin: 5px 0 0 0;">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                        class="fas fa-star-half-alt"></i><i class="far fa-star"></i>
-                </p>
-                <span style="font-size: 0.9em; color: #999;">Cấp độ: Nhà thám hiểm</span>
-            </div>
-
-            <div class="module-card challenges-module">
-                <h4>Travel Challenges</h4>
-                <div class="challenge-grid">
-                    <div class="challenge-item clickable" onclick="handleChallenge('Chinh Phục Miền Bắc')">
-                        <img src="https://picsum.photos/400/300?random=14" alt="Thử thách Miền Bắc">
-                        <div class="text">Chinh Phục Miền Bắc</div>
-                    </div>
-                    <div class="challenge-item clickable" onclick="handleChallenge('Khám Phá Cao Nguyên')">
-                        <img src="https://picsum.photos/400/300?random=15" alt="Thử thách Cao Nguyên">
-                        <div class="text">Khám Phá Cao Nguyên</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="module-card trending-module">
-                <h4>Trending</h4>
-                <div class="trending-list">
-                    <div class="trending-item">
-                        <a href="#" onclick="handleTrending('#DuLịchViệtNam')">#DuLịchViệtNam</a>
-                        <i class="fas fa-plane"></i>
-                    </div>
-                    <div class="trending-item">
-                        <a href="#" onclick="handleTrending('#PhượtMiềnBắc')">#PhượtMiềnBắc</a>
-                        <i class="fas fa-helmet-safety"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+  <!-- NAVBAR -->
+  <nav>
+   <div class="logo">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg" alt="VN Flag">
+      <span>Hello-Vietnam</span>
     </div>
 
-    <script>
-        // Hàm xử lý việc click vào ô nhập bài đăng
-        function handlePostCreation() {
-            alert("Bạn đang mở giao diện tạo bài đăng mới (Pop-up/Modal sẽ xuất hiện ở đây).");
-        }
+    <div class="menu">
+      <a href="index.html">Khám phá</a>
+      <a href="../camnang.html">Cẩm nang</a>
+      <a href="../diendan.html" class="active">Diễn đàn</a>
+    </div>
 
-        // Hàm xử lý việc click vào icon Tải ảnh/video
-        function handleUpload(type) {
-            alert(`Bạn đang mở chức năng tải ${type}.`);
-        }
+    <div class="actions">
+      <button>Đăng Nhập</button>
+      <div class="avatar"><i class="fas fa-user" style="color: white;"></i></div>
+    </div>
+  </nav>
 
-        // Hàm xử lý việc click vào icon Check-in
-        function handleCheckinStart() {
-            alert("Mở giao diện Check-in: Người dùng chọn Tỉnh/Thành phố hoặc nhập hashtag chuẩn hóa.");
-        }
+  <!-- MAIN LAYOUT -->
+  <div class="main-layout">
 
-        // Hàm xử lý tương tác (Thích, Bình luận, Chia sẻ)
-        function handleInteraction(action) {
-            alert(`Thao tác "${action}" đã được thực hiện.`);
-        }
+    <!-- FEED -->
+    <div class="content-feed">
+      <div class="module-card create-post-box">
+        <img src="https://i.pravatar.cc/150?img=5" alt="Avatar" class="avatar">
+        <div class="input-area">Share your travel adventures...</div>
+        <div class="icons">
+          <i class="fas fa-image"></i>
+          <i class="fas fa-video"></i>
+          <i class="fas fa-map-marker-alt" style="color: #4CAF50;"></i>
+        </div>
+      </div>
 
-        // Hàm xử lý click vào tên người dùng/avatar để xem Hồ sơ
-        function viewUserProfile(username) {
-            alert(`Chuyển đến trang Hồ sơ của ${username}.`);
-        }
+      <!-- Post 1 -->
+      <div class="post-card">
+        <div class="post-image">
+          <img src="https://picsum.photos/800/450?random=10" alt="Checkin">
+        </div>
+        <div class="post-header">
+          <img src="https://i.pravatar.cc/150?img=4" alt="Avatar" class="avatar">
+          <div>
+            <span class="username">Mai Phương Nguyễn <i class="fas fa-check-circle"
+                style="color:#0288d1;font-size:0.8em;"></i></span>
+            <span class="status">Rau Xanh Content Writer</span>
+          </div>
+        </div>
+        <div class="post-body">
+          Không thể tin được vẻ đẹp hùng vĩ này! 🤩🛶 Cảnh sắc siêu thực, đúng là kỳ quan thiên nhiên.
+          <div>#checkin #HalongBay #TravelVietNam</div>
+        </div>
+        <div class="post-footer">
+          <span><i class="fas fa-thumbs-up"></i> 2.5K Likes</span>
+          <span><i class="fas fa-comment"></i> 350 Comments</span>
+          <span><i class="fas fa-share"></i> 5 Share</span>
+        </div>
+      </div>
 
-        // Hàm xử lý click vào Thử thách
-        function handleChallenge(challengeName) {
-            alert(`Tham gia hoặc xem chi tiết thử thách: "${challengeName}".`);
-        }
+      <!-- Post 2 -->
+      <div class="post-card">
+        <div class="post-header">
+          <img src="https://i.pravatar.cc/150?img=3" alt="Avatar" class="avatar">
+          <div>
+            <span class="username">Bách Thủ Lữ Khách</span>
+            <span class="status">Travel Blogger</span>
+          </div>
+        </div>
+        <div class="mini-collection">
+          <img src="https://picsum.photos/400/300?random=11" alt="">
+          <img src="https://picsum.photos/400/300?random=12" alt="">
+          <img src="https://picsum.photos/400/300?random=13" alt="">
+        </div>
+        <div class="post-body">
+          Cảm ơn các bạn đã gợi ý món bún chả Hà Nội ngon tuyệt này! 🍜🛵
+        </div>
+        <div class="post-footer">
+          <span><i class="fas fa-thumbs-up"></i> 1.8K Likes</span>
+          <span><i class="fas fa-comment"></i> 210 Comments</span>
+        </div>
+      </div>
+    </div>
 
-        // Hàm xử lý click vào Hashtag Trending
-        function handleTrending(hashtag) {
-            alert(`Mở trang hiển thị tất cả bài đăng có hashtag ${hashtag}.`);
-        }
-    </script>
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+      <div class="module-card profile-module">
+        <img src="https://i.pravatar.cc/150?img=4" alt="Profile Avatar" class="main-avatar">
+        <h3>Mai Phương Nguyễn</h3>
+        <p class="status">Extratta | Elite Traveller</p>
+        <p class="progress-text">9/34 Tỉnh (26%)</p>
+        <div class="progress-bar-container">
+          <div class="progress-fill"></div>
+        </div>
+        <p style="color: #ffc107; font-size: 1.2em;">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i>
+          <i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+          <i class="far fa-star"></i>
+        </p>
+        <span style="font-size: 0.9em; color: #999;">Cấp độ: Nhà thám hiểm</span>
+      </div>
+
+      <div class="module-card challenges-module">
+        <h4>Travel Challenges</h4>
+        <div class="challenge-grid">
+          <div class="challenge-item">
+            <img src="https://picsum.photos/400/300?random=14" alt="">
+            <div class="text">Chinh Phục Miền Bắc</div>
+          </div>
+          <div class="challenge-item">
+            <img src="https://picsum.photos/400/300?random=15" alt="">
+            <div class="text">Khám Phá Cao Nguyên</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="module-card trending-module">
+        <h4>Trending</h4>
+        <div class="trending-item">
+          <a href="#">#DuLịchViệtNam</a><i class="fas fa-plane"></i>
+        </div>
+        <div class="trending-item">
+          <a href="#">#PhượtMiềnBắc</a><i class="fas fa-helmet-safety"></i>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </body>
-
 </html>
