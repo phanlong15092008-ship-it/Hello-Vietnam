@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giao Diện Ẩm Thực - Có Lọc</title>
+    <style>
+        /* Thiết lập cơ bản */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0; /* Loại bỏ padding body để ảnh hero sát mép trên */
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px; /* Padding ngang cho nội dung chính */
+        }
+
+        /* Hero Section (Đầu trang) */
+        .hero-section {
+            background: url('https://via.placeholder.com/1200x400?text=Food+Hero+Image') center/cover no-repeat;
+            color: #fff;
+            padding: 80px 0; /* Tăng padding để tiêu đề nổi bật */
+            text-align: center;
+            position: relative;
+            min-height: 350px; /* Chiều cao tối thiểu */
+            display: flex; /* Dùng flexbox để căn giữa nội dung */
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.3); /* Lớp phủ nhẹ */
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: 3.5em; /* Kích thước chữ lớn */
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Đổ bóng chữ */
+        }
+
+        .hero-subtitle {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            max-width: 600px;
+            line-height: 1.5;
+        }
+
+        /* Thanh Tìm Kiếm */
+        .search-bar {
+            width: 70%; /* Rộng hơn một chút */
+            margin: 20px auto;
+            position: relative;
+            background-color: #fff;
+            border-radius: 30px;
+            padding: 10px 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+        }
+
+        .search-bar input {
+            flex-grow: 1; /* Cho phép input mở rộng */
+            border: none;
+            padding: 10px 10px 10px 0;
+            font-size: 1.1em;
+            outline: none;
+        }
+
+        .search-bar .search-icon {
+            color: #f7931e;
+            font-size: 1.2em;
+            margin-right: 10px;
+        }
+
+        /* Phần nội dung chính dưới hero */
+        .main-content {
+            padding-top: 40px; /* Khoảng cách từ hero đến nội dung chính */
+        }
+
+        /* Thanh tiêu đề và nút lọc */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding: 0 15px; /* Padding giống container */
+        }
+
+        .section-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #333;
+            margin: 0;
+        }
+
+        .filter-button-group {
+            display: flex;
+            align-items: center;
+        }
+
+        .filter-button-group .filter-icon {
+            font-size: 1.8em; /* Biểu tượng lớn hơn */
+            color: #f7931e;
+            margin-right: 5px;
+        }
+
+        .filter-button-group .filter-text {
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #f7931e;
+        }
+        
+        /* Cẩm Nang Ăn Uống theo tỉnh */
+        .c-title-mt {
+            margin-top: 60px; /* Khoảng cách lớn hơn cho phần này */
+            padding: 0 15px;
+        }
+
+        /* Bố cục Lưới cho các bài viết */
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 cột bằng nhau */
+            gap: 30px;
+            padding: 0 15px; /* Padding ngang cho grid */
+        }
+
+        /* Thẻ Bài Viết (Card) */
+        .article-card {
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-image-wrapper {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-image {
+            width: 100%;
+            height: 200px; /* Chiều cao cố định */
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Tag (Nhãn) */
+        .tag {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #f7931e; /* Màu cam */
+            color: #fff;
+            padding: 4px 8px;
+            border-radius: 5px;
+            font-size: 0.7em;
+            font-weight: bold;
+            line-height: 1;
+        }
+
+        .tag-tr-sanc {
+            right: 100px; /* Di chuyển nhãn đầu tiên sang trái một chút */
+            background-color: #ff5722; /* Màu khác để phân biệt */
+        }
+
+        .card-title {
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #333;
+            padding: 10px 15px 5px;
+            line-height: 1.4;
+        }
+
+        .card-rating {
+            display: flex;
+            align-items: center;
+            padding: 0 15px 15px;
+            font-size: 0.9em;
+            color: #999;
+        }
+
+        .star-rating {
+            color: gold;
+            margin-right: 5px;
+        }
+
+        .rating-value {
+            color: #f7931e;
+            font-weight: bold;
+            margin-left: 5px;
+        }
+
+        /* Thẻ Liên kết Tỉnh (Cẩm nang) */
+        .card-link-province {
+            background-color: #f4f4f4;
+            border-radius: 10px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .btn-all-food {
+            background-color: #fff;
+            border: 2px solid #f7931e;
+            color: #f7931e;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-bottom: 15px;
+            width: 70%;
+            align-self: flex-start;
+            transition: background-color 0.3s;
+        }
+
+        .btn-all-food:hover {
+            background-color: #fff5e6;
+        }
+
+        .card-link-province p {
+            margin: 3px 0;
+            font-size: 0.9em;
+            color: #555;
+        }
+
+        /* CSS cho responsive cơ bản (điện thoại) */
+        @media (max-width: 768px) {
+            .articles-grid {
+                grid-template-columns: 1fr; /* Chỉ 1 cột trên điện thoại */
+            }
+            .hero-title {
+                font-size: 2em;
+            }
+            .hero-subtitle {
+                font-size: 1em;
+            }
+            .search-bar {
+                width: 90%;
+            }
+            .section-header {
+                flex-direction: column; /* Đặt tiêu đề và lọc xuống dòng trên mobile */
+                align-items: flex-start;
+            }
+            .filter-button-group {
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">ĂN GÌ, Ở ĐÂU?</h1>
+            <p class="hero-subtitle">Khám phá bản đồ ẩm thực Việt Nam: Từ Phở đường phố đến hải sản trứ danh.</p>
+            <div class="search-bar">
+                <span class="search-icon">🔍</span>
+                <input type="text" placeholder="Tìm kiếm món ăn, thành phố...">
+            </div>
+        </div>
+    </section>
+
+    <div class="main-content">
+        <div class="section-header container">
+            <h2 class="section-title">TOP NHỮNG MÓN NGON ĐƯỢC ĐÁNH GIÁ CAO</h2>
+            <div class="filter-button-group">
+                <span class="filter-icon">☰</span> <span class="filter-text">Lọc</span>
+            </div>
+        </div>
+        
+        <div class="articles-grid container">
+            <div class="article-card">
+                <div class="card-image-wrapper">
+                    <img src="https://via.placeholder.com/350x200?text=Pha+Lau+Chu+Muoi" alt="Phá Lấu Chú Mười" class="card-image">
+                    <span class="tag tag-tr-sanc">TP. SÀI GÒN</span>
+                    <span class="tag">TN. MỚI</span>
+                </div>
+                <h3 class="card-title">Phá Lấu Chú Mười: Quán Ăn Gây Nghiện Nhất Quận 4</h3>
+                <div class="card-rating">
+                    <span class="star-rating">★★★★</span>
+                    <span class="rating-value">4.7</span>
+                </div>
+            </div>
+
+            <div class="article-card">
+                <div class="card-image-wrapper">
+                    <img src="https://via.placeholder.com/350x200?text=Hai+San+Nha+Trang" alt="Hải Sản Nha Trang" class="card-image">
+                    <span class="tag tag-tr-sanc">TR. MỚI</span>
+                    <span class="tag">HS. HAY</span>
+                </div>
+                <h3 class="card-title">Hải Sản Nha Trang: 5 Quán "Nhất Định Phải Thử"</h3>
+                <div class="card-rating">
+                    <span class="star-rating">★★★★</span>
+                    <span class="rating-value">4.7</span>
+                </div>
+            </div>
+
+            <div class="article-card">
+                <div class="card-image-wrapper">
+                    <img src="https://via.placeholder.com/350x200?text=Thien+Quan+Chay" alt="Thiền Quán Chay" class="card-image">
+                    <span class="tag tag-tr-sanc">TR. HUẾ</span>
+                    <span class="tag">ÂT. CHAY</span>
+                </div>
+                <h3 class="card-title">Thiền Quán Chay: Top 5 Địa Điểm Yên Bình Tại Huế</h3>
+                <div class="card-rating">
+                    <span class="star-rating">★★★★</span>
+                    <span class="rating-value">4.3</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-header container c-title-mt">
+            <h2 class="section-title">CẨM NANG ĂN UỐNG THEO TỈNH</h2>
+        </div>
+        <div class="articles-grid container">
+            <div class="card-link-province">
+                <button class="btn-all-food">Tất cả món ngon</button>
+                <p>Tất cả món ngon ở Hà Nội</p>
+                <p>ở Đà Nẵng</p>
+            </div>
+
+            <div class="article-card">
+                <div class="card-image-wrapper">
+                    <img src="https://via.placeholder.com/350x200?text=Vietnamese+Coffee" alt="Cà phê" class="card-image">
+                    <span class="tag tag-tr-sanc">NG. HƠI</span>
+                    <span class="tag">ĐB. ĐÔ</span>
+                </div>
+                </div>
+
+            <div class="article-card">
+                <div class="card-image-wrapper">
+                    <img src="https://via.placeholder.com/350x200?text=Banh+Xeo" alt="Bánh Xèo" class="card-image">
+                    <span class="tag tag-tr-sanc">TR. HUẾ</span>
+                    <span class="tag">TR. MIỀN</span>
+                </div>
+                </div>
+        </div>
+    </div>
+
+</body>
+</html>

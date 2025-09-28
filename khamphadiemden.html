@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giao Diện Khám Phá Điểm Đến</title>
+    <style>
+        /* Thiết lập cơ bản */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Màu chủ đạo mới cho mục điểm đến (Ví dụ: Xanh lá cây) */
+        :root {
+            --destination-color: #28a745;
+            --secondary-color: #ffc107;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: url('https://via.placeholder.com/1200x400?text=Vietnam+Landscape+Background') center/cover no-repeat;
+            color: #fff;
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            min-height: 350px;
+        }
+        
+        /* Lớp phủ màu xanh lá mờ */
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(40, 167, 69, 0.75); /* Xanh lá */
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: 3.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-subtitle {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* --- BẢN ĐỒ VIỆT NAM --- */
+        .map-section {
+            padding: 50px 0;
+            text-align: center;
+        }
+        
+        .map-section img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .map-section p {
+            font-size: 1.1em;
+            color: #555;
+            margin-top: 15px;
+        }
+
+        /* --- BỘ LỌC CHỦ ĐỀ --- */
+        .theme-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 50px;
+        }
+
+        .filter-btn {
+            background-color: #fff;
+            color: var(--destination-color);
+            border: 2px solid var(--destination-color);
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--destination-color);
+            color: #fff;
+        }
+
+        /* --- THẺ ĐIỂM ĐẾN (DESTINATION CARDS) --- */
+        .section-title {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: var(--destination-color);
+            margin-top: 40px;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .destination-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .destination-card {
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .destination-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .card-content {
+            padding: 15px;
+        }
+
+        .card-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .card-description {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .card-tag {
+            display: inline-block;
+            background-color: #f0f0f0;
+            color: var(--destination-color);
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: 500;
+            margin-right: 5px;
+        }
+        
+        /* --- Responsive --- */
+        @media (max-width: 992px) {
+            .destination-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 2.5em;
+            }
+            .destination-grid {
+                grid-template-columns: 1fr;
+            }
+            .filter-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content container">
+            <h1 class="hero-title">KHÁM PHÁ ĐIỂM ĐẾN</h1>
+            <p class="hero-subtitle">Tìm kiếm địa điểm du lịch hoàn hảo tại Việt Nam. Cẩm nang chi tiết từ Bắc chí Nam, phân loại theo mọi sở thích.</p>
+        </div>
+    </section>
+    
+    <div class="container">
+        <div class="map-section">
+            <h2 class="section-title">Định Vị Hành Trình Của Bạn</h2>
+            <img src="https://via.placeholder.com/1000x450?text=Interactive+Map+of+Vietnam+with+Pins" alt="Bản đồ Việt Nam">
+            <p>Nhấn vào các điểm đánh dấu trên bản đồ để khám phá cẩm nang chi tiết!</p>
+        </div>
+
+        <h2 class="section-title">Lọc Theo Chủ Đề Du Lịch</h2>
+        <div class="theme-filters">
+            <button class="filter-btn active">Núi & Trekking</button>
+            <button class="filter-btn">Biển Đảo</button>
+            <button class="filter-btn">Lịch Sử & Văn Hóa</button>
+            <button class="filter-btn">Nghỉ Dưỡng Sang Trọng</button>
+            <button class="filter-btn">Phố Thị Hiện Đại</button>
+        </div>
+
+        <h2 class="section-title">Điểm Đến Nổi Bật (Miền Bắc)</h2>
+        <div class="destination-grid">
+            <div class="destination-card">
+                <img src="https://via.placeholder.com/400x220?text=Ha+Giang+Loop" alt="Hà Giang" class="card-image">
+                <div class="card-content">
+                    <h3 class="card-title">Hà Giang - Miền Đá Nở Hoa</h3>
+                    <p class="card-description">Cung đường đèo vĩ đại, cột cờ Lũng Cú và trải nghiệm văn hóa dân tộc độc đáo.</p>
+                    <span class="card-tag">#MiềnBắc</span>
+                    <span class="card-tag">#Trekking</span>
+                </div>
+            </div>
+
+            <div class="destination-card">
+                <img src="https://via.placeholder.com/400x220?text=Sapa+View" alt="Sa Pa" class="card-image">
+                <div class="card-content">
+                    <h3 class="card-title">Sa Pa - Thị Trấn Sương Mù</h3>
+                    <p class="card-description">Chinh phục Fansipan, trekking bản Cát Cát và khám phá chợ tình Sa Pa.</p>
+                    <span class="card-tag">#MiềnBắc</span>
+                    <span class="card-tag">#NghỉDưỡng</span>
+                </div>
+            </div>
+
+            <div class="destination-card">
+                <img src="https://via.placeholder.com/400x220?text=Ha+Long+Bay" alt="Vịnh Hạ Long" class="card-image">
+                <div class="card-content">
+                    <h3 class="card-title">Vịnh Hạ Long - Kỳ Quan Thiên Nhiên</h3>
+                    <p class="card-description">Du thuyền sang trọng, chèo kayak khám phá hang động và đảo Titop.</p>
+                    <span class="card-tag">#DiSản</span>
+                    <span class="card-tag">#BiểnĐảo</span>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">Điểm Đến Nổi Bật (Miền Trung)</h2>
+        <div class="destination-grid">
+            <div class="destination-card">
+                <img src="https://via.placeholder.com/400x220?text=Da+Nang+Golden+Bridge" alt="Đà Nẵng" class="card-image">
+                <div class="card-content">
+                    <h3 class="card-title">Đà Nẵng - Thành Phố Đáng Sống</h3>
+                    <p class="card-description">Cầu Vàng Bà Nà, bãi biển Mỹ Khê và khu ẩm thực hải sản phong phú.</p>
+                    <span class="card-tag">#MiềnTrung</span>
+                    <span class="card-tag">#PhốThị</span>
+                </div>
+            </div>
+
+            <div class="destination-card">
+                <img src="https://via.placeholder.com/400x220?text=Hoi+An+Lanterns" alt="Hội An" class="card-image">
+                <div class="card-content">
+                    <h3 class="card-title">Hội An - Phố Cổ Huyền Ảo</h3>
+                    <p class="card-description">Thả hoa đăng trên sông Hoài, kiến trúc cổ kính và làng nghề truyền thống.</p>
+                    <span class="card-tag">#MiềnTrung</span>
+                    <span class="card-tag">#VănHóa</span>
+                </div>
+            </div>
+            
+            <div class="destination-card">
+                <img src="https://via.placeholder.com/400x220?text=Phu+Quoc+Beach" alt="Phú Quốc" class="card-image">
+                <div class="card-content">
+                    <h3 class="card-title">Phú Quốc - Đảo Ngọc Phương Nam</h3>
+                    <p class="card-description">Lặn ngắm san hô, cáp treo Hòn Thơm và thưởng thức đặc sản hải sản tươi ngon.</p>
+                    <span class="card-tag">#MiềnNam</span>
+                    <span class="card-tag">#BiểnĐảo</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
