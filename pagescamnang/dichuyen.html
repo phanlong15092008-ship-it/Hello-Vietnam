@@ -1,404 +1,379 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hộp Công Cụ Du Lịch - Mẹo Đi Lại</title>
-    <style>
-        /* Thiết lập cơ bản */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f8f8f8;
-            margin: 0;
-            padding: 0;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hộp Công Cụ Du Lịch - Mẹo Đi Lại</title>
+  <style>
+    /* Thiết lập cơ bản */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f8f8;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
+    /* -------- HEADER -------- */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 40px;
+      background-color: #fff;
+      border-bottom: 3px solid #4a90e2;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #c82333;
+    }
+    .logo img {
+      height: 20px;
+    }
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    .btn-login {
+      background-color: #f7931e;
+      color: #fff;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .btn-login:hover {
+      background-color: #e07b00;
+    }
+    .user-icon {
+      width: 36px;
+      height: 36px;
+      background-color: #333;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      font-size: 18px;
+      cursor: pointer;
+    }
 
-        /* Hero Section - Ảnh liên quan đến di chuyển */
-        .hero-section {
-            background: url('https://via.placeholder.com/1200x400?text=Travel+Tips+Background') center/cover no-repeat;
-            color: #fff;
-            padding: 80px 0;
-            text-align: center;
-            position: relative;
-            min-height: 350px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-        
-        /* Lớp phủ màu xanh đậm cho chủ đề di chuyển */
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(43, 112, 181, 0.75); /* Màu xanh dương đậm */
-        }
+    /* Hero Section */
+    .hero-section {
+      background: url('https://via.placeholder.com/1200x400?text=Travel+Tips+Background') center/cover no-repeat;
+      color: #fff;
+      padding: 80px 0;
+      text-align: center;
+      position: relative;
+      min-height: 350px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    .hero-overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: rgba(43, 112, 181, 0.75);
+    }
+    .hero-content { position: relative; z-index: 2; }
+    .hero-title {
+      font-size: 3.5em;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+    .hero-subtitle {
+      font-size: 1.2em;
+      margin-bottom: 30px;
+      max-width: 700px;
+    }
 
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
+    /* Toolbox */
+    .toolbox-section {
+      background-color: #fff;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      border-radius: 15px;
+      padding: 30px;
+      margin-top: -60px;
+      position: relative;
+      z-index: 3;
+      text-align: left;
+    }
+    .toolbox-title {
+      font-size: 1.3em;
+      color: #2b70b5;
+      margin-bottom: 20px;
+      font-weight: bold;
+      border-left: 4px solid #f7931e;
+      padding-left: 10px;
+    }
+    .input-group {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+    .input-item { flex-grow: 1; }
+    .input-item label {
+      display: block;
+      font-size: 0.9em;
+      color: #555;
+      margin-bottom: 5px;
+    }
+    .input-item input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1em;
+      box-sizing: border-box;
+    }
+    .btn-search-guide {
+      background-color: #f7931e;
+      color: #fff;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 8px;
+      font-size: 1.1em;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      float: right;
+    }
+    .btn-search-guide:hover { background-color: #e07b00; }
 
-        .hero-title {
-            font-size: 3.5em;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
+    /* Lọc phương tiện */
+    .section-title {
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #333;
+      margin-top: 40px;
+      margin-bottom: 20px;
+    }
+    .vehicle-filters {
+      display: flex;
+      justify-content: space-around;
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+    .vehicle-card {
+      flex-basis: 20%;
+      text-align: center;
+      background-color: #fff;
+      padding: 20px 10px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .vehicle-card:hover {
+      background-color: #e6f7ff;
+      transform: translateY(-5px);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+    }
+    .vehicle-card .icon {
+      font-size: 2.5em;
+      color: #2b70b5;
+      display: block;
+      margin-bottom: 10px;
+    }
+    .vehicle-card .label { font-weight: bold; color: #2b70b5; }
 
-        .hero-subtitle {
-            font-size: 1.2em;
-            margin-bottom: 30px;
-            max-width: 700px;
-        }
+    /* Bài viết */
+    .content-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+    .guide-card {
+      background-color: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      cursor: pointer;
+      transition: box-shadow 0.3s;
+    }
+    .guide-card:hover { box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15); }
+    .card-image-wrapper { position: relative; }
+    .card-image {
+      width: 100%; height: 180px;
+      object-fit: cover;
+      display: block;
+    }
+    .card-tag {
+      position: absolute; top: 10px; right: 10px;
+      background-color: #f7931e;
+      color: #fff;
+      padding: 4px 8px;
+      border-radius: 5px;
+      font-size: 0.7em;
+      font-weight: bold;
+    }
+    .card-content { padding: 15px; }
+    .card-title-guide {
+      font-size: 1.1em;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 8px;
+    }
+    .card-meta { font-size: 0.9em; color: #999; }
+    .content-block-title {
+      font-size: 1.8em;
+      color: #2b70b5;
+      margin-top: 50px;
+      margin-bottom: 25px;
+      font-weight: bold;
+    }
 
-        /* --- KHỐI CÔNG CỤ SĂN VÉ (TOOLBOX) --- */
-        .toolbox-section {
-            background-color: #fff;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-            border-radius: 15px;
-            padding: 30px;
-            margin-top: -60px; /* Kéo lên che một phần Hero */
-            position: relative;
-            z-index: 3;
-            text-align: left;
-        }
-
-        .toolbox-title {
-            font-size: 1.3em;
-            color: #2b70b5;
-            margin-bottom: 20px;
-            font-weight: bold;
-            border-left: 4px solid #f7931e;
-            padding-left: 10px;
-        }
-
-        .input-group {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 20px;
-        }
-
-        .input-item {
-            flex-grow: 1;
-        }
-
-        .input-item label {
-            display: block;
-            font-size: 0.9em;
-            color: #555;
-            margin-bottom: 5px;
-        }
-
-        .input-item input {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            font-size: 1em;
-            box-sizing: border-box;
-        }
-
-        .btn-search-guide {
-            background-color: #f7931e; /* Màu cam nổi bật */
-            color: #fff;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 8px;
-            font-size: 1.1em;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            float: right;
-        }
-
-        .btn-search-guide:hover {
-            background-color: #e07b00;
-        }
-
-        /* --- CHỌN PHƯƠNG TIỆN (ICON FILTERS) --- */
-        .section-title {
-            font-size: 1.5em;
-            font-weight: bold;
-            color: #333;
-            margin-top: 40px;
-            margin-bottom: 20px;
-        }
-
-        .vehicle-filters {
-            display: flex;
-            justify-content: space-around;
-            gap: 20px;
-            margin-bottom: 40px;
-        }
-
-        .vehicle-card {
-            flex-basis: 20%; /* Làm cho card nhỏ hơn */
-            text-align: center;
-            background-color: #fff;
-            padding: 20px 10px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .vehicle-card:hover {
-            background-color: #e6f7ff;
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
-        }
-
-        .vehicle-card .icon {
-            font-size: 2.5em; /* Icon lớn */
-            color: #2b70b5;
-            display: block;
-            margin-bottom: 10px;
-        }
-        
-        .vehicle-card .label {
-            font-weight: bold;
-            color: #2b70b5;
-        }
-        
-        /* --- BỐ CỤC BÀI VIẾT (Content Grid) --- */
-        .content-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-        
-        .guide-card {
-            background-color: #fff;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-            cursor: pointer;
-            transition: box-shadow 0.3s;
-        }
-        
-        .guide-card:hover {
-             box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
-        }
-
-        .card-image-wrapper {
-            position: relative;
-        }
-
-        .card-image {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-            display: block;
-        }
-        
-        .card-tag {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background-color: #f7931e;
-            color: #fff;
-            padding: 4px 8px;
-            border-radius: 5px;
-            font-size: 0.7em;
-            font-weight: bold;
-        }
-        
-        .card-content {
-            padding: 15px;
-        }
-
-        .card-title-guide {
-            font-size: 1.1em;
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 8px;
-        }
-
-        .card-meta {
-            font-size: 0.9em;
-            color: #999;
-        }
-        
-        /* Tiêu đề cho khối nội dung */
-        .content-block-title {
-            font-size: 1.8em;
-            color: #2b70b5;
-            margin-top: 50px;
-            margin-bottom: 25px;
-            font-weight: bold;
-        }
-
-        /* --- Responsive --- */
-        @media (max-width: 992px) {
-            .input-group {
-                flex-direction: column;
-            }
-            .btn-search-guide {
-                width: 100%;
-                float: none;
-                margin-top: 15px;
-            }
-            .content-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .vehicle-filters {
-                flex-wrap: wrap;
-            }
-            .vehicle-card {
-                flex-basis: 45%;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .hero-title {
-                font-size: 2.5em;
-            }
-            .content-grid {
-                grid-template-columns: 1fr;
-            }
-            .vehicle-card {
-                flex-basis: 100%;
-            }
-            .toolbox-section {
-                margin-top: -30px;
-            }
-        }
-    </style>
+    /* Responsive */
+    @media (max-width: 992px) {
+      .input-group { flex-direction: column; }
+      .btn-search-guide { width: 100%; float: none; margin-top: 15px; }
+      .content-grid { grid-template-columns: repeat(2, 1fr); }
+      .vehicle-filters { flex-wrap: wrap; }
+      .vehicle-card { flex-basis: 45%; }
+    }
+    @media (max-width: 576px) {
+      .hero-title { font-size: 2.5em; }
+      .content-grid { grid-template-columns: 1fr; }
+      .vehicle-card { flex-basis: 100%; }
+      .toolbox-section { margin-top: -30px; }
+    }
+  </style>
 </head>
 <body>
 
-    <section class="hero-section">
-        <div class="hero-overlay"></div>
-        <div class="hero-content container">
-            <h1 class="hero-title">MẸO ĐI LẠI & SĂN VÉ</h1>
-            <p class="hero-subtitle">Biến mọi chuyến đi thành một hành trình dễ dàng và tiết kiệm chi phí với bộ công cụ di chuyển thông minh của chúng tôi.</p>
+  <!-- HEADER -->
+  <header>
+    <a href="../index.html" class="logo">
+      <img src="https://flagcdn.com/w20/vn.png" alt="VN">
+      Hello-Vietnam
+    </a>
+    <div class="header-actions">
+      <button class="btn-login">Đăng Nhập</button>
+      <div class="user-icon">👤</div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero-section">
+    <div class="hero-overlay"></div>
+    <div class="hero-content container">
+      <h1 class="hero-title">MẸO ĐI LẠI & SĂN VÉ</h1>
+      <p class="hero-subtitle">Biến mọi chuyến đi thành một hành trình dễ dàng và tiết kiệm chi phí với bộ công cụ di chuyển thông minh của chúng tôi.</p>
+    </div>
+  </section>
+
+  <!-- TOOLBOX -->
+  <div class="container">
+    <div class="toolbox-section">
+      <div class="toolbox-title">Công Cụ Săn Vé & Mẹo Hành Trình Nhanh</div>
+      <div class="input-group">
+        <div class="input-item">
+          <label for="departure">Điểm Khởi Hành</label>
+          <input type="text" id="departure" placeholder="Ví dụ: TP.HCM">
         </div>
-    </section>
-
-    <div class="container">
-        <div class="toolbox-section">
-            <div class="toolbox-title">Công Cụ Săn Vé & Mẹo Hành Trình Nhanh</div>
-            <div class="input-group">
-                <div class="input-item">
-                    <label for="departure">Điểm Khởi Hành</label>
-                    <input type="text" id="departure" placeholder="Ví dụ: TP.HCM">
-                </div>
-                <div class="input-item">
-                    <label for="destination">Điểm Đến</label>
-                    <input type="text" id="destination" placeholder="Ví dụ: Hà Nội">
-                </div>
-                <div class="input-item">
-                    <label for="date">Khoảng Thời Gian</label>
-                    <input type="date" id="date">
-                </div>
-            </div>
-            <button class="btn-search-guide">Tìm Mẹo Tốt Nhất</button>
-            <div style="clear: both;"></div> 
+        <div class="input-item">
+          <label for="destination">Điểm Đến</label>
+          <input type="text" id="destination" placeholder="Ví dụ: Hà Nội">
         </div>
-
-        <h2 class="section-title">Lọc Nhanh Theo Phương Tiện</h2>
-        <div class="vehicle-filters">
-            <div class="vehicle-card">
-                <span class="icon">✈️</span>
-                <span class="label">Máy Bay</span>
-            </div>
-            <div class="vehicle-card">
-                <span class="icon">🚂</span>
-                <span class="label">Tàu Hỏa</span>
-            </div>
-            <div class="vehicle-card">
-                <span class="icon">🚌</span>
-                <span class="label">Xe Khách</span>
-            </div>
-            <div class="vehicle-card">
-                <span class="icon">🏍️</span>
-                <span class="label">Xe Máy (Phượt)</span>
-            </div>
+        <div class="input-item">
+          <label for="date">Khoảng Thời Gian</label>
+          <input type="date" id="date">
         </div>
-        
-        <h2 class="content-block-title">CHUẨN BỊ: Mẹo Săn Vé & Đồ Đạc</h2>
-        <div class="content-grid">
-            <div class="guide-card">
-                <div class="card-image-wrapper">
-                    <img src="https://via.placeholder.com/350x180?text=San+Ve+May+Bay" alt="Săn vé máy bay" class="card-image">
-                    <span class="card-tag">#SĂN-VÉ</span>
-                </div>
-                <div class="card-content">
-                    <h3 class="card-title-guide">[GUIDE] 7 Bước Săn Vé Máy Bay Nội Địa Giá Rẻ Của Dân Chuyên</h3>
-                    <p class="card-meta">5 phút đọc | Áp dụng: QUANH NĂM</p>
-                </div>
-            </div>
-
-            <div class="guide-card">
-                <div class="card-image-wrapper">
-                    <img src="https://via.placeholder.com/350x180?text=Checklist+Phuot" alt="Checklist Phượt" class="card-image">
-                    <span class="card-tag">#PHƯỢT</span>
-                </div>
-                <div class="card-content">
-                    <h3 class="card-title-guide">[CHECKLIST] Chuẩn Bị Gì Cho Chuyến Phượt An Toàn Từ A đến Z</h3>
-                    <p class="card-meta">8 phút đọc | Áp dụng: MỌI CUNG ĐƯỜNG</p>
-                </div>
-            </div>
-
-            <div class="guide-card">
-                <div class="card-image-wrapper">
-                    <img src="https://via.placeholder.com/350x180?text=Booking+Hotel" alt="Đặt phòng" class="card-image">
-                    <span class="card-tag">#LƯU-TRÚ</span>
-                </div>
-                <div class="card-content">
-                    <h3 class="card-title-guide">Top 5 Trang Web Đặt Phòng Uy Tín và Mẹo Giảm 30% Chi Phí</h3>
-                    <p class="card-meta">4 phút đọc | Áp dụng: QUANH NĂM</p>
-                </div>
-            </div>
-        </div>
-
-        <h2 class="content-block-title">TRONG CHUYẾN ĐI: Xử Lý Tình Huống & Di Chuyển</h2>
-        <div class="content-grid" style="margin-bottom: 50px;">
-            <div class="guide-card">
-                <div class="card-image-wrapper">
-                    <img src="https://via.placeholder.com/350x180?text=Su+Co+Giao+Thong" alt="Sự cố" class="card-image">
-                    <span class="card-tag">#AN-TOÀN</span>
-                </div>
-                <div class="card-content">
-                    <h3 class="card-title-guide">Làm Gì Khi Gặp Sự Cố Giao Thông Khi Lái Xe Máy Ở Việt Nam?</h3>
-                    <p class="card-meta">6 phút đọc | Áp dụng: KHẨN CẤP</p>
-                </div>
-            </div>
-            
-            <div class="guide-card">
-                <div class="card-image-wrapper">
-                    <img src="https://via.placeholder.com/350x180?text=Train+Tips" alt="Tàu Hỏa" class="card-image">
-                    <span class="card-tag">#TÀU-HỎA</span>
-                </div>
-                <div class="card-content">
-                    <h3 class="card-title-guide">Bí Kíp Đặt Vé Tàu Hỏa Giường Nằm Chất Lượng Cao Giá Hời</h3>
-                    <p class="card-meta">5 phút đọc | Áp dụng: BẮC-NAM</p>
-                </div>
-            </div>
-
-            <div class="guide-card">
-                <div class="card-image-wrapper">
-                    <img src="https://via.placeholder.com/350x180?text=Rent+Motorbike" alt="Thuê xe máy" class="card-image">
-                    <span class="card-tag">#THUÊ-XE</span>
-                </div>
-                <div class="card-content">
-                    <h3 class="card-title-guide">10 Điều Cần Kiểm Tra Ngay Trước Khi Thuê Xe Máy Du Lịch Tự Túc</h3>
-                    <p class="card-meta">3 phút đọc | Áp dụng: PHỔ BIẾN</p>
-                </div>
-            </div>
-        </div>
-
+      </div>
+      <button class="btn-search-guide">Tìm Mẹo Tốt Nhất</button>
+      <div style="clear: both;"></div>
     </div>
 
+    <!-- FILTER -->
+    <h2 class="section-title">Lọc Nhanh Theo Phương Tiện</h2>
+    <div class="vehicle-filters">
+      <div class="vehicle-card"><span class="icon">✈️</span><span class="label">Máy Bay</span></div>
+      <div class="vehicle-card"><span class="icon">🚂</span><span class="label">Tàu Hỏa</span></div>
+      <div class="vehicle-card"><span class="icon">🚌</span><span class="label">Xe Khách</span></div>
+      <div class="vehicle-card"><span class="icon">🏍️</span><span class="label">Xe Máy (Phượt)</span></div>
+    </div>
+
+    <!-- CONTENT BLOCK -->
+    <h2 class="content-block-title">CHUẨN BỊ: Mẹo Săn Vé & Đồ Đạc</h2>
+    <div class="content-grid">
+      <div class="guide-card">
+        <div class="card-image-wrapper">
+          <img src="https://via.placeholder.com/350x180?text=San+Ve+May+Bay" alt="Săn vé máy bay" class="card-image">
+          <span class="card-tag">#SĂN-VÉ</span>
+        </div>
+        <div class="card-content">
+          <h3 class="card-title-guide">[GUIDE] 7 Bước Săn Vé Máy Bay Nội Địa Giá Rẻ Của Dân Chuyên</h3>
+          <p class="card-meta">5 phút đọc | Áp dụng: QUANH NĂM</p>
+        </div>
+      </div>
+      <div class="guide-card">
+        <div class="card-image-wrapper">
+          <img src="https://via.placeholder.com/350x180?text=Checklist+Phuot" alt="Checklist Phượt" class="card-image">
+          <span class="card-tag">#PHƯỢT</span>
+        </div>
+        <div class="card-content">
+          <h3 class="card-title-guide">[CHECKLIST] Chuẩn Bị Gì Cho Chuyến Phượt An Toàn Từ A đến Z</h3>
+          <p class="card-meta">8 phút đọc | Áp dụng: MỌI CUNG ĐƯỜNG</p>
+        </div>
+      </div>
+      <div class="guide-card">
+        <div class="card-image-wrapper">
+          <img src="https://via.placeholder.com/350x180?text=Booking+Hotel" alt="Đặt phòng" class="card-image">
+          <span class="card-tag">#LƯU-TRÚ</span>
+        </div>
+        <div class="card-content">
+          <h3 class="card-title-guide">Top 5 Trang Web Đặt Phòng Uy Tín và Mẹo Giảm 30% Chi Phí</h3>
+          <p class="card-meta">4 phút đọc | Áp dụng: QUANH NĂM</p>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="content-block-title">TRONG CHUYẾN ĐI: Xử Lý Tình Huống & Di Chuyển</h2>
+    <div class="content-grid" style="margin-bottom: 50px;">
+      <div class="guide-card">
+        <div class="card-image-wrapper">
+          <img src="https://via.placeholder.com/350x180?text=Su+Co+Giao+Thong" alt="Sự cố" class="card-image">
+          <span class="card-tag">#AN-TOÀN</span>
+        </div>
+        <div class="card-content">
+          <h3 class="card-title-guide">Làm Gì Khi Gặp Sự Cố Giao Thông Khi Lái Xe Máy Ở Việt Nam?</h3>
+          <p class="card-meta">6 phút đọc | Áp dụng: KHẨN CẤP</p>
+        </div>
+      </div>
+      <div class="guide-card">
+        <div class="card-image-wrapper">
+          <img src="https://via.placeholder.com/350x180?text=Train+Tips" alt="Tàu Hỏa" class="card-image">
+          <span class="card-tag">#TÀU-HỎA</span>
+        </div>
+        <div class="card-content">
+          <h3 class="card-title-guide">Bí Kíp Đặt Vé Tàu Hỏa Giường Nằm Chất Lượng Cao Giá Hời</h3>
+          <p class="card-meta">5 phút đọc | Áp dụng: BẮC-NAM</p>
+        </div>
+      </div>
+      <div class="guide-card">
+        <div class="card-image-wrapper">
+          <img src="https://via.placeholder.com/350x180?text=Rent+Motorbike" alt="Thuê xe máy" class="card-image">
+          <span class="card-tag">#THUÊ-XE</span>
+        </div>
+        <div class="card-content">
+          <h3 class="card-title-guide">10 Điều Cần Kiểm Tra Ngay Trước Khi Thuê Xe Máy Du Lịch Tự Túc</h3>
+          <p class="card-meta">3 phút đọc | Áp dụng: PHỔ BIẾN</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

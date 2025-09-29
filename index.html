@@ -29,7 +29,7 @@
 
     /* --- NAVBAR --- */
     .navbar { display:flex; justify-content:space-between; align-items:center; padding:12px 24px; background:var(--card-bg); border-bottom:1px solid var(--border-color); position:sticky; top:0; z-index:1000; }
-    .logo { display:flex; align-items:center; font-weight:800; font-size:20px; gap:8px; color:var(--primary); }
+    .logo { display:flex; align-items:center; font-weight:800; font-size:20px; gap:8px; color:var(--primary); text-decoration:none; }
     .flag { width:24px; height:24px; border-radius:2px; }
     .navbar nav a { margin:0 12px; text-decoration:none; color:var(--secondary-text); font-weight:600; transition:0.2s; display:inline-flex; align-items:center; gap:5px;}
     .navbar nav a:hover, .navbar nav a.active { color:var(--primary); }
@@ -59,7 +59,7 @@
 
     .section-title { font-size:24px; font-weight:800; margin:50px 0 20px; color:var(--text); }
 
-    /* --- CAROUSEL: scoped so it doesn't break other .mag-item rules --- */
+    /* --- CAROUSEL --- */
     .magazine-carousel { position: relative; margin: 40px 0; max-width: 900px; margin-left:auto; margin-right:auto; overflow:hidden; }
     .magazine-carousel .carousel-wrapper { width:100%; }
     .magazine-carousel .carousel-track { display:flex; transition: transform 0.6s ease; will-change: transform; }
@@ -82,6 +82,41 @@
     .price-display { background:#FEF2F2; color:#B91C1C; padding:10px; border-radius:6px; font-weight:700; text-align:center; white-space:nowrap; display:flex; align-items:center; justify-content:center; height:40px; box-sizing:border-box; font-size:16px; }
     .tour-search-btn { padding:10px 20px; height:40px; min-width:120px; align-self:flex-end; }
 
+    /* --- MAP CỐ ĐỊNH (có thu gọn) --- */
+    .fixed-map {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 250px;
+      border: 2px solid var(--primary);
+      border-radius: 10px;
+      overflow: hidden;
+      z-index: 2000;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      background: #fff;
+    }
+    .fixed-map iframe {
+      width: 100%;
+      height: 160px;
+      border: 0;
+      transition: height 0.3s ease;
+    }
+    .fixed-map.collapsed iframe {
+      height: 0;
+    }
+    .map-header {
+      background: var(--primary);
+      color: #fff;
+      padding: 6px 10px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .map-header i { margin-right: 6px; }
+
     /* Responsive */
       .navbar nav { display:none; }
       .magazine-carousel .mag-item { height: 300px; }
@@ -103,13 +138,10 @@
 <body>
 
   <header class="navbar">
-    <div class="logo">
-        <a href="index.html" class="logo">
+    <a href="index.html" class="logo">
       <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg" alt="VN Flag" class="flag" />
       <span>Hello-Vietnam</span>
     </a>
-    </div>
-    
     <div class="actions">
       <a href="#" class="btn primary">Đăng Nhập</a>
       <button class="icon-btn"><i class="fa-solid fa-user-circle"></i></button>
@@ -136,13 +168,11 @@
   <main class="container">
     <h2 class="section-title">ĐỊA ĐIỂM NỔI TIẾNG</h2>
 
-    <!-- Carousel: 1 ảnh hiển thị, autoplay, infinite loop -->
+    <!-- Carousel -->
     <section class="magazine-carousel" id="magCarousel" aria-label="Carousel Địa điểm nổi tiếng">
       <button class="carousel-btn prev" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button>
-
       <div class="carousel-wrapper">
         <div class="carousel-track">
-          <!-- Slide items (gốc) -->
           <a href="pagescantho/ninhkieu.html" class="mag-item" style="background-image:url('/images/bnk.webp')">
             <div class="mag-content"><h3>Bến Ninh Kiều - Cần Thơ</h3></div>
           </a>
@@ -154,7 +184,6 @@
           </a>
         </div>
       </div>
-
       <button class="carousel-btn next" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
     </section>
 
@@ -191,128 +220,29 @@
     </section>
   </main>
 
+  <!-- MAP CỐ ĐỊNH -->
+  <div class="fixed-map" id="mapBox">
+    <div class="map-header" onclick="toggleMap()">
+      <i class="fa-solid fa-map-location-dot"></i> Bản đồ
+      <span id="mapToggleIcon"><i class="fa-solid fa-chevron-up"></i></span>
+    </div>
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12740525.665993441!2d96.86565723312416!3d15.903062317072627!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135abbe3911e6d9%3A0xb92f286a2e8c8cc4!2zVmnhu4d0IE5hbQ!5e0!3m2!1svi!2s!4v1696071189870!5m2!1svi!2s" 
+      allowfullscreen="" loading="lazy">
+    </iframe>
+  </div>
+
   <script>
-  (function () {
-    const carousel = document.getElementById('magCarousel');
-    const track = carousel.querySelector('.carousel-track');
-    const prevBtn = carousel.querySelector('.carousel-btn.prev');
-    const nextBtn = carousel.querySelector('.carousel-btn.next');
-
-    // original slides (before cloning)
-    const originalSlides = Array.from(track.querySelectorAll('.mag-item'));
-
-    // If no slides, stop
-    if (!originalSlides.length) return;
-
-    // clone first and last slide to create seamless infinite loop
-    const firstClone = originalSlides[0].cloneNode(true);
-    const lastClone = originalSlides[originalSlides.length - 1].cloneNode(true);
-    firstClone.classList.add('clone');
-    lastClone.classList.add('clone');
-
-    track.appendChild(firstClone);
-    track.insertBefore(lastClone, track.firstChild);
-
-    let slides = Array.from(track.querySelectorAll('.mag-item'));
-    let index = 1; // start at the real first slide (since 0 is lastClone)
-    let slideWidth = carousel.clientWidth; // width of visible area
-    let isTransitioning = false;
-    const transitionTime = 600; // ms
-    const autoInterval = 3500;
-    let autoplayTimer = null;
-
-    // ensure slides take full width (flex-basis 100% already set in CSS)
-    function setPositionNoAnim() {
-      slideWidth = carousel.clientWidth;
-      track.style.transition = 'none';
-      track.style.transform = `translateX(-${index * slideWidth}px)`;
-      // force reflow
-      track.getBoundingClientRect();
-      track.style.transition = '';
-    }
-
-    // initialize position
-    setPositionNoAnim();
-
-    // handle window resize
-    window.addEventListener('resize', () => {
-      // small debounce
-      clearTimeout(window._carouselResizeTimeout);
-      window._carouselResizeTimeout = setTimeout(() => {
-        slideWidth = carousel.clientWidth;
-        track.style.transition = 'none';
-        track.style.transform = `translateX(-${index * slideWidth}px)`;
-        track.getBoundingClientRect();
-        track.style.transition = '';
-      }, 80);
-    });
-
-    function goToIndex(i) {
-      if (isTransitioning) return;
-      isTransitioning = true;
-      index = i;
-      track.style.transition = `transform ${transitionTime}ms ease`;
-      track.style.transform = `translateX(-${index * slideWidth}px)`;
-    }
-
-    function next() { goToIndex(index + 1); }
-    function prev() { goToIndex(index - 1); }
-
-    nextBtn.addEventListener('click', () => { next(); resetAutoplay(); });
-    prevBtn.addEventListener('click', () => { prev(); resetAutoplay(); });
-
-    // When transition ends, if we are on a clone, jump to real slide without animation
-    track.addEventListener('transitionend', () => {
-      isTransitioning = false;
-      slides = Array.from(track.querySelectorAll('.mag-item'));
-      const total = slides.length;
-      if (index === total - 1) { // moved to firstClone (after last real)
-        track.style.transition = 'none';
-        index = 1;
-        track.style.transform = `translateX(-${index * slideWidth}px)`;
-        track.getBoundingClientRect();
-        track.style.transition = '';
-      } else if (index === 0) { // moved to lastClone (before first real)
-        track.style.transition = 'none';
-        index = total - 2;
-        track.style.transform = `translateX(-${index * slideWidth}px)`;
-        track.getBoundingClientRect();
-        track.style.transition = '';
-      }
-    });
-
-    // autoplay
-    function startAutoplay() {
-      stopAutoplay();
-      autoplayTimer = setInterval(() => {
-        next();
-      }, autoInterval);
-    }
-    function stopAutoplay() {
-      if (autoplayTimer) {
-        clearInterval(autoplayTimer);
-        autoplayTimer = null;
+    function toggleMap() {
+      const mapBox = document.getElementById("mapBox");
+      const icon = document.getElementById("mapToggleIcon");
+      mapBox.classList.toggle("collapsed");
+      if (mapBox.classList.contains("collapsed")) {
+        icon.innerHTML = '<i class="fa-solid fa-chevron-down"></i>';
+      } else {
+        icon.innerHTML = '<i class="fa-solid fa-chevron-up"></i>';
       }
     }
-    function resetAutoplay() {
-      stopAutoplay();
-      startAutoplay();
-    }
-
-    // pause on hover for better UX
-    carousel.addEventListener('mouseenter', stopAutoplay);
-    carousel.addEventListener('mouseleave', startAutoplay);
-
-    // start autoplay
-    startAutoplay();
-
-    // accessibility: arrow keys
-    carousel.setAttribute('tabindex', '0');
-    carousel.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowLeft') { prev(); resetAutoplay(); }
-      if (e.key === 'ArrowRight') { next(); resetAutoplay(); }
-    });
-  })();
   </script>
 </body>
 </html>

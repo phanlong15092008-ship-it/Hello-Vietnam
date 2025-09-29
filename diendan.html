@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Diễn Đàn Du Lịch | Check-in Việt Nam</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -27,54 +25,14 @@
       top: 0;
       z-index: 100;
     }
-
-    nav .logo {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    nav .logo img {
-      width: 28px;
-      height: 20px;
-      border-radius: 3px;
-    }
-
-    nav .logo span {
-      color: #f4511e;
-      font-size: 1.2em;
-      font-weight: bold;
-    }
-
-    nav .menu {
-      display: flex;
-      gap: 30px;
-      font-size: 1em;
-      font-weight: 500;
-    }
-
-    nav .menu a {
-      text-decoration: none;
-      color: #333;
-      transition: 0.2s;
-    }
-
-    nav .menu a.active {
-      color: #f4511e;
-      border-bottom: 2px solid #f4511e;
-      padding-bottom: 2px;
-    }
-    /* Khi rê chuột vào menu nào cũng sáng cam */
-nav .menu a:hover {
-  color: #f4511e;
-}
-
-     nav .actions {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
-
+    nav .logo { display: flex; align-items: center; gap: 8px; }
+    nav .logo img { width: 28px; height: 20px; border-radius: 3px; }
+    nav .logo span { color: #f4511e; font-size: 1.2em; font-weight: bold; }
+    nav .menu { display: flex; gap: 30px; font-size: 1em; font-weight: 500; }
+    nav .menu a { text-decoration: none; color: #333; transition: 0.2s; }
+    nav .menu a.active { color: #f4511e; border-bottom: 2px solid #f4511e; padding-bottom: 2px; }
+    nav .menu a:hover { color: #f4511e; }
+    nav .actions { display: flex; align-items: center; gap: 15px; }
     nav .actions button {
       background-color: #f4511e;
       color: white;
@@ -85,11 +43,7 @@ nav .menu a:hover {
       font-weight: bold;
       transition: 0.3s;
     }
-
-    nav .actions button:hover {
-      opacity: 0.9;
-    }
-
+    nav .actions button:hover { opacity: 0.9; }
     nav .actions .avatar {
       width: 35px;
       height: 35px;
@@ -107,10 +61,14 @@ nav .menu a:hover {
       margin: 20px auto;
       padding: 0 20px;
       gap: 25px;
+      align-items: flex-start;
     }
 
     .content-feed {
       flex: 2;
+      display: flex;
+      flex-direction: column; /* ép về 1 cột */
+      gap: 20px;
     }
 
     .sidebar {
@@ -132,17 +90,14 @@ nav .menu a:hover {
       display: flex;
       align-items: center;
       padding: 15px;
-      margin-bottom: 20px;
       gap: 15px;
     }
-
     .create-post-box .avatar {
       width: 40px;
       height: 40px;
       border-radius: 50%;
       object-fit: cover;
     }
-
     .create-post-box .input-area {
       flex-grow: 1;
       padding: 10px 15px;
@@ -151,7 +106,6 @@ nav .menu a:hover {
       color: #606770;
       cursor: pointer;
     }
-
     .create-post-box .icons {
       font-size: 1.3em;
       color: #606770;
@@ -164,45 +118,31 @@ nav .menu a:hover {
       background: #fff;
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-      margin-bottom: 20px;
       overflow: hidden;
+      width: 100%;
+      box-sizing: border-box;
     }
-
     .post-card .post-header {
       display: flex;
       align-items: center;
       gap: 10px;
       padding: 12px 15px;
     }
-
     .post-card .avatar {
       width: 40px;
       height: 40px;
       border-radius: 50%;
       object-fit: cover;
     }
-
-    .username {
-      font-weight: 600;
-    }
-
-    .status {
-      font-size: 0.9em;
-      color: #666;
-      display: block;
-    }
-
+    .username { font-weight: 600; }
+    .status { font-size: 0.9em; color: #666; display: block; }
     .post-image img {
       width: 100%;
       height: auto;
       object-fit: cover;
       display: block;
     }
-
-    .post-body {
-      padding: 0 15px 10px;
-    }
-
+    .post-body { padding: 0 15px 10px; }
     .post-footer {
       padding: 10px 15px;
       border-top: 1px solid #eee;
@@ -210,21 +150,14 @@ nav .menu a:hover {
       gap: 25px;
       color: #606770;
     }
-
-    .post-footer span {
-      cursor: pointer;
-    }
-
-    .post-footer span:hover {
-      opacity: 0.7;
-    }
+    .post-footer span { cursor: pointer; }
+    .post-footer span:hover { opacity: 0.7; }
 
     .mini-collection {
       display: flex;
       gap: 5px;
       padding: 10px;
     }
-
     .mini-collection img {
       width: 33.33%;
       height: 120px;
@@ -233,17 +166,13 @@ nav .menu a:hover {
     }
 
     /* SIDEBAR */
-    .profile-module {
-      text-align: center;
-    }
-
+    .profile-module { text-align: center; }
     .profile-module .main-avatar {
       width: 70px;
       height: 70px;
       border-radius: 50%;
       margin-bottom: 10px;
     }
-
     .progress-bar-container {
       width: 80%;
       height: 10px;
@@ -252,39 +181,16 @@ nav .menu a:hover {
       margin: 10px auto;
       overflow: hidden;
     }
-
-    .progress-fill {
-      width: 26%;
-      height: 100%;
-      background-color: #4CAF50;
-    }
-
-    .progress-text {
-      font-weight: bold;
-      color: #388e3c;
-      margin-bottom: 10px;
-    }
-
-    .challenge-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-    }
-
-    .challenge-item {
-      border-radius: 8px;
-      overflow: hidden;
-      position: relative;
-      cursor: pointer;
-    }
-
+    .progress-fill { width: 26%; height: 100%; background-color: #4CAF50; }
+    .progress-text { font-weight: bold; color: #388e3c; margin-bottom: 10px; }
+    .challenge-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .challenge-item { border-radius: 8px; overflow: hidden; position: relative; cursor: pointer; }
     .challenge-item img {
       width: 100%;
       height: 100px;
       object-fit: cover;
       filter: brightness(70%);
     }
-
     .challenge-item .text {
       position: absolute;
       bottom: 5px;
@@ -293,33 +199,25 @@ nav .menu a:hover {
       font-size: 0.85em;
       font-weight: bold;
     }
+    .trending-item { display: flex; justify-content: space-between; margin-bottom: 8px; }
+    .trending-item a { color: #0288d1; font-weight: 500; text-decoration: none; }
 
-    .trending-item {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 8px;
-    }
-
-    .trending-item a {
-      color: #0288d1;
-      font-weight: 500;
-      text-decoration: none;
+    /* Responsive: sidebar xuống dưới */
+    @media (max-width: 900px) {
+      .main-layout { flex-direction: column; }
+      .content-feed, .sidebar { width: 100%; }
     }
   </style>
 </head>
-
 <body>
-
   <!-- NAVBAR -->
   <nav>
-   <div class="logo">
+    <div class="logo">
       <a href="../index.html" class="flex items-center space-x-2">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg" alt="VN Flag">
-      <span>Hello-Vietnam</span>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg" alt="VN Flag">
+        <span>Hello-Vietnam</span>
       </a>
     </div>
-  
-
     <div class="actions">
       <button>Đăng Nhập</button>
       <div class="avatar"><i class="fas fa-user" style="color: white;"></i></div>
@@ -328,7 +226,6 @@ nav .menu a:hover {
 
   <!-- MAIN LAYOUT -->
   <div class="main-layout">
-
     <!-- FEED -->
     <div class="content-feed">
       <div class="module-card create-post-box">
@@ -349,8 +246,7 @@ nav .menu a:hover {
         <div class="post-header">
           <img src="https://i.pravatar.cc/150?img=4" alt="Avatar" class="avatar">
           <div>
-            <span class="username">Mai Phương Nguyễn <i class="fas fa-check-circle"
-                style="color:#0288d1;font-size:0.8em;"></i></span>
+            <span class="username">Mai Phương Nguyễn <i class="fas fa-check-circle" style="color:#0288d1;font-size:0.8em;"></i></span>
             <span class="status">Rau Xanh Content Writer</span>
           </div>
         </div>
@@ -387,9 +283,95 @@ nav .menu a:hover {
           <span><i class="fas fa-comment"></i> 210 Comments</span>
         </div>
       </div>
+
+      <!-- Post 3 -->
+      <div class="post-card">
+        <div class="post-image">
+          <img src="https://picsum.photos/800/450?random=20" alt="Checkin">
+        </div>
+        <div class="post-header">
+          <img src="https://i.pravatar.cc/150?img=6" alt="Avatar" class="avatar">
+          <div>
+            <span class="username">Lan Anh</span>
+            <span class="status">Travel Enthusiast</span>
+          </div>
+        </div>
+        <div class="post-body">
+          Hội An về đêm lung linh, thả đèn hoa đăng thật sự chill ✨🏮🚤
+          <div>#HoiAn #TravelVietnam</div>
+        </div>
+        <div class="post-footer">
+          <span><i class="fas fa-thumbs-up"></i> 3.2K Likes</span>
+          <span><i class="fas fa-comment"></i> 480 Comments</span>
+          <span><i class="fas fa-share"></i> 12 Share</span>
+        </div>
+      </div>
+
+      <!-- Post 4 -->
+      <div class="post-card">
+        <div class="post-image">
+          <img src="https://picsum.photos/800/450?random=21" alt="Checkin">
+        </div>
+        <div class="post-header">
+          <img src="https://i.pravatar.cc/150?img=7" alt="Avatar" class="avatar">
+          <div>
+            <span class="username">Tuấn Trekking</span>
+            <span class="status">Adventure Seeker</span>
+          </div>
+        </div>
+        <div class="post-body">
+          Trekking Fansipan – “Nóc nhà Đông Dương” cực đáng nhớ 💪🏔️
+          <div>#Fansipan #Trekking</div>
+        </div>
+        <div class="post-footer">
+          <span><i class="fas fa-thumbs-up"></i> 2.1K Likes</span>
+          <span><i class="fas fa-comment"></i> 300 Comments</span>
+        </div>
+      </div>
+
+      <!-- Post 5 -->
+      <div class="post-card">
+        <div class="post-header">
+          <img src="https://i.pravatar.cc/150?img=8" alt="Avatar" class="avatar">
+          <div>
+            <span class="username">Ngọc Trần</span>
+            <span class="status">Food & Travel Lover</span>
+          </div>
+        </div>
+        <div class="post-body">
+          Phở Hà Nội sáng nay ngon tuyệt! 🍲🥢 Nước dùng ngọt thanh, bánh phở mềm, thịt bò vừa chín tới.
+          <div>#Pho #HaNoi</div>
+        </div>
+        <div class="post-footer">
+          <span><i class="fas fa-thumbs-up"></i> 980 Likes</span>
+          <span><i class="fas fa-comment"></i> 120 Comments</span>
+          <span><i class="fas fa-share"></i> 8 Share</span>
+        </div>
+      </div>
+
+      <!-- Post 6 -->
+      <div class="post-card">
+        <div class="post-image">
+          <img src="https://picsum.photos/800/450?random=22" alt="Checkin">
+        </div>
+        <div class="post-header">
+          <img src="https://i.pravatar.cc/150?img=9" alt="Avatar" class="avatar">
+          <div>
+            <span class="username">Hoàng Nam</span>
+            <span class="status">Travel Photographer</span>
+          </div>
+        </div>
+        <div class="post-body">
+          Khám phá ruộng bậc thang Mù Cang Chải mùa lúa chín vàng rực 🌾📸
+        </div>
+        <div class="post-footer">
+          <span><i class="fas fa-thumbs-up"></i> 1.5K Likes</span>
+          <span><i class="fas fa-comment"></i> 200 Comments</span>
+        </div>
+      </div>
     </div>
 
-    <!-- SIDEBAR -->
+       <!-- SIDEBAR -->
     <div class="sidebar">
       <div class="module-card profile-module">
         <img src="https://i.pravatar.cc/150?img=4" alt="Profile Avatar" class="main-avatar">
@@ -431,7 +413,10 @@ nav .menu a:hover {
         </div>
       </div>
     </div>
-
+  </div>
+</body>
+    </div>
   </div>
 </body>
 </html>
+```

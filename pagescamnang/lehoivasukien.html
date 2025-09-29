@@ -1,308 +1,240 @@
-
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Giao Diện Văn Hóa & Trải Nghiệm</title>
-    <style>
-        /* Thiết lập cơ bản */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f8f8f8;
-            margin: 0;
-            padding: 0;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Giao Diện Văn Hóa & Trải Nghiệm</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f8f8;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+    :root {
+      --culture-color: #9c27b0;
+      --secondary-color-culture: #ff9800;
+    }
+        .site-header {
+      background:#fff;
+      padding:10px 20px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      border-bottom:3px solid var(--culture-color);
+    }
+    .logo {
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+    .flag-icon {
+      width:20px;
+      height:auto;
+    }
+    .brand {
+      font-weight:bold;
+      color:#d32f2f;
+    }
+    .actions {
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+    .login-btn {
+      background: var(--secondary-color-culture);
+      color:#fff;
+      border:none;
+      padding:8px 16px;
+      border-radius:20px;
+      cursor:pointer;
+      font-weight:bold;
+    }
+    .user-icon {
+      width:32px;
+      height:32px;
+      border-radius:50%;
+      background:#555;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#fff;
+    }
+    .hero-section {
+      background: url('https://via.placeholder.com/1200x400?text=Vietnamese+Lanterns+and+Festivals') center/cover no-repeat;
+      color: #fff;
+      padding: 80px 0;
+      text-align: center;
+      position: relative;
+      min-height: 350px;
+    }
+    .hero-overlay {
+      position: absolute;
+      top: 0;left: 0;right: 0;bottom: 0;
+      background-color: rgba(156, 39, 176, 0.75);
+    }
+    .hero-content {position: relative;z-index: 2;}
+    .hero-title {font-size: 3.5em;margin-bottom: 10px;text-shadow: 2px 2px 4px rgba(0,0,0,0.5);}
+    .hero-subtitle {font-size: 1.2em;margin-bottom: 30px;max-width: 700px;margin-left: auto;margin-right: auto;}
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-        
-        /* Màu chủ đạo mới cho mục Văn hóa (Ví dụ: Màu Tím/Đỏ đậm) */
-        :root {
-            --culture-color: #9c27b0; /* Tím đậm */
-            --secondary-color-culture: #ff9800; /* Cam nổi bật */
-        }
+    /* Calendar */
+    .calendar-section {
+      background-color: #fff;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      border-radius: 15px;
+      padding: 30px;
+      margin-top: -60px;
+      position: relative;
+      z-index: 3;
+      text-align: left;
+    }
+    .calendar-title {
+      font-size: 1.3em;color: var(--culture-color);margin-bottom: 20px;
+      font-weight: bold;border-left: 4px solid var(--secondary-color-culture);padding-left: 10px;
+    }
+    .event-grid {
+      display: grid;grid-template-columns: repeat(3, 1fr);gap: 20px;
+    }
+    .event-item {display: flex;align-items: center;background-color: #f7f7f7;padding: 15px;border-radius: 8px;}
+    .event-icon {font-size: 1.5em;color: var(--secondary-color-culture);margin-right: 15px;}
+    .event-info strong {display: block;font-size: 1em;color: #333;}
+    .event-info span {font-size: 0.9em;color: #777;}
 
-        /* Hero Section - Ảnh liên quan đến Lễ hội */
-        .hero-section {
-            background: url('https://via.placeholder.com/1200x400?text=Vietnamese+Lanterns+and+Festivals') center/cover no-repeat;
-            color: #fff;
-            padding: 80px 0;
-            text-align: center;
-            position: relative;
-            min-height: 350px;
-        }
-        
-        /* Lớp phủ màu Tím đậm mờ */
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(156, 39, 176, 0.75); /* Tím đậm */
-        }
+    /* Filter Section */
+    .filter-section {
+      background: #fff;
+      padding: 25px;
+      border-radius: 15px;
+      margin-top: 30px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+    }
+    .filter-title {
+      font-size: 1.3em;
+      color: var(--culture-color);
+      margin-bottom: 20px;
+      font-weight: bold;
+      border-left: 4px solid var(--secondary-color-culture);
+      padding-left: 10px;
+    }
+    .filter-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      align-items: center;
+    }
+    .filter-grid select, .filter-grid input {
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      flex: 1;
+    }
+    .filter-grid button {
+      background: var(--secondary-color-culture);
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
 
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
+    /* Culture Cards */
+    .section-title {font-size: 1.8em;font-weight: bold;color: var(--culture-color);margin-top: 40px;margin-bottom: 25px;border-bottom: 2px solid #eee;padding-bottom: 10px;}
+    .culture-grid {display: grid;grid-template-columns: repeat(3, 1fr);gap: 30px;margin-bottom: 50px;}
+    .culture-card {background-color: #fff;border-radius: 10px;overflow: hidden;box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);transition: transform 0.3s ease;cursor: pointer;}
+    .culture-card:hover {transform: translateY(-5px);box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);}
+    .card-image {width: 100%;height: 180px;object-fit: cover;display: block;}
+    .card-content {padding: 15px;}
+    .card-title {font-size: 1.1em;font-weight: bold;color: #333;margin-bottom: 5px;line-height: 1.4;}
+    .card-meta {font-size: 0.9em;color: #999;}
+    .card-tag {display: inline-block;background-color: #f0f0f0;color: var(--secondary-color-culture);padding: 4px 8px;border-radius: 15px;font-size: 0.75em;font-weight: 500;margin-top: 10px;}
 
-        .hero-title {
-            font-size: 3.5em;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-
-        .hero-subtitle {
-            font-size: 1.2em;
-            margin-bottom: 30px;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* --- LỊCH SỰ KIỆN NỔI BẬT --- */
-        .calendar-section {
-            background-color: #fff;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-            border-radius: 15px;
-            padding: 30px;
-            margin-top: -60px; /* Kéo lên che một phần Hero */
-            position: relative;
-            z-index: 3;
-            text-align: left;
-        }
-
-        .calendar-title {
-            font-size: 1.3em;
-            color: var(--culture-color);
-            margin-bottom: 20px;
-            font-weight: bold;
-            border-left: 4px solid var(--secondary-color-culture);
-            padding-left: 10px;
-        }
-
-        .event-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .event-item {
-            display: flex;
-            align-items: center;
-            background-color: #f7f7f7;
-            padding: 15px;
-            border-radius: 8px;
-        }
-
-        .event-icon {
-            font-size: 1.5em;
-            color: var(--secondary-color-culture);
-            margin-right: 15px;
-        }
-        
-        .event-info strong {
-            display: block;
-            font-size: 1em;
-            color: #333;
-        }
-        
-        .event-info span {
-            font-size: 0.9em;
-            color: #777;
-        }
-
-        /* --- BỘ LỌC CHỦ ĐỀ VĂN HÓA --- */
-        .section-title {
-            font-size: 1.8em;
-            font-weight: bold;
-            color: var(--culture-color);
-            margin-top: 40px;
-            margin-bottom: 25px;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 10px;
-        }
-
-        .theme-filters {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-bottom: 50px;
-        }
-
-        .filter-btn {
-            background-color: #fff;
-            color: var(--culture-color);
-            border: 2px solid var(--culture-color);
-            padding: 10px 20px;
-            border-radius: 25px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .filter-btn:hover, .filter-btn.active {
-            background-color: var(--culture-color);
-            color: #fff;
-        }
-
-        /* --- THẺ BÀI VIẾT (VĂN HÓA) --- */
-        .culture-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            margin-bottom: 50px;
-        }
-
-        .culture-card {
-            background-color: #fff;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease;
-            cursor: pointer;
-        }
-
-        .culture-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .card-image {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-            display: block;
-        }
-
-        .card-content {
-            padding: 15px;
-        }
-
-        .card-title {
-            font-size: 1.1em;
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 5px;
-            line-height: 1.4;
-        }
-
-        .card-meta {
-            font-size: 0.9em;
-            color: #999;
-        }
-        
-        .card-tag {
-            display: inline-block;
-            background-color: #f0f0f0;
-            color: var(--secondary-color-culture);
-            padding: 4px 8px;
-            border-radius: 15px;
-            font-size: 0.75em;
-            font-weight: 500;
-            margin-top: 10px;
-        }
-
-        /* --- Responsive --- */
-        @media (max-width: 992px) {
-            .event-grid, .culture-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 576px) {
-            .hero-title {
-                font-size: 2.5em;
-            }
-            .event-grid, .culture-grid {
-                grid-template-columns: 1fr;
-            }
-            .calendar-section {
-                margin-top: -30px;
-            }
-            .filter-btn {
-                width: 100%;
-            }
-        }
-    </style>
+    /* Responsive */
+    @media (max-width: 992px) {
+      .event-grid, .culture-grid {grid-template-columns: repeat(2, 1fr);}
+    }
+    @media (max-width: 576px) {
+      .hero-title {font-size: 2.5em;}
+      .event-grid, .culture-grid {grid-template-columns: 1fr;}
+      .calendar-section {margin-top: -30px;}
+      .filter-grid {flex-direction: column;}
+    }
+  </style>
 </head>
 <body>
+  <!-- Header -->
+  <header class="site-header">
+    <a href="../index.html" class="logo">
+      <img src="https://flagcdn.com/w20/vn.png" alt="Vietnam Flag" class="flag-icon">
+      <span class="brand">Hello-Vietnam</span>
+    </a>
+    <div class="actions">
+      <button class="login-btn">Đăng Nhập</button>
+      <div class="user-icon">👤</div>
+    </div>
+  </header>
 
-    <section class="hero-section">
-        <div class="hero-overlay"></div>
-        <div class="hero-content container">
-            <h1 class="hero-title">VĂN HÓA & TRẢI NGHIỆM</h1>
-            <p class="hero-subtitle">Khám phá các lễ hội truyền thống, sự kiện đặc sắc và những nét văn hóa độc đáo cần biết khi du lịch Việt Nam.</p>
-        </div>
-    </section>
 
-    <div class="container">
-        <div class="calendar-section">
-            <div class="calendar-title">Lịch Sự Kiện Đang Diễn Ra (Tháng 9)</div>
-            <div class="event-grid">
-                <div class="event-item">
-                    <span class="event-icon">🏮</span>
-                    <div class="event-info">
-                        <strong>Tết Trung Thu (Hội An)</strong>
-                        <span>Đến hết 30/9 | #PhốCổ</span>
-                    </div>
-                </div>
-                <div class="event-item">
-                    <span class="event-icon">🎆</span>
-                    <div class="event-info">
-                        <strong>Festival Pháo Hoa (Đà Nẵng)</strong>
-                        <span>Ngày 29 & 30/9 | #SựKiện</span>
-                    </div>
-                </div>
-                <div class="event-item">
-                    <span class="event-icon">⛰️</span>
-                    <div class="event-info">
-                        <strong>Lễ Hội Cầu Mùa (Vùng Tây Bắc)</strong>
-                        <span>Tuần cuối tháng 9 | #DânTộc</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="theme-filters">
-            <button class="filter-btn active">Lễ Hội Truyền Thống</button>
-            <button class="filter-btn">Sự Kiện Thời Sự</button>
-            <button class="filter-btn">Nghi Thức Tôn Giáo</button>
-            <button class="filter-btn">Nghệ Thuật Truyền Thống</button>
-        </div>
-      <div class="culture-grid">
-            <div class="culture-card">
-                <img src="https://via.placeholder.com/400x180?text=Temple+Etiquette" alt="Ứng xử tại chùa" class="card-image">
-                <div class="card-content">
-                    <h3 class="card-title">5 Điều Tuyệt Đối Nên và Không Nên Làm Khi Thăm Đền Chùa</h3>
-                    <p class="card-meta">Hướng dẫn cơ bản | 3 phút đọc</p>
-                    <span class="card-tag">#VănHóaỨngXử</span>
-                </div>
-            </div>
+  <!-- Hero -->
+  <section class="hero-section">
+    <div class="hero-overlay"></div>
+    <div class="hero-content container">
+      <h1 class="hero-title">VĂN HÓA & TRẢI NGHIỆM</h1>
+      <p class="hero-subtitle">Khám phá các lễ hội truyền thống, sự kiện đặc sắc và những nét văn hóa độc đáo cần biết khi du lịch Việt Nam.</p>
+    </div>
+  </section>
 
-            <div class="culture-card">
-                <img src="https://via.placeholder.com/400x180?text=Chua+Huong+Festival" alt="Lễ hội Chùa Hương" class="card-image">
-                <div class="card-content">
-                    <h3 class="card-title">[Chi Tiết] Kinh Nghiệm Tham Gia Lễ Hội Chùa Hương Mới Nhất</h3>
-                    <p class="card-meta">Cẩm nang thực tế | 6 phút đọc</p>
-                    <span class="card-tag">#LễHộiTruyềnThống</span>
-                </div>
-            </div>
+  <div class="container">
 
-            <div class="culture-card">
-                <img src="https://via.placeholder.com/400x180?text=Water+Puppetry" alt="Múa rối nước" class="card-image">
-                <div class="card-content">
-                    <h3 class="card-title">Khám Phá Nghệ Thuật Múa Rối Nước: Xem ở đâu và Giá vé</h3>
-                    <p class="card-meta">Trải nghiệm độc đáo | 4 phút đọc</p>
-                    <span class="card-tag">#NghệThuật</span>
-                </div>
-            </div>
-        </div>
+    <!-- Calendar -->
+    <div class="calendar-section">
+      <div class="calendar-title">Lịch Sự Kiện Đang Diễn Ra (Tháng 9)</div>
+      <div class="event-grid">
+        <div class="event-item"><span class="event-icon">🏮</span><div class="event-info"><strong>Tết Trung Thu (Hội An)</strong><span>Đến hết 30/9 | #PhốCổ</span></div></div>
+        <div class="event-item"><span class="event-icon">🎆</span><div class="event-info"><strong>Festival Pháo Hoa (Đà Nẵng)</strong><span>Ngày 29 & 30/9 | #SựKiện</span></div></div>
+        <div class="event-item"><span class="event-icon">⛰️</span><div class="event-info"><strong>Lễ Hội Cầu Mùa (Tây Bắc)</strong><span>Tuần cuối tháng 9 | #DânTộc</span></div></div>
+      </div>
     </div>
 
+    <!-- Bộ lọc -->
+    <div class="filter-section">
+      <div class="filter-title">Bộ lọc Văn Hóa</div>
+      <div class="filter-grid">
+        <select>
+          <option>-- Chọn Tỉnh/Thành --</option>
+          <option>Hà Nội</option>
+          <option>Huế</option>
+          <option>Hội An</option>
+        </select>
+        <select>
+          <option>-- Loại sự kiện --</option>
+          <option>Lễ hội</option>
+          <option>Văn nghệ</option>
+          <option>Tôn giáo</option>
+        </select>
+        <input type="text" placeholder="Đánh giá tối thiểu VD: 4.5">
+        <button>Áp dụng</button>
+      </div>
+    </div>
+
+    <!-- Culture Grid -->
+    <h2 class="section-title">Khám Phá Văn Hóa</h2>
+    <div class="culture-grid">
+      <div class="culture-card"><img src="https://via.placeholder.com/400x180?text=Temple+Etiquette" class="card-image"><div class="card-content"><h3 class="card-title">5 Điều Nên & Không Nên Khi Thăm Chùa</h3><p class="card-meta">Hướng dẫn | 3 phút đọc</p><span class="card-tag">#ỨngXử</span></div></div>
+      <div class="culture-card"><img src="https://via.placeholder.com/400x180?text=Chua+Huong+Festival" class="card-image"><div class="card-content"><h3 class="card-title">Kinh Nghiệm Tham Gia Lễ Hội Chùa Hương</h3><p class="card-meta">Cẩm nang | 6 phút đọc</p><span class="card-tag">#LễHội</span></div></div>
+      <div class="culture-card"><img src="https://via.placeholder.com/400x180?text=Water+Puppetry" class="card-image"><div class="card-content"><h3 class="card-title">Khám Phá Nghệ Thuật Múa Rối Nước</h3><p class="card-meta">Trải nghiệm | 4 phút đọc</p><span class="card-tag">#NghệThuật</span></div></div>
+    </div>
+    <div class="culture-grid">
+      <div class="culture-card"><img src="https://via.placeholder.com/400x180?text=Temple+Etiquette" class="card-image"><div class="card-content"><h3 class="card-title">5 Điều Nên & Không Nên Khi Thăm Chùa</h3><p class="card-meta">Hướng dẫn | 3 phút đọc</p><span class="card-tag">#ỨngXử</span></div></div>
+      <div class="culture-card"><img src="https://via.placeholder.com/400x180?text=Chua+Huong+Festival" class="card-image"><div class="card-content"><h3 class="card-title">Kinh Nghiệm Tham Gia Lễ Hội Chùa Hương</h3><p class="card-meta">Cẩm nang | 6 phút đọc</p><span class="card-tag">#LễHội</span></div></div>
+      <div class="culture-card"><img src="https://via.placeholder.com/400x180?text=Water+Puppetry" class="card-image"><div class="card-content"><h3 class="card-title">Khám Phá Nghệ Thuật Múa Rối Nước</h3><p class="card-meta">Trải nghiệm | 4 phút đọc</p><span class="card-tag">#NghệThuật</span></div></div>
+    </div>
+
+
+  </div>
 </body>
 </html>
