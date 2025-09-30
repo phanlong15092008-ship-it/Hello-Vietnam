@@ -236,6 +236,60 @@
         icon.innerHTML = '<i class="fa-solid fa-chevron-up"></i>';
       }
     }
-  </script>
+
+     const track = document.querySelector(".carousel-track");
+     const items = document.querySelectorAll(".mag-item");
+     const prevBtn = document.querySelector(".carousel-btn.prev");
+     const nextBtn = document.querySelector(".carousel-btn.next");
+
+  let index = 1; // bắt đầu từ slide 1 (sau khi clone)
+  let allowShift = true;
+
+  // Clone slide đầu và cuối
+  const firstClone = items[0].cloneNode(true);
+  const lastClone = items[items.length - 1].cloneNode(true);
+  track.appendChild(firstClone);
+  track.insertBefore(lastClone, items[0]);
+
+  const slides = document.querySelectorAll(".mag-item");
+  const totalSlides = slides.length;
+
+  // Set vị trí ban đầu
+  track.style.transform = `translateX(-${index * 100}%)`;
+
+  function shiftSlide(dir) {
+    if (allowShift) {
+      track.style.transition = "transform 0.6s ease";
+      index += dir;
+      track.style.transform = `translateX(-${index * 100}%)`;
+    }
+    allowShift = false;
+  }
+
+  function checkIndex() {
+    track.style.transition = "none";
+    if (index === totalSlides - 1) {
+      // Nếu đang ở clone của slide đầu → nhảy về slide 1
+      index = 1;
+      track.style.transform = `translateX(-${index * 100}%)`;
+    }
+    if (index === 0) {
+      // Nếu đang ở clone của slide cuối → nhảy về slide cuối thực
+      index = totalSlides - 2;
+      track.style.transform = `translateX(-${index * 100}%)`;
+    }
+    allowShift = true;
+  }
+
+  // Nút bấm
+  nextBtn.addEventListener("click", () => shiftSlide(1));
+  prevBtn.addEventListener("click", () => shiftSlide(-1));
+
+  // Khi transition kết thúc → kiểm tra index
+  track.addEventListener("transitionend", checkIndex);
+
+  // Auto chạy
+  setInterval(() => shiftSlide(1), 4000);
+</script>
 </body>
 </html>

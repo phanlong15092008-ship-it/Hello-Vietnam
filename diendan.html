@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Diễn Đàn Du Lịch | Check-in Việt Nam</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -28,31 +29,7 @@
     nav .logo { display: flex; align-items: center; gap: 8px; }
     nav .logo img { width: 28px; height: 20px; border-radius: 3px; }
     nav .logo span { color: #f4511e; font-size: 1.2em; font-weight: bold; }
-    nav .menu { display: flex; gap: 30px; font-size: 1em; font-weight: 500; }
-    nav .menu a { text-decoration: none; color: #333; transition: 0.2s; }
-    nav .menu a.active { color: #f4511e; border-bottom: 2px solid #f4511e; padding-bottom: 2px; }
-    nav .menu a:hover { color: #f4511e; }
-    nav .actions { display: flex; align-items: center; gap: 15px; }
-    nav .actions button {
-      background-color: #f4511e;
-      color: white;
-      border: none;
-      border-radius: 20px;
-      padding: 8px 18px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-    nav .actions button:hover { opacity: 0.9; }
-    nav .actions .avatar {
-      width: 35px;
-      height: 35px;
-      background-color: #555;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+    nav .actions { display:flex; gap:12px; align-items:center; }
 
     /* MAIN LAYOUT */
     .main-layout {
@@ -85,32 +62,16 @@
       padding: 20px;
     }
 
-    /* CREATE POST BOX */
-    .create-post-box {
-      display: flex;
-      align-items: center;
-      padding: 15px;
-      gap: 15px;
+    /* FORM */
+    #postForm input[type="text"], #postForm textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      box-sizing: border-box;
     }
-    .create-post-box .avatar {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      object-fit: cover;
-    }
-    .create-post-box .input-area {
-      flex-grow: 1;
-      padding: 10px 15px;
-      border-radius: 20px;
-      background-color: #f0f2f5;
-      color: #606770;
-      cursor: pointer;
-    }
-    .create-post-box .icons {
-      font-size: 1.3em;
-      color: #606770;
-      display: flex;
-      gap: 12px;
+    #postForm button {
+      background:#f4511e;color:#fff;padding:10px;border:none;border-radius:8px;cursor:pointer;
     }
 
     /* POST CARD */
@@ -125,84 +86,32 @@
     .post-card .post-header {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
       padding: 12px 15px;
     }
     .post-card .avatar {
-      width: 40px;
-      height: 40px;
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
       object-fit: cover;
     }
-    .username { font-weight: 600; }
-    .status { font-size: 0.9em; color: #666; display: block; }
     .post-image img {
       width: 100%;
       height: auto;
-      object-fit: cover;
       display: block;
     }
-    .post-body { padding: 0 15px 10px; }
+    .post-body { padding: 10px 15px 15px; color:#333; }
     .post-footer {
       padding: 10px 15px;
       border-top: 1px solid #eee;
       display: flex;
-      gap: 25px;
+      gap: 20px;
       color: #606770;
     }
-    .post-footer span { cursor: pointer; }
-    .post-footer span:hover { opacity: 0.7; }
 
-    .mini-collection {
-      display: flex;
-      gap: 5px;
-      padding: 10px;
-    }
-    .mini-collection img {
-      width: 33.33%;
-      height: 120px;
-      object-fit: cover;
-      border-radius: 8px;
-    }
+    /* small helpers */
+    .muted { color:#777; font-size:0.9em; }
 
-    /* SIDEBAR */
-    .profile-module { text-align: center; }
-    .profile-module .main-avatar {
-      width: 70px;
-      height: 70px;
-      border-radius: 50%;
-      margin-bottom: 10px;
-    }
-    .progress-bar-container {
-      width: 80%;
-      height: 10px;
-      background-color: #e0e0e0;
-      border-radius: 10px;
-      margin: 10px auto;
-      overflow: hidden;
-    }
-    .progress-fill { width: 26%; height: 100%; background-color: #4CAF50; }
-    .progress-text { font-weight: bold; color: #388e3c; margin-bottom: 10px; }
-    .challenge-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-    .challenge-item { border-radius: 8px; overflow: hidden; position: relative; cursor: pointer; }
-    .challenge-item img {
-      width: 100%;
-      height: 100px;
-      object-fit: cover;
-      filter: brightness(70%);
-    }
-    .challenge-item .text {
-      position: absolute;
-      bottom: 5px;
-      left: 5px;
-      color: white;
-      font-size: 0.85em;
-      font-weight: bold;
-    }
-    .trending-item { display: flex; justify-content: space-between; margin-bottom: 8px; }
-    .trending-item a { color: #0288d1; font-weight: 500; text-decoration: none; }
-
-    /* Responsive: sidebar xuống dưới */
     @media (max-width: 900px) {
       .main-layout { flex-direction: column; }
       .content-feed, .sidebar { width: 100%; }
@@ -210,213 +119,219 @@
   </style>
 </head>
 <body>
-  <!-- NAVBAR -->
   <nav>
     <div class="logo">
-      <a href="../index.html" class="flex items-center space-x-2">
+      <a href="#" class="flex items-center space-x-2">
         <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg" alt="VN Flag">
         <span>Hello-Vietnam</span>
       </a>
     </div>
+
     <div class="actions">
-      <button>Đăng Nhập</button>
-      <div class="avatar"><i class="fas fa-user" style="color: white;"></i></div>
+      <button id="loginBtn">Đăng Nhập</button>
+      <button id="logoutBtn" style="display:none;background:#555;color:#fff;border-radius:20px;padding:8px 14px;border:none;">Đăng Xuất</button>
+      <div id="userAvatar" style="width:36px;height:36px;border-radius:50%;background:#4caf50;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:bold"></div>
     </div>
   </nav>
 
-  <!-- MAIN LAYOUT -->
   <div class="main-layout">
-    <!-- FEED -->
+    <!-- FEED: form + posts (dọc) -->
     <div class="content-feed">
-      <div class="module-card create-post-box">
-        <img src="https://i.pravatar.cc/150?img=5" alt="Avatar" class="avatar">
-        <div class="input-area">Share your travel adventures...</div>
-        <div class="icons">
-          <i class="fas fa-image"></i>
-          <i class="fas fa-video"></i>
-          <i class="fas fa-map-marker-alt" style="color: #4CAF50;"></i>
-        </div>
+      <div class="module-card">
+        <form id="postForm">
+          <input type="text" id="title" placeholder="Tiêu đề bài viết" required />
+          <div style="height:8px"></div>
+          <textarea id="content" placeholder="Nội dung" rows="4" required></textarea>
+          <div style="height:8px"></div>
+          <input type="file" id="fileInput" accept="image/*" />
+          <div style="height:8px"></div>
+          <button type="submit">Đăng bài</button>
+        </form>
       </div>
 
-      <!-- Post 1 -->
-      <div class="post-card">
-        <div class="post-image">
-          <img src="https://picsum.photos/800/450?random=10" alt="Checkin">
-        </div>
-        <div class="post-header">
-          <img src="https://i.pravatar.cc/150?img=4" alt="Avatar" class="avatar">
-          <div>
-            <span class="username">Mai Phương Nguyễn <i class="fas fa-check-circle" style="color:#0288d1;font-size:0.8em;"></i></span>
-            <span class="status">Rau Xanh Content Writer</span>
-          </div>
-        </div>
-        <div class="post-body">
-          Không thể tin được vẻ đẹp hùng vĩ này! 🤩🛶 Cảnh sắc siêu thực, đúng là kỳ quan thiên nhiên.
-          <div>#checkin #HalongBay #TravelVietNam</div>
-        </div>
-        <div class="post-footer">
-          <span><i class="fas fa-thumbs-up"></i> 2.5K Likes</span>
-          <span><i class="fas fa-comment"></i> 350 Comments</span>
-          <span><i class="fas fa-share"></i> 5 Share</span>
-        </div>
-      </div>
-
-      <!-- Post 2 -->
-      <div class="post-card">
-        <div class="post-header">
-          <img src="https://i.pravatar.cc/150?img=3" alt="Avatar" class="avatar">
-          <div>
-            <span class="username">Bách Thủ Lữ Khách</span>
-            <span class="status">Travel Blogger</span>
-          </div>
-        </div>
-        <div class="mini-collection">
-          <img src="https://picsum.photos/400/300?random=11" alt="">
-          <img src="https://picsum.photos/400/300?random=12" alt="">
-          <img src="https://picsum.photos/400/300?random=13" alt="">
-        </div>
-        <div class="post-body">
-          Cảm ơn các bạn đã gợi ý món bún chả Hà Nội ngon tuyệt này! 🍜🛵
-        </div>
-        <div class="post-footer">
-          <span><i class="fas fa-thumbs-up"></i> 1.8K Likes</span>
-          <span><i class="fas fa-comment"></i> 210 Comments</span>
-        </div>
-      </div>
-
-      <!-- Post 3 -->
-      <div class="post-card">
-        <div class="post-image">
-          <img src="https://picsum.photos/800/450?random=20" alt="Checkin">
-        </div>
-        <div class="post-header">
-          <img src="https://i.pravatar.cc/150?img=6" alt="Avatar" class="avatar">
-          <div>
-            <span class="username">Lan Anh</span>
-            <span class="status">Travel Enthusiast</span>
-          </div>
-        </div>
-        <div class="post-body">
-          Hội An về đêm lung linh, thả đèn hoa đăng thật sự chill ✨🏮🚤
-          <div>#HoiAn #TravelVietnam</div>
-        </div>
-        <div class="post-footer">
-          <span><i class="fas fa-thumbs-up"></i> 3.2K Likes</span>
-          <span><i class="fas fa-comment"></i> 480 Comments</span>
-          <span><i class="fas fa-share"></i> 12 Share</span>
-        </div>
-      </div>
-
-      <!-- Post 4 -->
-      <div class="post-card">
-        <div class="post-image">
-          <img src="https://picsum.photos/800/450?random=21" alt="Checkin">
-        </div>
-        <div class="post-header">
-          <img src="https://i.pravatar.cc/150?img=7" alt="Avatar" class="avatar">
-          <div>
-            <span class="username">Tuấn Trekking</span>
-            <span class="status">Adventure Seeker</span>
-          </div>
-        </div>
-        <div class="post-body">
-          Trekking Fansipan – “Nóc nhà Đông Dương” cực đáng nhớ 💪🏔️
-          <div>#Fansipan #Trekking</div>
-        </div>
-        <div class="post-footer">
-          <span><i class="fas fa-thumbs-up"></i> 2.1K Likes</span>
-          <span><i class="fas fa-comment"></i> 300 Comments</span>
-        </div>
-      </div>
-
-      <!-- Post 5 -->
-      <div class="post-card">
-        <div class="post-header">
-          <img src="https://i.pravatar.cc/150?img=8" alt="Avatar" class="avatar">
-          <div>
-            <span class="username">Ngọc Trần</span>
-            <span class="status">Food & Travel Lover</span>
-          </div>
-        </div>
-        <div class="post-body">
-          Phở Hà Nội sáng nay ngon tuyệt! 🍲🥢 Nước dùng ngọt thanh, bánh phở mềm, thịt bò vừa chín tới.
-          <div>#Pho #HaNoi</div>
-        </div>
-        <div class="post-footer">
-          <span><i class="fas fa-thumbs-up"></i> 980 Likes</span>
-          <span><i class="fas fa-comment"></i> 120 Comments</span>
-          <span><i class="fas fa-share"></i> 8 Share</span>
-        </div>
-      </div>
-
-      <!-- Post 6 -->
-      <div class="post-card">
-        <div class="post-image">
-          <img src="https://picsum.photos/800/450?random=22" alt="Checkin">
-        </div>
-        <div class="post-header">
-          <img src="https://i.pravatar.cc/150?img=9" alt="Avatar" class="avatar">
-          <div>
-            <span class="username">Hoàng Nam</span>
-            <span class="status">Travel Photographer</span>
-          </div>
-        </div>
-        <div class="post-body">
-          Khám phá ruộng bậc thang Mù Cang Chải mùa lúa chín vàng rực 🌾📸
-        </div>
-        <div class="post-footer">
-          <span><i class="fas fa-thumbs-up"></i> 1.5K Likes</span>
-          <span><i class="fas fa-comment"></i> 200 Comments</span>
-        </div>
-      </div>
+      <!-- Nơi JS sẽ chèn các bài viết (xếp dọc vì .content-feed là column) -->
+      <div id="posts"></div>
     </div>
 
-       <!-- SIDEBAR -->
+    <!-- SIDEBAR (giữ nguyên nội dung nếu cần) -->
     <div class="sidebar">
       <div class="module-card profile-module">
-        <img src="https://i.pravatar.cc/150?img=4" alt="Profile Avatar" class="main-avatar">
-        <h3>Mai Phương Nguyễn</h3>
-        <p class="status">Extratta | Elite Traveller</p>
-        <p class="progress-text">9/34 Tỉnh (26%)</p>
-        <div class="progress-bar-container">
-          <div class="progress-fill"></div>
+        <img src="https://i.pravatar.cc/150?img=4" alt="Profile Avatar" class="main-avatar" style="width:70px;height:70px;border-radius:50%;display:block;margin:0 auto 10px;">
+        <h3 style="text-align:center;margin:0 0 6px">Mai Phương Nguyễn</h3>
+        <p class="muted" style="text-align:center;margin:0 0 8px">Extratta | Elite Traveller</p>
+        <div class="progress-bar-container" style="width:80%;height:10px;background:#eee;border-radius:10px;margin:10px auto;">
+          <div class="progress-fill" style="width:26%;height:100%;background:#4CAF50;border-radius:10px;"></div>
         </div>
-        <p style="color: #ffc107; font-size: 1.2em;">
-          <i class="fas fa-star"></i><i class="fas fa-star"></i>
-          <i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-          <i class="far fa-star"></i>
-        </p>
-        <span style="font-size: 0.9em; color: #999;">Cấp độ: Nhà thám hiểm</span>
       </div>
 
-      <div class="module-card challenges-module">
-        <h4>Travel Challenges</h4>
+      <div class="module-card">
+        <h4 style="margin-top:0">Travel Challenges</h4>
         <div class="challenge-grid">
-          <div class="challenge-item">
-            <img src="https://picsum.photos/400/300?random=14" alt="">
-            <div class="text">Chinh Phục Miền Bắc</div>
-          </div>
-          <div class="challenge-item">
-            <img src="https://picsum.photos/400/300?random=15" alt="">
-            <div class="text">Khám Phá Cao Nguyên</div>
-          </div>
+          <div class="challenge-item"><img src="https://picsum.photos/400/300?random=14" alt=""></div>
+          <div class="challenge-item"><img src="https://picsum.photos/400/300?random=15" alt=""></div>
         </div>
       </div>
+    </div>
+  </div>
 
-      <div class="module-card trending-module">
-        <h4>Trending</h4>
-        <div class="trending-item">
-          <a href="#">#DuLịchViệtNam</a><i class="fas fa-plane"></i>
-        </div>
-        <div class="trending-item">
-          <a href="#">#PhượtMiềnBắc</a><i class="fas fa-helmet-safety"></i>
-        </div>
-      </div>
-    </div>
-  </div>
-</body>
-    </div>
-  </div>
+  <!-- Firebase + logic -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+    import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
+    import { getFirestore, collection, addDoc, getDocs, serverTimestamp, query, orderBy } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
+    import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-storage.js";
+
+    // --- Thay config Firebase của bạn vào đây (mình giữ config bạn đã dùng, đã chỉnh storageBucket) ---
+    const firebaseConfig = {
+      apiKey: "AIzaSyDIlrYG0B2dYtL29TSYFphtqFXtz-kefqc",
+      authDomain: "hello-vietnam-5331d.firebaseapp.com",
+      projectId: "hello-vietnam-5331d",
+      storageBucket: "hello-vietnam-5331d.appspot.com",
+      messagingSenderId: "723581660067",
+      appId: "1:723581660067:web:e0721959ae942cf0c88816",
+      measurementId: "G-1K0LV7SLL7"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const provider = new GoogleAuthProvider();
+    const db = getFirestore(app);
+    const storage = getStorage(app);
+
+    // UI elements
+    const loginBtn = document.getElementById("loginBtn");
+    const logoutBtn = document.getElementById("logoutBtn");
+    const userAvatar = document.getElementById("userAvatar");
+    const postForm = document.getElementById("postForm");
+    const fileInput = document.getElementById("fileInput");
+    const postsContainer = document.getElementById("posts");
+
+    // helper: escape HTML to prevent injection
+    function escapeHtml(text){
+      if(!text) return "";
+      return String(text).replace(/[&<>"']/g, function(m){
+        return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m];
+      });
+    }
+
+    // Auth actions
+    loginBtn.addEventListener("click", async () => {
+      try {
+        await signInWithPopup(auth, provider);
+      } catch (err) {
+        console.error("Login error:", err);
+        alert("Lỗi đăng nhập: " + err.message);
+      }
+    });
+
+    logoutBtn.addEventListener("click", async () => {
+      try {
+        await signOut(auth);
+      } catch (err) {
+        console.error("Logout error:", err);
+      }
+    });
+
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        loginBtn.style.display = "none";
+        logoutBtn.style.display = "inline-block";
+        userAvatar.style.backgroundImage = `url(${user.photoURL})`;
+        userAvatar.style.backgroundSize = "cover";
+        userAvatar.textContent = "";
+      } else {
+        loginBtn.style.display = "inline-block";
+        logoutBtn.style.display = "none";
+        userAvatar.style.backgroundImage = "";
+        userAvatar.textContent = "P";
+      }
+    });
+
+    // submit post
+    postForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const title = document.getElementById("title").value.trim();
+      const content = document.getElementById("content").value.trim();
+      const file = fileInput.files[0];
+
+      if(!title || !content){
+        alert("Vui lòng nhập tiêu đề và nội dung");
+        return;
+      }
+
+      try {
+        // optional: only allow logged-in users (comment out if you want anonymous)
+        // if(!auth.currentUser) { alert("Bạn cần đăng nhập để đăng bài"); return; }
+
+        let imageUrl = "";
+        if (file) {
+          const path = "posts/" + Date.now() + "_" + file.name;
+          const storageRef = ref(storage, path);
+          await uploadBytes(storageRef, file);
+          imageUrl = await getDownloadURL(storageRef);
+        }
+
+        await addDoc(collection(db, "posts"), {
+          title,
+          content,
+          imageUrl,
+          createdAt: serverTimestamp(),
+          userId: auth.currentUser ? auth.currentUser.uid : null,
+          user: auth.currentUser ? auth.currentUser.displayName : "Ẩn danh",
+          avatar: auth.currentUser ? auth.currentUser.photoURL : ""
+        });
+
+        postForm.reset();
+        loadPosts(); // reload
+        alert("Đăng bài thành công!");
+      } catch (err) {
+        console.error("Lỗi đăng bài:", err);
+        alert("Lỗi khi đăng bài: " + err.message);
+      }
+    });
+
+    // load posts (ordered newest first)
+    async function loadPosts(){
+      postsContainer.innerHTML = ""; // clear
+      try {
+        const q = query(collection(db, "posts"), orderBy("createdAt", "desc"));
+        const snap = await getDocs(q);
+        if (snap.empty) {
+          postsContainer.innerHTML = '<div class="module-card muted">Chưa có bài viết nào. Hãy đăng bài đầu tiên!</div>';
+          return;
+        }
+        snap.forEach(doc => {
+          const data = doc.data();
+          const timeStr = (data.createdAt && data.createdAt.toDate) ? data.createdAt.toDate().toLocaleString() : "";
+          postsContainer.innerHTML += `
+            <div class="post-card">
+              ${data.imageUrl ? `<div class="post-image"><img src="${escapeHtml(data.imageUrl)}" alt=""></div>` : ''}
+              <div class="post-header">
+                <img src="${escapeHtml(data.avatar || 'https://i.pravatar.cc/150')}" alt="avatar" class="avatar">
+                <div>
+                  <div class="username">${escapeHtml(data.user || 'Ẩn danh')}</div>
+                  <div class="muted">${escapeHtml(timeStr)}</div>
+                </div>
+              </div>
+              <div class="post-body">
+                <h3 style="margin:0 0 8px">${escapeHtml(data.title)}</h3>
+                <p style="margin:0">${escapeHtml(data.content)}</p>
+              </div>
+              <div class="post-footer">
+                <span><i class="fas fa-thumbs-up"></i> Like</span>
+                <span><i class="fas fa-comment"></i> Comment</span>
+              </div>
+            </div>
+          `;
+        });
+      } catch (err) {
+        console.error("Lỗi load bài:", err);
+        postsContainer.innerHTML = '<div class="module-card muted">Lỗi khi tải bài viết. Xem console để biết chi tiết.</div>';
+      }
+    }
+
+    // initial load
+    loadPosts();
+  </script>
 </body>
 </html>
-```
