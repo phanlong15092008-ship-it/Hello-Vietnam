@@ -5,21 +5,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cẩm Nang Du Lịch Việt Nam - Hello-Vietnam</title>
     <style>
-        /* Thiết lập cơ bản (Tương thích với font chữ của bạn) */
+        /* RESET */
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+
         body {
-            font-family: sans-serif; /* Thay bằng font của web bạn */
+            font-family: sans-serif;
             margin: 0;
             background-color: #f8f8f8;
         }
-        
-        /* CSS chung cho phần Cẩm nang */
+
+        /* ====== HEADER ====== */
+        .header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 12px 24px;
+          background: #fff;
+          border-bottom: 1px solid #ddd;
+        }
+        .logo {
+          display: flex;
+          align-items: center;
+          font-weight: bold;
+          font-size: 1.1em;
+          color: #c62828;
+          text-decoration: none;
+        }
+        .logo img {
+          width: 22px;
+          margin-right: 8px;
+        }
+        .header-actions {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+        }
+        .btn-login {
+          background: #ff9800;
+          border: none;
+          color: #fff;
+          font-weight: bold;
+          padding: 6px 16px;
+          border-radius: 20px;
+          cursor: pointer;
+        }
+        .btn-login:hover {
+          background: #e68900;
+        }
+        .avatar {
+          width: 36px;
+          height: 36px;
+          border-radius: 50%;
+          object-fit: cover;
+          border: 2px solid #ddd;
+          cursor: pointer;
+        }
+
+        /* ==================== CSS CẨM NANG ==================== */
         .travel-guide-section {
-            max-width: 1200px; /* Chiều rộng tối đa của nội dung */
+            max-width: 1200px;
             margin: 40px auto;
             padding: 0 20px;
         }
 
-        /* 1. Banner Chính */
         .guide-hero {
             text-align: center;
             margin-bottom: 40px;
@@ -29,7 +81,7 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
         .guide-hero h1 {
-            color: #D35400; /* Màu thương hiệu nổi bật (Ví dụ: cam cháy) */
+            color: #D35400;
             font-size: 2.8em;
             margin-bottom: 10px;
             text-transform: uppercase;
@@ -39,7 +91,6 @@
             font-size: 1.1em;
         }
 
-        /* 2. Thanh Menu Bộ Lọc */
         .guide-filter-nav {
             display: flex;
             justify-content: center;
@@ -62,15 +113,13 @@
             box-shadow: 0 4px 8px rgba(211, 84, 0, 0.4);
         }
 
-        /* 3. Khu vực Nội dung Chính - Grid Layout */
         .main-content-grid {
             display: grid;
-            grid-template-columns: 2fr 1fr; /* Cột chính lớn hơn cột phụ */
+            grid-template-columns: 2fr 1fr;
             gap: 30px;
             margin-bottom: 50px;
         }
 
-        /* Bài viết Deep Dive nổi bật */
         .featured-post {
             display: flex;
             background: white;
@@ -97,13 +146,12 @@
             font-size: 1.8em;
         }
         .category {
-            color: #e74c3c; /* Màu đỏ cho danh mục */
+            color: #e74c3c;
             font-weight: 700;
             text-transform: uppercase;
             font-size: 0.9em;
         }
 
-        /* Bài viết phụ */
         .side-posts {
             display: flex;
             flex-direction: column;
@@ -122,9 +170,8 @@
         .small-post h4 { color: #2980b9; margin: 0 0 5px 0; }
         .meta { font-size: 0.85em; color: #95a5a6; }
 
-        /* Nội dung Hyper-Local */
         .section-heading {
-            grid-column: 1 / -1; /* Tiêu đề trải dài qua 2 cột */
+            grid-column: 1 / -1;
             margin-top: 40px;
             border-left: 6px solid #D35400;
             padding-left: 20px;
@@ -134,7 +181,7 @@
         .local-guides-grid {
             grid-column: 1 / -1;
             display: grid;
-            grid-template-columns: repeat(3, 1fr); /* 3 cột */
+            grid-template-columns: repeat(3, 1fr);
             gap: 25px;
         }
         .local-card {
@@ -170,9 +217,8 @@
             color: #333;
         }
 
-        /* 4. Khu vực Tài Nguyên Miễn Phí */
         .free-resource-banner {
-            background-color: #fef5e7; /* Màu vàng nhạt, nổi bật */
+            background-color: #fef5e7;
             border: 2px solid #f9e79f;
             padding: 40px;
             border-radius: 10px;
@@ -201,7 +247,7 @@
             font-size: 1em;
         }
         .email-form button {
-            background-color: #e74c3c; /* Màu nổi bật, kêu gọi hành động */
+            background-color: #e74c3c;
             color: white;
             border: none;
             padding: 12px 25px;
@@ -214,10 +260,9 @@
             background-color: #c0392b;
         }
 
-        /* Responsive Design */
         @media (max-width: 992px) {
             .main-content-grid {
-                grid-template-columns: 1fr; /* Chuyển thành 1 cột */
+                grid-template-columns: 1fr;
             }
             .featured-post {
                 flex-direction: column;
@@ -227,7 +272,7 @@
                 height: auto;
             }
             .local-guides-grid {
-                grid-template-columns: repeat(2, 1fr); /* 2 cột trên tablet */
+                grid-template-columns: repeat(2, 1fr);
             }
             .free-resource-banner {
                 flex-direction: column;
@@ -245,7 +290,7 @@
         }
         @media (max-width: 576px) {
             .local-guides-grid {
-                grid-template-columns: 1fr; /* 1 cột trên điện thoại */
+                grid-template-columns: 1fr;
             }
             .guide-filter-nav {
                 flex-wrap: wrap;
@@ -258,85 +303,96 @@
     </style>
 </head>
 <body>
+  <!-- Header -->
+  <header class="header">
+    <a href="../index.html" class="logo">
+      <img src="https://flagcdn.com/w20/vn.png" alt="Vietnam Flag">
+      <span>Hello-Vietnam</span>
+    </a>
+    <div class="header-actions">
+      <button class="btn-login">Đăng Nhập</button>
+      <div class="user-icon">👤</div>
+    </div>
+  </header>
 
-    <section class="travel-guide-section">
-        <header class="guide-hero">
-            <h1>CẨM NANG DU LỊCH VIỆT NAM</h1>
-            <p>Khám phá trọn vẹn 63 tỉnh thành. Mẹo vặt, kinh nghiệm thực tế và những câu chuyện địa phương bạn cần biết.</p>
-        </header>
+  <!-- Nội dung Cẩm Nang -->
+  <section class="travel-guide-section">
+    <header class="guide-hero">
+      <h1>CẨM NANG DU LỊCH VIỆT NAM</h1>
+      <p>Khám phá trọn vẹn 34 tỉnh thành. Mẹo vặt, kinh nghiệm thực tế và những câu chuyện địa phương bạn cần biết.</p>
+    </header>
 
-        <nav class="guide-filter-nav">
-            <a href="/pagescamnang/amthuc.html" class="filter-item">🍜 Ẩm Thực Trọn Vẹn</a>
-            <a href="/pagescamnang/dichuyen.html" class="filter-item">🛵 Kinh Nghiệm Di Chuyển</a>
-            <a href="/pagescamnang/khamphadiemden.html" class="filter-item">🏞️ Du Lịch Theo Vùng</a>
-            <a href="/pagescamnang/lehoivasukien.html" class="filter-item">📅 Lễ Hội & Sự Kiện</a>
-        </nav>
+    <nav class="guide-filter-nav">
+      <a href="/pagescamnang/amthuc.html" class="filter-item">🍜 Ẩm Thực Trọn Vẹn</a>
+      <a href="/pagescamnang/dichuyen.html" class="filter-item">🛵 Kinh Nghiệm Di Chuyển</a>
+      <a href="/pagescamnang/khamphadiemden.html" class="filter-item">🏞️ Du Lịch Theo Vùng</a>
+      <a href="/pagescamnang/lehoivasukien.html" class="filter-item">📅 Lễ Hội & Sự Kiện</a>
+    </nav>
 
-        <div class="main-content-grid">
-            <article class="featured-post deep-dive">
-                <img src="https://via.placeholder.com/450x350?text=Anh+Cung+Duong+Phuot+Dep" alt="Ảnh cung đường phượt xe máy" class="post-image">
-                <div class="post-info">
-                    <span class="category">KINH NGHIỆM PHƯỢT</span>
-                    <h2>ĐỪNG BỎ LỠ: 10 Tuyến Đường Phượt Xe Máy Đẹp Nhất Việt Nam</h2>
-                    <p>Hướng dẫn chi tiết cung đường, điểm dừng chân, chi phí và mẹo an toàn để bạn chinh phục những cung đường huyền thoại...</p>
-                </div>
-            </article>
-
-            <div class="side-posts">
-                <article class="small-post">
-                    <h4>[Mẹo Vặt] 7 Bước Săn Vé Máy Bay Nội Địa Giá Rẻ Của Dân Chuyên</h4>
-                    <p class="meta">3 phút đọc - #DuLịchNhanh</p>
-                </article>
-                <article class="small-post">
-                    <h4>[Văn Hóa] 5 Điều Tuyệt Đối Nên và Không Nên Làm khi thăm Đền Chùa</h4>
-                    <p class="meta">4 phút đọc - #VănHóaViệt</p>
-                </article>
-                <article class="small-post">
-                    <h4>[Review] Sống Thử 24h Tại Miệt Vườn Đồng Bằng Sông Cửu Long</h4>
-                    <p class="meta">6 phút đọc - #TrảiNghiệmĐộcĐáo</p>
-                </article>
-            </div>
-            
-            <h3 class="section-heading">Góc Khám Phá Địa Phương (Hyper-Local Guides)</h3>
-            
-            <div class="local-guides-grid">
-                <a href="#" class="local-card">
-                    <img src="https://via.placeholder.com/380x200?text=HANOI+FOOD+TOUR" alt="Ảnh cà phê trứng Hà Nội" class="card-image">
-                    <div class="card-body">
-                        <span class="tag">#HàNội</span>
-                        <h4>HÀ NỘI 48H: Food Tour Phố Cổ và Những Món Cần Thử</h4>
-                    </div>
-                </a>
-
-                <a href="#" class="local-card">
-                    <img src="https://via.placeholder.com/380x200?text=CAN+THO+CHO+NOI" alt="Ảnh chợ nổi Cái Răng" class="card-image">
-                    <div class="card-body">
-                        <span class="tag">#MiềnTây</span>
-                        <h4>CẦN THƠ 24H: Bí kíp đi Chợ Nổi Cái Răng và thưởng thức Lẩu Mắm</h4>
-                    </div>
-                </a>
-
-                <a href="#" class="local-card">
-                    <img src="https://via.placeholder.com/380x200?text=SAPA+TREKKING" alt="Ảnh trekking Sapa" class="card-image">
-                    <div class="card-body">
-                        <span class="tag">#TâyBắc</span>
-                        <h4>SAPALYFE: Hướng dẫn Trekking và Trải nghiệm Homestay Văn Hóa Dân Tộc</h4>
-                    </div>
-                </a>
-            </div>
+    <div class="main-content-grid">
+      <article class="featured-post deep-dive">
+        <img src="/images/baivietcamnang.jpg" alt="Ảnh cung đường phượt xe máy" class="post-image">
+        <div class="post-info">
+          <span class="category">KINH NGHIỆM PHƯỢT</span>
+          <h2>ĐỪNG BỎ LỠ: 10 Tuyến Đường Phượt Xe Máy Đẹp Nhất Việt Nam</h2>
+          <p>Hướng dẫn chi tiết cung đường, điểm dừng chân, chi phí và mẹo an toàn để bạn chinh phục những cung đường huyền thoại...</p>
         </div>
+      </article>
 
-        <div class="free-resource-banner">
-            <div class="text-content">
-                <h3>TẢI XUỐNG NGAY! Bộ Cẩm Nang PDF Miễn Phí</h3>
-                <p>Nhận ngay E-book *Bản Đồ Ẩm Thực 63 Tỉnh Thành* và *Checklist Hành Trang Đi Phượt*.</p>
-            </div>
-            <form class="email-form">
-                <input type="email" placeholder="Nhập địa chỉ email của bạn" required>
-                <button type="submit">GỬI CHO TÔI NGAY</button>
-            </form>
-        </div>
-    </section>
+      <div class="side-posts">
+        <article class="small-post">
+          <h4>[Mẹo Vặt] 7 Bước Săn Vé Máy Bay Nội Địa Giá Rẻ Của Dân Chuyên</h4>
+          <p class="meta">3 phút đọc - #DuLịchNhanh</p>
+        </article>
+        <article class="small-post">
+          <h4>[Văn Hóa] 5 Điều Tuyệt Đối Nên và Không Nên Làm khi thăm Đền Chùa</h4>
+          <p class="meta">4 phút đọc - #VănHóaViệt</p>
+        </article>
+        <article class="small-post">
+          <h4>[Review] Sống Thử 24h Tại Miệt Vườn Đồng Bằng Sông Cửu Long</h4>
+          <p class="meta">6 phút đọc - #TrảiNghiệmĐộcĐáo</p>
+        </article>
+      </div>
+      
+      <h3 class="section-heading">Góc Khám Phá Địa Phương (Hyper-Local Guides)</h3>
+      
+      <div class="local-guides-grid">
+        <a href="#" class="local-card">
+          <img src="/images/baivietcamnang1.jpg" alt="Ảnh cà phê trứng Hà Nội" class="card-image">
+          <div class="card-body">
+            <span class="tag">#HàNội</span>
+            <h4>HÀ NỘI 48H: Food Tour Phố Cổ và Những Món Cần Thử</h4>
+          </div>
+        </a>
 
+        <a href="#" class="local-card">
+          <img src="/images/baivietcamnang2.jpg" alt="Ảnh chợ nổi Cái Răng" class="card-image">
+          <div class="card-body">
+            <span class="tag">#MiềnTây</span>
+            <h4>CẦN THƠ 24H: Bí kíp đi Chợ Nổi Cái Răng và thưởng thức Lẩu Mắm</h4>
+          </div>
+        </a>
+
+        <a href="#" class="local-card">
+          <img src="/images/baivietcamnang3.jpg" alt="Ảnh trekking Sapa" class="card-image">
+          <div class="card-body">
+            <span class="tag">#TâyBắc</span>
+            <h4>SAPALYFE: Hướng dẫn Trekking và Trải nghiệm Homestay Văn Hóa Dân Tộc</h4>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="free-resource-banner">
+      <div class="text-content">
+        <h3>TẢI XUỐNG NGAY! Bộ Cẩm Nang PDF Miễn Phí</h3>
+        <p>Nhận ngay E-book *Bản Đồ Ẩm Thực 34 Tỉnh Thành* và *Checklist Hành Trang Đi Phượt*.</p>
+      </div>
+      <form class="email-form">
+        <input type="email" placeholder="Nhập địa chỉ email của bạn" required>
+        <button type="submit">GỬI CHO TÔI NGAY</button>
+      </form>
+    </div>
+  </section>
 </body>
 </html>
