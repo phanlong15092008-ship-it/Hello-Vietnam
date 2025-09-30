@@ -126,6 +126,54 @@
       .hero h1 { font-size:24px; }
       .magazine-carousel .mag-item { height: 250px; }
     }
+    .smart-ai-suggestion {
+  background: linear-gradient(135deg, #fffbe6, #fef9c3);
+  border: 1px solid #fcd34d;
+  padding: 15px;
+  border-radius: 12px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 20px 0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  font-size: 14px;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.smart-ai-suggestion i {
+  font-size: 22px;
+  color: #f59e0b;
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.suggestion-content p {
+  margin: 0 0 8px;
+  line-height: 1.5;
+  color: #111827;
+}
+
+.suggestion-content button {
+  background: #f59e0b;
+  border: none;
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.suggestion-content button:hover {
+  background: #d97706;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
   </style>
 </head>
 <body>
@@ -179,6 +227,12 @@
       </div>
       <button class="carousel-btn next" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
     </section>
+    <!-- GỢI Ý THÔNG MINH -->
+<div class="smart-suggestion">
+  <i class="fa-solid fa-lightbulb"></i>
+  <span>Gợi Ý Thông Minh</span>
+</div>
+
 
     <section class="tour-booking-section">
         <h2>ĐẶT TOUR DU LỊCH TRỌN GÓI</h2>

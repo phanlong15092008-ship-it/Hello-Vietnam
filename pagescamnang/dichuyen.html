@@ -250,6 +250,65 @@
       .vehicle-card { flex-basis: 100%; }
       .toolbox-section { margin-top: -30px; }
     }
+    .toolbox-section {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.toolbox-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #1a4e8a;
+}
+
+.input-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.input-item {
+  flex: 1 1 calc(16.6% - 15px); /* 6 cột đều nhau */
+  min-width: 150px;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-item label {
+  font-size: 13px;
+  margin-bottom: 5px;
+  color: #444;
+}
+
+.input-item input,
+.input-item select {
+  height: 40px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 0 10px;
+  font-size: 14px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.btn-search-guide {
+  background: #ff9800;
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 5px;
+  font-size: 15px;
+  cursor: pointer;
+  margin-top: 25px;
+  align-self: flex-end;
+}
+
+.btn-search-guide:hover {
+  background: #e68a00;
+}
   </style>
 </head>
 <body>
@@ -276,26 +335,55 @@
   </section>
 
   <!-- TOOLBOX -->
-  <div class="container">
-    <div class="toolbox-section">
-      <div class="toolbox-title">Công Cụ Săn Vé & Mẹo Hành Trình Nhanh</div>
-      <div class="input-group">
-        <div class="input-item">
-          <label for="departure">Điểm Khởi Hành</label>
-          <input type="text" id="departure" placeholder="Ví dụ: TP.HCM">
-        </div>
-        <div class="input-item">
-          <label for="destination">Điểm Đến</label>
-          <input type="text" id="destination" placeholder="Ví dụ: Hà Nội">
-        </div>
-        <div class="input-item">
-          <label for="date">Khoảng Thời Gian</label>
-          <input type="date" id="date">
-        </div>
-      </div>
-      <button class="btn-search-guide">Tìm Mẹo Tốt Nhất</button>
-      <div style="clear: both;"></div>
+  <div class="toolbox-section">
+  <div class="toolbox-title">Đặt Vé & Phòng Nhanh</div>
+  <div class="input-group">
+
+    <div class="input-item">
+      <label for="service">Dịch vụ</label>
+      <select id="service">
+        <option value="flight">Vé Máy Bay</option>
+        <option value="train">Tàu Hỏa</option>
+        <option value="bus">Xe Khách</option>
+        <option value="hotel">Khách Sạn</option>
+      </select>
     </div>
+
+    <div class="input-item" id="departure-group">
+      <label for="departure">Điểm Khởi Hành</label>
+      <input type="text" id="departure" placeholder="Ví dụ: TP.HCM">
+    </div>
+
+    <div class="input-item">
+      <label for="destination">Điểm Đến / Khách Sạn</label>
+      <input type="text" id="destination" placeholder="Ví dụ: Hà Nội hoặc Đà Nẵng">
+    </div>
+
+    <div class="input-item">
+      <label for="dateStart">Ngày đi / Nhận phòng</label>
+      <input type="date" id="dateStart">
+    </div>
+
+    <div class="input-item">
+      <label for="dateEnd">Ngày về / Trả phòng</label>
+      <input type="date" id="dateEnd">
+    </div>
+
+    <div class="input-item">
+      <label for="guests">Số khách</label>
+      <input type="number" id="guests" value="1" min="1">
+    </div>
+
+    <div class="input-item">
+      <label for="price">Giá tối đa (VNĐ)</label>
+      <input type="number" id="price" placeholder="Ví dụ: 2,000,000">
+    </div>
+  </div>
+
+  <button class="btn-search-guide">Tìm ngay</button>
+  <div style="clear: both;"></div>
+</div>
+
 
     <!-- FILTER -->
     <h2 class="section-title">Lọc Nhanh Theo Phương Tiện</h2>
@@ -311,7 +399,7 @@
     <div class="content-grid">
       <div class="guide-card">
         <div class="card-image-wrapper">
-          <img src="https://via.placeholder.com/350x180?text=San+Ve+May+Bay" alt="Săn vé máy bay" class="card-image">
+          <img src="/images/meodichuyen1.jpg" alt="Săn vé máy bay" class="card-image">
           <span class="card-tag">#SĂN-VÉ</span>
         </div>
         <div class="card-content">
@@ -321,7 +409,7 @@
       </div>
       <div class="guide-card">
         <div class="card-image-wrapper">
-          <img src="https://via.placeholder.com/350x180?text=Checklist+Phuot" alt="Checklist Phượt" class="card-image">
+          <img src="/images/meodichuyen2.jpg" alt="Checklist Phượt" class="card-image">
           <span class="card-tag">#PHƯỢT</span>
         </div>
         <div class="card-content">
@@ -331,7 +419,7 @@
       </div>
       <div class="guide-card">
         <div class="card-image-wrapper">
-          <img src="https://via.placeholder.com/350x180?text=Booking+Hotel" alt="Đặt phòng" class="card-image">
+          <img src="/images/meodichuyen3.jpg" alt="Đặt phòng" class="card-image">
           <span class="card-tag">#LƯU-TRÚ</span>
         </div>
         <div class="card-content">
@@ -345,7 +433,7 @@
     <div class="content-grid" style="margin-bottom: 50px;">
       <div class="guide-card">
         <div class="card-image-wrapper">
-          <img src="https://via.placeholder.com/350x180?text=Su+Co+Giao+Thong" alt="Sự cố" class="card-image">
+          <img src="/images/meodichuyen4.jpg" alt="Sự cố" class="card-image">
           <span class="card-tag">#AN-TOÀN</span>
         </div>
         <div class="card-content">
@@ -355,7 +443,7 @@
       </div>
       <div class="guide-card">
         <div class="card-image-wrapper">
-          <img src="https://via.placeholder.com/350x180?text=Train+Tips" alt="Tàu Hỏa" class="card-image">
+          <img src="/images/meodichuyen5.jpg" alt="Tàu Hỏa" class="card-image">
           <span class="card-tag">#TÀU-HỎA</span>
         </div>
         <div class="card-content">
@@ -365,7 +453,7 @@
       </div>
       <div class="guide-card">
         <div class="card-image-wrapper">
-          <img src="https://via.placeholder.com/350x180?text=Rent+Motorbike" alt="Thuê xe máy" class="card-image">
+          <img src="/images/meodichuyen6.jpg" alt="Thuê xe máy" class="card-image">
           <span class="card-tag">#THUÊ-XE</span>
         </div>
         <div class="card-content">
