@@ -309,6 +309,49 @@
 .btn-search-guide:hover {
   background: #e68a00;
 }
+/* Áp dụng chung cho tất cả card */
+.guide-card, 
+.article-card {
+  background:#fff;
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:0 6px 18px rgba(0,0,0,0.04);
+  cursor:pointer;
+  display:flex;
+  flex-direction:column;
+  min-height:300px; /* 👈 giống Ẩm thực */
+}
+
+/* Ảnh trong card */
+.card-image {
+  width:100%;
+  height:180px;       /* 👈 giống Ẩm thực */
+  object-fit:cover;
+  display:block;
+}
+
+/* Grid chung cho card */
+.content-grid, 
+.articles-grid {
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;          /* 👈 khoảng cách giống Ẩm thực */
+  padding: 0 15px 60px;
+  max-width:1200px;
+  margin: 10px auto 60px;
+}
+
+/* Responsive */
+@media (max-width: 980px) {
+  .content-grid, 
+  .articles-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 640px) {
+  .content-grid, 
+  .articles-grid { grid-template-columns: 1fr; padding-bottom:40px; }
+}
+
   </style>
 </head>
 <body>

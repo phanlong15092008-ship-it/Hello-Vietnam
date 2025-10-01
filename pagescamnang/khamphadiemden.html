@@ -5,51 +5,229 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Giao Diện Khám Phá Điểm Đến</title>
   <style>
-    body { font-family: Arial, sans-serif; background:#f8f8f8; margin:0; padding:0; }
-    .container { max-width:1200px; margin:0 auto; padding:0 15px; }
-    :root { --destination-color:#28a745; }
-    .site-header{width:100%;background:#fff;border-bottom:3px solid #2b70b5;position:sticky;top:0;z-index:1000;}
-    .header-inner{max-width:1200px;margin:0 auto;padding:10px 40px;display:flex;justify-content:space-between;align-items:center;height:60px;}
-    .logo{display:flex;align-items:center;gap:8px;font-weight:700;color:#d32f2f;font-size:18px;}
-    .logo img{width:24px;height:16px;}
-    .login-btn{background:#f7931e;color:#fff;border:none;padding:8px 18px;border-radius:999px;cursor:pointer;font-weight:600;}
-    .user-icon{width:36px;height:36px;border-radius:50%;background:#495057;color:#fff;display:inline-flex;align-items:center;justify-content:center;}
-    .hero-section{background:url('/images/camnang2.jpg') center/cover no-repeat;color:#fff;padding:80px 0;text-align:center;position:relative;min-height:350px;}
-    .hero-overlay{position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(40,167,69,0.75);}
-    .hero-content{position:relative;z-index:2;}
-    .hero-title{font-size:3.5em;margin-bottom:10px;text-shadow:2px 2px 4px rgba(0,0,0,0.5);}
-    .hero-subtitle{font-size:1.2em;margin-bottom:30px;max-width:700px;margin:auto;}
-    .section-title{font-size:1.8em;font-weight:bold;color:var(--destination-color);margin:40px 0 25px;border-bottom:2px solid #eee;padding-bottom:10px;}
-    .destination-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-bottom:50px;}
-    .destination-card{background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 4px 10px rgba(0,0,0,0.05);transition:.3s;cursor:pointer;}
-    .destination-card:hover{transform:translateY(-5px);box-shadow:0 8px 15px rgba(0,0,0,0.1);}
-    .card-image{width:100%;height:220px;object-fit:cover;}
-    .card-content{padding:15px;}
-    .card-title{font-size:1.2em;font-weight:bold;margin-bottom:5px;}
-    .card-description{font-size:0.9em;color:#666;margin-bottom:10px;}
-    .card-tag{display:inline-block;background:#f0f0f0;color:var(--destination-color);padding:5px 10px;border-radius:15px;font-size:0.8em;margin-right:5px;}
-    /* Bộ lọc */
-    .filter-buttons { text-align:center; margin:20px 0 40px; }
-    .filter-buttons button {
-      margin: 5px;
-      padding: 8px 16px;
-      border-radius: 20px;
-      border: 1px solid #28a745;
-      background: white;
-      color: #28a745;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-    .filter-buttons button:hover { background: #28a745; color: white; }
-    /* Bản đồ */
-    .map-section { text-align:center; margin:40px 0; }
-    .map-section img { max-width:100%; border-radius:10px; box-shadow:0 4px 15px rgba(0,0,0,0.1);}
-    @media(max-width:992px){.destination-grid{grid-template-columns:repeat(2,1fr);} }
-    @media(max-width:576px){
-      .hero-title{font-size:2.5em;}
-      .destination-grid{grid-template-columns:1fr;}
-      .filter-buttons button{width:100%;}
-    }
+   body { 
+  font-family: Arial, sans-serif; 
+  background:#f8f8f8; 
+  margin:0; 
+  padding:0; 
+}
+
+.container { 
+  max-width:1200px; 
+  margin:0 auto; 
+  padding:0 15px; 
+}
+
+:root { --destination-color:#28a745; }
+
+.site-header {
+  width:100%;
+  background:#fff;
+  border-bottom:3px solid #2b70b5;
+  position:sticky;
+  top:0;
+  z-index:1000;
+}
+
+.header-inner {
+  max-width:1200px;
+  margin:0 auto;
+  padding:10px 40px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  height:60px;
+}
+
+.logo { 
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-weight:700;
+  color:#d32f2f;
+  font-size:18px;
+}
+
+.logo img { width:24px; height:16px; }
+
+.login-btn {
+  background:#f7931e;
+  color:#fff;
+  border:none;
+  padding:8px 18px;
+  border-radius:999px;
+  cursor:pointer;
+  font-weight:600;
+}
+
+.user-icon {
+  width:36px; height:36px; border-radius:50%;
+  background:#495057; color:#fff;
+  display:inline-flex; align-items:center; justify-content:center;
+}
+
+/* --- HERO (ảnh nền lớn) --- */
+.hero-section {
+  background:url('/images/camnang2.jpg') center/cover no-repeat;
+  color:#fff;
+  padding:80px 0;
+  text-align:center;
+  position:relative;
+  min-height:300px;
+}
+
+.hero-overlay {
+  position:absolute; top:0; left:0; right:0; bottom:0;
+  background:rgba(40,167,69,0.75);
+}
+
+.hero-content { position:relative; z-index:2; }
+
+.hero-title {
+  font-size:3.5em;
+  margin-bottom:10px;
+  text-shadow:2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.hero-subtitle {
+  font-size:1.2em;
+  margin-bottom:30px;
+  max-width:900px;
+  margin:auto;
+}
+
+/* --- SECTION TITLE --- */
+.section-title {
+  font-size:1.8em;
+  font-weight:bold;
+  color:var(--destination-color);
+  margin:40px 0 25px;
+  border-bottom:2px solid #eee;
+  padding-bottom:10px;
+}
+
+/* --- DESTINATION GRID --- */
+.destination-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:30px;
+  margin-bottom:50px;
+}
+
+/* --- CARD --- */
+.destination-card {
+  background:#fff;
+  border-radius:10px;
+  overflow:hidden;
+  box-shadow:0 4px 10px rgba(0,0,0,0.05);
+  transition:.3s;
+  cursor:pointer;
+  display:flex;
+  flex-direction:column;
+  min-height:300px; /* 👈 tất cả card đều cao bằng */
+}
+
+.destination-card:hover {
+  transform:translateY(-5px);
+  box-shadow:0 8px 15px rgba(0,0,0,0.1);
+}
+
+/* --- ẢNH TRONG CARD --- */
+.card-image {
+  width:100%;
+  height:180px;   /* 👈 cố định chiều cao ảnh */
+  object-fit:cover;
+  display:block;
+}
+
+/* --- CONTENT TRONG CARD --- */
+.card-content { 
+  padding:15px; 
+  flex:1; /* 👈 đẩy nội dung giãn đều */
+}
+
+.card-title {
+  font-size:1.2em;
+  font-weight:bold;
+  margin-bottom:5px;
+}
+
+.card-description {
+  font-size:0.9em;
+  color:#666;
+  margin-bottom:10px;
+}
+
+.card-tag {
+  display:inline-block;
+  background:#f0f0f0;
+  color:var(--destination-color);
+  padding:5px 10px;
+  border-radius:15px;
+  font-size:0.8em;
+  margin-right:5px;
+}
+
+/* --- FILTER BUTTONS --- */
+.filter-buttons { text-align:center; margin:20px 0 40px; }
+
+.filter-buttons button {
+  margin: 5px;
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 1px solid #28a745;
+  background: white;
+  color: #28a745;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.filter-buttons button:hover { background: #28a745; color: white; }
+
+/* --- MAP --- */
+.map-section { text-align:center; margin:40px 0; }
+.map-section img { max-width:100%; border-radius:10px; box-shadow:0 4px 15px rgba(0,0,0,0.1); }
+
+/* --- RESPONSIVE --- */
+@media(max-width:992px){
+  .destination-grid { grid-template-columns:repeat(2,1fr); }
+}
+@media(max-width:576px){
+  .hero-title { font-size:2.5em; }
+  .destination-grid { grid-template-columns:1fr; }
+  .filter-buttons button { width:100%; }
+}
+/* Card container */
+.destination-card {
+  background:#fff;
+  border-radius:10px;
+  overflow:hidden;
+  box-shadow:0 4px 10px rgba(0,0,0,0.05);
+  transition:.3s;
+  cursor:pointer;
+  display:flex;
+  flex-direction:column;
+  height: 400px;   /* 👈 tất cả card cao bằng nhau */
+}
+
+/* Ảnh trong card */
+.card-image {
+  width:100%;
+  height: 200px;   /* 👈 tất cả ảnh cao bằng nhau */
+  object-fit:cover;
+  display:block;
+}
+
+/* Nội dung chiếm hết phần còn lại */
+.card-content {
+  flex:1;
+  padding:15px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between; /* 👈 căn đều */
+}
+
+
+    
   </style>
 </head>
 <body>
@@ -69,7 +247,6 @@
 
   <!-- HERO -->
   <section class="hero-section">
-    <div class="hero-overlay"></div>
     <div class="hero-content container">
       <h1 class="hero-title">KHÁM PHÁ ĐIỂM ĐẾN</h1>
       <p class="hero-subtitle">Khám phá những điểm đến đặc sắc của Việt Nam qua từng miền đất nước.</p>
