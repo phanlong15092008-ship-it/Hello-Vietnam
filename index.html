@@ -216,6 +216,23 @@
   cursor: pointer;
 }
 .btn-ai:hover { background: #d97706; }
+/* Responsive cho Gợi ý thông minh */
+@media (max-width: 900px) {
+  .suggestion-grid {
+    grid-template-columns: 1fr 1fr; /* tablet: chia 2 cột */
+  }
+}
+
+@media (max-width: 600px) {
+  .suggestion-grid {
+    grid-template-columns: 1fr; /* mobile: 1 cột full width */
+  }
+  .suggestion-item img {
+    width: 100%;
+    height: auto; /* giữ tỉ lệ ảnh, không bị méo */
+    object-fit: cover;
+  }
+}
 
 
   </style>
@@ -286,7 +303,7 @@
     <div class="suggestion-item center">
       <i class="fa-solid fa-car-side icon"></i>
       <h3>Tour thực tế ảo</h3>
-      <button class="btn-vr">Trải nghiệm Chợ Nổi Cái Răng VR</button>
+      <button class="btn-vr">Trải nghiệm Nhà Cổ Bình Thủy</button>
     </div>
 
     <!-- Cột 3: Hỏi đáp AI -->
