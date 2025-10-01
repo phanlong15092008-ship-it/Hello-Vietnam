@@ -126,53 +126,97 @@
       .hero h1 { font-size:24px; }
       .magazine-carousel .mag-item { height: 250px; }
     }
-    .smart-ai-suggestion {
-  background: linear-gradient(135deg, #fffbe6, #fef9c3);
-  border: 1px solid #fcd34d;
-  padding: 15px;
+    .smart-suggestion-box {
+  background: #fff;
+  border: 1px solid var(--border-color);
   border-radius: 12px;
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  margin: 20px 0;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  padding: 20px;
+  margin: 40px 0;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.smart-suggestion-box h2 {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 5px;
+}
+
+.smart-suggestion-box .subtitle {
   font-size: 14px;
-  animation: fadeIn 0.5s ease-in-out;
+  color: var(--secondary-text);
+  margin-bottom: 20px;
 }
 
-.smart-ai-suggestion i {
-  font-size: 22px;
-  color: #f59e0b;
-  flex-shrink: 0;
-  margin-top: 4px;
+.suggestion-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  align-items: stretch;
 }
 
-.suggestion-content p {
-  margin: 0 0 8px;
-  line-height: 1.5;
-  color: #111827;
+.suggestion-item {
+  background: #f9fafb;
+  border-radius: 10px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
 }
 
-.suggestion-content button {
-  background: #f59e0b;
-  border: none;
-  color: white;
+.suggestion-item img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.suggestion-item.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.suggestion-item h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 10px 0;
+}
+
+.suggestion-item .icon {
+  font-size: 26px;
+  color: var(--primary);
+  margin-bottom: 8px;
+}
+
+.suggestion-item .small-text {
   font-size: 13px;
-  font-weight: 600;
-  padding: 6px 12px;
+  color: var(--secondary-text);
+  margin: 10px 0;
+}
+
+.btn-vr {
+  background: #22c55e;
+  color: white;
+  border: none;
+  padding: 8px 14px;
   border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
   cursor: pointer;
-  transition: 0.2s;
 }
+.btn-vr:hover { background: #16a34a; }
 
-.suggestion-content button:hover {
-  background: #d97706;
+.btn-ai {
+  background: #f59e0b;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
 }
+.btn-ai:hover { background: #d97706; }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
 
   </style>
 </head>
@@ -227,11 +271,34 @@
       </div>
       <button class="carousel-btn next" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
     </section>
-    <!-- GỢI Ý THÔNG MINH -->
-<div class="smart-suggestion">
-  <i class="fa-solid fa-lightbulb"></i>
-  <span>Gợi Ý Thông Minh</span>
-</div>
+<!-- GỢI Ý THÔNG MINH -->
+<section class="smart-suggestion-box">
+  <h2>Gợi ý thông minh</h2>
+  <p class="subtitle">Vì bạn thích kiến trúc cổ: Khám phá Nhà Cổ Bình Thủy - Cần Thơ</p>
+  <div class="suggestion-grid">
+    
+    <!-- Cột 1: Ảnh minh họa -->
+    <div class="suggestion-item">
+      <img src="/images/nhacobinhthuy.jpg" alt="Nhà cổ Bình Thủy">
+    </div>
+
+    <!-- Cột 2: Tour thực tế ảo -->
+    <div class="suggestion-item center">
+      <i class="fa-solid fa-car-side icon"></i>
+      <h3>Tour thực tế ảo</h3>
+      <button class="btn-vr">Trải nghiệm Chợ Nổi Cái Răng VR</button>
+    </div>
+
+    <!-- Cột 3: Hỏi đáp AI -->
+    <div class="suggestion-item center">
+      <i class="fa-solid fa-comments icon"></i>
+      <h3>Hỏi đáp AI</h3>
+      <p class="small-text">Bạn muốn biết gì về du lịch Việt Nam? (Ví dụ: Món ăn truyền thống Cần Thơ)</p>
+      <button class="btn-ai">Bắt đầu trò chuyện</button>
+    </div>
+  </div>
+</section>
+
 
 
     <section class="tour-booking-section">
