@@ -233,6 +233,35 @@
     object-fit: cover;
   }
 }
+/* Layout gốc cho PC */
+.suggestion-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+/* Tablet: chia 2 cột */
+@media (max-width: 900px) {
+  .suggestion-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile: xuống 1 cột */
+@media (max-width: 600px) {
+  .suggestion-grid {
+    grid-template-columns: 1fr !important; /* ép về 1 cột */
+  }
+  .suggestion-item {
+    width: 100%; /* full ngang */
+  }
+  .suggestion-item img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+}
+
 
 
   </style>
@@ -288,32 +317,15 @@
       </div>
       <button class="carousel-btn next" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
     </section>
-<!-- GỢI Ý THÔNG MINH -->
-<section class="smart-suggestion-box">
-  <h2>Gợi ý thông minh</h2>
-  <p class="subtitle">Vì bạn thích kiến trúc cổ: Khám phá Nhà Cổ Bình Thủy - Cần Thơ</p>
-  <div class="suggestion-grid">
-    
-    <!-- Cột 1: Ảnh minh họa -->
-    <div class="suggestion-item">
-      <img src="/images/nhacobinhthuy.jpg" alt="Nhà cổ Bình Thủy">
+<section class="suggest">
+    <h3>Gợi ý thông minh</h3>
+    <div class="suggest-content">
+      <div class="suggest-item">
+        <img src="https://i.ibb.co/spStHB48/nha-co-binh-thuy-03.jpg" alt="Nhà cổ Bình Thủy" />
+        <a href="#"><p>Trải nghiệm Nhà Cổ Bình Thủy VR</p></a>
+        <a href="#"><p>Hỏi đáp AI: Gợi ý món ăn truyền thống Cần Thơ</p></a>
+      </div>
     </div>
-
-    <!-- Cột 2: Tour thực tế ảo -->
-    <div class="suggestion-item center">
-      <i class="fa-solid fa-car-side icon"></i>
-      <h3>Tour thực tế ảo</h3>
-      <button class="btn-vr">Trải nghiệm Nhà Cổ Bình Thủy</button>
-    </div>
-
-    <!-- Cột 3: Hỏi đáp AI -->
-    <div class="suggestion-item center">
-      <i class="fa-solid fa-comments icon"></i>
-      <h3>Hỏi đáp AI</h3>
-      <p class="small-text">Bạn muốn biết gì về du lịch Việt Nam? (Ví dụ: Món ăn truyền thống Cần Thơ)</p>
-      <button class="btn-ai">Bắt đầu trò chuyện</button>
-    </div>
-  </div>
 </section>
 
 

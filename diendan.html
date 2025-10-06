@@ -116,6 +116,163 @@
       .main-layout { flex-direction: column; }
       .content-feed, .sidebar { width: 100%; }
     }
+    /* Sidebar mặc định ẩn */
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -300px; /* ẩn ra ngoài màn hình */
+  width: 300px;
+  height: 100%;
+  background: #fff;
+  box-shadow: -2px 0 5px rgba(0,0,0,0.2);
+  transition: right 0.3s ease;
+  padding: 20px;
+  z-index: 1000;
+}
+
+/* Khi mở thì trượt vào */
+.sidebar.open {
+  right: 0;
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 12px;
+  background: #eee;
+  border-radius: 8px;
+  margin: 10px 0;
+}
+
+.progress {
+  height: 100%;
+  background: linear-gradient(to right, #ff5722, #ff9800);
+  border-radius: 8px;
+}
+
+.toggle-btn {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  background: #ff5722;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  z-index: 1100;
+}
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -280px; /* ẩn */
+  width: 280px;
+  height: 100%;
+  background: #fff;
+  box-shadow: -2px 0 8px rgba(0,0,0,0.2);
+  transition: right 0.3s ease;
+  padding: 16px;
+  z-index: 1000;
+}
+
+.sidebar.open {
+  right: 0;
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.toggle-btn {
+  position: fixed;
+  top: 100px;
+  right: 20px;
+  background: #e63946;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  z-index: 1100;
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-bottom: 8px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 10px;
+  background: #eee;
+  border-radius: 6px;
+  margin: 8px 0;
+}
+
+.progress {
+  height: 100%;
+  background: linear-gradient(to right, #e63946, #ff9800);
+  border-radius: 6px;
+}
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -300px; /* Ẩn ban đầu */
+  width: 300px;
+  height: 100%;
+  background: #fff;
+  box-shadow: -2px 0 8px rgba(0,0,0,0.2);
+  padding: 20px;
+  transition: right 0.3s ease;
+  z-index: 1000;
+}
+
+.sidebar.open {
+  right: 0;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+
+
   </style>
 </head>
 <body>
@@ -166,6 +323,40 @@
       <!-- Nơi JS sẽ chèn các bài viết (xếp dọc vì .content-feed là column) -->
       <div id="posts"></div>
     </div>
+<!-- Nút toggle -->
+<button id="toggleSidebar" class="toggle-btn">☰</button>
+
+<!-- Sidebar -->
+<div id="sidebar" class="sidebar">
+  <button class="close-btn" onclick="toggleSidebar()">×</button>
+  <h2>Thông tin cá nhân</h2>
+
+<div style="text-align:center; margin-bottom:15px">
+  <img id="userAvatarImg" 
+       src="https://via.placeholder.com/80" 
+       alt="Avatar" 
+       style="width:80px;height:80px;border-radius:50%;object-fit:cover;border:2px solid #ddd;">
+</div>
+
+
+  <!-- User info -->
+  <div id="userInfo">
+    <p><strong>Tên:</strong> <span id="userName">Khách</span></p>
+    <p><strong>Email:</strong> <span id="userEmail">Chưa đăng nhập</span></p>
+  </div>
+
+  <!-- Progress -->
+  <div style="margin-top:20px">
+    <p><strong>Thám hiểm Việt Nam</strong></p>
+    <div style="background:#eee;border-radius:10px;height:12px;overflow:hidden">
+      <div id="progressBar" style="width:0%;height:100%;background:linear-gradient(90deg,#ff512f,#dd2476);"></div>
+    </div>
+    <p id="progressText" style="margin-top:5px;font-size:14px">0% hoàn thành</p>
+  </div>
+</div>
+
+
+
 
    
   </div>
@@ -412,6 +603,48 @@ fileInput.addEventListener("change", () => {
 
   // initial
   loadPosts();
+  const toggleBtn = document.getElementById("toggleSidebar");
+const closeBtn = document.getElementById("closeSidebar");
+const sidebar = document.getElementById("sidebar");
+
+toggleBtn.addEventListener("click", () => {
+  sidebar.classList.toggle("open");
+});
+
+closeBtn.addEventListener("click", () => {
+  sidebar.classList.remove("open");
+});
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    // Avatar Google
+    if (user.photoURL) {
+      document.getElementById("userAvatarImg").src = user.photoURL;
+    } else {
+      document.getElementById("userAvatarImg").src = "https://via.placeholder.com/80";
+    }
+
+    // Thông tin
+    document.getElementById("userName").textContent = user.displayName || "Người dùng";
+    document.getElementById("userEmail").textContent = user.email;
+
+    // Thanh tiến trình
+    let percent = 65;
+    document.getElementById("progressBar").style.width = percent + "%";
+    document.getElementById("progressText").textContent = percent + "% hoàn thành";
+
+  } else {
+    document.getElementById("userAvatarImg").src = "https://via.placeholder.com/80";
+    document.getElementById("userName").textContent = "Khách";
+    document.getElementById("userEmail").textContent = "Chưa đăng nhập";
+
+    document.getElementById("progressBar").style.width = "0%";
+    document.getElementById("progressText").textContent = "0% hoàn thành";
+  }
+});
+
+
+
+
 </script>
 </body>
 </html>

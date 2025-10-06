@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hello-Vietnam | Danh sách 34 tỉnh / thành</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #f8f9fa;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+      background-color: #fff;
+      border-bottom: 1px solid #ddd;
+    }
+    header .logo {
+      font-weight: 700;
+      color: red;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+    }
+    header .logo img {
+      width: 25px;
+      margin-right: 8px;
+    }
+    header .login {
+      background: orange;
+      border: none;
+      color: #fff;
+      padding: 8px 15px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .hero {
+      position: relative;
+      background: url('images/banner.jpg') center/cover no-repeat fixed;
+      height: 450px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      text-align: center;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,128,0,0.6);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+    .hero h1 {
+      font-size: 38px;
+      font-weight: 800;
+      margin-bottom: 15px;
+    }
+    .hero p {
+      font-size: 18px;
+      font-weight: 400;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .province-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.2s;
+    }
+    .province-card:hover {
+      transform: translateY(-5px);
+    }
+    .province-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .province-card h3 {
+      margin: 12px;
+      font-size: 18px;
+      text-align: center;
+      color: #3b3b98;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg" alt="VN"> Hello-Vietnam
+    </div>
+    <button class="login">Đăng Nhập</button>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>DANH SÁCH 34 TỈNH / THÀNH</h1>
+      <p>Khám phá từng tỉnh thành của Việt Nam — bấm vào ảnh để vào trang chi tiết</p>
+    </div>
+  </section>
+
+  <section class="container">
+    <!-- 34 tỉnh / thành -->
+    <div class="province-card"><img src="images/hanoi.jpg" alt="Hà Nội"><h3>Thành phố Hà Nội</h3></div>
+    <div class="province-card"><img src="images/hochiminh.jpg" alt="Hồ Chí Minh"><h3>Thành phố Hồ Chí Minh</h3></div>
+    <div class="province-card"><img src="images/.jpg" alt="Đà Nẵng"><h3>Thành phố Đà Nẵng</h3></div>
+    <div class="province-card"><img src="images/hue.jpg" alt="Huế"><h3>Thành phố Huế</h3></div>
+    <div class="province-card"><img src="images/haiphong.jpg" alt="Hải Phòng"><h3>Thành phố Hải Phòng</h3></div>
+    <div class="province-card"><img src="images/cantho.jpg" alt="Cần Thơ"><h3>Thành phố Cần Thơ</h3></div>
+    <div class="province-card"><img src="images/quangninh.jpg" alt="Quảng Ninh"><h3>Tỉnh Quảng Ninh</h3></div>
+    <div class="province-card"><img src="images/laocai.jpg" alt="Lào Cai"><h3>Tỉnh Lào Cai</h3></div>
+    <div class="province-card"><img src="images/laichau.jpg" alt="Lai Châu"><h3>Tỉnh Lai Châu</h3></div>
+    <div class="province-card"><img src="images/sonla.jpg" alt="Sơn La"><h3>Tỉnh Sơn La</h3></div>
+    <div class="province-card"><img src="images/dienbien.jpg" alt="Điện Biên"><h3>Tỉnh Điện Biên</h3></div>
+    <div class="province-card"><img src="images/hoabinh.jpg" alt="Hòa Bình"><h3>Tỉnh Hòa Bình</h3></div>
+    <div class="province-card"><img src="images/thanhhoa.jpg" alt="Thanh Hóa"><h3>Tỉnh Thanh Hóa</h3></div>
+    <div class="province-card"><img src="images/nghean.jpg" alt="Nghệ An"><h3>Tỉnh Nghệ An</h3></div>
+    <div class="province-card"><img src="images/hatinh.jpg" alt="Hà Tĩnh"><h3>Tỉnh Hà Tĩnh</h3></div>
+    <div class="province-card"><img src="images/quangbinh.jpg" alt="Quảng Bình"><h3>Tỉnh Quảng Bình</h3></div>
+    <div class="province-card"><img src="images/quangtri.jpg" alt="Quảng Trị"><h3>Tỉnh Quảng Trị</h3></div>
+    <div class="province-card"><img src="images/quangnam.jpg" alt="Quảng Nam"><h3>Tỉnh Quảng Nam</h3></div>
+    <div class="province-card"><img src="images/quangngai.jpg" alt="Quảng Ngãi"><h3>Tỉnh Quảng Ngãi</h3></div>
+    <div class="province-card"><img src="images/binhdinh.jpg" alt="Bình Định"><h3>Tỉnh Bình Định</h3></div>
+    <div class="province-card"><img src="images/phuyen.jpg" alt="Phú Yên"><h3>Tỉnh Phú Yên</h3></div>
+    <div class="province-card"><img src="images/khanhhoa.jpg" alt="Khánh Hòa"><h3>Tỉnh Khánh Hòa</h3></div>
+    <div class="province-card"><img src="images/ninhthuan.jpg" alt="Ninh Thuận"><h3>Tỉnh Ninh Thuận</h3></div>
+    <div class="province-card"><img src="images/binhthuan.jpg" alt="Bình Thuận"><h3>Tỉnh Bình Thuận</h3></div>
+    <div class="province-card"><img src="images/daklak.jpg" alt="Đắk Lắk"><h3>Tỉnh Đắk Lắk</h3></div>
+    <div class="province-card"><img src="images/daknong.jpg" alt="Đắk Nông"><h3>Tỉnh Đắk Nông</h3></div>
+    <div class="province-card"><img src="images/gialai.jpg" alt="Gia Lai"><h3>Tỉnh Gia Lai</h3></div>
+    <div class="province-card"><img src="images/kon-tum.jpg" alt="Kon Tum"><h3>Tỉnh Kon Tum</h3></div>
+    <div class="province-card"><img src="images/bariavungtau.jpg" alt="Bà Rịa - Vũng Tàu"><h3>Tỉnh Bà Rịa - Vũng Tàu</h3></div>
+    <div class="province-card"><img src="images/dongnai.jpg" alt="Đồng Nai"><h3>Tỉnh Đồng Nai</h3></div>
+    <div class="province-card"><img src="images/binhduong.jpg" alt="Bình Dương"><h3>Tỉnh Bình Dương</h3></div>
+    <div class="province-card"><img src="images/tayninh.jpg" alt="Tây Ninh"><h3>Tỉnh Tây Ninh</h3></div>
+    <div class="province-card"><img src="images/angiang.jpg" alt="An Giang"><h3>Tỉnh An Giang</h3></div>
+    <div class="province-card"><img src="images/kiengiang.jpg" alt="Kiên Giang"><h3>Tỉnh Kiên Giang</h3></div>
+    <div class="province-card"><img src="images/camau.jpg" alt="Cà Mau"><h3>Tỉnh Cà Mau</h3></div>
+  </section>
+</body>
+</html>
