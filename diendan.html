@@ -48,12 +48,7 @@
       gap: 20px;
     }
 
-    .sidebar {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
+
 
     .module-card {
       background: #fff;
@@ -116,24 +111,7 @@
       .main-layout { flex-direction: column; }
       .content-feed, .sidebar { width: 100%; }
     }
-    /* Sidebar mặc định ẩn */
-.sidebar {
-  position: fixed;
-  top: 0;
-  right: -300px; /* ẩn ra ngoài màn hình */
-  width: 300px;
-  height: 100%;
-  background: #fff;
-  box-shadow: -2px 0 5px rgba(0,0,0,0.2);
-  transition: right 0.3s ease;
-  padding: 20px;
-  z-index: 1000;
-}
 
-/* Khi mở thì trượt vào */
-.sidebar.open {
-  right: 0;
-}
 
 .sidebar-header {
   display: flex;
@@ -181,22 +159,7 @@
   cursor: pointer;
   z-index: 1100;
 }
-.sidebar {
-  position: fixed;
-  top: 0;
-  right: -280px; /* ẩn */
-  width: 280px;
-  height: 100%;
-  background: #fff;
-  box-shadow: -2px 0 8px rgba(0,0,0,0.2);
-  transition: right 0.3s ease;
-  padding: 16px;
-  z-index: 1000;
-}
 
-.sidebar.open {
-  right: 0;
-}
 
 .sidebar-header {
   display: flex;
@@ -244,22 +207,41 @@
   background: linear-gradient(to right, #e63946, #ff9800);
   border-radius: 6px;
 }
-.sidebar {
+/* Sidebar ban đầu ẩn đi */
+.toggle-btn {
+  position: fixed;
+  top: 100px;
+  right: 20px;
+  background: #e63946;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  z-index: 2000; /* 🔥 tăng cao hơn sidebar */
+}
+
+/* Sidebar ban đầu ẩn đi */
+#sidebar {
   position: fixed;
   top: 0;
-  right: -300px; /* Ẩn ban đầu */
+  right: 0;
   width: 300px;
   height: 100%;
   background: #fff;
-  box-shadow: -2px 0 8px rgba(0,0,0,0.2);
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2);
   padding: 20px;
-  transition: right 0.3s ease;
-  z-index: 1000;
+  transform: translateX(100%); /* Ẩn ra ngoài khung nhìn */
+  transition: transform 0.3s ease;
+  z-index: 1500; /* thấp hơn toggle */
 }
 
-.sidebar.open {
-  right: 0;
+/* Khi mở */
+#sidebar.open {
+  transform: translateX(0);
+  z-index: 2500; /* 🔥 đảm bảo nằm trên nút khi mở */
 }
+
 
 .close-btn {
   position: absolute;
@@ -270,7 +252,6 @@
   font-size: 20px;
   cursor: pointer;
 }
-
 
 
   </style>
@@ -328,7 +309,7 @@
 
 <!-- Sidebar -->
 <div id="sidebar" class="sidebar">
-  <button class="close-btn" onclick="toggleSidebar()">×</button>
+  <button id="closeSidebar" class="close-btn">×</button>
   <h2>Thông tin cá nhân</h2>
 
 <div style="text-align:center; margin-bottom:15px">
@@ -362,14 +343,12 @@
   </div>
 
   <!-- Firebase + logic -->
-  <script type="module">
+<script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
-  import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
-  import { getFirestore, collection, addDoc, getDocs, serverTimestamp, query, orderBy, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
+  import { getAuth, GoogleAuthProvider, signInWithPopup, signInWithRedirect, getRedirectResult, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
+  import { getFirestore, collection, addDoc, getDocs, serverTimestamp, query, orderBy, deleteDoc, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
   import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-storage.js";
-  
-  
-  // config Firebase của bạn
+
   const firebaseConfig = {
     apiKey: "AIzaSyDIlrYG0B2dYtL29TSYFphtqFXtz-kefqc",
     authDomain: "hello-vietnam-5331d.firebaseapp.com",
@@ -380,60 +359,64 @@
     measurementId: "G-1K0LV7SLL7"
   };
 
-  // init
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
   const provider = new GoogleAuthProvider();
-  // bắt user phải chọn account mỗi lần login (tránh "mặc định acc")
   provider.setCustomParameters({ prompt: "select_account" });
-
   const db = getFirestore(app);
   const storage = getStorage(app);
 
-  // UI
+  // Các phần tử
   const loginBtn = document.getElementById("loginBtn");
   const logoutBtn = document.getElementById("logoutBtn");
   const userAvatar = document.getElementById("userAvatar");
   const postForm = document.getElementById("postForm");
   const fileInput = document.getElementById("fileInput");
   const postsContainer = document.getElementById("posts");
-  // Hiển thị ảnh preview trước khi đăng
-fileInput.addEventListener("change", () => {
-  const file = fileInput.files[0];
-  const previewContainer = document.getElementById("previewContainer");
-  const previewImage = document.getElementById("previewImage");
 
-  if (file) {
-    const reader = new FileReader();
-    reader.onload = e => {
-      previewImage.src = e.target.result;
-      previewContainer.style.display = "block";
-    };
-    reader.readAsDataURL(file);
-  } else {
-    previewContainer.style.display = "none";
-    previewImage.src = "";
+  // Preview ảnh khi chọn
+  fileInput.addEventListener("change", () => {
+    const file = fileInput.files[0];
+    const previewContainer = document.getElementById("previewContainer");
+    const previewImage = document.getElementById("previewImage");
+
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = e => {
+        previewImage.src = e.target.result;
+        previewContainer.style.display = "block";
+      };
+      reader.readAsDataURL(file);
+    } else {
+      previewContainer.style.display = "none";
+      previewImage.src = "";
+    }
+  });
+
+  function escapeHtml(text) {
+    if (!text) return "";
+    return String(text).replace(/[&<>"']/g, (m) => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[m]));
   }
-});
 
-
-  function escapeHtml(text){
-    if(!text) return "";
-    return String(text).replace(/[&<>"']/g, function(m){
-      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m];
-    });
-  }
-
-  // login / logout
+  // Đăng nhập
   loginBtn.addEventListener("click", async () => {
     try {
-      await signInWithPopup(auth, provider);
+      const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+      if (isMobile) await signInWithRedirect(auth, provider);
+      else await signInWithPopup(auth, provider);
     } catch (err) {
       console.error("Login error:", err);
       alert("Lỗi đăng nhập: " + err.message);
     }
   });
 
+  // Đăng xuất
   logoutBtn.addEventListener("click", async () => {
     try {
       await signOut(auth);
@@ -442,96 +425,9 @@ fileInput.addEventListener("change", () => {
     }
   });
 
-  // Khi trạng thái auth thay đổi: cập nhật UI và reload posts để nút XÓA hiển thị đúng
-   onAuthStateChanged(auth, async (user) => {
-    if (user) {
-      loginBtn.style.display = "none";
-      logoutBtn.style.display = "inline-block";
-      userAvatar.style.display = "flex";
-      userAvatar.style.backgroundImage = `url(${user.photoURL})`;
-      userAvatar.style.backgroundSize = "cover";
-      userAvatar.style.backgroundColor = "transparent";
-      userAvatar.textContent = "";
-
-      // 🔹 Cập nhật user-card
-      document.getElementById("userName").innerText = user.displayName || "Ẩn danh";
-      document.getElementById("userEmail").innerText = user.email || "";
-      document.getElementById("userAvatar").src = user.photoURL || "default.png";
-
-      // lấy thêm dữ liệu từ Firestore (rank, bio…)
-      const userDocRef = doc(db, "users", user.uid);
-      const userSnap = await getDoc(userDocRef);
-      if (userSnap.exists()) {
-        const data = userSnap.data();
-        document.getElementById("userRank").innerText = "Hạng: " + (data.rank || "Chưa có");
-      }
-    } else {
-      loginBtn.style.display = "inline-block";
-      logoutBtn.style.display = "none";
-      userAvatar.style.display = "flex";
-      userAvatar.style.backgroundImage = "";
-      userAvatar.style.backgroundColor = "#ccc";
-      userAvatar.textContent = "?";
-
-      // reset user-card
-      document.getElementById("userName").innerText = "Khách";
-      document.getElementById("userEmail").innerText = "";
-      document.getElementById("userAvatar").src = "default.png";
-      document.getElementById("userRank").innerText = "Hạng: -";
-    }
-    // refresh danh sách posts để cập nhật nút xóa (owner thay đổi)
-    loadPosts();
-  });
-
-  // SUBMIT POST (lưu userId để rules kiểm tra)
-  postForm.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const title = document.getElementById("title").value.trim();
-    const content = document.getElementById("content").value.trim();
-    const file = fileInput.files[0];
-
-    if(!title || !content){
-      alert("Vui lòng nhập tiêu đề và nội dung");
-      return;
-    }
-
-    // bắt login trước khi đăng (theo rules)
-    if (!auth.currentUser) {
-      alert("Bạn cần đăng nhập để đăng bài.");
-      return;
-    }
-
-    try {
-      let imageUrl = "";
-      if (file) {
-        const path = "posts/" + Date.now() + "_" + file.name;
-        const storageRef = ref(storage, path);
-        await uploadBytes(storageRef, file);
-        imageUrl = await getDownloadURL(storageRef);
-      }
-
-      await addDoc(collection(db, "posts"), {
-        title,
-        content,
-        imageUrl,
-        createdAt: serverTimestamp(),
-        userId: auth.currentUser.uid, // quan trọng cho rules
-        user: auth.currentUser.displayName || "Ẩn danh",
-        avatar: auth.currentUser.photoURL || ""
-      });
-
-      postForm.reset();
-      loadPosts();
-      alert("Đăng bài thành công!");
-    } catch (err) {
-      console.error("Lỗi đăng bài:", err);
-      alert("Lỗi khi đăng bài: " + err.message);
-    }
-  });
-
-  // LOAD POSTS + hiển thị nút XÓA (chỉ cho chủ bài thấy nút)
-  async function loadPosts(){
-    postsContainer.innerHTML = ""; // clear
+  // Load danh sách bài viết
+  async function loadPosts() {
+    postsContainer.innerHTML = "";
     try {
       const q = query(collection(db, "posts"), orderBy("createdAt", "desc"));
       const snap = await getDocs(q);
@@ -540,22 +436,19 @@ fileInput.addEventListener("change", () => {
         return;
       }
 
-      // build HTML
       snap.forEach(docSnap => {
         const data = docSnap.data();
         const id = docSnap.id;
         const timeStr = (data.createdAt && data.createdAt.toDate) ? data.createdAt.toDate().toLocaleString() : "";
-
-        // nút Xóa chỉ render nếu hiện tại đang có user đăng nhập **và** là chủ bài
         const isOwner = auth.currentUser && (auth.currentUser.uid === data.userId);
 
         postsContainer.innerHTML += `
           <div class="post-card" data-id="${id}">
-            ${data.imageUrl ? `<div class="post-image"><img src="${escapeHtml(data.imageUrl)}" alt=""></div>` : ''}
+            ${data.imageUrl ? `<div class="post-image"><img src="${escapeHtml(data.imageUrl)}" alt=""></div>` : ""}
             <div class="post-header">
               <img src="${escapeHtml(data.avatar || 'https://i.pravatar.cc/150')}" alt="avatar" class="avatar">
               <div>
-                <div class="username">${escapeHtml(data.user || 'Ẩn danh')}</div>
+                <div class="username">${escapeHtml(data.user || "Ẩn danh")}</div>
                 <div class="muted">${escapeHtml(timeStr)}</div>
               </div>
             </div>
@@ -572,22 +465,17 @@ fileInput.addEventListener("change", () => {
         `;
       });
 
-      // gắn event cho các nút Xóa vừa tạo
       document.querySelectorAll(".deleteBtn").forEach(btn => {
-        btn.addEventListener("click", async (ev) => {
-          const postId = btn.getAttribute("data-id");
+        btn.addEventListener("click", async () => {
+          const postId = btn.dataset.id;
           if (!auth.currentUser) {
             alert("Bạn cần đăng nhập để xóa.");
             return;
           }
-          // an extra client-side check (Firestore rules sẽ kiểm tra server-side)
-          // lấy userId trong document trước khi xóa để chắc chắn (optional)
           if (!confirm("Bạn có chắc muốn xóa bài này không?")) return;
           try {
             await deleteDoc(doc(db, "posts", postId));
-            // remove card khỏi DOM ngay lập tức (hoặc reload)
-            const card = postsContainer.querySelector(`.post-card[data-id="${postId}"]`);
-            if (card) card.remove();
+            btn.closest(".post-card").remove();
           } catch (err) {
             console.error("Lỗi khi xóa:", err);
             alert("Không thể xóa bài: " + err.message);
@@ -597,50 +485,53 @@ fileInput.addEventListener("change", () => {
 
     } catch (err) {
       console.error("Lỗi load bài:", err);
-      postsContainer.innerHTML = '<div class="module-card muted">Lỗi khi tải bài viết. Xem console để biết chi tiết.</div>';
+      postsContainer.innerHTML = '<div class="module-card muted">Lỗi khi tải bài viết.</div>';
     }
   }
 
-  // initial
-  loadPosts();
-  const toggleBtn = document.getElementById("toggleSidebar");
-const closeBtn = document.getElementById("closeSidebar");
-const sidebar = document.getElementById("sidebar");
+  // === FIX CHÍNH: xử lý sidebar ===
+  window.addEventListener("load", () => {
+    const toggleBtn = document.getElementById("toggleSidebar");
+    const closeBtn = document.getElementById("closeSidebar");
+    const sidebar = document.getElementById("sidebar");
 
-toggleBtn.addEventListener("click", () => {
-  sidebar.classList.toggle("open");
-});
+    if (!toggleBtn || !closeBtn || !sidebar) {
+      console.error("Không tìm thấy phần tử sidebar hoặc nút toggle!");
+      return;
+    }
 
-closeBtn.addEventListener("click", () => {
-  sidebar.classList.remove("open");
-});
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    // Avatar Google
-    if (user.photoURL) {
-      document.getElementById("userAvatarImg").src = user.photoURL;
+    toggleBtn.addEventListener("click", () => {
+      sidebar.classList.toggle("open");
+    });
+
+    closeBtn.addEventListener("click", () => {
+      sidebar.classList.remove("open");
+    });
+  });
+
+  // Khi đăng nhập / đăng xuất
+  onAuthStateChanged(auth, async (user) => {
+    if (user) {
+      loginBtn.style.display = "none";
+      logoutBtn.style.display = "inline-block";
+      userAvatar.style.display = "flex";
+      userAvatar.style.backgroundImage = `url(${user.photoURL})`;
+
+      document.getElementById("userName").innerText = user.displayName || "Ẩn danh";
+      document.getElementById("userEmail").innerText = user.email || "";
+      document.getElementById("userAvatar").src = user.photoURL || "default.png";
+
     } else {
-      document.getElementById("userAvatarImg").src = "https://via.placeholder.com/80";
+      loginBtn.style.display = "inline-block";
+      logoutBtn.style.display = "none";
+      userAvatar.style.backgroundImage = "";
+      document.getElementById("userName").innerText = "Khách";
+      document.getElementById("userEmail").innerText = "";
+      document.getElementById("userAvatar").src = "default.png";
     }
 
-    // Thông tin
-    document.getElementById("userName").textContent = user.displayName || "Người dùng";
-    document.getElementById("userEmail").textContent = user.email;
-
-    // Thanh tiến trình
-    let percent = 65;
-    document.getElementById("progressBar").style.width = percent + "%";
-    document.getElementById("progressText").textContent = percent + "% hoàn thành";
-
-  } else {
-    document.getElementById("userAvatarImg").src = "https://via.placeholder.com/80";
-    document.getElementById("userName").textContent = "Khách";
-    document.getElementById("userEmail").textContent = "Chưa đăng nhập";
-
-    document.getElementById("progressBar").style.width = "0%";
-    document.getElementById("progressText").textContent = "0% hoàn thành";
-  }
-});
+    loadPosts();
+  });
 
 
 
