@@ -172,6 +172,26 @@
         </p>
       </div>
     </section>
+    <button onclick="toggleMap('map-khanhhoa')" 
+        class="mt-4 bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-full flex items-center space-x-2 mx-auto shadow-lg">
+  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c1.104 0 2-.896 2-2s-.896-2-2-2-2 .896-2 2 .896 2 2 2zM12 22s8-7.58 8-13a8 8 0 10-16 0c0 5.42 8 13 8 13z" />
+  </svg>
+  <span>Xem vị trí Khánh Hòa</span>
+</button>
+
+<div id="map-khanhhoa" class="hidden mt-6 w-full flex justify-center">
+  <iframe 
+    src="https://www.google.com/maps?q=Khánh+Hòa,Vietnam&hl=vi&z=11&output=embed"
+    width="600" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+</div>
+<script>
+  function toggleMap(id) {
+    const map = document.getElementById(id);
+    map.classList.toggle('hidden');
+  }
+</script>
+
 
     <!-- Section: Địa điểm vui chơi -->
     <section class="mb-16">
