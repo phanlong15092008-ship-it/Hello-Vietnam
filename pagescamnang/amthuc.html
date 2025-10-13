@@ -7,6 +7,9 @@
 
   <!-- Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
 
   <style>
     /* Reset & base */
@@ -28,76 +31,33 @@
     }
 
 /* ---------- Header styles ---------- */
-.site-header {
-  width: 100%;                     /* full-width thanh trên cùng */
-  background: #fff;
-  position: sticky;                /* cố định khi cuộn */
-  top: 0;
-  z-index: 1000;
-  /* nếu muốn 1 đường viền mảnh phía dưới giống ảnh: */
-  border-bottom: 3px solid #2b70b5; /* màu xanh/đen bạn muốn */
-}
+ :root {
+      --primary: #FF5722;
+      --primary-hover: #E64A19;
+      --bg: #f9fafb;
+      --text: #111827;
+      --secondary-text: #4b5563;
+      --card-bg: #fff;
+      --filter-bg: #FFFFFF;
+      --border-color: #e5e7eb;
+    }
+    body { margin:0; font-family:'Inter',sans-serif; background:var(--bg); color:var(--text); }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-.header-inner {
-  max-width: 1200px;               /* độ rộng nội dung chính */
-  margin: 0 auto;                  /* căn giữa phần inner */
-  padding: 10px 40px;              /* khoảng cách trái/phải -> chỉnh 40px để logo và nút xa đều */
-  display: flex;
-  justify-content: space-between;  /* đẩy logo sang trái, actions sang phải */
-  align-items: center;             /* căn giữa theo chiều dọc */
-  gap: 12px;                       /* khoảng cách giữa các phần con */
-  height: 60px;                    /* chiều cao header (tuỳ chỉnh) */
-}
+    /* NAVBAR */
+    .navbar { display:flex; justify-content:space-between; align-items:center; padding:12px 24px; background:var(--card-bg); border-bottom:1px solid var(--border-color); position:sticky; top:0; z-index:1000; }
+    .logo { display:flex; align-items:center; font-weight:800; font-size:20px; gap:8px; color:var(--primary); text-decoration:none; }
+    .flag { width:24px; height:24px; border-radius:2px; }
+    .navbar nav a { margin:0 12px; text-decoration:none; color:var(--secondary-text); font-weight:600; transition:0.2s; display:inline-flex; align-items:center; gap:5px;}
+    .navbar nav a:hover, .navbar nav a.active { color:var(--primary); }
+    .navbar nav a.active { font-weight:700; position:relative; }
+    .navbar nav a.active::after { content:''; position:absolute; bottom:-15px; left:0; width:100%; height:3px; background:var(--primary); border-radius:2px; }
+    .actions { display:flex; align-items:center; gap:10px; }
+    .btn { border:none; padding:8px 16px; border-radius:20px; cursor:pointer; font-weight:600; font-size:14px; transition:0.2s; text-decoration:none; display:inline-block; }
+    .btn.primary { background:var(--primary); color:#fff; white-space:nowrap; }
+    .btn.primary:hover { background:var(--primary-hover); }
+    .icon-btn { background:none; border:none; font-size:24px; cursor:pointer; color:var(--secondary-text); padding:0; }
 
-/* logo */
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-weight: 700;
-  color: #d32f2f;
-  font-size: 18px;
-}
-.logo img {
-  width: 24px;
-  height: 16px;
-  display: block;
-}
-
-/* hành động bên phải */
-.header-actions {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-/* nút đăng nhập: cố định chiều cao để căn đều với icon */
-.login-btn {
-  background: #f7931e;
-  color: #fff;
-  border: none;
-  padding: 8px 18px;
-  border-radius: 999px; /* full-round */
-  height: 36px;        /* đảm bảo cao bằng user-icon */
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  font-weight: 600;
-}
-
-/* icon user */
-.user-icon {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: #495057;
-  color: #fff;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-}
 
 /* --- Responsive: giảm padding khi màn hình nhỏ --- */
 @media (max-width: 768px) {
@@ -220,23 +180,15 @@
 </head>
 <body>
 
-<!-- HEADER -->
-<header class="site-header">
-  <div class="header-inner">
-    <!-- Logo (click về trang chủ) -->
-    <a href="../index.html" class="logo">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg" alt="VN">
-      <span>Hello-Vietnam</span>
-    </a>
-
-    <!-- Nút và icon -->
-    <div class="header-actions">
-      <a href="login.html" class="login-btn">Đăng Nhập</a>
-      <a href="profile.html" class="user-icon">👤</a>
-    </div>
+ <header class="navbar">
+  <a href="../index.html" class="logo">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg" alt="VN Flag" class="flag" />
+    <span>Hello-Vietnam</span>
+  </a>
+  <div class="actions">
+    <a href="#" class="btn primary">Đăng Nhập</a>
+    <button class="icon-btn"><i class="fa-solid fa-user-circle"></i></button>
   </div>
-</header>
-
 </header>
 
   <!-- Hero -->

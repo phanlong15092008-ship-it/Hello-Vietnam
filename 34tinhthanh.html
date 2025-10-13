@@ -1,159 +1,165 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hello-Vietnam | Danh sách 34 tỉnh / thành</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hello-Vietnam | Danh sách 34 Tỉnh / Thành</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background-color: #f8f9fa;
+    body { font-family: Arial, sans-serif; background:#f8f8f8; margin:0; padding:0; }
+    .container { max-width:1200px; margin:0 auto; padding:0 15px; }
+    :root { --destination-color:#28a745; }
+
+    /* HEADER */
+    .site-header {
+      width:100%; background:#fff; border-bottom:3px solid #2b70b5;
+      position:sticky; top:0; z-index:1000;
     }
-    header {
+    .header-inner {
+      max-width:1200px; margin:0 auto; padding:10px 40px;
+      display:flex; justify-content:space-between; align-items:center;
+      height:60px;
+    }
+    .logo { display:flex; align-items:center; gap:8px; font-weight:700; color:#d32f2f; font-size:18px; }
+    .logo img { width:24px; height:16px; }
+    .login-btn {
+      background:#f7931e; color:#fff; border:none; padding:8px 18px;
+      border-radius:999px; cursor:pointer; font-weight:600;
+    }
+    .header-right {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      padding: 10px 20px;
-      background-color: #fff;
-      border-bottom: 1px solid #ddd;
+      gap: 10px;
     }
-    header .logo {
-      font-weight: 700;
-      color: red;
-      font-size: 20px;
-      display: flex;
-      align-items: center;
-    }
-    header .logo img {
-      width: 25px;
-      margin-right: 8px;
-    }
-    header .login {
-      background: orange;
-      border: none;
-      color: #fff;
-      padding: 8px 15px;
-      border-radius: 20px;
+    .user-icon {
+      font-size: 28px;
+      color: #3c3c3c;
       cursor: pointer;
-      font-weight: 600;
     }
-    .hero {
-      position: relative;
-      background: url('images/banner.jpg') center/cover no-repeat fixed;
-      height: 450px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      text-align: center;
+    .user-icon:hover { color: #f7931e; }
+
+    /* HERO */
+    .hero-section {
+      background:url('/images/camnangmoi2.jpg') center/cover no-repeat;
+      color:#fff; padding:80px 0; text-align:center; position:relative; min-height:300px;
     }
-    .hero::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,128,0,0.6);
+    .hero-overlay { position:absolute; top:0; left:0; right:0; bottom:0; background:rgba(40,167,69,0.75); }
+    .hero-content { position:relative; z-index:2; }
+    .hero-title { font-size:3.5em; margin-bottom:10px; text-shadow:2px 2px 4px rgba(0,0,0,0.5); }
+    .hero-subtitle { font-size:1.2em; max-width:900px; margin:auto; }
+
+    /* SECTION */
+    .section-title {
+      font-size:1.8em; font-weight:bold; color:var(--destination-color);
+      margin:40px 0 25px; border-bottom:2px solid #eee; padding-bottom:10px;
     }
-    .hero-content {
-      position: relative;
-      z-index: 1;
+
+    /* GRID */
+    .destination-grid {
+      display:grid; grid-template-columns:repeat(3,1fr); gap:30px; margin-bottom:50px;
     }
-    .hero h1 {
-      font-size: 38px;
-      font-weight: 800;
-      margin-bottom: 15px;
+
+    /* CARD */
+    .destination-card {
+      background:#fff; border-radius:10px; overflow:hidden;
+      box-shadow:0 4px 10px rgba(0,0,0,0.05);
+      transition:.3s; cursor:pointer;
+      display:flex; flex-direction:column; height: 350px;
     }
-    .hero p {
-      font-size: 18px;
-      font-weight: 400;
+    .destination-card:hover {
+      transform:translateY(-5px);
+      box-shadow:0 8px 15px rgba(0,0,0,0.1);
     }
-    .container {
-      max-width: 1200px;
-      margin: 40px auto;
-      padding: 0 20px;
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 20px;
+    .card-image {
+      width:100%; height:180px; object-fit:cover; display:block;
     }
-    .province-card {
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      overflow: hidden;
-      transition: transform 0.2s;
+    .card-content { flex:1; padding:15px; display:flex; flex-direction:column; justify-content:space-between; }
+    .card-title { font-size:1.1em; font-weight:bold; margin-bottom:5px; }
+    .card-description { font-size:0.9em; color:#666; margin-bottom:10px; }
+    .card-tag {
+      display:inline-block; background:#f0f0f0; color:var(--destination-color);
+      padding:5px 10px; border-radius:15px; font-size:0.8em; margin-right:5px;
     }
-    .province-card:hover {
-      transform: translateY(-5px);
+
+    /* RESPONSIVE */
+    @media(max-width:992px){
+      .destination-grid { grid-template-columns:repeat(2,1fr); }
     }
-    .province-card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-    }
-    .province-card h3 {
-      margin: 12px;
-      font-size: 18px;
-      text-align: center;
-      color: #3b3b98;
+    @media(max-width:576px){
+      .hero-title { font-size:2.5em; }
+      .destination-grid { grid-template-columns:1fr; }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="logo">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg" alt="VN"> Hello-Vietnam
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="../index.html" class="logo">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg" alt="VN">
+        <span>Hello-Vietnam</span>
+      </a>
+      <div class="header-right">
+        <button class="login-btn">Đăng Nhập</button>
+        <i class="fas fa-user-circle user-icon"></i>
+      </div>
     </div>
-    <button class="login">Đăng Nhập</button>
   </header>
 
-  <section class="hero">
-    <div class="hero-content">
-      <h1>DANH SÁCH 34 TỈNH / THÀNH</h1>
-      <p>Khám phá từng tỉnh thành của Việt Nam — bấm vào ảnh để vào trang chi tiết</p>
+  <!-- HERO -->
+  <section class="hero-section">
+    <div class="hero-content container">
+      <h1 class="hero-title">DANH SÁCH 34 TỈNH / THÀNH</h1>
+      <p class="hero-subtitle">Khám phá Việt Nam sau khi sáp nhập các đơn vị hành chính — 34 điểm đến đại diện ba miền.</p>
     </div>
   </section>
 
-  <section class="container">
-    <!-- 34 tỉnh / thành -->
-    <a href="hanoi.html"><div class="province-card"><img src="images/hanoi.jpg" alt="Hà Nội"><h3>Thành phố Hà Nội</h3></div></a>
-    <a href="hochiminh.html"><div class="province-card"><img src="images/hochiminh.jpg" alt="Hồ Chí Minh"><h3>Thành phố Hồ Chí Minh</h3></div></a>
-    <a href="danang.html"><div class="province-card"><img src="images/danang.jpg" alt="Đà Nẵng"><h3>Thành phố Đà Nẵng</h3></div></a>
-    <a href="hue.html"><div class="province-card"><img src="images/hue.jpg" alt="Huế"><h3>Thành phố Huế</h3></div></a>
-    <a href="haiphong.html"><div class="province-card"><img src="images/haiphong.jpg" alt="Hải Phòng"><h3>Thành phố Hải Phòng</h3></div></a>
-    <a href="cantho.html"><div class="province-card"><img src="images/cantho.jpg" alt="Cần Thơ"><h3>Thành phố Cần Thơ</h3></div></a>
-    <a href="quangninh.html"><div class="province-card"><img src="images/quangninh.jpg" alt="Quảng Ninh"><h3>Tỉnh Quảng Ninh</h3></div></a>
-    <a href="laocai.html"><div class="province-card"><img src="images/laocai.jpg" alt="Lào Cai"><h3>Tỉnh Lào Cai</h3></div></a>
-    <a href="laichau.html"><div class="province-card"><img src="images/laichau.jpg" alt="Lai Châu"><h3>Tỉnh Lai Châu</h3></div></a>
-    <a href="sonla.html"><div class="province-card"><img src="images/sonla.jpg" alt="Sơn La"><h3>Tỉnh Sơn La</h3></div></a>
-    <a href="dienbien.html"><div class="province-card"><img src="images/dienbien.jpg" alt="Điện Biên"><h3>Tỉnh Điện Biên</h3></div></a>
-    <a href="hoabinh.html"><div class="province-card"><img src="images/hoabinh.jpg" alt="Hòa Bình"><h3>Tỉnh Hòa Bình</h3></div></a>
-    <a href="thanhhoa.html"><div class="province-card"><img src="images/thanhhoa.jpg" alt="Thanh Hóa"><h3>Tỉnh Thanh Hóa</h3></div></a>
-    <a href="nghean.html"><div class="province-card"><img src="images/nghean.jpg" alt="Nghệ An"><h3>Tỉnh Nghệ An</h3></div></a>
-    <a href="hatinh.html"><div class="province-card"><img src="images/hatinh.jpg" alt="Hà Tĩnh"><h3>Tỉnh Hà Tĩnh</h3></div></a>
-    <a href="quangbinh.html"><div class="province-card"><img src="images/quangbinh.jpg" alt="Quảng Bình"><h3>Tỉnh Quảng Bình</h3></div></a>
-    <a href="quangtri.html"><div class="province-card"><img src="images/quangtri.jpg" alt="Quảng Trị"><h3>Tỉnh Quảng Trị</h3></div></a>
-    <a href="quangnam.html"><div class="province-card"><img src="images/quangnam.jpg" alt="Quảng Nam"><h3>Tỉnh Quảng Nam</h3></div></a>
-    <a href="quangngai.html"><div class="province-card"><img src="images/quangngai.jpg" alt="Quảng Ngãi"><h3>Tỉnh Quảng Ngãi</h3></div></a>
-    <a href="binhdinh.html"><div class="province-card"><img src="images/binhdinh.jpg" alt="Bình Định"><h3>Tỉnh Bình Định</h3></div></a>
-    <a href="phuyen.html"><div class="province-card"><img src="images/phuyen.jpg" alt="Phú Yên"><h3>Tỉnh Phú Yên</h3></div></a>
-    <a href="khanhhoa.html"><div class="province-card"><img src="images/khanhhoa.jpg" alt="Khánh Hòa"><h3>Tỉnh Khánh Hòa</h3></div></a>
-    <a href="ninhthuan.html"><div class="province-card"><img src="images/ninhthuan.jpg" alt="Ninh Thuận"><h3>Tỉnh Ninh Thuận</h3></div></a>
-    <a href="binhthuan.html"><div class="province-card"><img src="images/binhthuan.jpg" alt="Bình Thuận"><h3>Tỉnh Bình Thuận</h3></div></a>
-    <a href="daklak.html"><div class="province-card"><img src="images/daklak.jpg" alt="Đắk Lắk"><h3>Tỉnh Đắk Lắk</h3></div></a>
-    <a href="daknong.html"><div class="province-card"><img src="images/daknong.jpg" alt="Đắk Nông"><h3>Tỉnh Đắk Nông</h3></div></a>
-    <a href="gialai.html"><div class="province-card"><img src="images/gialai.jpg" alt="Gia Lai"><h3>Tỉnh Gia Lai</h3></div></a>
-    <a href="kontum.html"><div class="province-card"><img src="images/kon-tum.jpg" alt="Kon Tum"><h3>Tỉnh Kon Tum</h3></div></a>
-    <a href="bariavungtau.html"><div class="province-card"><img src="images/bariavungtau.jpg" alt="Bà Rịa - Vũng Tàu"><h3>Tỉnh Bà Rịa - Vũng Tàu</h3></div></a>
-    <a href="dongnai.html"><div class="province-card"><img src="images/dongnai.jpg" alt="Đồng Nai"><h3>Tỉnh Đồng Nai</h3></div></a>
-    <a href="binhduong.html"><div class="province-card"><img src="images/binhduong.jpg" alt="Bình Dương"><h3>Tỉnh Bình Dương</h3></div></a>
-    <a href="tayninh.html"><div class="province-card"><img src="images/tayninh.jpg" alt="Tây Ninh"><h3>Tỉnh Tây Ninh</h3></div></a>
-    <a href="angiang.html"><div class="province-card"><img src="images/angiang.jpg" alt="An Giang"><h3>Tỉnh An Giang</h3></div></a>
-    <a href="kiengiang.html"><div class="province-card"><img src="images/kiengiang.jpg" alt="Kiên Giang"><h3>Tỉnh Kiên Giang</h3></div></a>
-    <a href="camau.html"><div class="province-card"><img src="images/camau.jpg" alt="Cà Mau"><h3>Tỉnh Cà Mau</h3></div></a>
-  </section>
-</body>
-</html>
+  <div class="container">
+
+    <!-- MIỀN BẮC -->
+    <h2 class="section-title">Miền Bắc</h2>
+    <div class="destination-grid">
+      <div class="destination-card"><img src="/images/hn.jpg" class="card-image"><div class="card-content"><h3 class="card-title">Hà Nội</h3><p class="card-description">Thủ đô nghìn năm văn hiến.</p><span class="card-tag">Miền Bắc</span></div></div>
+      <div class="destination-card"><img src="/images/hue.jpg" class="card-image"><div class="card-content"><h3 class="card-title">Hải Phòng</h3><p class="card-description">Thành phố cảng sôi động.</p><span class="card-tag">Miền Bắc</span></div></div>
+      <div class="destination-card"><img src="/images/quangninh.jpg" class="card-image"><div class="card-content"><h3 class="card-title">Quảng Ninh</h3><p class="card-description">Nơi có vịnh Hạ Long kỳ quan thế giới.</p><span class="card-tag">Miền Bắc</span></div></div>
+      <div class="destination-card"><img src="/images/laocai.jpg" class="card-image"><div class="card-content"><h3 class="card-title">Lào Cai</h3><p class="card-description">Sáp nhập Lào Cai & Yên Bái.</p><span class="card-tag">Miền Bắc</span></div></div>
+      <div class="destination-card"><img src="/images/sonla.jpg" class="card-image"><div class="card-content"><h3 class="card-title">Sơn La</h3><p class="card-description">Vùng núi Tây Bắc hùng vĩ.</p><span class="card-tag">Miền Bắc</span></div></div>
+      <div class="destination-card"><img src="/images/tuyenquang.jpg" class="card-image"><div class="card-content"><h3 class="card-title">Tuyên Quang</h3><p class="card-description">Sáp nhập Hà Giang & Tuyên Quang.</p><span class="card-tag">Miền Bắc</span></div></div>
+      <div class="destination-card"><img src="/images/thainguyen.jpg" class="card-image"><div class="card-content"><h3 class="card-title">Thái Nguyên</h3><p class="card-description">Sáp nhập Thái Nguyên & Bắc Kạn.</p><span class="card-tag">Miền Bắc</span></div></div>
+      <div class="destination-card"><img src="/images/phutho.jpg" class="card-image"><div class="card-content"><h3 class="card-title">Phú Thọ</h3><p class="card-description">Sáp nhập Phú Thọ, Vĩnh Phúc & Hòa Bình.</p><span class="card-tag">Miền Bắc</span></div></div>
+      <div class="destination-card"><img src="/images/bacninh.jpg" class="card-image"><div class="card-content"><h3 class="card-title">Bắc Ninh</h3><p class="card-description">Sáp nhập Bắc Ninh & Bắc Giang.</p><span class="card-tag">Miền Bắc</span></div></div>
+      <div class="destination-card"><img src="/images/hungyen.jpg" class="card-image"><div class="card-content"><h3 class="card-title">Hưng Yên</h3><p class="card-description">Sáp nhập Hưng Yên & Thái Bình.</p><span class="card-tag">Miền Bắc</span></div></div>
+      <div class="destination-card"><img src="/images/ninhbinh.jpg" class="card-image"><div class="card-content"><h3 class="card-title">Ninh Bình</h3><p class="card-description">Sáp nhập Hà Nam, Ninh Bình & Nam Định.</p><span class="card-tag">Miền Bắc</span></div></div>
+      <div class="destination-card"><img src="/images/caobang.jpg" class="card-image"><div class="card-content"><h3 class="card-title">Cao Bằng</h3><p class="card-description">Thác Bản Giốc hùng vĩ.</p><span class="card-tag">Miền Bắc</span></div></div>
+      <div class="destination-card"><img src="/images/langson.jpg" class="card-image"><div class="card-content"><h3 class="card-title">Lạng Sơn</h3><p class="card-description">Vùng biên giới phía Bắc.</p><span class="card-tag">Miền Bắc</span></div></div>
+      <div class="destination-card"><img src="/images/thanhhoa.jpg" class="card-image"><div class="card-content"><h3 class="card-title">Thanh Hóa</h3><p class="card-description">Biển Sầm Sơn - Thành Nhà Hồ.</p><span class="card-tag">Miền Bắc</span></div></div>
+    </div>
+
+    <!-- MIỀN TRUNG -->
+    <h2 class="section-title">Miền Trung</h2>
+    <div class="destination-grid">
+      <div class="destination-card"><img src="/images/nghean.jpg" class="card-image"><div class="card-content"><h3 class="card-title">Nghệ An</h3><p class="card-description">Quê Bác Hồ kính yêu.</p><span class="card-tag">Miền Trung</span></div></div>
+      <div class="destination-card"><img src="/images/hatinh.jpg" class="card-image"><div class="card-content"><h3 class="card-title">Hà Tĩnh</h3><p class="card-description">Biển Thiên Cầm.</p><span class="card-tag">Miền Trung</span></div></div>
+      <div class="destination-card"><img src="/images/hue.jpg" class="card-image"><div class="card-content"><h3 class="card-title">Thừa Thiên Huế</h3><p class="card-description">Kinh đô xưa - di sản thế giới.</p><span class="card-tag">Miền Trung</span></div></div>
+      <div class="destination-card"><img src="/images/danang.jpg" class="card-image"><div class="card-content"><h3 class="card-title">Đà Nẵng</h3><p class="card-description">Thành phố đáng sống.</p><span class="card-tag">Miền Trung</span></div></div>
+      <div class="destination-card"><img src="/images/quangtri.jpg" class="card-image"><div class="card-content"><h3 class="card-title">Quảng Trị</h3><p class="card-description">Địa đầu miền Trung.</p><span class="card-tag">Miền Trung</span></div></div>
+      <div class="destination-card"><img src="/images/quangngai.jpg" class="card-image"><div class="card-content"><h3 class="card-title">Quảng Ngãi</h3><p class="card-description">Đảo Lý Sơn.</p><span class="card-tag">Miền Trung</span></div></div>
+      <div class="destination-card"><img src="/images/gialai.jpg" class="card-image"><div class="card-content"><h3 class="card-title">Gia Lai</h3><p class="card-description">Sáp nhập Gia Lai & Bình Định.</p><span class="card-tag">Miền Trung</span></div></div>
+      <div class="destination-card"><img src="/images/khanhhoa.jpg" class="card-image"><div class="card-content"><h3 class="card-title">Khánh Hòa</h3><p class="card-description">Sáp nhập Khánh Hòa & Ninh Thuận.</p><span class="card-tag">Miền Trung</span></div></div>
+      <div class="destination-card"><img src="/images/lamdong.jpg" class="card-image"><div class="card-content"><h3 class="card-title">Lâm Đồng</h3><p class="card-description">Sáp nhập Lâm Đồng, Đắk Nông & Bình Thuận.</p><span class="card-tag">Miền Trung</span></div></div>
+      <div class="destination-card"><img src="/images/daklak.jpg" class="card-image"><div class="card-content"><h3 class="card-title">Đắk Lắk</h3><p class="card-description">Sáp nhập Đắk Lắk & Phú Yên.</p><span class="card-tag">Miền Trung</span></div></div>
+    </div>
+
+    <!-- MIỀN NAM -->
+    <h2 class="section-title">Miền Nam</h2>
+    <div class="destination-grid">
+      <div class="destination-card"><img src="/images/hcm.jpg" class="card-image"><div class="card-content"><h3 class="card-title">TP.Hồ Chí Minh</h3><p class="card-description">Trung tâm kinh tế lớn nhất.</p><span class="card-tag">Miền Nam</span></div></div>
+      <div class="destination-card"><img src="/images/dongnai.jpg" class="card-image"><div class="card-content"><h3 class="card-title">Đồng Nai</h3><p class="card-description">Vùng kinh tế trọng điểm phía Nam.</p><span class="card-tag">Miền Nam</span></div></div>
+      <div class="destination-card"><img src="/images/tayninh.jpg" class="card-image"><div class="card-content"><h3 class="card-title">Tây Ninh</h3><p class="card-description">Núi Bà Đen - nóc nhà Nam Bộ.</p><span class="card-tag">Miền Nam</span></div></div>
+      <div class="destination-card"><img src="/images/cantho.jpg" class="card-image"><div class="card-content"><h3 class="card-title">Cần Thơ</h3><p class="card-description">Sáp nhập Cần Thơ, Sóc Trăng & Hậu Giang.</p><span class="card-tag">Miền Nam</span></div></div>
+      <div class="destination-card"><img src="/images/vinhlong.jpg" class="card-image"><div class="card-content"><h3 class="card-title">Vĩnh Long</h3><p class="card-description">Sáp nhập Vĩnh Long, Bến Tre & Trà Vinh.</p><span class="card-tag">Miền Nam</span></div></div>
+      <div class="destination-card"><img src="/images/dongthap.jpg" class="card-image"><div class="card-content"><h3 class="card-title">Đồng Tháp</h3><p class="card-description">Sáp nhập Tiền Giang & Đồng Tháp.</p><span class="card-tag">Miền Nam</span></div></div>
+      <div class="destination-card"><img src="/images/camau.jpg" class="card-image"><div class="card-content"><h3 class="card-title">Cà Mau</h3><p class="card-description">Sáp nhập Bạc Liêu & Cà Mau.</p><span class="card-tag">Miền Nam</span></div></div>
+      <div class="destination-card"><img src="/images/kiengiang.jpg" class="card-image"><div class="card-content"><h3 class="card-title">Kiên Giang</h3><p class="card-description">Phú Quốc – đảo ngọc Việt Nam.</p><span class="card-tag">Miền Nam</span></div></div>
+      <div class="destination-card"><img src="/images/angiang.jpg" class="card-image"><div class="card-content"><h3 class="card-title">An Giang</h3><p class="card-description">Miếu Bà Chúa
