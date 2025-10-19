@@ -48,7 +48,7 @@
 
 /* --- HERO (ảnh nền lớn) --- */
 .hero-section {
-  background:url('/images/camnangmoi2.jpg') center/cover no-repeat;
+  background:url('/images/dulichtheovung.jpg') center/cover no-repeat;
   color:#fff;
   padding:80px 0;
   text-align:center;
@@ -232,59 +232,6 @@
 
   <div class="container">
 
-    <!-- BẢN ĐỒ -->
-    <div class="map-section">
-      <h2 class="section-title">Định Vị Hành Trình Của Bạn</h2>
-   <div id="vietnam-map" style="height: 600px; width: 100%; border-radius: 12px; overflow: hidden;"></div>
-
-<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
-<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  // Tạo bản đồ với tâm Việt Nam
-  const map = L.map('vietnam-map', {
-    zoomControl: false,
-    attributionControl: false,
-    minZoom: 5,
-    maxZoom: 8
-  }).setView([16.0471, 107.2068], 5.8);
-
-  // Layer bản đồ sáng, rõ nét
-  L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
-    maxZoom: 8,
-    minZoom: 5
-  }).addTo(map);
-
-  // Giới hạn vùng Việt Nam (góc Tây Nam - Đông Bắc)
-  const vnBounds = L.latLngBounds(
-    [8.18, 102.14],   // Cà Mau
-    [23.39, 109.46]   // Hà Giang
-  );
-  map.setMaxBounds(vnBounds);
-
-  // Khi kéo ra ngoài thì tự bật lại vào trong
-  map.on('drag', () => {
-    map.panInsideBounds(vnBounds, { animate: false });
-  });
-
-  // Ẩn bớt phần ngoài biên giới — tạo cảm giác “chỉ Việt Nam”
-  const mask = L.rectangle([[ -90, -180], [90, 180]], {
-    color: "#000",
-    weight: 0,
-    fillOpacity: 0.6
-  }).addTo(map);
-  mask.bringToBack();
-
-  // Đặt nền Việt Nam sáng lên (hiệu ứng chữ S nổi bật)
-  L.rectangle(vnBounds, {
-    color: "#2ecc71",
-    fillColor: "#a8f0a0",
-    fillOpacity: 0.1,
-    weight: 1
-  }).addTo(map);
-});
-</script>
 
     </div>
 

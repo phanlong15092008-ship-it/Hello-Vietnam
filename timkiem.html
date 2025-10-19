@@ -7,7 +7,7 @@
 
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <style>
     * {
       margin: 0;
@@ -21,81 +21,32 @@
       color: #111827;
     }
 
-    /* Navbar */
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 12px 24px;
-      background: #fff;
-      border-bottom: 1px solid #e5e7eb;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+     :root {
+      --primary: #FF5722;
+      --primary-hover: #E64A19;
+      --bg: #f9fafb;
+      --text: #111827;
+      --secondary-text: #4b5563;
+      --card-bg: #fff;
+      --filter-bg: #FFFFFF;
+      --border-color: #e5e7eb;
     }
+    body { margin:0; font-family:'Inter',sans-serif; background:var(--bg); color:var(--text); }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-    .logo {
-      display: flex;
-      align-items: center;
-      font-weight: 700;
-      font-size: 18px;
-      gap: 8px;
-      color: #e11d48; /* đỏ */
-    }
-
-    .logo span {
-      color: #e11d48; /* chữ Hello-Vietnam đỏ */
-    }
-
-    .flag {
-      width: 24px;
-      height: 24px;
-      border-radius: 2px;
-    }
-
-    .navbar nav a {
-      margin: 0 12px;
-      text-decoration: none;
-      color: #374151;
-      font-weight: 500;
-      transition: 0.2s;
-    }
-
-    .navbar nav a.active {
-      font-weight: 600;
-      color: #000;
-    }
-
-    .actions {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .btn.primary {
-      background: #f97316; /* cam */
-      color: #fff;
-      padding: 8px 16px;
-      border-radius: 20px;
-      font-weight: 600;
-      text-decoration: none;
-    }
-
-    .btn.primary:hover {
-      background: #ea580c;
-    }
-
-    .avatar {
-      width: 32px;
-      height: 32px;
-      background: #374151;
-      color: #fff;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 16px;
-    }
+    /* NAVBAR */
+    .navbar { display:flex; justify-content:space-between; align-items:center; padding:12px 24px; background:var(--card-bg); border-bottom:1px solid var(--border-color); position:sticky; top:0; z-index:1000; }
+    .logo { display:flex; align-items:center; font-weight:800; font-size:20px; gap:8px; color:var(--primary); text-decoration:none; }
+    .flag { width:24px; height:24px; border-radius:2px; }
+    .navbar nav a { margin:0 12px; text-decoration:none; color:var(--secondary-text); font-weight:600; transition:0.2s; display:inline-flex; align-items:center; gap:5px;}
+    .navbar nav a:hover, .navbar nav a.active { color:var(--primary); }
+    .navbar nav a.active { font-weight:700; position:relative; }
+    .navbar nav a.active::after { content:''; position:absolute; bottom:-15px; left:0; width:100%; height:3px; background:var(--primary); border-radius:2px; }
+    .actions { display:flex; align-items:center; gap:10px; }
+    .btn { border:none; padding:8px 16px; border-radius:20px; cursor:pointer; font-weight:600; font-size:14px; transition:0.2s; text-decoration:none; display:inline-block; }
+    .btn.primary { background:var(--primary); color:#fff; white-space:nowrap; }
+    .btn.primary:hover { background:var(--primary-hover); }
+    .icon-btn { background:none; border:none; font-size:24px; cursor:pointer; color:var(--secondary-text); padding:0; }
 
     /* Container căn giữa */
     .container {
@@ -180,18 +131,15 @@
   </style>
 </head>
 <body>
-  <!-- Navbar -->
-  <header class="navbar">
-    <div class="logo">
-      <a href="index.html" class="logo">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg" alt="Cờ Việt Nam" class="flag" />
-      <span>Hello-Vietnam</span>
-      </a>
-    </div>
-    <div class="actions">
-      <a href="login.html" class="btn primary">Đăng Nhập</a>
-      <div class="avatar">👤</div>
-    </div>
+ <header class="navbar">
+  <a href="../index.html" class="logo">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg" alt="VN Flag" class="flag" />
+    <span>Hello-Vietnam</span>
+  </a>
+  <div class="actions">
+    <a href="#" class="btn primary">Đăng Nhập</a>
+    <button class="icon-btn"><i class="fa-solid fa-user-circle"></i></button>
+  </div>
   </header>
 
   <!-- Container căn giữa -->
