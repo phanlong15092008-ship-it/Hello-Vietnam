@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hello-Vietnam - Hải Phòng</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="text-gray-900">
+
+<!-- NAVBAR -->
+<header class="navbar">
+  <a href="../index.html" class="logo">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg" alt="VN Flag" class="flag" />
+    <span>Hello-Vietnam</span>
+  </a>
+  <div class="actions">
+    <a href="#" class="btn primary">Đăng Nhập</a>
+    <button class="icon-btn"><i class="fa-solid fa-user-circle"></i></button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero-section text-white flex items-center justify-center text-center p-8 md:p-16 h-96 md:h-[500px] rounded-b-xl overflow-hidden" style="background-image: url('/images/haiphong.jpg');">
+  <div class="absolute inset-0 hero-overlay"></div>
+  <div class="relative z-10">
+    <h1 class="text-4xl md:text-5xl font-extrabold leading-tight tracking-wide">
+      Hải Phòng
+    </h1>
+    <p class="text-lg md:text-2xl mt-4 font-light">
+      Thành phố cảng — hoa phượng đỏ
+    </p>
+  </div>
+</section>
+
+<!-- MAIN CONTENT -->
+<main class="container mx-auto px-4 py-12">
+
+  <!-- Giới thiệu -->
+  <section class="mb-16">
+    <h2 class="text-3xl font-bold text-center mb-6">Hải Phòng – Cảng biển sôi động</h2>
+    <div class="bg-white p-6 md:p-10 rounded-xl shadow-lg leading-relaxed">
+      <p>
+        Hải Phòng là thành phố cảng lớn ở miền Bắc, nổi tiếng với cảnh biển, đảo Cát Bà, khu du lịch Đồ Sơn và nền ẩm thực hải sản tươi ngon.
+      </p>
+    </div>
+  </section>
+
+  <!-- Nút vị trí -->
+  <button onclick="toggleMap()" 
+          class="mt-4 bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-full flex items-center space-x-2 mx-auto shadow-lg">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c1.104 0 2-.896 2-2s-.896-2-2-2-2 .896-2 2 .896 2 2 2zM12 22s8-7.58 8-13a8 8 0 10-16 0c0 5.42 8 13 8 13z" />
+    </svg>
+    <span>Xem vị trí</span>
+  </button>
+
+  <!-- Bản đồ -->
+  <div id="map-container" class="hidden mt-6 w-full flex justify-center">
+    <iframe 
+      src="https://www.google.com/maps?q=Hai+Phong,Vietnam&hl=vi&z=12&output=embed"
+      width="600" height="400" style="border:0;" allowfullscreen="" loading="lazy">
+    </iframe>
+  </div>
+
+  <!-- Địa điểm nổi bật -->
+  <section class="mb-16">
+    <h2 class="text-3xl font-bold text-center mb-6">Các địa điểm tham quan nổi bật</h2>
+    <div class="grid overflow-x-auto">
+      <a href="#" class="card">
+        <img src="/images/catba.jpg" alt="Đảo Cát Bà">
+        <div class="card-content">
+          <h3 class="text-lg font-semibold">Đảo Cát Bà</h3>
+          <p class="text-sm text-gray-600">Quần đảo với biển, rừng và vịnh đẹp.</p>
+        </div>
+      </a>
+      <a href="#" class="card">
+        <img src="/images/doson.jpg" alt="Đồ Sơn">
+        <div class="card-content">
+          <h3 class="text-lg font-semibold">Đồ Sơn</h3>
+          <p class="text-sm text-gray-600">Khu du lịch biển nổi tiếng của Hải Phòng.</p>
+        </div>
+      </a>
+      <a href="#" class="card">
+        <img src="/images/ben-tam-bac.jpg" alt="Bến Tam Bạc">
+        <div class="card-content">
+          <h3 class="text-lg font-semibold">Bến Tam Bạc</h3>
+          <p class="text-sm text-gray-600">Trung tâm thành phố, khu đi dạo ven sông.</p>
+        </div>
+      </a>
+      <a href="#" class="card">
+        <img src="/images/haiphong-harbor.jpg" alt="Cảng Hải Phòng">
+        <div class="card-content">
+          <h3 class="text-lg font-semibold">Cảng Hải Phòng</h3>
+          <p class="text-sm text-gray-600">Cảng biển lớn và trung tâm giao thương.</p>
+        </div>
+      </a>
+      <a href="#" class="card">
+        <img src="/images/cau-binh.jpg" alt="Cầu Bính">
+        <div class="card-content">
+          <h3 class="text-lg font-semibold">Cầu Bính</h3>
+          <p class="text-sm text-gray-600">Cây cầu biểu tượng hiện đại của thành phố.</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Ẩm thực -->
+  <section class="mb-16">
+    <h2 class="text-3xl font-bold text-center mb-6">
+      Những món ăn đặc trưng của Hải Phòng
+    </h2>
+    <div class="grid overflow-x-auto">
+      <a href="#" class="card">
+        <img src="/images/banhda-cua.jpg" alt="Bánh đa cua">
+        <div class="card-content">
+          <h3 class="text-lg font-semibold">Bánh đa cua</h3>
+          <p class="text-sm text-gray-600">Món bún/miến nước với cua, nổi tiếng ở Hải Phòng.</p>
+        </div>
+      </a>
+      <a href="#" class="card">
+        <img src="/images/nem-cua-be.jpg" alt="Nem cua bể">
+        <div class="card-content">
+          <h3 class="text-lg font-semibold">Nem cua bể</h3>
+          <p class="text-sm text-gray-600">Món chiên giòn đặc sản vùng biển.</p>
+        </div>
+      </a>
+      <a href="#" class="card">
+        <img src="/images/oc-hp.jpg" alt="Ốc Hải Phòng">
+        <div class="card-content">
+          <h3 class="text-lg font-semibold">Ốc biển</h3>
+          <p class="text-sm text-gray-600">Các quán ốc tươi ngon ven bờ.</p>
+        </div>
+      </a>
+      <a href="#" class="card">
+        <img src="/images/banh-mi-que.jpg" alt="Bánh mì que">
+        <div class="card-content">
+          <h3 class="text-lg font-semibold">Bánh mì que</h3>
+          <p class="text-sm text-gray-600">Bánh mì đặc trưng, nhỏ và giòn.</p>
+        </div>
+      </a>
+      <a href="#" class="card">
+        <img src="/images/che-sen.jpg" alt="Chè sen">
+        <div class="card-content">
+          <h3 class="text-lg font-semibold">Chè sen</h3>
+          <p class="text-sm text-gray-600">Món tráng miệng mát lành.</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<!-- SCRIPT -->
+<script>
+  function toggleMap() {
+    const map = document.getElementById('map-container');
+    map.classList.toggle('hidden');
+  }
+</script>
+</body>
+</html>

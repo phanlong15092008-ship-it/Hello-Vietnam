@@ -110,6 +110,7 @@
     .btn.primary { background:var(--primary); color:#fff; white-space:nowrap; }
     .btn.primary:hover { background:var(--primary-hover); }
     .icon-btn { background:none; border:none; font-size:24px; cursor:pointer; color:var(--secondary-text); padding:0; }
+
   </style>
 </head>
 <body class="text-gray-900">
@@ -172,20 +173,19 @@
   <!-- Main Content Section -->
   <main class="container mx-auto px-4 py-12">
     <!-- Section: Giới thiệu -->
-    <section class="mb-16">
+    <section class="mb-12 text-center">
       <h2 class="text-3xl font-bold text-center mb-6">Hà Nội – Trái tim của cả nước</h2>
       <div class="bg-white p-6 md:p-10 rounded-xl shadow-lg leading-relaxed">
         <p>
          Hà Nội là thủ đô và cũng là trung tâm văn hóa, chính trị quan trọng của Việt Nam, nổi tiếng với những giá trị lịch sử - văn hóa lâu đời thể hiện qua các công trình.
         </p>
       </div>
-    </section>
     <button onclick="toggleMap('map-hanoi')" 
-        class="mt-4 bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-full flex items-center space-x-2 mx-auto shadow-lg">
+        class="mt-20 mt-16 bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-full flex items-center space-x-2 mx-auto shadow-lg">
   <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c1.104 0 2-.896 2-2s-.896-2-2-2-2 .896-2 2 .896 2 2 2zM12 22s8-7.58 8-13a8 8 0 10-16 0c0 5.42 8 13 8 13z" />
   </svg>
-  <span>Xem vị trí Hà Nội</span>
+    <span>Xem vị trí Hà Nội</span>
 </button>
 
 <div id="map-hanoi" class="hidden mt-6 w-full flex justify-center">
@@ -204,7 +204,7 @@
 
     <!-- Section: Địa điểm vui chơi -->
     <section class="mb-16">
-      <h2 class="text-3xl font-bold text-center mb-6">Các địa điểm tham quan nổi bật</h2>
+      <h2 class="text-3xl font-bold text-center mb-4">Các địa điểm tham quan nổi bật</h2>
       <div class="grid overflow-x-auto">
         <a href="/pageshanoi/langchutichhochiminh.html" class="card">
           <img src="/images/langbac.jpg" alt="Lăng Chủ tịch Hồ Chí Minh">

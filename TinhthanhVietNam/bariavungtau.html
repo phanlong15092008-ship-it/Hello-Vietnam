@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hello-Vietnam - Bà Rịa - Vũng Tàu</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="text-gray-900">
+
+<header class="navbar">
+  <a href="../index.html" class="logo">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg" alt="VN Flag" class="flag" />
+    <span>Hello-Vietnam</span>
+  </a>
+  <div class="actions">
+    <a href="#" class="btn primary">Đăng Nhập</a>
+    <button class="icon-btn"><i class="fa-solid fa-user-circle"></i></button>
+  </div>
+</header>
+
+<section class="hero-section text-white flex items-center justify-center text-center p-8 md:p-16 h-96 md:h-[500px] rounded-b-xl overflow-hidden" style="background-image: url('/images/baria-vungtau.jpg');">
+  <div class="absolute inset-0 hero-overlay"></div>
+  <div class="relative z-10">
+    <h1 class="text-4xl md:text-5xl font-extrabold leading-tight tracking-wide">
+      Bà Rịa – Vũng Tàu
+    </h1>
+    <p class="text-lg md:text-2xl mt-4 font-light">
+      Thành phố biển, du lịch và năng lượng
+    </p>
+  </div>
+</section>
+
+<main class="container mx-auto px-4 py-12">
+  <section class="mb-16">
+    <h2 class="text-3xl font-bold text-center mb-6">Giới thiệu</h2>
+    <div class="bg-white p-6 md:p-10 rounded-xl shadow-lg leading-relaxed">
+      <p>Bà Rịa – Vũng Tàu nổi tiếng với bãi biển, hải sản tươi ngon và các dịch vụ du lịch biển.</p>
+    </div>
+  </section>
+
+  <button onclick="toggleMap()" class="mt-4 bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-full flex items-center space-x-2 mx-auto shadow-lg">📍 Xem vị trí</button>
+  <div id="map-container" class="hidden mt-6 w-full flex justify-center">
+    <iframe src="https://www.google.com/maps?q=Ba+Ria+Vung+Tau,Vietnam&hl=vi&z=12&output=embed" width="600" height="400" style="border:0;" allowfullscreen loading="lazy"></iframe>
+  </div>
+
+  <section class="mb-16">
+    <h2 class="text-3xl font-bold text-center mb-6">Địa điểm nổi bật</h2>
+    <div class="grid overflow-x-auto">
+      <a href="#" class="card"><img src="/images/vung-tau-beach.jpg" alt="Bãi Trước"><div class="card-content"><h3 class="text-lg font-semibold">Bãi Trước</h3><p class="text-sm text-gray-600">Bãi biển trung tâm gần thành phố</p></div></a>
+      <a href="#" class="card"><img src="/images/nui-nho.jpg" alt="Núi Nhỏ"><div class="card-content"><h3 class="text-lg font-semibold">Núi Nhỏ (Tượng Chúa)</h3><p class="text-sm text-gray-600">Tượng chúa và view nhìn ra biển</p></div></a>
+      <a href="#" class="card"><img src="/images/cape.jpg" alt="Mũi Nghinh Phong"><div class="card-content"><h3 class="text-lg font-semibold">Mũi Nghinh Phong</h3><p class="text-sm text-gray-600">Điểm check-in nổi tiếng</p></div></a>
+      <a href="#" class="card"><img src="/images/ho-tram.jpg" alt="Hồ Tràm"><div class="card-content"><h3 class="text-lg font-semibold">Hồ Tràm</h3><p class="text-sm text-gray-600">Bãi biển hoang sơ, resort</p></div></a>
+      <a href="#" class="card"><img src="/images/hon-ba.jpg" alt="Hòn Bà"><div class="card-content"><h3 class="text-lg font-semibold">Hòn Bà</h3><p class="text-sm text-gray-600">Đảo nhỏ, điểm du lịch biển</p></div></a>
+    </div>
+  </section>
+
+  <section class="mb-16">
+    <h2 class="text-3xl font-bold text-center mb-6">Ẩm thực đặc trưng</h2>
+    <div class="grid overflow-x-auto">
+      <a href="#" class="card"><img src="/images/haisan.jpg" alt="Hải sản"><div class="card-content"><h3 class="text-lg font-semibold">Hải sản tươi</h3><p class="text-sm text-gray-600">Tôm, cua, ghẹ và các món chế biến đa dạng</p></div></a>
+      <a href="#" class="card"><img src="/images/bun-kho.jpg" alt="Bún kèn"><div class="card-content"><h3 class="text-lg font-semibold">Bún kèn</h3><p class="text-sm text-gray-600">Món gốc miền Trung, phiên bản địa phương</p></div></a>
+      <a href="#" class="card"><img src="/images/banh-khot.jpg" alt="Bánh khọt"><div class="card-content"><h3 class="text-lg font-semibold">Bánh khọt</h3><p class="text-sm text-gray-600">Bánh giòn, ăn kèm rau và nước mắm</p></div></a>
+      <a href="#" class="card"><img src="/images/goi-cuon-ca.jpg" alt="Gỏi cuốn cá"><div class="card-content"><h3 class="text-lg font-semibold">Gỏi cuốn hải sản</h3><p class="text-sm text-gray-600">Phiên bản tươi ngon từ biển</p></div></a>
+      <a href="#" class="card"><img src="/images/banh-mi-vung-tau.jpg" alt="Bánh mì Vũng Tàu"><div class="card-content"><h3 class="text-lg font-semibold">Bánh mì Vũng Tàu</h3><p class="text-sm text-gray-600">Bánh mì đường phố đặc sắc</p></div></a>
+    </div>
+  </section>
+
+</main>
+
+<script>function toggleMap(){const map=document.getElementById('map-container');map.classList.toggle('hidden');}</script>
+</body>
+</html>

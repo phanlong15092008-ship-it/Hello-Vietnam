@@ -79,6 +79,11 @@
             gap: 20px;
         }
         .filter-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+
             text-decoration: none;
             padding: 12px 25px;
             border-radius: 30px;
@@ -302,13 +307,23 @@
       <p>Khám phá trọn vẹn 34 tỉnh thành. Mẹo vặt, kinh nghiệm thực tế và những câu chuyện địa phương bạn cần biết.</p>
     </header>
 
-    <nav class="guide-filter-nav">
-      <a href="/pagescamnang/amthuc.html" class="filter-item">🍜 Ẩm Thực Trọn Vẹn</a>
-      <a href="/pagescamnang/dichuyen.html" class="filter-item">🛵 Đi Lại Và Nghỉ Nơi</a>
-      <a href="/pagescamnang/khamphadiemden.html" class="filter-item">🏞️ Du Lịch Theo Vùng</a>
-      <a href="/pagescamnang/lehoivasukien.html" class="filter-item">📅 Lễ Hội & Sự Kiện</a>
-    </nav>
-
+    <div class="guide-filter-nav">
+  <a href="/pagescamnang/amthuc.html" class="filter-item">
+    🍜 Ẩm Thực Vùng Miền
+  </a>
+  <a href="/pagescamnang/dichuyen.html" class="filter-item">
+    🚗 Di Chuyển
+  </a>
+  <a href="#" class="filter-item">
+    🏖️ Nghỉ Dưỡng
+  </a>
+  <a href="/pagescamnang/khamphadiemden.html" class="filter-item">
+    🗺️ Du Lịch Theo Vùng
+  </a>
+  <a href="/pagescamnang/lehoivasukien.html" class="filter-item">
+    🎉 Lễ Hội & Sự Kiện
+  </a>
+</div>
     <div class="main-content-grid">
       <article class="featured-post deep-dive">
         <img src="/images/baivietcamnang.jpg" alt="Ảnh cung đường phượt xe máy" class="post-image">

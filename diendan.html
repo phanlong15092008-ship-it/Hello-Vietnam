@@ -1,282 +1,130 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8"/>
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Hello-Vietnam | Diễn Đàn Du Lịch</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+  <title>Diễn Đàn Du Lịch | Check-in Việt Nam</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <style>
-    :root {
-      --primary: #FF5722;
-      --primary-hover: #E64A19;
-      --bg: #f4f6f8;
-      --card-bg: #ffffff;
-      --text: #1f2937;
-      --muted: #6b7280;
-      --border: #e5e7eb;
-      --radius: 14px;
-      --shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-    }
+    /* Header / nav styles */
+    .brand{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--primary);text-decoration:none}
+    .brand img{width:28px;height:18px;border-radius:2px}
+    .main-nav{display:flex;gap:18px;align-items:center}
+    .main-nav a{color:var(--muted);text-decoration:none;font-weight:600;padding:6px 0}
+    .main-nav a.active,.main-nav a:hover{color:var(--primary)}
 
-    /* ==== NAVBAR ==== */
-    .topbar {
-      background: var(--card-bg);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 12px 24px;
-      border-bottom: 1px solid var(--border);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-    .nav-left {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .flag-icon {
-      width: 28px;
-      height: 20px;
-      border-radius: 3px;
-    }
-    .brand {
-      font-weight: 800;
-      color: var(--primary);
-      font-size: 1.3em;
-    }
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .login-btn, .logout-btn {
-      background: var(--primary);
-      color: #fff;
-      border: none;
-      padding: 8px 16px;
-      border-radius: 25px;
-      cursor: pointer;
-      font-weight: 600;
-      transition: background 0.2s;
-    }
-    .logout-btn { background: #9ca3af; }
-    .login-btn:hover { background: var(--primary-hover); }
-    .avatar-circle {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: #ccc;
-      background-size: cover;
-      background-position: center;
-      cursor: pointer;
-    }
+    .actions{display:flex;align-items:center;gap:12px}
+    .btn{border:0;padding:8px 14px;border-radius:999px;cursor:pointer;font-weight:700}
+    .btn.primary{background:var(--primary);color:#fff}
+    .btn.ghost{background:transparent;border:1px solid var(--border);color:var(--muted)}
+    .avatar-sm{width:36px;height:36px;border-radius:999px;background:#ddd;background-size:cover;background-position:center}
 
-    /* ==== MAIN ==== */
-    .main-layout {
-      display: flex;
-      max-width: 1200px;
-      margin: 25px auto;
-      padding: 0 20px;
-      gap: 25px;
-      align-items: flex-start;
-    }
+    /* Layout */
+    .main-layout{max-width:1200px;margin:22px auto;padding:0 20px;display:grid;grid-template-columns:1fr 320px;gap:24px;align-items:start}
+    @media (max-width:980px){.main-layout{grid-template-columns:1fr;padding:0 12px}.main-nav{display:none}}
 
-    /* ==== FORM ĐĂNG BÀI ==== */
-    .module-card {
-      background: var(--card-bg);
-      padding: 20px;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-    }
-    #postForm input[type="text"],
-    #postForm textarea {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      font-size: 15px;
-    }
-    #postForm button {
-      background: var(--primary);
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 8px;
-      font-size: 15px;
-      cursor: pointer;
-      font-weight: 600;
-    }
-    #postForm button:hover {
-      background: var(--primary-hover);
-    }
+    .module-card{background:var(--card);border-radius:var(--radius);box-shadow:0 6px 18px rgba(15,23,42,0.06);padding:18px}
 
-    /* ==== POST CARD ==== */
-    .post-card {
-      background: var(--card-bg);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow: hidden;
-      transition: transform 0.2s;
-    }
-    .post-card:hover { transform: translateY(-4px); }
-    .post-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 12px 15px;
-    }
-    .post-header .avatar {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      object-fit: cover;
-    }
-    .post-body { padding: 12px 15px; }
-    .post-body h3 { margin: 0 0 8px; font-size: 1.1em; }
-    .post-body p { margin: 0; color: var(--muted); }
-    .post-image img {
-      width: 100%;
-      display: block;
-    }
-    .post-footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 12px 15px;
-      border-top: 1px solid var(--border);
-      font-size: 0.9em;
-      color: var(--muted);
-    }
-    .post-footer span { cursor: pointer; }
-    .post-footer span:hover { color: var(--primary); }
+    /* Composer */
+    #postForm{display:flex;flex-direction:column;gap:10px}
+    #postForm .row{display:flex;gap:10px}
+    #postForm input[type='text'], #postForm textarea{width:100%;padding:10px;border-radius:10px;border:1px solid var(--border);font-size:14px}
+    #postForm label.upload{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:10px;background:#f1f5f9;border:1px dashed var(--border);cursor:pointer}
+    #postForm button[type='submit']{align-self:flex-end}
 
-    /* ==== SIDEBAR ==== */
-    #sidebar {
-      position: fixed;
-      top: 0;
-      right: 0;
-      width: 300px;
-      height: 100%;
-      background: var(--card-bg);
-      box-shadow: -2px 0 8px rgba(0,0,0,0.1);
-      transform: translateX(100%);
-      transition: transform 0.3s ease;
-      z-index: 1500;
-      padding: 25px;
-    }
-    #sidebar.open { transform: translateX(0); }
-    .close-btn {
-      background: none;
-      border: none;
-      font-size: 24px;
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      cursor: pointer;
-      color: var(--muted);
-    }
-    #sidebar h2 {
-      margin-top: 10px;
-      margin-bottom: 20px;
-      font-size: 1.3em;
-      color: var(--primary);
-    }
-    #userAvatarImg {
-      width: 90px;
-      height: 90px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid var(--border);
-      display: block;
-      margin: 0 auto 15px;
-    }
-    #toggleSidebar {
-      position: fixed;
-      top: 80px;
-      right: 20px;
-      background: var(--primary);
-      color: #fff;
-      border: none;
-      padding: 10px 14px;
-      border-radius: 50%;
-      font-size: 18px;
-      cursor: pointer;
-      z-index: 1600;
-      box-shadow: var(--shadow);
-    }
+    /* Posts */
+    #posts{display:flex;flex-direction:column;gap:14px}
+    .post-card{background:var(--card);border-radius:12px;border:1px solid var(--border);overflow:hidden}
+    .post-header{display:flex;gap:12px;align-items:center;padding:12px}
+    .post-header .avatar{width:48px;height:48px;border-radius:999px;object-fit:cover}
+    .post-meta .name{font-weight:700;color:#0f172a}
+    .post-meta .time{color:var(--muted);font-size:13px}
+    .post-body{padding:0 12px 12px;color:#0f172a}
+    .post-image img{width:100%;display:block;border-top:1px solid var(--border)}
+    .post-footer{display:flex;gap:18px;padding:10px 12px;border-top:1px solid var(--border);color:var(--muted);align-items:center}
+    .post-footer button{background:transparent;border:0;color:var(--muted);cursor:pointer;font-weight:700}
 
-    /* ==== RESPONSIVE ==== */
-    @media (max-width: 900px) {
-      .main-layout { flex-direction: column; }
-      #toggleSidebar { top: 70px; right: 15px; }
-    }
+    /* Sidebar */
+    #sidebar{position:fixed;right:0;top:0;bottom:0;width:320px;background:var(--card);box-shadow:-6px 0 24px rgba(2,6,23,0.08);padding:18px;transform:translateX(110%);transition:transform .28s ease;z-index:1400}
+    #sidebar.open{transform:translateX(0)}
+    #sidebar .close-btn{position:absolute;right:12px;top:12px;border:0;background:transparent;font-size:22px;cursor:pointer}
+    #sidebar .avatar{width:80px;height:80px;border-radius:999px;display:block;margin:12px auto 6px;object-fit:cover}
+    .progress-bar{height:10px;background:#f1f5f9;border-radius:999px;overflow:hidden}
+    .progress-bar > .progress{height:100%;background:linear-gradient(90deg,var(--primary),#ff9800);width:0%}
+
+    /* Toggle button */
+    #toggleSidebar{position:fixed;right:18px;top:110px;background:var(--primary);color:#fff;border:0;padding:10px 12px;border-radius:8px;z-index:1500;cursor:pointer}
+
+    .muted{color:var(--muted)}
   </style>
 </head>
 <body>
-  <!-- NAVBAR -->
-  <nav class="topbar">
-    <div class="nav-left">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg" alt="VN" class="flag-icon">
-      <span class="brand">Hello-Vietnam</span>
-    </div>
-    <div class="nav-right">
-      <button id="loginBtn" class="login-btn">Đăng nhập</button>
-      <button id="logoutBtn" class="logout-btn" style="display:none;">Đăng xuất</button>
-      <div id="userAvatar" class="avatar-circle"></div>
-    </div>
-  </nav>
+  <!-- Header (single instance kept) -->
 
-  <!-- MAIN -->
   <div class="main-layout">
-    <!-- Form đăng bài -->
+    <!-- FEED: form + posts (dọc) -->
     <div class="content-feed">
       <div class="module-card">
-        <form id="postForm">
-          <input type="text" id="title" placeholder="Tiêu đề bài viết" required style="margin-bottom:10px;">
-          <div style="display:flex;align-items:flex-start;gap:10px;margin-bottom:10px;">
-            <textarea id="content" placeholder="Nội dung" rows="3" required style="flex:1;"></textarea>
-            <label for="fileInput" style="cursor:pointer;background:#f3f4f6;border:1px solid var(--border);border-radius:10px;padding:10px;">
-              📷 Ảnh
-            </label>
-            <input type="file" id="fileInput" accept="image/*" style="display:none;">
-          </div>
-          <div id="previewContainer" style="display:none;margin-bottom:10px">
-            <img id="previewImage" src="" alt="Preview" style="max-width:200px;border-radius:8px;">
-          </div>
-          <button type="submit">Đăng bài</button>
-        </form>
-      </div>
-      <!-- Bài viết -->
-      <div id="posts"></div>
-    </div>
+        <form id="postForm" style="margin-bottom:15px">
+  <input type="text" id="title" placeholder="Tiêu đề bài viết" required 
+    style="width:100%;margin-bottom:8px;padding:8px;border:1px solid #ddd;border-radius:6px" />
+
+  <div style="display:flex; align-items:flex-start; gap:10px; margin-bottom:8px">
+    <textarea id="content" placeholder="Nội dung" rows="3" required
+      style="flex:1; padding:8px; border:1px solid #ddd; border-radius:6px; resize:vertical"></textarea>
+
+    <label for="fileInput" 
+      style="flex:0 0 auto; cursor:pointer; background:#f0f2f5; border:1px solid #ddd; border-radius:6px; padding:8px 12px; display:flex; align-items:center; justify-content:center">
+      📷 Ảnh
+    </label>
+    <input type="file" id="fileInput" accept="image/*" style="display:none" />
   </div>
 
-  <!-- SIDEBAR -->
-  <button id="toggleSidebar"><i class="fas fa-user"></i></button>
-  <div id="sidebar">
-    <button id="closeSidebar" class="close-btn">&times;</button>
-    <h2>Thông tin cá nhân</h2>
-    <img id="userAvatarImg" src="https://via.placeholder.com/90" alt="Avatar">
-    <div id="userInfo" style="text-align:center;">
-      <p><strong>Tên:</strong> <span id="userName">Khách</span></p>
-      <p><strong>Email:</strong> <span id="userEmail">Chưa đăng nhập</span></p>
-    </div>
-    <div style="margin-top:20px">
-      <p><strong>Thám hiểm Việt Nam</strong></p>
-      <div style="background:#eee;border-radius:10px;height:12px;overflow:hidden">
-        <div id="progressBar" style="width:0%;height:100%;background:linear-gradient(90deg,#ff512f,#dd2476);"></div>
-      </div>
-      <p id="progressText" style="margin-top:5px;font-size:14px;text-align:center;">0% hoàn thành</p>
-    </div>
+  <div id="previewContainer" style="display:none; margin-bottom:10px">
+    <img id="previewImage" src="" alt="Preview" style="max-width:200px; border-radius:8px;">
   </div>
+
+  <button type="submit" style="background:#e63946; color:#fff; border:none; padding:8px 16px; border-radius:6px; cursor:pointer">
+    Đăng bài
+  </button>
+</form>
+   </div>
+
+      <!-- Nơi JS sẽ chèn các bài viết (xếp dọc vì .content-feed là column) -->
+      <div id="posts"></div>
+    </div>
+<!-- Nút toggle -->
+<button id="toggleSidebar" class="toggle-btn">☰</button>
+
+<!-- Sidebar -->
+<div id="sidebar" class="sidebar">
+  <button id="closeSidebar" class="close-btn">×</button>
+  <h2>Thông tin cá nhân</h2>
+
+<div style="text-align:center; margin-bottom:15px">
+  <img id="userAvatarImg" 
+       src="https://via.placeholder.com/80" 
+       alt="Avatar" 
+       style="width:80px;height:80px;border-radius:50%;object-fit:cover;border:2px solid #ddd;">
+</div>
+
+
+  <!-- User info -->
+  <div id="userInfo">
+    <p><strong>Tên:</strong> <span id="userName">Khách</span></p>
+    <p><strong>Email:</strong> <span id="userEmail">Chưa đăng nhập</span></p>
+  </div>
+
+  <!-- Progress -->
+  <div style="margin-top:20px">
+    <p><strong>Thám hiểm Việt Nam</strong></p>
+    <div style="background:#eee;border-radius:10px;height:12px;overflow:hidden">
+      <div id="progressBar" style="width:0%;height:100%;background:linear-gradient(90deg,#ff512f,#dd2476);"></div>
+    </div>
+    <p id="progressText" style="margin-top:5px;font-size:14px">0% hoàn thành</p>
+  </div>
+</div>
 
 
 
@@ -316,24 +164,28 @@
   const fileInput = document.getElementById("fileInput");
   const postsContainer = document.getElementById("posts");
 
-  // Preview ảnh khi chọn
-  fileInput.addEventListener("change", () => {
-    const file = fileInput.files[0];
-    const previewContainer = document.getElementById("previewContainer");
-    const previewImage = document.getElementById("previewImage");
+  // Preview ảnh khi chọn (defensive)
+  if (fileInput) {
+    fileInput.addEventListener("change", () => {
+      const file = fileInput.files[0];
+      const previewContainer = document.getElementById("previewContainer");
+      const previewImage = document.getElementById("previewImage");
 
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = e => {
-        previewImage.src = e.target.result;
-        previewContainer.style.display = "block";
-      };
-      reader.readAsDataURL(file);
-    } else {
-      previewContainer.style.display = "none";
-      previewImage.src = "";
-    }
-  });
+      if (!previewContainer || !previewImage) return;
+
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = e => {
+          previewImage.src = e.target.result;
+          previewContainer.style.display = "block";
+        };
+        reader.readAsDataURL(file);
+      } else {
+        previewContainer.style.display = "none";
+        previewImage.src = "";
+      }
+    });
+  }
 
   function escapeHtml(text) {
     if (!text) return "";
@@ -347,28 +199,33 @@
   }
 
   // Đăng nhập
-  loginBtn.addEventListener("click", async () => {
-    try {
-      const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-      if (isMobile) await signInWithRedirect(auth, provider);
-      else await signInWithPopup(auth, provider);
-    } catch (err) {
-      console.error("Login error:", err);
-      alert("Lỗi đăng nhập: " + err.message);
-    }
-  });
+  if (loginBtn) {
+    loginBtn.addEventListener("click", async () => {
+      try {
+        const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+        if (isMobile) await signInWithRedirect(auth, provider);
+        else await signInWithPopup(auth, provider);
+      } catch (err) {
+        console.error("Login error:", err);
+        alert("Lỗi đăng nhập: " + err.message);
+      }
+    });
+  }
 
   // Đăng xuất
-  logoutBtn.addEventListener("click", async () => {
-    try {
-      await signOut(auth);
-    } catch (err) {
-      console.error("Logout error:", err);
-    }
-  });
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", async () => {
+      try {
+        await signOut(auth);
+      } catch (err) {
+        console.error("Logout error:", err);
+      }
+    });
+  }
 
   // Load danh sách bài viết
   async function loadPosts() {
+    if (!postsContainer) return;
     postsContainer.innerHTML = "";
     try {
       const q = query(collection(db, "posts"), orderBy("createdAt", "desc"));
@@ -431,45 +288,96 @@
     }
   }
 
+  // Submit bài viết
+  if (postForm) {
+    postForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!auth.currentUser) {
+        alert('Bạn cần đăng nhập để đăng bài.');
+        return;
+      }
+      const title = document.getElementById('title')?.value || '';
+      const content = document.getElementById('content')?.value || '';
+      const file = fileInput?.files?.[0];
+
+      try {
+        let imageUrl = '';
+        if (file && storage) {
+          const storageRef = ref(storage, `posts/${Date.now()}_${file.name}`);
+          await uploadBytes(storageRef, file);
+          imageUrl = await getDownloadURL(storageRef);
+        }
+        await addDoc(collection(db, 'posts'), {
+          title, content, imageUrl, userId: auth.currentUser.uid, user: auth.currentUser.displayName || 'Ẩn danh', avatar: auth.currentUser.photoURL || '', createdAt: serverTimestamp()
+        });
+        // reset form
+        postForm.reset();
+        const previewContainer = document.getElementById('previewContainer');
+        const previewImage = document.getElementById('previewImage');
+        if (previewContainer) previewContainer.style.display = 'none';
+        if (previewImage) previewImage.src = '';
+        loadPosts();
+      } catch (err) {
+        console.error('Lỗi khi đăng bài:', err);
+        alert('Không thể đăng bài: ' + err.message);
+      }
+    });
+  }
+
   // === FIX CHÍNH: xử lý sidebar ===
   window.addEventListener("load", () => {
     const toggleBtn = document.getElementById("toggleSidebar");
     const closeBtn = document.getElementById("closeSidebar");
     const sidebar = document.getElementById("sidebar");
 
-    if (!toggleBtn || !closeBtn || !sidebar) {
-      console.error("Không tìm thấy phần tử sidebar hoặc nút toggle!");
-      return;
+    if (!sidebar) return; // sidebar required for later UI
+
+    if (toggleBtn) {
+      toggleBtn.addEventListener("click", () => {
+        sidebar.classList.toggle("open");
+      });
     }
 
-    toggleBtn.addEventListener("click", () => {
-      sidebar.classList.toggle("open");
-    });
-
-    closeBtn.addEventListener("click", () => {
-      sidebar.classList.remove("open");
-    });
+    if (closeBtn) {
+      closeBtn.addEventListener("click", () => {
+        sidebar.classList.remove("open");
+      });
+    }
   });
 
   // Khi đăng nhập / đăng xuất
   onAuthStateChanged(auth, async (user) => {
-    if (user) {
-      loginBtn.style.display = "none";
-      logoutBtn.style.display = "inline-block";
-      userAvatar.style.display = "flex";
-      userAvatar.style.backgroundImage = `url(${user.photoURL})`;
+    try {
+      const nameEl = document.getElementById("userName");
+      const emailEl = document.getElementById("userEmail");
+      const avatarEl = document.getElementById("userAvatar");
+      const sidebarAvatar = document.getElementById('userAvatarImg');
 
-      document.getElementById("userName").innerText = user.displayName || "Ẩn danh";
-      document.getElementById("userEmail").innerText = user.email || "";
-      document.getElementById("userAvatar").src = user.photoURL || "default.png";
-
-    } else {
-      loginBtn.style.display = "inline-block";
-      logoutBtn.style.display = "none";
-      userAvatar.style.backgroundImage = "";
-      document.getElementById("userName").innerText = "Khách";
-      document.getElementById("userEmail").innerText = "";
-      document.getElementById("userAvatar").src = "default.png";
+      if (user) {
+        if (loginBtn) loginBtn.style.display = "none";
+        if (logoutBtn) logoutBtn.style.display = "inline-block";
+        // set top avatar
+        if (avatarEl) {
+          avatarEl.src = user.photoURL || "default.png";
+          avatarEl.style.display = "block";
+        }
+        // set sidebar avatar
+        if (sidebarAvatar) sidebarAvatar.src = user.photoURL || sidebarAvatar.src;
+        if (nameEl) nameEl.innerText = user.displayName || "Ẩn danh";
+        if (emailEl) emailEl.innerText = user.email || "";
+      } else {
+        if (loginBtn) loginBtn.style.display = "inline-block";
+        if (logoutBtn) logoutBtn.style.display = "none";
+        if (avatarEl) {
+          avatarEl.style.display = "none";
+          avatarEl.src = "default.png";
+        }
+        if (sidebarAvatar) sidebarAvatar.src = 'https://via.placeholder.com/80';
+        if (nameEl) nameEl.innerText = "Khách";
+        if (emailEl) emailEl.innerText = "";
+      }
+    } catch (err) {
+      console.error('Auth state handler error:', err);
     }
 
     loadPosts();

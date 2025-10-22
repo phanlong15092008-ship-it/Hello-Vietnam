@@ -46,90 +46,45 @@
     .btn.primary:hover { background:var(--primary-hover); }
     .icon-btn { background:none; border:none; font-size:24px; cursor:pointer; color:var(--secondary-text); padding:0; }
 
-    /* Hero Section */
-    .hero-section {
-      background: url('/images/camnangmoi1.jpg') center/cover no-repeat;
-      color: #fff;
-      padding: 80px 0;
-      text-align: center;
-      position: relative;
-      min-height: 350px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    }
-    .hero-overlay {
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background-color: rgba(43, 112, 181, 0.75);
-    }
-    .hero-content { position: relative; z-index: 2; }
-    .hero-title {
-      font-size: 3.5em;
-      margin-bottom: 10px;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-    }
-    .hero-subtitle {
-      font-size: 1.2em;
-      margin-bottom: 30px;
-      max-width: 700px;
-    }
+   /* --- HERO (ảnh nền lớn) --- */
+.hero-section {
+  background: url('/images/camnang1.jpg') center/cover no-repeat;
+  color: #fff;
+  text-align: center;
+  padding: 60px 20px;       /* ↓ giảm padding cho đúng kích cỡ */
+  position: relative;
+  min-height: 230px;        /* ↓ giống khung bạn thích ở các phần khác */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
-    /* Toolbox */
-    .toolbox-section {
-      background-color: #fff;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-      border-radius: 15px;
-      padding: 30px;
-      margin-top: -60px;
-      position: relative;
-      z-index: 3;
-      text-align: left;
-    }
-    .toolbox-title {
-      font-size: 1.3em;
-      color: #2b70b5;
-      margin-bottom: 20px;
-      font-weight: bold;
-      border-left: 4px solid #f7931e;
-      padding-left: 10px;
-    }
-    .input-group {
-      display: flex;
-      gap: 20px;
-      margin-bottom: 20px;
-    }
-    .input-item { flex-grow: 1; }
-    .input-item label {
-      display: block;
-      font-size: 0.9em;
-      color: #555;
-      margin-bottom: 5px;
-    }
-    .input-item input {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 1em;
-      box-sizing: border-box;
-    }
-    .btn-search-guide {
-      background-color: #f7931e;
-      color: #fff;
-      border: none;
-      padding: 12px 30px;
-      border-radius: 8px;
-      font-size: 1.1em;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background-color 0.3s;
-      float: right;
-    }
-    .btn-search-guide:hover { background-color: #e07b00; }
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(40, 167, 69, 0.65); /* xanh mềm, không quá đậm */
+}
 
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-title {
+  font-size: 2.4em;          /* ↓ cho vừa khung */
+  margin-bottom: 8px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+}
+
+.hero-subtitle {
+  font-size: 1em;
+  max-width: 750px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+    
     /* Lọc phương tiện */
     .section-title {
       font-size: 1.5em;
@@ -352,57 +307,6 @@
     </div>
     
   </section>
-
-  <!-- TOOLBOX -->
-  <div class="toolbox-section">
-  <div class="toolbox-title">Đặt Vé & Phòng Nhanh</div>
-  <div class="input-group">
-
-    <div class="input-item">
-      <label for="service">Dịch vụ</label>
-      <select id="service">
-        <option value="flight">Vé Máy Bay</option>
-        <option value="train">Tàu Hỏa</option>
-        <option value="bus">Xe Khách</option>
-        <option value="hotel">Khách Sạn</option>
-      </select>
-    </div>
-
-    <div class="input-item" id="departure-group">
-      <label for="departure">Điểm Khởi Hành</label>
-      <input type="text" id="departure" placeholder="Ví dụ: TP.HCM">
-    </div>
-
-    <div class="input-item">
-      <label for="destination">Điểm Đến / Khách Sạn</label>
-      <input type="text" id="destination" placeholder="Ví dụ: Hà Nội hoặc Đà Nẵng">
-    </div>
-
-    <div class="input-item">
-      <label for="dateStart">Ngày đi / Nhận phòng</label>
-      <input type="date" id="dateStart">
-    </div>
-
-    <div class="input-item">
-      <label for="dateEnd">Ngày về / Trả phòng</label>
-      <input type="date" id="dateEnd">
-    </div>
-
-    <div class="input-item">
-      <label for="guests">Số khách</label>
-      <input type="number" id="guests" value="1" min="1">
-    </div>
-
-    <div class="input-item">
-      <label for="price">Giá tối đa (VNĐ)</label>
-      <input type="number" id="price" placeholder="Ví dụ: 2,000,000">
-    </div>
-  </div>
-
-  <button class="btn-search-guide">Tìm ngay</button>
-  <div style="clear: both;"></div>
-</div>
-
 
     <!-- FILTER -->
     <h2 class="section-title">Lọc Nhanh Theo Phương Tiện</h2>
