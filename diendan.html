@@ -1,391 +1,291 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Diễn Đàn Du Lịch | Check-in Việt Nam</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-  <style>
-    /* Header / nav styles */
-    .brand{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--primary);text-decoration:none}
-    .brand img{width:28px;height:18px;border-radius:2px}
-    .main-nav{display:flex;gap:18px;align-items:center}
-    .main-nav a{color:var(--muted);text-decoration:none;font-weight:600;padding:6px 0}
-    .main-nav a.active,.main-nav a:hover{color:var(--primary)}
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mini Travel Feed - Demo</title>
 
-    .actions{display:flex;align-items:center;gap:12px}
-    .btn{border:0;padding:8px 14px;border-radius:999px;cursor:pointer;font-weight:700}
-    .btn.primary{background:var(--primary);color:#fff}
-    .btn.ghost{background:transparent;border:1px solid var(--border);color:var(--muted)}
-    .avatar-sm{width:36px;height:36px;border-radius:999px;background:#ddd;background-size:cover;background-position:center}
+  <!-- Google font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg: #f0f7f2;
+      --card: #ffffff;
+      --muted: #7b8a86;
+      --accent: #2aa44f;
+      --glass: rgba(255,255,255,0.7);
+      --shadow: 0 8px 20px rgba(16,24,24,0.08);
+      --radius: 12px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background:
+        radial-gradient( circle at 10% 90%, rgba(42,164,79,0.02), transparent 10%),
+        linear-gradient(180deg, #f6fbf7 0%, var(--bg) 100%);
+      color:#10221b;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:32px;
+    }
 
     /* Layout */
-    .main-layout{max-width:1200px;margin:22px auto;padding:0 20px;display:grid;grid-template-columns:1fr 320px;gap:24px;align-items:start}
-    @media (max-width:980px){.main-layout{grid-template-columns:1fr;padding:0 12px}.main-nav{display:none}}
+    .container{
+      max-width:1100px;
+      margin:0 auto;
+      display:grid;
+      grid-template-columns: 1fr 360px;
+      gap:24px;
+      align-items:start;
+    }
 
-    .module-card{background:var(--card);border-radius:var(--radius);box-shadow:0 6px 18px rgba(15,23,42,0.06);padding:18px}
+    /* Left column (feed) */
+    .left{
+      display:flex;
+      flex-direction:column;
+      gap:20px;
+    }
 
-    /* Composer */
-    #postForm{display:flex;flex-direction:column;gap:10px}
-    #postForm .row{display:flex;gap:10px}
-    #postForm input[type='text'], #postForm textarea{width:100%;padding:10px;border-radius:10px;border:1px solid var(--border);font-size:14px}
-    #postForm label.upload{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:10px;background:#f1f5f9;border:1px dashed var(--border);cursor:pointer}
-    #postForm button[type='submit']{align-self:flex-end}
+    .card{
+      background:var(--card);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:16px;
+      overflow:hidden;
+    }
 
-    /* Posts */
-    #posts{display:flex;flex-direction:column;gap:14px}
-    .post-card{background:var(--card);border-radius:12px;border:1px solid var(--border);overflow:hidden}
-    .post-header{display:flex;gap:12px;align-items:center;padding:12px}
-    .post-header .avatar{width:48px;height:48px;border-radius:999px;object-fit:cover}
-    .post-meta .name{font-weight:700;color:#0f172a}
-    .post-meta .time{color:var(--muted);font-size:13px}
-    .post-body{padding:0 12px 12px;color:#0f172a}
-    .post-image img{width:100%;display:block;border-top:1px solid var(--border)}
-    .post-footer{display:flex;gap:18px;padding:10px 12px;border-top:1px solid var(--border);color:var(--muted);align-items:center}
-    .post-footer button{background:transparent;border:0;color:var(--muted);cursor:pointer;font-weight:700}
+    /* Post composer */
+    .composer{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      padding:14px 16px;
+    }
+    .avatar{
+      width:44px;height:44px;border-radius:50%;
+      background-image: url('gen-n-z7053135898784_6ef6b55fd6ce5a4df3c904fc060f680d.jpg');
+      background-size:cover;
+      background-position:center;
+      flex:0 0 44px;
+      box-shadow:0 1px 3px rgba(0,0,0,0.08) inset;
+    }
+    .composer input{
+      flex:1;
+      border:1px solid #eef3ef;
+      background:transparent;
+      padding:12px 14px;
+      border-radius:10px;
+      outline:none;
+      font-size:14px;
+      color:#2b3a36;
+    }
 
-    /* Sidebar */
-    #sidebar{position:fixed;right:0;top:0;bottom:0;width:320px;background:var(--card);box-shadow:-6px 0 24px rgba(2,6,23,0.08);padding:18px;transform:translateX(110%);transition:transform .28s ease;z-index:1400}
-    #sidebar.open{transform:translateX(0)}
-    #sidebar .close-btn{position:absolute;right:12px;top:12px;border:0;background:transparent;font-size:22px;cursor:pointer}
-    #sidebar .avatar{width:80px;height:80px;border-radius:999px;display:block;margin:12px auto 6px;object-fit:cover}
-    .progress-bar{height:10px;background:#f1f5f9;border-radius:999px;overflow:hidden}
-    .progress-bar > .progress{height:100%;background:linear-gradient(90deg,var(--primary),#ff9800);width:0%}
+    /* Main post */
+    .post .post-image{
+      width:100%;
+      height:260px;
+      border-radius:10px;
+      background-image: url('gen-n-z7053135898784_6ef6b55fd6ce5a4df3c904fc060f680d.jpg');
+      background-size:cover;
+      background-position:center;
+      margin:10px 0 6px 0;
+      position:relative;
+    }
+    .badge-checkin{
+      position:absolute;
+      right:12px; top:12px;
+      background:linear-gradient(90deg,#ff5a5f,#ff7b5a);
+      color:white;padding:6px 10px;border-radius:8px;
+      font-weight:600;font-size:12px;
+      box-shadow:0 6px 18px rgba(255,90,95,0.15);
+    }
+    .post .meta{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin-top:8px;
+    }
+    .post .meta .name{
+      font-weight:600;
+    }
+    .post .meta .tags{
+      color:var(--muted);
+      font-size:13px;
+      margin-top:8px;
+line-height:1.4;
+    }
+    .post .actions{
+      display:flex;
+      gap:16px;
+      margin-top:12px;
+      color:var(--muted);
+      font-size:14px;
+      align-items:center;
+    }
+    .action{
+      display:inline-flex;gap:8px;align-items:center;
+    }
 
-    /* Toggle button */
-    #toggleSidebar{position:fixed;right:18px;top:110px;background:var(--primary);color:#fff;border:0;padding:10px 12px;border-radius:8px;z-index:1500;cursor:pointer}
+    /* Small gallery card */
+    .mini-gallery{
+      display:flex;
+      gap:10px;
+      padding:12px;
+    }
+    .mini-gallery img{
+      width:100%;
+      height:84px;
+      object-fit:cover;
+      border-radius:10px;
+      flex:1;
+      display:block;
+    }
 
-    .muted{color:var(--muted)}
+    /* Right column */
+    .right{
+      display:flex;
+      flex-direction:column;
+      gap:20px;
+    }
+
+    .profile{
+      text-align:center;
+      padding:22px;
+    }
+    .profile .avatar-lg{
+      width:92px;height:92px;border-radius:50%;
+      margin:0 auto 12px;
+      background-image: url('gen-n-z7053135898784_6ef6b55fd6ce5a4df3c904fc060f680d.jpg');
+      background-size:cover;background-position:center;
+      box-shadow:0 6px 18px rgba(16,24,24,0.06);
+    }
+    .profile h3{margin:6px 0 4px;font-size:18px}
+    .profile .sub{color:var(--muted);font-size:13px;margin-bottom:12px}
+    .progress{
+      height:10px;background:#f3f6f3;border-radius:10px;overflow:hidden;margin:8px 24px;
+    }
+    .progress > span{
+      display:block;height:100%;width:9%;background:linear-gradient(90deg,var(--accent),#7bd37a);
+    }
+
+    .small-cards{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+    }
+    .small-card img{ width:100%; height:84px; object-fit:cover; border-radius:8px; display:block; }
+
+    .trending{
+      padding:14px;
+    }
+    .tag{
+      display:inline-block;
+      padding:8px 10px;
+      background:#f3fbf6;
+      color:var(--accent);
+      border-radius:999px;
+      margin:4px 6px 0 0;
+      font-weight:600;font-size:13px;
+    }
+
+    /* Responsive */
+    @media (max-width:980px){
+      .container{ grid-template-columns: 1fr; padding:0 14px; }
+      .right{ order:2 }
+    }
+
   </style>
 </head>
 <body>
-  <!-- Header (single instance kept) -->
+  <div class="container">
 
-  <div class="main-layout">
-    <!-- FEED: form + posts (dọc) -->
-    <div class="content-feed">
-      <div class="module-card">
-        <form id="postForm" style="margin-bottom:15px">
-  <input type="text" id="title" placeholder="Tiêu đề bài viết" required 
-    style="width:100%;margin-bottom:8px;padding:8px;border:1px solid #ddd;border-radius:6px" />
+    <!-- Left: feed -->
+    <div class="left">
+      <!-- Composer -->
+      <div class="card composer">
+        <div class="avatar" aria-hidden="true"></div>
+        <input type="text" placeholder="Share your travel adventures..." />
+      </div>
 
-  <div style="display:flex; align-items:flex-start; gap:10px; margin-bottom:8px">
-    <textarea id="content" placeholder="Nội dung" rows="3" required
-      style="flex:1; padding:8px; border:1px solid #ddd; border-radius:6px; resize:vertical"></textarea>
-
-    <label for="fileInput" 
-      style="flex:0 0 auto; cursor:pointer; background:#f0f2f5; border:1px solid #ddd; border-radius:6px; padding:8px 12px; display:flex; align-items:center; justify-content:center">
-      📷 Ảnh
-    </label>
-    <input type="file" id="fileInput" accept="image/*" style="display:none" />
-  </div>
-
-  <div id="previewContainer" style="display:none; margin-bottom:10px">
-    <img id="previewImage" src="" alt="Preview" style="max-width:200px; border-radius:8px;">
-  </div>
-
-  <button type="submit" style="background:#e63946; color:#fff; border:none; padding:8px 16px; border-radius:6px; cursor:pointer">
-    Đăng bài
-  </button>
-</form>
-   </div>
-
-      <!-- Nơi JS sẽ chèn các bài viết (xếp dọc vì .content-feed là column) -->
-      <div id="posts"></div>
-    </div>
-<!-- Nút toggle -->
-<button id="toggleSidebar" class="toggle-btn">☰</button>
-
-<!-- Sidebar -->
-<div id="sidebar" class="sidebar">
-  <button id="closeSidebar" class="close-btn">×</button>
-  <h2>Thông tin cá nhân</h2>
-
-<div style="text-align:center; margin-bottom:15px">
-  <img id="userAvatarImg" 
-       src="https://via.placeholder.com/80" 
-       alt="Avatar" 
-       style="width:80px;height:80px;border-radius:50%;object-fit:cover;border:2px solid #ddd;">
-</div>
-
-
-  <!-- User info -->
-  <div id="userInfo">
-    <p><strong>Tên:</strong> <span id="userName">Khách</span></p>
-    <p><strong>Email:</strong> <span id="userEmail">Chưa đăng nhập</span></p>
-  </div>
-
-  <!-- Progress -->
-  <div style="margin-top:20px">
-    <p><strong>Thám hiểm Việt Nam</strong></p>
-    <div style="background:#eee;border-radius:10px;height:12px;overflow:hidden">
-      <div id="progressBar" style="width:0%;height:100%;background:linear-gradient(90deg,#ff512f,#dd2476);"></div>
-    </div>
-    <p id="progressText" style="margin-top:5px;font-size:14px">0% hoàn thành</p>
-  </div>
-</div>
-
-
-
-
-   
-  </div>
-
-  <!-- Firebase + logic -->
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
-  import { getAuth, GoogleAuthProvider, signInWithPopup, signInWithRedirect, getRedirectResult, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
-  import { getFirestore, collection, addDoc, getDocs, serverTimestamp, query, orderBy, deleteDoc, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
-  import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-storage.js";
-
-  const firebaseConfig = {
-    apiKey: "AIzaSyDIlrYG0B2dYtL29TSYFphtqFXtz-kefqc",
-    authDomain: "hello-vietnam-5331d.firebaseapp.com",
-    projectId: "hello-vietnam-5331d",
-    storageBucket: "hello-vietnam-5331d.appspot.com",
-    messagingSenderId: "723581660067",
-    appId: "1:723581660067:web:e0721959ae942cf0c88816",
-    measurementId: "G-1K0LV7SLL7"
-  };
-
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
-  const provider = new GoogleAuthProvider();
-  provider.setCustomParameters({ prompt: "select_account" });
-  const db = getFirestore(app);
-  const storage = getStorage(app);
-
-  // Các phần tử
-  const loginBtn = document.getElementById("loginBtn");
-  const logoutBtn = document.getElementById("logoutBtn");
-  const userAvatar = document.getElementById("userAvatar");
-  const postForm = document.getElementById("postForm");
-  const fileInput = document.getElementById("fileInput");
-  const postsContainer = document.getElementById("posts");
-
-  // Preview ảnh khi chọn (defensive)
-  if (fileInput) {
-    fileInput.addEventListener("change", () => {
-      const file = fileInput.files[0];
-      const previewContainer = document.getElementById("previewContainer");
-      const previewImage = document.getElementById("previewImage");
-
-      if (!previewContainer || !previewImage) return;
-
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = e => {
-          previewImage.src = e.target.result;
-          previewContainer.style.display = "block";
-        };
-        reader.readAsDataURL(file);
-      } else {
-        previewContainer.style.display = "none";
-        previewImage.src = "";
-      }
-    });
-  }
-
-  function escapeHtml(text) {
-    if (!text) return "";
-    return String(text).replace(/[&<>"']/g, (m) => ({
-      "&": "&amp;",
-      "<": "&lt;",
-      ">": "&gt;",
-      '"': "&quot;",
-      "'": "&#39;"
-    }[m]));
-  }
-
-  // Đăng nhập
-  if (loginBtn) {
-    loginBtn.addEventListener("click", async () => {
-      try {
-        const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-        if (isMobile) await signInWithRedirect(auth, provider);
-        else await signInWithPopup(auth, provider);
-      } catch (err) {
-        console.error("Login error:", err);
-        alert("Lỗi đăng nhập: " + err.message);
-      }
-    });
-  }
-
-  // Đăng xuất
-  if (logoutBtn) {
-    logoutBtn.addEventListener("click", async () => {
-      try {
-        await signOut(auth);
-      } catch (err) {
-        console.error("Logout error:", err);
-      }
-    });
-  }
-
-  // Load danh sách bài viết
-  async function loadPosts() {
-    if (!postsContainer) return;
-    postsContainer.innerHTML = "";
-    try {
-      const q = query(collection(db, "posts"), orderBy("createdAt", "desc"));
-      const snap = await getDocs(q);
-      if (snap.empty) {
-        postsContainer.innerHTML = '<div class="module-card muted">Chưa có bài viết nào. Hãy đăng bài đầu tiên!</div>';
-        return;
-      }
-
-      snap.forEach(docSnap => {
-        const data = docSnap.data();
-        const id = docSnap.id;
-        const timeStr = (data.createdAt && data.createdAt.toDate) ? data.createdAt.toDate().toLocaleString() : "";
-        const isOwner = auth.currentUser && (auth.currentUser.uid === data.userId);
-
-        postsContainer.innerHTML += `
-          <div class="post-card" data-id="${id}">
-            ${data.imageUrl ? `<div class="post-image"><img src="${escapeHtml(data.imageUrl)}" alt=""></div>` : ""}
-            <div class="post-header">
-              <img src="${escapeHtml(data.avatar || 'https://i.pravatar.cc/150')}" alt="avatar" class="avatar">
-              <div>
-                <div class="username">${escapeHtml(data.user || "Ẩn danh")}</div>
-                <div class="muted">${escapeHtml(timeStr)}</div>
-              </div>
-            </div>
-            <div class="post-body">
-              <h3 style="margin:0 0 8px">${escapeHtml(data.title)}</h3>
-              <p style="margin:0">${escapeHtml(data.content)}</p>
-            </div>
-            <div class="post-footer">
-              <span><i class="fas fa-thumbs-up"></i> Like</span>
-              <span><i class="fas fa-comment"></i> Comment</span>
-              ${isOwner ? `<button class="deleteBtn" data-id="${id}" style="margin-left:auto;color:#fff;background:#e53935;border:none;border-radius:6px;padding:6px 10px;cursor:pointer">Xóa</button>` : ""}
-            </div>
+      <!-- Main post -->
+      <article class="card post">
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div style="width:48px;height:48px;border-radius:50%;background-image:url('gen-n-z7053135898784_6ef6b55fd6ce5a4df3c904fc060f680d.jpg');background-size:cover;background-position:center;"></div>
+          <div>
+            <div style="font-weight:700">Mai Phương Nguyễn <span style="color:#2aa44f;font-size:12px;margin-left:8px;">●</span></div>
+            <div style="font-size:13px;color:var(--muted)">Rau 3ein Canteen 88</div>
           </div>
-        `;
-      });
+        </div>
 
-      document.querySelectorAll(".deleteBtn").forEach(btn => {
-        btn.addEventListener("click", async () => {
-          const postId = btn.dataset.id;
-          if (!auth.currentUser) {
-            alert("Bạn cần đăng nhập để xóa.");
-            return;
-          }
-          if (!confirm("Bạn có chắc muốn xóa bài này không?")) return;
-          try {
-            await deleteDoc(doc(db, "posts", postId));
-            btn.closest(".post-card").remove();
-          } catch (err) {
-            console.error("Lỗi khi xóa:", err);
-            alert("Không thể xóa bài: " + err.message);
-          }
-        });
-      });
+        <div class="post-image" role="img" aria-label="Ảnh check-in">
+<div class="badge-checkin">CHECK-IN tại<br><small style="opacity:0.95">Vịnh Hạ Long, Quảng Ninh</small></div>
+        </div>
 
-    } catch (err) {
-      console.error("Lỗi load bài:", err);
-      postsContainer.innerHTML = '<div class="module-card muted">Lỗi khi tải bài viết.</div>';
-    }
-  }
+        <div class="meta">
+          <div>
+            <div class="name">Mai Phương Nguyễn</div>
+            <div class="tags">#checkin #CheckinQuangNinh, Quảng Ninh<br>#HalongBay #TravelVietNam</div>
+          </div>
+        </div>
 
-  // Submit bài viết
-  if (postForm) {
-    postForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      if (!auth.currentUser) {
-        alert('Bạn cần đăng nhập để đăng bài.');
-        return;
-      }
-      const title = document.getElementById('title')?.value || '';
-      const content = document.getElementById('content')?.value || '';
-      const file = fileInput?.files?.[0];
+        <div class="actions">
+          <div class="action">👍 2.5K Likes</div>
+          <div class="action">💬 350 Comments</div>
+          <div class="action">🔁 Share</div>
+        </div>
+      </article>
 
-      try {
-        let imageUrl = '';
-        if (file && storage) {
-          const storageRef = ref(storage, `posts/${Date.now()}_${file.name}`);
-          await uploadBytes(storageRef, file);
-          imageUrl = await getDownloadURL(storageRef);
-        }
-        await addDoc(collection(db, 'posts'), {
-          title, content, imageUrl, userId: auth.currentUser.uid, user: auth.currentUser.displayName || 'Ẩn danh', avatar: auth.currentUser.photoURL || '', createdAt: serverTimestamp()
-        });
-        // reset form
-        postForm.reset();
-        const previewContainer = document.getElementById('previewContainer');
-        const previewImage = document.getElementById('previewImage');
-        if (previewContainer) previewContainer.style.display = 'none';
-        if (previewImage) previewImage.src = '';
-        loadPosts();
-      } catch (err) {
-        console.error('Lỗi khi đăng bài:', err);
-        alert('Không thể đăng bài: ' + err.message);
-      }
-    });
-  }
+      <!-- gallery card -->
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+          <strong>Mai Phương Nguyễn</strong>
+          <div style="color:var(--muted);font-size:13px">Phượt Tâm Nguyên 55</div>
+        </div>
+        <div class="mini-gallery">
+          <img src="gen-n-z7053135898784_6ef6b55fd6ce5a4df3c904fc060f680d.jpg" alt="thumb1">
+          <img src="gen-n-z7053135898784_6ef6b55fd6ce5a4df3c904fc060f680d.jpg" alt="thumb2">
+          <img src="gen-n-z7053135898784_6ef6b55fd6ce5a4df3c904fc060f680d.jpg" alt="thumb3">
+        </div>
+      </div>
 
-  // === FIX CHÍNH: xử lý sidebar ===
-  window.addEventListener("load", () => {
-    const toggleBtn = document.getElementById("toggleSidebar");
-    const closeBtn = document.getElementById("closeSidebar");
-    const sidebar = document.getElementById("sidebar");
+    </div> <!-- end left -->
 
-    if (!sidebar) return; // sidebar required for later UI
+    <!-- Right: sidebar -->
+    <aside class="right">
+      <div class="card profile">
+        <div class="avatar-lg" aria-hidden="true"></div>
+        <h3>Mai Phương Nguyễn</h3>
+        <div class="sub">3/34 Tỉnh (9%)</div>
+        <div class="progress"><span style="width:9%"></span></div>
+      </div>
 
-    if (toggleBtn) {
-      toggleBtn.addEventListener("click", () => {
-        sidebar.classList.toggle("open");
-      });
-    }
+      <div class="card">
+        <h4 style="margin:0 0 12px 0">Travel Challenges</h4>
+        <div class="small-cards">
+          <div class="small-card">
+            <img src="gen-n-z7053135898784_6ef6b55fd6ce5a4df3c904fc060f680d.jpg" alt="">
+            <div style="font-weight:600;margin-top:8px;font-size:13px">Chinh Phục Miền Bắc</div>
+          </div>
+          <div class="small-card">
+            <img src="gen-n-z7053135898784_6ef6b55fd6ce5a4df3c904fc060f680d.jpg" alt="">
+            <div style="font-weight:600;margin-top:8px;font-size:13px">Khám Phá Cao Nguyên Đà Lạt</div>
+          </div>
+        </div>
+      </div>
 
-    if (closeBtn) {
-      closeBtn.addEventListener("click", () => {
-        sidebar.classList.remove("open");
-      });
-    }
-  });
+      <div class="card trending">
+        <h4 style="margin:0 0 10px 0">Trending</h4>
+        <div>
+          <span class="tag">#DuLichVietNam</span>
+          <span class="tag">#PhuotMienBac</span>
+        </div>
+      </div>
+    </aside>
 
-  // Khi đăng nhập / đăng xuất
-  onAuthStateChanged(auth, async (user) => {
-    try {
-      const nameEl = document.getElementById("userName");
-      const emailEl = document.getElementById("userEmail");
-      const avatarEl = document.getElementById("userAvatar");
-      const sidebarAvatar = document.getElementById('userAvatarImg');
-
-      if (user) {
-        if (loginBtn) loginBtn.style.display = "none";
-        if (logoutBtn) logoutBtn.style.display = "inline-block";
-        // set top avatar
-        if (avatarEl) {
-          avatarEl.src = user.photoURL || "default.png";
-          avatarEl.style.display = "block";
-        }
-        // set sidebar avatar
-        if (sidebarAvatar) sidebarAvatar.src = user.photoURL || sidebarAvatar.src;
-        if (nameEl) nameEl.innerText = user.displayName || "Ẩn danh";
-        if (emailEl) emailEl.innerText = user.email || "";
-      } else {
-        if (loginBtn) loginBtn.style.display = "inline-block";
-        if (logoutBtn) logoutBtn.style.display = "none";
-        if (avatarEl) {
-          avatarEl.style.display = "none";
-          avatarEl.src = "default.png";
-        }
-        if (sidebarAvatar) sidebarAvatar.src = 'https://via.placeholder.com/80';
-        if (nameEl) nameEl.innerText = "Khách";
-        if (emailEl) emailEl.innerText = "";
-      }
-    } catch (err) {
-      console.error('Auth state handler error:', err);
-    }
-
-    loadPosts();
-  });
-
-
-
-
-</script>
+  </div> <!-- container -->
 </body>
 </html>
