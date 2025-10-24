@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sơn La – Vùng Núi Tây Bắc Rực Rỡ | Hello-Vietnam</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="text-gray-900">
+<header class="navbar">
+  <a href="../index.html" class="logo">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg" alt="VN Flag" class="flag" />
+    <span>Hello-Vietnam</span>
+  </a>
+  <div class="actions">
+    <a href="#" class="btn primary">Đăng Nhập</a>
+    <button class="icon-btn"><i class="fa-solid fa-user-circle"></i></button>
+  </div>
+</header>
+
+
+<!-- HERO -->
+<section class="hero-section text-white flex items-center justify-center text-center p-8 md:p-16 h-96 md:h-[500px] rounded-b-xl overflow-hidden"
+         style="background-image: url('/images/son-la.jpg'); background-size: cover; background-position: center;">
+  <div class="absolute inset-0 hero-overlay bg-black bg-opacity-40"></div>
+  <div class="relative z-10">
+    <h1 class="text-4xl md:text-5xl font-extrabold leading-tight tracking-wide">Sơn La</h1>
+    <p class="text-lg md:text-2xl mt-4 font-light">Vùng đất của núi non, hoa ban và bản làng dân tộc rực rỡ sắc màu</p>
+  </div>
+</section>
+
+<!-- MAIN CONTENT -->
+<main class="container mx-auto px-4 py-12">
+
+  <!-- Giới thiệu -->
+  <section class="mb-16">
+    <h2 class="text-3xl font-bold text-center mb-6">Khám phá Sơn La</h2>
+    <div class="bg-white p-6 md:p-10 rounded-xl shadow-lg leading-relaxed">
+      <p>
+        Sơn La là tỉnh phía Tây Bắc Việt Nam, nổi bật với những dãy núi trùng điệp, hoa ban trắng vào xuân và những bản làng dân tộc mang đậm bản sắc văn hóa. 
+        Đây là điểm đến lý tưởng cho du khách thích trải nghiệm thiên nhiên hoang sơ và văn hóa truyền thống.
+      </p>
+    </div>
+  </section>
+
+  <!-- Nút vị trí -->
+  <button onclick="toggleMap()"
+          class="mt-4 bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-full flex items-center space-x-2 mx-auto shadow-lg">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M12 11c1.104 0 2-.896 2-2s-.896-2-2-2-2 .896-2 2 .896 2 2 2zM12 22s8-7.58 8-13a8 8 0 10-16 0c0 5.42 8 13 8 13z" />
+    </svg>
+    <span>Xem vị trí</span>
+  </button>
+
+  <!-- Bản đồ -->
+  <div id="map-container" class="hidden mt-6 w-full flex justify-center">
+    <iframe src="https://www.google.com/maps?q=Son+La,Vietnam&hl=vi&z=12&output=embed"
+            width="600" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+  </div>
+
+  <!-- Địa điểm nổi bật -->
+  <section class="mb-16">
+    <h2 class="text-3xl font-bold text-center mb-6">Địa điểm tham quan nổi bật</h2>
+    <div class="grid overflow-x-auto">
+      <a href="#" class="card">
+        <img src="/images/ta-xua.jpg" alt="Tà Xùa">
+        <div class="card-content">
+          <h3 class="text-lg font-semibold">Tà Xùa</h3>
+          <p class="text-sm text-gray-600">Thiên đường săn mây nổi tiếng, với cảnh núi non hùng vĩ và biển mây bồng bềnh.</p>
+        </div>
+      </a>
+      <a href="#" class="card">
+        <img src="/images/nha-tu-son-la.jpg" alt="Nhà tù Sơn La">
+        <div class="card-content">
+          <h3 class="text-lg font-semibold">Nhà tù Sơn La</h3>
+          <p class="text-sm text-gray-600">Di tích lịch sử ghi dấu tinh thần bất khuất của các chiến sĩ cách mạng Việt Nam.</p>
+        </div>
+      </a>
+      <a href="#" class="card">
+        <img src="/images/ban-ang.jpg" alt="Bản Áng – Mộc Châu">
+        <div class="card-content">
+          <h3 class="text-lg font-semibold">Bản Áng – Mộc Châu</h3>
+          <p class="text-sm text-gray-600">Bản làng người Thái bên hồ trong xanh, gần rừng thông, nổi tiếng thơ mộng.</p>
+        </div>
+      </a>
+      <a href="#" class="card">
+        <img src="/images/dap-son-la.jpg" alt="Thủy điện Sơn La">
+        <div class="card-content">
+          <h3 class="text-lg font-semibold">Thủy điện Sơn La</h3>
+          <p class="text-sm text-gray-600">Nhà máy thủy điện lớn nhất Việt Nam, biểu tượng công trình thế kỷ vùng Tây Bắc.</p>
+        </div>
+      </a>
+      <a href="#" class="card">
+        <img src="/images/dong-nang-tien.jpg" alt="Động Nang Tiên">
+        <div class="card-content">
+          <h3 class="text-lg font-semibold">Động Nang Tiên</h3>
+          <p class="text-sm text-gray-600">Hang động kỳ ảo ở Yên Châu, gắn liền với truyền thuyết tiên nữ giáng trần.</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Ẩm thực -->
+  <section class="mb-16">
+    <h2 class="text-3xl font-bold text-center mb-6">Những món ăn đặc trưng của Sơn La</h2>
+    <div class="grid overflow-x-auto">
+      <a href="#" class="card">
+        <img src="/images/thit-trau-gac-bep.jpg" alt="Thịt trâu gác bếp">
+        <div class="card-content">
+          <h3 class="text-lg font-semibold">Thịt trâu gác bếp</h3>
+          <p class="text-sm text-gray-600">Đặc sản nổi tiếng của người Thái, thịt trâu ướp mắc khén và sấy khô trên bếp lửa.</p>
+        </div>
+      </a>
+      <a href="#" class="card">
+        <img src="/images/ca-nuong-pa-pinh-top.jpg" alt="Cá nướng Pa Pỉnh Tộp">
+        <div class="card-content">
+          <h3 class="text-lg font-semibold">Cá nướng Pa Pỉnh Tộp</h3>
+          <p class="text-sm text-gray-600">Cá suối được ướp gia vị đặc trưng và nướng thơm nức trên than hồng.</p>
+        </div>
+      </a>
+      <a href="#" class="card">
+        <img src="/images/xoi-ngu-sac.jpg" alt="Xôi ngũ sắc">
+        <div class="card-content">
+          <h3 class="text-lg font-semibold">Xôi ngũ sắc</h3>
+          <p class="text-sm text-gray-600">Món ăn rực rỡ màu sắc của đồng bào dân tộc, mang ý nghĩa no đủ và may mắn.</p>
+        </div>
+      </a>
+      <a href="#" class="card">
+        <img src="/images/nam-pia.jpg" alt="Nậm pịa">
+        <div class="card-content">
+          <h3 class="text-lg font-semibold">Nậm pịa</h3>
+          <p class="text-sm text-gray-600">Món ăn truyền thống độc đáo, mang hương vị mạnh mẽ của vùng cao Tây Bắc.</p>
+        </div>
+      </a>
+      <a href="#" class="card">
+        <img src="/images/che-moc-chau.jpg" alt="Chè Mộc Châu">
+        <div class="card-content">
+          <h3 class="text-lg font-semibold">Chè Mộc Châu</h3>
+          <p class="text-sm text-gray-600">Đặc sản trứ danh của vùng đất cao nguyên, hương vị tinh khiết và thanh mát.</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<!-- SCRIPT -->
+<script>
+  function toggleMap() {
+    const map = document.getElementById('map-container');
+    map.classList.toggle('hidden');
+  }
+</script>
+
+</body>
+</html>

@@ -3,33 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phượt Xe Máy – Tự Do Trên Mọi Cung Đường | Hello Việt Nam</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-  <title>Tàu Hỏa – Hành Trình Xuyên Việt | Hello Việt Nam</title>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
       margin: 0;
-      background-color: #f0f8ff;
+      background-color: #fffaf5;
       color: #333;
       line-height: 1.6;
     }
 
     /* Banner */
     .banner {
-      background: linear-gradient(to bottom, #a2d9ff, #eaf6ff);
+      background: linear-gradient(to bottom, #ffe0b2, #fff3e0);
       text-align: center;
       padding: 80px 20px;
     }
 
     .banner h1 {
       font-size: 36px;
-      color: #004e89;
+      color: #d84315;
       margin-bottom: 10px;
     }
 
     .banner p {
       font-size: 18px;
-      color: #333;
+      color: #4e342e;
       max-width: 600px;
       margin: 0 auto;
     }
@@ -42,13 +42,13 @@
     }
 
     h2 {
-      color: #004e89;
+      color: #d84315;
       border-left: 5px solid #ff9800;
       padding-left: 10px;
       margin-bottom: 20px;
     }
 
-    /* Mẹo du lịch */
+    /* Mẹo phượt */
     .tips {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -80,8 +80,8 @@
       margin-bottom: 8px;
     }
 
-    /* Form đặt vé */
-    .booking-form {
+    /* Form gợi ý hành trình */
+    .trip-form {
       background: white;
       border-radius: 15px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
@@ -89,13 +89,14 @@
       margin-top: 20px;
     }
 
-    .booking-form label {
+    .trip-form label {
       font-weight: bold;
       display: block;
       margin-top: 10px;
     }
 
-    .booking-form input {
+    .trip-form input,
+    .trip-form select {
       width: 100%;
       padding: 8px;
       margin-top: 5px;
@@ -103,7 +104,7 @@
       border-radius: 6px;
     }
 
-    .booking-form button {
+    .trip-form button {
       margin-top: 15px;
       width: 100%;
       padding: 10px;
@@ -116,11 +117,11 @@
       transition: 0.3s;
     }
 
-    .booking-form button:hover {
+    .trip-form button:hover {
       background: #e68900;
     }
 
-    /* Gợi ý điểm đến */
+    /* Gợi ý cung đường */
     .destinations {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -148,7 +149,7 @@
     }
 
     footer {
-      background: #004e89;
+      background: #d84315;
       color: white;
       text-align: center;
       padding: 20px;
@@ -184,7 +185,6 @@
   </style>
 </head>
 <body>
-<!-- NAVBAR -->
 <header class="navbar">
   <a href="../index.html" class="logo">
     <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg" alt="VN Flag" class="flag" />
@@ -197,89 +197,90 @@
   </header>
   <!-- Banner -->
   <div class="banner">
-    <h1>🚆 Tàu Hỏa – Hành Trình Xuyên Việt</h1>
-    <p>Khám phá vẻ đẹp Việt Nam qua khung cửa sổ tàu hỏa – nơi bạn có thể ngắm nhìn đồng xanh, núi non và biển cả suốt dọc chiều đất nước cùng Hello Việt Nam.</p>
+    <h1>🏍️ Phượt Xe Máy – Tự Do Trên Mọi Cung Đường</h1>
+    <p>Hít gió trời, băng qua những con đèo uốn lượn, khám phá cảnh sắc và con người Việt Nam theo cách tự do nhất cùng Hello Việt Nam.</p>
   </div>
 
   <!-- Giới thiệu -->
   <section>
-    <h2>Vì Sao Nên Chọn Tàu Hỏa?</h2>
-    <p>Tàu hỏa là lựa chọn lý tưởng cho những ai yêu thích sự an toàn, thoải mái và muốn trải nghiệm cảnh quan tuyệt đẹp của Việt Nam. Hành trình từ Bắc chí Nam qua từng ga tàu là một chuyến phiêu lưu đầy kỷ niệm và cảm xúc.</p>
+    <h2>Vì Sao Nên Chọn Đi Phượt Xe Máy?</h2>
+    <p>Đi phượt bằng xe máy là lựa chọn của những tâm hồn yêu tự do và khám phá. Mỗi chặng đường đều là một trải nghiệm mới, nơi bạn cảm nhận trọn vẹn hương gió, nắng, và những cung đường uốn quanh núi rừng, biển cả Việt Nam.</p>
   </section>
 
-  <!-- Mẹo & Kinh nghiệm -->
+  <!-- Mẹo phượt -->
   <section>
-    <h2>Mẹo Đi Tàu Hỏa Tiện Lợi & Dễ Chịu</h2>
+    <h2>Mẹo Phượt An Toàn & Tiện Lợi</h2>
     <div class="tips">
       <div class="tip-card">
-        <img src="images/ve-tau.jpg" alt="Săn vé tàu">
-        <h3>Cách Săn Vé Tàu Giá Rẻ</h3>
-        <p>Đặt vé sớm, chọn thời gian linh hoạt và canh khuyến mãi để tiết kiệm chi phí di chuyển.</p>
+        <img src="images/kiem-tra-xe.jpg" alt="Kiểm tra xe">
+        <h3>Kiểm Tra Xe Trước Khi Đi</h3>
+        <p>Đảm bảo xe được bảo dưỡng tốt: thắng, lốp, đèn, nhớt. Mang theo dụng cụ sửa chữa cơ bản để xử lý sự cố nhỏ trên đường.</p>
       </div>
       <div class="tip-card">
-        <img src="images/toa-giuong-nam.jpg" alt="Toa giường nằm">
-        <h3>Chọn Loại Ghế & Toa Phù Hợp</h3>
-        <p>Chọn toa giường nằm cho chuyến đi dài hoặc ghế mềm điều hòa cho hành trình ngắn, giúp bạn thoải mái hơn.</p>
+        <img src="images/do-bao-ho.jpg" alt="Đồ bảo hộ phượt">
+        <h3>Chuẩn Bị Đầy Đủ Đồ Bảo Hộ</h3>
+        <p>Đội mũ bảo hiểm tốt, mặc áo giáp, găng tay, giày cao cổ – vừa an toàn, vừa phong cách phượt thủ.</p>
       </div>
       <div class="tip-card">
-        <img src="images/hanh-ly-tau.jpg" alt="Hành lý tàu hỏa">
-        <h3>Chuẩn Bị Hành Lý Gọn Nhẹ</h3>
-        <p>Ưu tiên đồ gọn gàng, dễ mang theo và nhớ giữ vé tàu trong suốt hành trình.</p>
+        <img src="images/hanh-ly.jpg" alt="Hành lý phượt">
+        <h3>Sắp Xếp Hành Lý Gọn Nhẹ</h3>
+        <p>Chỉ mang những món thật cần thiết, gói chống nước và cân bằng 2 bên xe để di chuyển an toàn hơn.</p>
       </div>
     </div>
-  </section>
-
-  <!-- Form đặt vé -->
-  <section>
-    <h2>Đặt Vé Tàu Hỏa</h2>
-    <form class="booking-form">
-      <label>Ga khởi hành:</label>
-      <input type="text" placeholder="Ví dụ: Hà Nội">
-
-      <label>Ga đến:</label>
-      <input type="text" placeholder="Ví dụ: Nha Trang">
-
-      <label>Ngày đi:</label>
-      <input type="date">
-
-      <label>Ngày về:</label>
-      <input type="date">
-
-      <label>Số hành khách:</label>
-      <input type="number" min="1" value="1">
-
-      <label>Giá tối đa (VNĐ):</label>
-      <input type="text" placeholder="Ví dụ: 1,500,000">
-
-      <button type="submit">Tìm chuyến tàu</button>
-    </form>
   </section>
 
   <!-- Gợi ý hành trình -->
   <section>
-    <h2>Những Tuyến Tàu Phổ Biến</h2>
+    <h2>Gợi Ý Cung Đường Phượt Nổi Tiếng</h2>
     <div class="destinations">
       <div class="dest-card">
-        <img src="images/hanoi-hue.jpg" alt="Hà Nội - Huế">
-        <p>Hà Nội 🚆 Huế</p>
+        <img src="images/ha-giang.jpg" alt="Hà Giang">
+        <p>Hà Giang – Mã Pí Lèng</p>
       </div>
       <div class="dest-card">
-        <img src="images/saigon-nhatrang.jpg" alt="TP.HCM - Nha Trang">
-        <p>TP. Hồ Chí Minh 🚆 Nha Trang</p>
+        <img src="images/da-lat.jpg" alt="Đà Lạt">
+        <p>Sài Gòn – Đà Lạt</p>
       </div>
       <div class="dest-card">
-        <img src="images/hue-danang.jpg" alt="Huế - Đà Nẵng">
-        <p>Huế 🚆 Đà Nẵng</p>
+        <img src="images/phu-yen.jpg" alt="Phú Yên">
+        <p>Quy Nhơn – Phú Yên – Nha Trang</p>
       </div>
       <div class="dest-card">
-        <img src="images/hanoi-sapa.jpg" alt="Hà Nội - Lào Cai">
-        <p>Hà Nội 🚆 Lào Cai (Sapa)</p>
+        <img src="images/hoian.jpg" alt="Hội An">
+        <p>Huế – Hội An – Đà Nẵng</p>
       </div>
     </div>
   </section>
 
+  <!-- Form gợi ý chuyến -->
+  <section>
+    <h2>Lên Kế Hoạch Chuyến Phượt Của Bạn</h2>
+    <form class="trip-form">
+      <label>Điểm khởi hành:</label>
+      <input type="text" placeholder="Ví dụ: Hà Nội">
+
+      <label>Điểm đến:</label>
+      <input type="text" placeholder="Ví dụ: Đà Lạt">
+
+      <label>Số ngày dự kiến:</label>
+      <input type="number" min="1" value="3">
+
+      <label>Ngân sách (VNĐ):</label>
+      <input type="text" placeholder="Ví dụ: 2,000,000">
+
+      <label>Loại hành trình:</label>
+      <select>
+        <option>Độc hành</option>
+        <option>Đi nhóm</option>
+        <option>Gia đình</option>
+      </select>
+
+      <button type="submit">Tạo hành trình</button>
+    </form>
+  </section>
+
   <footer>
-    Hello Việt Nam – Đồng hành trên mọi hành trình tàu hỏa của bạn. 🚄
+    Hello Việt Nam – Cùng bạn chinh phục mọi cung đường phượt Việt Nam 🏍️
   </footer>
 
 </body>

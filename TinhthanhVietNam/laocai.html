@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hello-Vietnam - Lào Cai</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="text-gray-900">
+
+<header class="navbar">
+  <a href="../index.html" class="logo">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg" alt="VN Flag" class="flag" />
+    <span>Hello-Vietnam</span>
+  </a>
+  <div class="actions">
+    <a href="#" class="btn primary">Đăng Nhập</a>
+    <button class="icon-btn"><i class="fa-solid fa-user-circle"></i></button>
+  </div>
+</header>
+
+<section class="hero-section text-white flex items-center justify-center text-center p-8 md:p-16 h-96 md:h-[500px] rounded-b-xl overflow-hidden" style="background-image: url('/images/lao-cai.jpg');">
+  <div class="absolute inset-0 hero-overlay"></div>
+  <div class="relative z-10">
+    <h1 class="text-4xl md:text-5xl font-extrabold leading-tight tracking-wide">Lào Cai</h1>
+    <p class="text-lg md:text-2xl mt-4 font-light">Vùng đất nơi núi trời gặp gỡ – cửa ngõ vùng Tây Bắc</p>
+  </div>
+</section>
+
+<main class="container mx-auto px-4 py-12">
+
+  <section class="mb-16">
+    <h2 class="text-3xl font-bold text-center mb-6">Khám phá vẻ đẹp Lào Cai</h2>
+    <div class="bg-white p-6 md:p-10 rounded-xl shadow-lg leading-relaxed">
+      <p>
+        Lào Cai là tỉnh miền núi phía Bắc, nổi tiếng với cảnh sắc hùng vĩ, văn hóa dân tộc đa dạng và thị trấn du lịch Sa Pa mờ sương. Nơi đây là điểm đến lý tưởng cho du khách yêu thiên nhiên và khám phá.
+      </p>
+    </div>
+  </section>
+
+  <button onclick="toggleMap()" class="mt-4 bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-full flex items-center space-x-2 mx-auto shadow-lg">
+    <i class="fa-solid fa-location-dot"></i><span>Xem vị trí</span>
+  </button>
+
+  <div id="map-container" class="hidden mt-6 w-full flex justify-center">
+    <iframe src="https://www.google.com/maps?q=Lao+Cai,Vietnam&hl=vi&z=12&output=embed" width="600" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+  </div>
+
+  <section class="mb-16">
+    <h2 class="text-3xl font-bold text-center mb-6">Địa điểm nổi bật</h2>
+    <div class="grid overflow-x-auto">
+      <a href="#" class="card"><img src="/images/sapa.jpg" alt="Sa Pa"><div class="card-content"><h3 class="text-lg font-semibold">Sa Pa</h3><p>Thị trấn trong sương với ruộng bậc thang và đỉnh Fansipan hùng vĩ.</p></div></a>
+      <a href="#" class="card"><img src="/images/fansipan.jpg" alt="Fansipan"><div class="card-content"><h3 class="text-lg font-semibold">Đỉnh Fansipan</h3><p>Nóc nhà Đông Dương, nơi chạm tay vào mây trời.</p></div></a>
+      <a href="#" class="card"><img src="/images/bac-ha.jpg" alt="Chợ Bắc Hà"><div class="card-content"><h3 class="text-lg font-semibold">Chợ phiên Bắc Hà</h3><p>Nơi hội tụ văn hóa các dân tộc vùng cao mỗi chủ nhật.</p></div></a>
+      <a href="#" class="card"><img src="/images/thac-tinh-yeu.jpg" alt="Thác Tình Yêu"><div class="card-content"><h3 class="text-lg font-semibold">Thác Tình Yêu</h3><p>Thác nước thơ mộng giữa núi rừng Sa Pa.</p></div></a>
+      <a href="#" class="card"><img src="/images/y-ty.jpg" alt="Y Tý"><div class="card-content"><h3 class="text-lg font-semibold">Y Tý</h3><p>Thiên đường săn mây, nơi giao thoa giữa đất và trời.</p></div></a>
+    </div>
+  </section>
+
+  <section class="mb-16">
+    <h2 class="text-3xl font-bold text-center mb-6">Ẩm thực đặc trưng</h2>
+    <div class="grid overflow-x-auto">
+      <a href="#" class="card"><img src="/images/thang-co.jpg" alt="Thắng cố"><div class="card-content"><h3 class="text-lg font-semibold">Thắng cố</h3><p>Món ăn truyền thống của người H'Mông, đậm vị vùng cao.</p></div></a>
+      <a href="#" class="card"><img src="/images/ca-hoi-sapa.jpg" alt="Cá hồi Sa Pa"><div class="card-content"><h3 class="text-lg font-semibold">Cá hồi Sa Pa</h3><p>Đặc sản tươi ngon của vùng núi cao lạnh giá.</p></div></a>
+      <a href="#" class="card"><img src="/images/lon-cap-nach.jpg" alt="Lợn cắp nách"><div class="card-content"><h3 class="text-lg font-semibold">Lợn cắp nách</h3><p>Món thịt nướng đặc sản thơm ngon độc đáo.</p></div></a>
+      <a href="#" class="card"><img src="/images/ruou-ta-van.jpg" alt="Rượu Táo mèo"><div class="card-content"><h3 class="text-lg font-semibold">Rượu Táo mèo</h3><p>Thức uống dân dã từ quả rừng đặc trưng Tây Bắc.</p></div></a>
+      <a href="#" class="card"><img src="/images/xoi-ngu-sac.jpg" alt="Xôi ngũ sắc"><div class="card-content"><h3 class="text-lg font-semibold">Xôi ngũ sắc</h3><p>Món ăn tượng trưng cho sự no đủ và may mắn.</p></div></a>
+    </div>
+  </section>
+
+</main>
+
+<script>
+  function toggleMap() {
+    document.getElementById('map-container').classList.toggle('hidden');
+  }
+</script>
+</body>
+</html>

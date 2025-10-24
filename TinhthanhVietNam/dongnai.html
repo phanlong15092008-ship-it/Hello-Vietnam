@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đồng Nai – Vùng Đất Công Nghiệp Xanh | Hello-Vietnam</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="text-gray-900">
+
+<header class="navbar">
+  <a href="../index.html" class="logo">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg" class="flag" />
+    <span>Hello-Vietnam</span>
+  </a>
+  <div class="actions">
+    <a href="#" class="btn primary">Đăng Nhập</a>
+    <button class="icon-btn"><i class="fa-solid fa-user-circle"></i></button>
+  </div>
+</header>
+
+<section class="hero-section text-white flex items-center justify-center text-center p-8 md:p-16 h-96 md:h-[500px] rounded-b-xl overflow-hidden"
+         style="background-image: url('/images/dong-nai.jpg'); background-size: cover; background-position: center;">
+  <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+  <div class="relative z-10">
+    <h1 class="text-4xl md:text-5xl font-extrabold">Đồng Nai</h1>
+    <p class="text-lg md:text-2xl mt-4 font-light">Vùng đất công nghiệp xanh – cửa ngõ phía Đông Nam Bộ</p>
+  </div>
+</section>
+
+<main class="container mx-auto px-4 py-12">
+  <section class="mb-16">
+    <h2 class="text-3xl font-bold text-center mb-6">Khám phá Đồng Nai</h2>
+    <div class="bg-white p-6 md:p-10 rounded-xl shadow-lg leading-relaxed">
+      <p>
+        Đồng Nai là tỉnh phát triển mạnh về công nghiệp, song vẫn giữ được nhiều nét đẹp tự nhiên. 
+        Những khu du lịch sinh thái, hồ Trị An hay rừng Nam Cát Tiên mang đến không gian trong lành cho du khách.
+      </p>
+    </div>
+  </section>
+
+  <button onclick="toggleMap()" class="mt-4 bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-full flex items-center space-x-2 mx-auto shadow-lg">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M12 11c1.104 0 2-.896 2-2s-.896-2-2-2-2 .896-2 2 .896 2 2 2zM12 22s8-7.58 8-13a8 8 0 10-16 0c0 5.42 8 13 8 13z"/>
+    </svg>
+    <span>Xem vị trí</span>
+  </button>
+
+  <div id="map-container" class="hidden mt-6 flex justify-center">
+    <iframe src="https://www.google.com/maps?q=Dong+Nai,Vietnam&hl=vi&z=11&output=embed"
+            width="600" height="400" style="border:0;" allowfullscreen loading="lazy"></iframe>
+  </div>
+
+  <section class="mb-16">
+    <h2 class="text-3xl font-bold text-center mb-6">Địa điểm nổi bật</h2>
+    <div class="grid overflow-x-auto">
+      <a href="#" class="card"><img src="/images/nam-cat-tien.jpg"><div class="card-content"><h3>Vườn quốc gia Nam Cát Tiên</h3><p>Khu bảo tồn sinh thái nổi tiếng, di sản thiên nhiên quý giá.</p></div></a>
+      <a href="#" class="card"><img src="/images/ho-tri-an.jpg"><div class="card-content"><h3>Hồ Trị An</h3><p>Hồ nước nhân tạo lớn, điểm câu cá và dã ngoại hấp dẫn.</p></div></a>
+      <a href="#" class="card"><img src="/images/chua-chau-thanh.jpg"><div class="card-content"><h3>Chùa Châu Thới</h3><p>Ngôi chùa cổ trên núi cao, linh thiêng và thanh tịnh.</p></div></a>
+      <a href="#" class="card"><img src="/images/khu-du-lich-bo-cap-vang.jpg"><div class="card-content"><h3>Khu du lịch Bò Cạp Vàng</h3><p>Điểm vui chơi, tắm sông, cắm trại nổi tiếng gần Sài Gòn.</p></div></a>
+      <a href="#" class="card"><img src="/images/cau-ganh.jpg"><div class="card-content"><h3>Cầu Ghềnh</h3><p>Biểu tượng lịch sử của Biên Hòa, mang kiến trúc Pháp cổ.</p></div></a>
+    </div>
+  </section>
+
+  <section class="mb-16">
+    <h2 class="text-3xl font-bold text-center mb-6">Ẩm thực đặc trưng</h2>
+    <div class="grid overflow-x-auto">
+      <a href="#" class="card"><img src="/images/goi-ca-song.jpg"><div class="card-content"><h3>Gỏi cá sông</h3><p>Món đặc sản dân dã từ cá sông Đồng Nai, vị chua cay hấp dẫn.</p></div></a>
+      <a href="#" class="card"><img src="/images/lau-ca-linh.jpg"><div class="card-content"><h3>Lẩu cá linh bông điên điển</h3><p>Hương vị miền Nam đặc trưng, thanh mát và ngọt dịu.</p></div></a>
+      <a href="#" class="card"><img src="/images/banh-xeo.jpg"><div class="card-content"><h3>Bánh xèo Đồng Nai</h3><p>Bánh vàng giòn, nhân tôm thịt đậm đà, ăn kèm rau sống.</p></div></a>
+      <a href="#" class="card"><img src="/images/com-tam.jpg"><div class="card-content"><h3>Cơm tấm Biên Hòa</h3><p>Đặc sản quen thuộc nhưng mang hương vị riêng của vùng.</p></div></a>
+      <a href="#" class="card"><img src="/images/banh-canh-long-heo.jpg"><div class="card-content"><h3>Bánh canh lòng heo</h3><p>Món ăn sáng dân dã, thơm ngon, đậm chất miền Đông.</p></div></a>
+    </div>
+  </section>
+</main>
+
+<script>
+function toggleMap(){document.getElementById('map-container').classList.toggle('hidden');}
+</script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ninh Bình – Vùng Đất Tràng An | Hello-Vietnam</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="text-gray-900">
+
+<header class="navbar">
+  <a href="../index.html" class="logo">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg" class="flag" alt="VN Flag" />
+    <span>Hello-Vietnam</span>
+  </a>
+  <div class="actions">
+    <a href="#" class="btn primary">Đăng Nhập</a>
+    <button class="icon-btn"><i class="fa-solid fa-user-circle"></i></button>
+  </div>
+</header>
+
+<section class="hero-section text-white flex items-center justify-center text-center p-8 md:p-16 h-96 md:h-[500px] rounded-b-xl overflow-hidden"
+         style="background-image: url('/images/ninh-binh.jpg'); background-size: cover; background-position: center;">
+  <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+  <div class="relative z-10">
+    <h1 class="text-4xl md:text-5xl font-extrabold">Ninh Bình</h1>
+    <p class="text-lg md:text-2xl mt-4 font-light">Vịnh Hạ Long trên cạn – Tràng An & Tam Cốc</p>
+  </div>
+</section>
+
+<main class="container mx-auto px-4 py-12">
+  <section class="mb-12">
+    <h2 class="text-3xl font-bold text-center mb-6">Khám phá Ninh Bình</h2>
+    <div class="bg-white p-6 rounded-xl shadow-lg">
+      <p>Ninh Bình nổi tiếng với quần thể danh thắng Tràng An, cố đô Hoa Lư, và cảnh quan hang động – ruộng đồng hài hòa. Đây là điểm đến thiên nhiên & lịch sử hấp dẫn.</p>
+    </div>
+  </section>
+
+  <button onclick="toggleMap()" class="mt-4 bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-full flex items-center space-x-2 mx-auto shadow-lg">
+    <i class="fa-solid fa-location-dot"></i><span>Xem vị trí</span>
+  </button>
+  <div id="map-container" class="hidden mt-6 flex justify-center">
+    <iframe src="https://www.google.com/maps?q=Ninh+Binh,Vietnam&hl=vi&z=12&output=embed" width="600" height="400" style="border:0;" allowfullscreen loading="lazy"></iframe>
+  </div>
+
+  <section class="mb-12">
+    <h3 class="text-3xl font-bold text-center mb-6">Địa điểm nổi bật</h3>
+    <div class="grid overflow-x-auto">
+      <a href="#" class="card"><img src="/images/trang-an.jpg" alt="Tràng An"><div class="card-content"><h4 class="text-lg font-semibold">Tràng An</h4><p class="text-sm text-gray-600">Quần thể danh thắng kỳ vĩ, chèo thuyền qua hang động và núi đá.</p></div></a>
+      <a href="#" class="card"><img src="/images/tam-coc.jpg" alt="Tam Cốc"><div class="card-content"><h4 class="text-lg font-semibold">Tam Cốc – Bích Động</h4><p class="text-sm text-gray-600">“Hạ Long trên cạn” với ruộng bậc thang và sông uốn quanh.</p></div></a>
+      <a href="#" class="card"><img src="/images/hoa-lu.jpg" alt="Hoa Lư"><div class="card-content"><h4 class="text-lg font-semibold">Cố đô Hoa Lư</h4><p class="text-sm text-gray-600">Kinh đô đầu tiên của Đại Việt, nhiều di tích lịch sử.</p></div></a>
+      <a href="#" class="card"><img src="/images/mai-chau.jpg" alt="Hang Múa"><div class="card-content"><h4 class="text-lg font-semibold">Hang Múa</h4><p class="text-sm text-gray-600">View đỉnh núi nhìn toàn cảnh Tam Cốc, bậc thang đá nổi tiếng.</p></div></a>
+      <a href="#" class="card"><img src="/images/van-long.jpg" alt="Vân Long"><div class="card-content"><h4 class="text-lg font-semibold">Vân Long</h4><p class="text-sm text-gray-600">Khu bảo tồn thiên nhiên với cảnh nước lặng và chim muông.</p></div></a>
+    </div>
+  </section>
+
+  <section>
+    <h3 class="text-3xl font-bold text-center mb-6">Ẩm thực Ninh Bình</h3>
+    <div class="grid overflow-x-auto">
+      <a href="#" class="card"><img src="/images/com-chay.jpg" alt="Cơm cháy"><div class="card-content"><h4 class="text-lg font-semibold">Cơm cháy Ninh Bình</h4><p class="text-sm text-gray-600">Cơm cháy giòn ăn kèm chà bông, nước sốt đặc trưng.</p></div></a>
+      <a href="#" class="card"><img src="/images/bun-rieu.jpg" alt="Bún riêu cua"><div class="card-content"><h4 class="text-lg font-semibold">Bún riêu cua</h4><p class="text-sm text-gray-600">Hương vị đồng quê, dùng kèm cua đồng và rau thơm.</p></div></a>
+      <a href="#" class="card"><img src="/images/goi-ca-ngu.jpg" alt="Gỏi cá nhệch"><div class="card-content"><h4 class="text-lg font-semibold">Gỏi cá nhệch</h4><p class="text-sm text-gray-600">Món đặc sản miền sông nước, chấm mắm nêm, ăn kèm rau rừng.</p></div></a>
+      <a href="#" class="card"><img src="/images/che-bap.jpg" alt="Chè bắp"><div class="card-content"><h4 class="text-lg font-semibold">Chè bắp</h4><p class="text-sm text-gray-600">Món ngọt dân dã, làm từ bắp nếp thơm dẻo.</p></div></a>
+      <a href="#" class="card"><img src="/images/banh-nam.jpg" alt="Bánh nậm"><div class="card-content"><h4 class="text-lg font-semibold">Bánh nậm</h4><p class="text-sm text-gray-600">Bánh gói lá, nhân tôm hoặc thịt, mềm thơm.</p></div></a>
+    </div>
+  </section>
+
+</main>
+
+<script>
+function toggleMap(){ document.getElementById('map-container').classList.toggle('hidden'); }
+</script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Gia Lai – Cao Nguyên Buôn Ma Thuột | Hello-Vietnam</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="text-gray-900">
+<header class="navbar"><a href="../index.html" class="logo"><img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg" class="flag" alt="VN Flag"/><span>Hello-Vietnam</span></a>
+  <div class="actions"><a href="#" class="btn primary">Đăng Nhập</a><button class="icon-btn"><i class="fa-solid fa-user-circle"></i></button></div>
+</header>
+
+<section class="hero-section text-white flex items-center justify-center text-center p-8 md:p-16 h-96 md:h-[500px]" style="background-image: url('/images/gia-lai.jpg'); background-size: cover; background-position: center;">
+  <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+  <div class="relative z-10"><h1 class="text-4xl md:text-5xl font-extrabold">Gia Lai</h1><p class="text-lg md:text-2xl mt-4 font-light">Cao nguyên bạt ngàn, văn hóa Tây Nguyên và cà phê nổi tiếng</p></div>
+</section>
+
+<main class="container mx-auto px-4 py-12">
+  <section class="mb-12"><h2 class="text-3xl font-bold text-center mb-6">Giới thiệu</h2><div class="bg-white p-6 rounded-xl shadow-lg"><p>Gia Lai có cảnh quan cao nguyên, hồ, thác và văn hóa cồng chiêng đặc trưng. Buôn Ma Thuột gần đó là trung tâm cà phê quan trọng của cả nước.</p></div></section>
+
+  <button onclick="toggleMap()" class="mt-4 bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-full flex items-center space-x-2 mx-auto shadow-lg"><i class="fa-solid fa-location-dot"></i><span>Xem vị trí</span></button>
+  <div id="map-container" class="hidden mt-6 flex justify-center"><iframe src="https://www.google.com/maps?q=Gia+Lai,Vietnam&hl=vi&z=9&output=embed" width="600" height="400" style="border:0;" allowfullscreen loading="lazy"></iframe></div>
+
+  <section class="mb-12">
+    <h3 class="text-3xl font-bold text-center mb-6">Địa điểm nổi bật</h3>
+    <div class="grid overflow-x-auto">
+      <a class="card" href="#"><img src="/images/pleiku.jpg" alt=""><div class="card-content"><h4 class="text-lg font-semibold">Pleiku</h4><p class="text-sm text-gray-600">Thành phố trung tâm, gần nhiều cảnh quan cao nguyên.</p></div></a>
+      <a class="card" href="#"><img src="/images/kon-tum.jpg" alt=""><div class="card-content"><h4 class="text-lg font-semibold">Hồ T’Nưng (Plei Lake)</h4><p class="text-sm text-gray-600">Hồ nước thơ mộng trên cao nguyên.</p></div></a>
+      <a class="card" href="#"><img src="/images/ya-do.jpg" alt=""><div class="card-content"><h4 class="text-lg font-semibold">Thác Phú Cường</h4><p class="text-sm text-gray-600">Thác nước lớn, khung cảnh hoang sơ.</p></div></a>
+      <a class="card" href="#"><img src="/images/banh-trang-gia-lai.jpg" alt=""><div class="card-content"><h4 class="text-lg font-semibold">Buôn làng truyền thống</h4><p class="text-sm text-gray-600">Khám phá đời sống văn hóa cồng chiêng và nhà dài.</p></div></a>
+      <a class="card" href="#"><img src="/images/ruong-cafe.jpg" alt=""><div class="card-content"><h4 class="text-lg font-semibold">Đồi cà phê</h4><p class="text-sm text-gray-600">Cảnh ruộng cà phê trải dài, đặc trưng cao nguyên.</p></div></a>
+    </div>
+  </section>
+
+  <section>
+    <h3 class="text-3xl font-bold text-center mb-6">Ẩm thực Gia Lai</h3>
+    <div class="grid overflow-x-auto">
+      <a class="card" href="#"><img src="/images/banh-trang.jpg" alt=""><div class="card-content"><h4 class="text-lg font-semibold">Bánh ướt lòng gà</h4><p class="text-sm text-gray-600">Phong cách miền cao, ăn kèm nước mắm chua ngọt.</p></div></a>
+      <a class="card" href="#"><img src="/images/ca-da-nuong.jpg" alt=""><div class="card-content"><h4 class="text-lg font-semibold">Cá suối nướng</h4><p class="text-sm text-gray-600">Cá suối tươi nướng than, thơm và đậm vị.</p></div></a>
+      <a class="card" href="#"><img src="/images/com-nam.jpg" alt=""><div class="card-content"><h4 class="text-lg font-semibold">Cơm lam</h4><p class="text-sm text-gray-600">Cơm nếp nướng ống tre, mùi thơm đặc trưng.</p></div></a>
+      <a class="card" href="#"><img src="/images/banh-khot.jpg" alt=""><div class="card-content"><h4 class="text-lg font-semibold">Rượu cần</h4><p class="text-sm text-gray-600">Thức uống truyền thống trong lễ hội Tây Nguyên.</p></div></a>
+      <a class="card" href="#"><img src="/images/ca-phe.jpg" alt=""><div class="card-content"><h4 class="text-lg font-semibold">Cà phê Buôn Ma Thuột</h4><p class="text-sm text-gray-600">Cà phê nguyên chất, thơm đậm, nổi tiếng toàn quốc.</p></div></a>
+    </div>
+  </section>
+
+</main>
+
+<script>
+function toggleMap(){ document.getElementById('map-container').classList.toggle('hidden'); }
+</script>
+</body>
+</html>

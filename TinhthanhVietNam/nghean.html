@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Nghệ An – Quê hương Bác Hồ | Hello-Vietnam</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="text-gray-900">
+<header class="navbar"><a href="../index.html" class="logo"><img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg" class="flag" alt="VN Flag"/><span>Hello-Vietnam</span></a>
+  <div class="actions"><a href="#" class="btn primary">Đăng Nhập</a><button class="icon-btn"><i class="fa-solid fa-user-circle"></i></button></div>
+</header>
+
+<section class="hero-section text-white flex items-center justify-center text-center p-8 md:p-16 h-96 md:h-[500px]" style="background-image: url('/images/nghe-an.jpg'); background-size: cover; background-position: center;">
+  <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+  <div class="relative z-10"><h1 class="text-4xl md:text-5xl font-extrabold">Nghệ An</h1><p class="text-lg md:text-2xl mt-4 font-light">Quê hương Bác Hồ – bờ biển dài và núi non hùng vĩ</p></div>
+</section>
+
+<main class="container mx-auto px-4 py-12">
+  <section class="mb-12"><h2 class="text-3xl font-bold text-center mb-6">Giới thiệu</h2><div class="bg-white p-6 rounded-xl shadow-lg"><p>Nghệ An có bờ biển dài, di tích lịch sử, và nhiều thắng cảnh như Cửa Lò, Pù Mát. Vùng đất giàu văn hóa và ẩm thực.</p></div></section>
+
+  <button onclick="toggleMap()" class="mt-4 bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-full flex items-center space-x-2 mx-auto shadow-lg"><i class="fa-solid fa-location-dot"></i><span>Xem vị trí</span></button>
+  <div id="map-container" class="hidden mt-6 flex justify-center"><iframe src="https://www.google.com/maps?q=Nghe+An,Vietnam&hl=vi&z=9&output=embed" width="600" height="400" style="border:0;" allowfullscreen loading="lazy"></iframe></div>
+
+  <section class="mb-12">
+    <h3 class="text-3xl font-bold text-center mb-6">Địa điểm nổi bật</h3>
+    <div class="grid overflow-x-auto">
+      <a class="card" href="#"><img src="/images/cua-lo.jpg" alt=""><div class="card-content"><h4 class="text-lg font-semibold">Biển Cửa Lò</h4><p class="text-sm text-gray-600">Bãi tắm đẹp, dịch vụ du lịch biển sôi động.</p></div></a>
+      <a class="card" href="#"><img src="/images/kim-lien.jpg" alt=""><div class="card-content"><h4 class="text-lg font-semibold">Làng Kim Liên</h4><p class="text-sm text-gray-600">Quê nội Bác Hồ, di tích gắn liền lịch sử.</p></div></a>
+      <a class="card" href="#"><img src="/images/pu-mat.jpg" alt=""><div class="card-content"><h4 class="text-lg font-semibold">Vườn quốc gia Pù Mát</h4><p class="text-sm text-gray-600">Khu bảo tồn đa dạng sinh học, trekking và khám phá rừng.</p></div></a>
+      <a class="card" href="#"><img src="/images/hang-ken.jpg" alt=""><div class="card-content"><h4 class="text-lg font-semibold">Hang Ken</h4><p class="text-sm text-gray-600">Hang động đẹp, thích hợp cho thám hiểm.</p></div></a>
+      <a class="card" href="#"><img src="/images/dien-san.jpg" alt=""><div class="card-content"><h4 class="text-lg font-semibold">Khu di tích Kim Liên</h4><p class="text-sm text-gray-600">Nơi lưu giữ ký ức thời thơ ấu của Chủ tịch Hồ Chí Minh.</p></div></a>
+    </div>
+  </section>
+
+  <section>
+    <h3 class="text-3xl font-bold text-center mb-6">Ẩm thực Nghệ An</h3>
+    <div class="grid overflow-x-auto">
+      <a class="card" href="#"><img src="/images/banh-mat.jpg" alt=""><div class="card-content"><h4 class="text-lg font-semibold">Bánh mướt</h4><p class="text-sm text-gray-600">Bánh cuốn đặc trưng Nghệ An, mỏng mềm, ăn kèm chả và nước chấm.</p></div></a>
+      <a class="card" href="#"><img src="/images/ben-tre.jpg" alt=""><div class="card-content"><h4 class="text-lg font-semibold">Gỏi cá trích</h4><p class="text-sm text-gray-600">Món gỏi từ cá biển tươi, phổ biến ở ven biển Nghệ An.</p></div></a>
+      <a class="card" href="#"><img src="/images/keo-mau.jpg" alt=""><div class="card-content"><h4 class="text-lg font-semibold">Kẹo Cu Đơ</h4><p class="text-sm text-gray-600">Đặc sản ngọt bùi, thường làm quà.</p></div></a>
+      <a class="card" href="#"><img src="/images/bun-cua.jpg" alt=""><div class="card-content"><h4 class="text-lg font-semibold">Bún cá</h4><p class="text-sm text-gray-600">Phiên bản miền Trung đậm đà, dùng cá tươi.</p></div></a>
+      <a class="card" href="#"><img src="/images/banh-mi-nghe-an.jpg" alt=""><div class="card-content"><h4 class="text-lg font-semibold">Bánh mỳ Nghệ</h4><p class="text-sm text-gray-600">Bánh mỳ đặc sản với nhiều phiên bản nhân ngon.</p></div></a>
+    </div>
+  </section>
+
+</main>
+
+<script>
+function toggleMap(){ document.getElementById('map-container').classList.toggle('hidden'); }
+</script>
+</body>
+</html>

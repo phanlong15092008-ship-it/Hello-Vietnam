@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phú Thọ – Đất Tổ Hùng Vương | Hello-Vietnam</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="text-gray-900">
+
+<!-- NAVBAR -->
+<header class="navbar">
+  <a href="../index.html" class="logo">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg" class="flag" />
+    <span>Hello-Vietnam</span>
+  </a>
+  <div class="actions">
+    <a href="#" class="btn primary">Đăng Nhập</a>
+    <button class="icon-btn"><i class="fa-solid fa-user-circle"></i></button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero-section text-white flex items-center justify-center text-center p-8 md:p-16 h-96 md:h-[500px] rounded-b-xl overflow-hidden"
+         style="background-image: url('/images/phu-tho.jpg'); background-size: cover; background-position: center;">
+  <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+  <div class="relative z-10">
+    <h1 class="text-4xl md:text-5xl font-extrabold">Phú Thọ</h1>
+    <p class="text-lg md:text-2xl mt-4 font-light">Vùng đất Tổ linh thiêng – cội nguồn dân tộc Việt Nam</p>
+  </div>
+</section>
+
+<!-- MAIN -->
+<main class="container mx-auto px-4 py-12">
+
+  <!-- Giới thiệu -->
+  <section class="mb-16">
+    <h2 class="text-3xl font-bold text-center mb-6">Khám phá Phú Thọ</h2>
+    <div class="bg-white p-6 md:p-10 rounded-xl shadow-lg leading-relaxed">
+      <p>
+        Phú Thọ là vùng đất thiêng – nơi có Đền Hùng, biểu tượng của cội nguồn dân tộc Việt Nam. 
+        Với phong cảnh núi non hùng vĩ, sông Đà, sông Lô thơ mộng cùng lễ hội Đền Hùng nổi tiếng, 
+        nơi đây thu hút hàng triệu du khách mỗi năm.
+      </p>
+    </div>
+  </section>
+
+  <!-- Nút xem bản đồ -->
+  <button onclick="toggleMap()" class="mt-4 bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-full flex items-center space-x-2 mx-auto shadow-lg">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M12 11c1.104 0 2-.896 2-2s-.896-2-2-2-2 .896-2 2 .896 2 2 2zM12 22s8-7.58 8-13a8 8 0 10-16 0c0 5.42 8 13 8 13z"/>
+    </svg>
+    <span>Xem vị trí</span>
+  </button>
+
+  <!-- Bản đồ -->
+  <div id="map-container" class="hidden mt-6 flex justify-center">
+    <iframe src="https://www.google.com/maps?q=Phu+Tho,Vietnam&hl=vi&z=11&output=embed"
+            width="600" height="400" style="border:0;" allowfullscreen loading="lazy"></iframe>
+  </div>
+
+  <!-- Địa điểm nổi bật -->
+  <section class="mb-16">
+    <h2 class="text-3xl font-bold text-center mb-6">Địa điểm nổi bật</h2>
+    <div class="grid overflow-x-auto">
+      <a href="#" class="card"><img src="/images/den-hung.jpg" alt=""><div class="card-content"><h3>Đền Hùng</h3><p>Quần thể di tích lịch sử – nơi thờ các vua Hùng, cội nguồn dân tộc Việt.</p></div></a>
+      <a href="#" class="card"><img src="/images/ao-chau.jpg" alt=""><div class="card-content"><h3>Ao Châu</h3><p>Được ví như “Hạ Long trên cạn” với hàng trăm hòn đảo nhỏ xinh đẹp.</p></div></a>
+      <a href="#" class="card"><img src="/images/suoi-tien.jpg" alt=""><div class="card-content"><h3>Suối Tiên Thanh Sơn</h3><p>Điểm du lịch sinh thái hấp dẫn với khung cảnh hoang sơ và mát lành.</p></div></a>
+      <a href="#" class="card"><img src="/images/thac-khe.jpg" alt=""><div class="card-content"><h3>Thác Khe Vằn</h3><p>Dòng thác trắng xóa giữa núi rừng xanh mướt, điểm check-in lý tưởng.</p></div></a>
+      <a href="#" class="card"><img src="/images/ho-binh-son.jpg" alt=""><div class="card-content"><h3>Hồ Bình Sơn</h3><p>Không gian yên bình, lý tưởng cho dã ngoại và nghỉ dưỡng cuối tuần.</p></div></a>
+    </div>
+  </section>
+
+  <!-- Ẩm thực -->
+  <section class="mb-16">
+    <h2 class="text-3xl font-bold text-center mb-6">Ẩm thực đặc trưng</h2>
+    <div class="grid overflow-x-auto">
+      <a href="#" class="card"><img src="/images/banh-chung.jpg" alt=""><div class="card-content"><h3>Bánh chưng</h3><p>Món bánh truyền thống được dâng cúng Vua Hùng trong dịp lễ hội.</p></div></a>
+      <a href="#" class="card"><img src="/images/com-lang-chieu.jpg" alt=""><div class="card-content"><h3>Cơm làng Chiêu</h3><p>Món cơm truyền thống với hương vị dân dã của người Phú Thọ.</p></div></a>
+      <a href="#" class="card"><img src="/images/thit-chua-phu-tho.jpg" alt=""><div class="card-content"><h3>Thịt chua Thanh Sơn</h3><p>Đặc sản nổi tiếng được ủ lên men chua tự nhiên, ăn kèm lá sung.</p></div></a>
+      <a href="#" class="card"><img src="/images/banh-tai-phu-tho.jpg" alt=""><div class="card-content"><h3>Bánh tai</h3><p>Món bánh dân dã hình tai lợn, nhân thịt thơm ngon hấp dẫn.</p></div></a>
+      <a href="#" class="card"><img src="/images/che-san.jpg" alt=""><div class="card-content"><h3>Chè sắn</h3><p>Món ăn vặt ngọt ngào, ấm áp – đặc trưng của miền trung du.</p></div></a>
+    </div>
+  </section>
+</main>
+
+<!-- SCRIPT -->
+<script>
+function toggleMap() {
+  document.getElementById('map-container').classList.toggle('hidden');
+}
+</script>
+
+</body>
+</html>

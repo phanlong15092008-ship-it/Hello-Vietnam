@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hello-Vietnam - Tuyên Quang</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="text-gray-900">
+
+<header class="navbar">
+  <a href="../index.html" class="logo">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg" class="flag" />
+    <span>Hello-Vietnam</span>
+  </a>
+  <div class="actions">
+    <a href="#" class="btn primary">Đăng Nhập</a>
+    <button class="icon-btn"><i class="fa-solid fa-user-circle"></i></button>
+  </div>
+</header>
+
+<section class="hero-section text-white flex items-center justify-center text-center p-8 md:p-16 h-96 md:h-[500px] rounded-b-xl overflow-hidden" style="background-image: url('/images/tuyen-quang.jpg'); background-size: cover; background-position: center;">
+  <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+  <div class="relative z-10">
+    <h1 class="text-4xl md:text-5xl font-extrabold">Tuyên Quang</h1>
+    <p class="text-lg md:text-2xl mt-4 font-light">Thủ đô kháng chiến – miền đất anh hùng</p>
+  </div>
+</section>
+
+<main class="container mx-auto px-4 py-12">
+  <section class="mb-16">
+    <h2 class="text-3xl font-bold text-center mb-6">Giới thiệu về Tuyên Quang</h2>
+    <div class="bg-white p-6 md:p-10 rounded-xl shadow-lg">
+      <p>
+        Tuyên Quang là vùng đất lịch sử gắn liền với Cách mạng Tháng Tám. 
+        Nơi đây nổi tiếng với thiên nhiên hùng vĩ, văn hóa dân tộc đa dạng và lễ hội rước đèn Trung thu đặc sắc.
+      </p>
+    </div>
+  </section>
+
+  <button onclick="toggleMap()" class="mt-4 bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-full flex items-center space-x-2 mx-auto shadow-lg">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c1.104 0 2-.896 2-2s-.896-2-2-2-2 .896-2 2 .896 2 2 2zM12 22s8-7.58 8-13a8 8 0 10-16 0c0 5.42 8 13 8 13z" />
+    </svg>
+    <span>Xem vị trí</span>
+  </button>
+
+  <div id="map-container" class="hidden mt-6 w-full flex justify-center">
+    <iframe src="https://www.google.com/maps?q=Tuyen+Quang,Vietnam&hl=vi&z=12&output=embed" width="600" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+  </div>
+
+  <section class="mb-16">
+    <h2 class="text-3xl font-bold text-center mb-6">Địa điểm tham quan nổi bật</h2>
+    <div class="grid overflow-x-auto">
+      <a href="#" class="card"><img src="/images/na-hang.jpg"><div class="card-content"><h3 class="text-lg font-semibold">Na Hang – Lâm Bình</h3><p class="text-sm text-gray-600">Vịnh Hạ Long giữa đại ngàn, phong cảnh sơn thủy hữu tình.</p></div></a>
+      <a href="#" class="card"><img src="/images/den-hong-thai.jpg"><div class="card-content"><h3 class="text-lg font-semibold">Đền Hồng Thái</h3><p class="text-sm text-gray-600">Di tích gắn liền với căn cứ địa cách mạng Tân Trào.</p></div></a>
+      <a href="#" class="card"><img src="/images/cay-da-tan-trao.jpg"><div class="card-content"><h3 class="text-lg font-semibold">Cây đa Tân Trào</h3><p class="text-sm text-gray-600">Nơi Bác Hồ đọc Lệnh tổng khởi nghĩa năm 1945.</p></div></a>
+      <a href="#" class="card"><img src="/images/thacmo.jpg"><div class="card-content"><h3 class="text-lg font-semibold">Thác Mơ</h3><p class="text-sm text-gray-600">Thác nước trắng xóa, điểm đến thiên nhiên nổi tiếng.</p></div></a>
+      <a href="#" class="card"><img src="/images/den-cam.jpg"><div class="card-content"><h3 class="text-lg font-semibold">Đền Cấm</h3><p class="text-sm text-gray-600">Nơi thờ các vị anh hùng dân tộc của Tuyên Quang.</p></div></a>
+    </div>
+  </section>
+
+  <section class="mb-16">
+    <h2 class="text-3xl font-bold text-center mb-6">Ẩm thực Tuyên Quang</h2>
+    <div class="grid overflow-x-auto">
+      <a href="#" class="card"><img src="/images/banh-cuon-tuyen-quang.jpg"><div class="card-content"><h3 class="text-lg font-semibold">Bánh cuốn Tuyên Quang</h3><p class="text-sm text-gray-600">Khác biệt với bánh cuốn nơi khác nhờ nước chấm đặc trưng.</p></div></a>
+      <a href="#" class="card"><img src="/images/thit-trau-gac-bep.jpg"><div class="card-content"><h3 class="text-lg font-semibold">Thịt trâu gác bếp</h3><p class="text-sm text-gray-600">Đặc sản vùng núi, hương vị đậm đà, dai ngọt tự nhiên.</p></div></a>
+      <a href="#" class="card"><img src="/images/com-lam-tuyen-quang.jpg"><div class="card-content"><h3 class="text-lg font-semibold">Cơm lam</h3><p class="text-sm text-gray-600">Nếp nướng trong ống tre, đặc sản của đồng bào vùng cao.</p></div></a>
+      <a href="#" class="card"><img src="/images/mang-chua.jpg"><div class="card-content"><h3 class="text-lg font-semibold">Măng chua</h3><p class="text-sm text-gray-600">Món ăn dân dã thường xuất hiện trong bữa cơm hàng ngày.</p></div></a>
+      <a href="#" class="card"><img src="/images/ruou-men-la.jpg"><div class="card-content"><h3 class="text-lg font-semibold">Rượu men lá</h3><p class="text-sm text-gray-600">Thức uống truyền thống nấu từ men lá rừng.</p></div></a>
+    </div>
+  </section>
+</main>
+
+<script>function toggleMap(){document.getElementById('map-container').classList.toggle('hidden')}</script>
+</body>
+</html>

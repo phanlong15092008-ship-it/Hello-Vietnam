@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hello-Vietnam - Lai Châu</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="text-gray-900">
+
+<header class="navbar">
+  <a href="../index.html" class="logo">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg" alt="VN Flag" class="flag" />
+    <span>Hello-Vietnam</span>
+  </a>
+  <div class="actions">
+    <a href="#" class="btn primary">Đăng Nhập</a>
+    <button class="icon-btn"><i class="fa-solid fa-user-circle"></i></button>
+  </div>
+</header>
+
+<section class="hero-section text-white flex items-center justify-center text-center p-8 md:p-16 h-96 md:h-[500px] rounded-b-xl overflow-hidden" style="background-image: url('/images/lai-chau.jpg'); background-size: cover; background-position: center;">
+  <div class="absolute inset-0 hero-overlay"></div>
+  <div class="relative z-10">
+    <h1 class="text-4xl md:text-5xl font-extrabold leading-tight tracking-wide">Lai Châu</h1>
+    <p class="text-lg md:text-2xl mt-4 font-light">Vùng đất mây trời hùng vĩ nơi Tây Bắc xa xôi</p>
+  </div>
+</section>
+
+<main class="container mx-auto px-4 py-12">
+
+  <section class="mb-16">
+    <h2 class="text-3xl font-bold text-center mb-6">Lai Châu – Vẻ đẹp hoang sơ của núi rừng</h2>
+    <div class="bg-white p-6 md:p-10 rounded-xl shadow-lg leading-relaxed">
+      <p>
+        Lai Châu là tỉnh biên giới phía Tây Bắc, nổi tiếng với những dãy núi trùng điệp, những bản làng người H'Mông, Dao, Thái và những thửa ruộng bậc thang tuyệt đẹp. Đây là điểm đến lý tưởng cho những ai yêu thiên nhiên và khám phá văn hóa vùng cao.
+      </p>
+    </div>
+  </section>
+
+  <button onclick="toggleMap()" 
+          class="mt-4 bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-full flex items-center space-x-2 mx-auto shadow-lg">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c1.104 0 2-.896 2-2s-.896-2-2-2-2 .896-2 2 .896 2 2 2zM12 22s8-7.58 8-13a8 8 0 10-16 0c0 5.42 8 13 8 13z" />
+    </svg>
+    <span>Xem vị trí</span>
+  </button>
+
+  <div id="map-container" class="hidden mt-6 w-full flex justify-center">
+    <iframe 
+      src="https://www.google.com/maps?q=Lai+Chau,Vietnam&hl=vi&z=12&output=embed"
+      width="600" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+  </div>
+
+  <section class="mb-16">
+    <h2 class="text-3xl font-bold text-center mb-6">Các địa điểm tham quan nổi bật</h2>
+    <div class="grid overflow-x-auto">
+      <a href="#" class="card">
+        <img src="/images/pu-ta-leng.jpg" alt="Pu Ta Leng">
+        <div class="card-content">
+          <h3 class="text-lg font-semibold">Đỉnh Pu Ta Leng</h3>
+          <p class="text-sm text-gray-600">“Nóc nhà thứ hai của Việt Nam” sau Fansipan.</p>
+        </div>
+      </a>
+      <a href="#" class="card">
+        <img src="/images/cau-khong-lo.jpg" alt="Cầu Kính Lai Châu">
+        <div class="card-content">
+          <h3 class="text-lg font-semibold">Cầu Kính Rồng Mây</h3>
+          <p class="text-sm text-gray-600">Điểm check-in nổi tiếng giữa biển mây.</p>
+        </div>
+      </a>
+      <a href="#" class="card">
+        <img src="/images/ban-sin-ho.jpg" alt="Bản Sin Hồ">
+        <div class="card-content">
+          <h3 class="text-lg font-semibold">Bản Sin Hồ</h3>
+          <p class="text-sm text-gray-600">Khám phá đời sống văn hóa người H'Mông giữa mây trời.</p>
+        </div>
+      </a>
+      <a href="#" class="card">
+        <img src="/images/thac-tac-tinh.jpg" alt="Thác Tác Tình">
+        <div class="card-content">
+          <h3 class="text-lg font-semibold">Thác Tác Tình</h3>
+          <p class="text-sm text-gray-600">Thác nước đẹp gắn với truyền thuyết tình yêu cảm động.</p>
+        </div>
+      </a>
+      <a href="#" class="card">
+        <img src="/images/ban-nam-kha.jpg" alt="Bản Nậm Khăn">
+        <div class="card-content">
+          <h3 class="text-lg font-semibold">Bản Nậm Khăn</h3>
+          <p class="text-sm text-gray-600">Nét đẹp nguyên sơ của đồng bào dân tộc vùng cao.</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section class="mb-16">
+    <h2 class="text-3xl font-bold text-center mb-6">Những món ăn đặc trưng của Lai Châu</h2>
+    <div class="grid overflow-x-auto">
+      <a href="#" class="card">
+        <img src="/images/thang-co.jpg" alt="Thắng cố">
+        <div class="card-content">
+          <h3 class="text-lg font-semibold">Thắng cố</h3>
+          <p class="text-sm text-gray-600">Món ăn truyền thống của người Mông, đậm hương vị vùng cao.</p>
+        </div>
+      </a>
+      <a href="#" class="card">
+        <img src="/images/ca-suoi-nuong.jpg" alt="Cá suối nướng">
+        <div class="card-content">
+          <h3 class="text-lg font-semibold">Cá suối nướng</h3>
+          <p class="text-sm text-gray-600">Cá bắt từ suối núi, nướng thơm trên than hồng.</p>
+        </div>
+      </a>
+      <a href="#" class="card">
+        <img src="/images/lon-cap-nach.jpg" alt="Lợn cắp nách">
+        <div class="card-content">
+          <h3 class="text-lg font-semibold">Lợn cắp nách</h3>
+          <p class="text-sm text-gray-600">Thịt lợn nuôi thả tự nhiên, nướng giòn rụm.</p>
+        </div>
+      </a>
+      <a href="#" class="card">
+        <img src="/images/mang-dang.jpg" alt="Măng đắng">
+        <div class="card-content">
+          <h3 class="text-lg font-semibold">Măng đắng</h3>
+          <p class="text-sm text-gray-600">Nguyên liệu quen thuộc trong bữa ăn người vùng cao.</p>
+        </div>
+      </a>
+      <a href="#" class="card">
+        <img src="/images/ruou-ngam-thao-duoc.jpg" alt="Rượu thảo dược">
+        <div class="card-content">
+          <h3 class="text-lg font-semibold">Rượu thảo dược</h3>
+          <p class="text-sm text-gray-600">Ngâm từ các loại rễ, củ rừng, tốt cho sức khỏe.</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<script>
+  function toggleMap() {
+    const map = document.getElementById('map-container');
+    map.classList.toggle('hidden');
+  }
+</script>
+
+</body>
+</html>

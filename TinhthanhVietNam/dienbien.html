@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hello-Vietnam - Điện Biên</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="text-gray-900">
+
+<header class="navbar">
+  <a href="../index.html" class="logo">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg" alt="VN Flag" class="flag" />
+    <span>Hello-Vietnam</span>
+  </a>
+  <div class="actions">
+    <a href="#" class="btn primary">Đăng Nhập</a>
+    <button class="icon-btn"><i class="fa-solid fa-user-circle"></i></button>
+  </div>
+</header>
+
+<section class="hero-section text-white flex items-center justify-center text-center p-8 md:p-16 h-96 md:h-[500px] rounded-b-xl overflow-hidden" style="background-image: url('/images/dien-bien.jpg'); background-size: cover; background-position: center;">
+  <div class="absolute inset-0 hero-overlay"></div>
+  <div class="relative z-10">
+    <h1 class="text-4xl md:text-5xl font-extrabold leading-tight tracking-wide">Điện Biên</h1>
+    <p class="text-lg md:text-2xl mt-4 font-light">Vùng đất lịch sử – Nơi ghi dấu chiến thắng lừng lẫy năm châu</p>
+  </div>
+</section>
+
+<main class="container mx-auto px-4 py-12">
+
+  <section class="mb-16">
+    <h2 class="text-3xl font-bold text-center mb-6">Điện Biên – Nơi lịch sử vang vọng</h2>
+    <div class="bg-white p-6 md:p-10 rounded-xl shadow-lg leading-relaxed">
+      <p>
+        Điện Biên là tỉnh miền núi biên giới thuộc vùng Tây Bắc, nổi tiếng với chiến thắng Điện Biên Phủ lịch sử. Ngoài di tích, nơi đây còn có phong cảnh núi non hùng vĩ và nền văn hóa đặc sắc của đồng bào Thái, H'Mông, Khơ Mú.
+      </p>
+    </div>
+  </section>
+
+  <button onclick="toggleMap()" 
+          class="mt-4 bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-full flex items-center space-x-2 mx-auto shadow-lg">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c1.104 0 2-.896 2-2s-.896-2-2-2-2 .896-2 2 .896 2 2 2zM12 22s8-7.58 8-13a8 8 0 10-16 0c0 5.42 8 13 8 13z" />
+    </svg>
+    <span>Xem vị trí</span>
+  </button>
+
+  <div id="map-container" class="hidden mt-6 w-full flex justify-center">
+    <iframe 
+      src="https://www.google.com/maps?q=Dien+Bien,Vietnam&hl=vi&z=12&output=embed"
+      width="600" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+  </div>
+
+  <section class="mb-16">
+    <h2 class="text-3xl font-bold text-center mb-6">Các địa điểm tham quan nổi bật</h2>
+    <div class="grid overflow-x-auto">
+      <a href="#" class="card">
+        <img src="/images/di-tich-dien-bien.jpg" alt="Di tích Điện Biên Phủ">
+        <div class="card-content">
+          <h3 class="text-lg font-semibold">Di tích Điện Biên Phủ</h3>
+          <p class="text-sm text-gray-600">Chiến trường lịch sử ghi dấu chiến thắng vang dội năm 1954.</p>
+        </div>
+      </a>
+      <a href="#" class="card">
+        <img src="/images/doi-a1.jpg" alt="Đồi A1">
+        <div class="card-content">
+          <h3 class="text-lg font-semibold">Đồi A1</h3>
+          <p class="text-sm text-gray-600">Điểm cao quan trọng trong chiến dịch Điện Biên Phủ.</p>
+        </div>
+      </a>
+      <a href="#" class="card">
+        <img src="/images/ho-pa-khoang.jpg" alt="Hồ Pá Khoang">
+        <div class="card-content">
+          <h3 class="text-lg font-semibold">Hồ Pá Khoang</h3>
+          <p class="text-sm text-gray-600">Hồ nước trong xanh giữa núi rừng Tây Bắc.</p>
+        </div>
+      </a>
+      <a href="#" class="card">
+        <img src="/images/ban-phieng-lo.jpg" alt="Bản Phiêng Lơi">
+        <div class="card-content">
+          <h3 class="text-lg font-semibold">Bản Phiêng Lơi</h3>
+          <p class="text-sm text-gray-600">Bản làng người Thái cổ với nếp sống truyền thống.</p>
+        </div>
+      </a>
+      <a href="#" class="card">
+        <img src="/images/cot-moc-a-pa-chai.jpg" alt="Cột mốc A Pa Chải">
+        <div class="card-content">
+          <h3 class="text-lg font-semibold">Cột mốc A Pa Chải</h3>
+          <p class="text-sm text-gray-600">Nơi “một con gà gáy, ba nước cùng nghe”.</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section class="mb-16">
+    <h2 class="text-3xl font-bold text-center mb-6">Những món ăn đặc trưng của Điện Biên</h2>
+    <div class="grid overflow-x-auto">
+      <a href="#" class="card">
+        <img src="/images/com-lam-dien-bien.jpg" alt="Cơm lam">
+        <div class="card-content">
+          <h3 class="text-lg font-semibold">Cơm lam</h3>
+          <p class="text-sm text-gray-600">Cơm nếp nướng trong ống tre, hương vị dân dã vùng cao.</p>
+        </div>
+      </a>
+      <a href="#" class="card">
+        <img src="/images/thit-trau-gac-bep.jpg" alt="Thịt trâu gác bếp">
+        <div class="card-content">
+          <h3 class="text-lg font-semibold">Thịt trâu gác bếp</h3>
+          <p class="text-sm text-gray-600">Đặc sản nổi tiếng của người Thái ở Tây Bắc.</p>
+        </div>
+      </a>
+      <a href="#" class="card">
+        <img src="/images/ca-bong-pa-khoang.jpg" alt="Cá hồ Pá Khoang">
+        <div class="card-content">
+          <h3 class="text-lg font-semibold">Cá hồ Pá Khoang</h3>
+          <p class="text-sm text-gray-600">Cá tươi ngon được đánh bắt từ hồ tự nhiên.</p>
+        </div>
+      </a>
+      <a href="#" class="card">
+        <img src="/images/xoi-ngu-sac.jpg" alt="Xôi ngũ sắc">
+        <div class="card-content">
+          <h3 class="text-lg font-semibold">Xôi ngũ sắc</h3>
+          <p class="text-sm text-gray-600">Món xôi truyền thống tượng trưng cho may mắn và no đủ.</p>
+        </div>
+      </a>
+      <a href="#" class="card">
+        <img src="/images/ruou-can.jpg" alt="Rượu cần">
+        <div class="card-content">
+          <h3 class="text-lg font-semibold">Rượu cần</h3>
+          <p class="text-sm text-gray-600">Thức uống gắn liền với văn hóa người Thái và H'Mông.</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<script>
+  function toggleMap() {
+    const map = document.getElementById('map-container');
+    map.classList.toggle('hidden');
+  }
+</script>
+
+</body>
+</html>

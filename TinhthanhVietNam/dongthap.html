@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đồng Tháp – Miền Sen Hồng | Hello-Vietnam</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="text-gray-900">
+
+<header class="navbar">
+  <a href="../index.html" class="logo">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg" class="flag" />
+    <span>Hello-Vietnam</span>
+  </a>
+  <div class="actions">
+    <a href="#" class="btn primary">Đăng Nhập</a>
+    <button class="icon-btn"><i class="fa-solid fa-user-circle"></i></button>
+  </div>
+</header>
+
+<section class="hero-section text-white flex items-center justify-center text-center p-8 md:p-16 h-96 md:h-[500px] rounded-b-xl overflow-hidden"
+         style="background-image: url('/images/dong-thap.jpg'); background-size: cover; background-position: center;">
+  <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+  <div class="relative z-10">
+    <h1 class="text-4xl md:text-5xl font-extrabold">Đồng Tháp</h1>
+    <p class="text-lg md:text-2xl mt-4 font-light">Miền đất sen hồng – Nơi sắc hương miền Tây hội tụ</p>
+  </div>
+</section>
+
+<main class="container mx-auto px-4 py-12">
+  <section class="mb-16">
+    <h2 class="text-3xl font-bold text-center mb-6">Khám phá Đồng Tháp</h2>
+    <div class="bg-white p-6 md:p-10 rounded-xl shadow-lg leading-relaxed">
+      <p>
+        Đồng Tháp nằm giữa lòng Đồng bằng sông Cửu Long, nổi tiếng với những cánh đồng sen bát ngát, 
+        các khu du lịch sinh thái và văn hóa miệt vườn đặc trưng miền Tây Nam Bộ.
+      </p>
+    </div>
+  </section>
+
+  <button onclick="toggleMap()" class="mt-4 bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-full flex items-center space-x-2 mx-auto shadow-lg">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M12 11c1.104 0 2-.896 2-2s-.896-2-2-2-2 .896-2 2 .896 2 2 2zM12 22s8-7.58 8-13a8 8 0 10-16 0c0 5.42 8 13 8 13z"/>
+    </svg>
+    <span>Xem vị trí</span>
+  </button>
+
+  <div id="map-container" class="hidden mt-6 flex justify-center">
+    <iframe src="https://www.google.com/maps?q=Dong+Thap,Vietnam&hl=vi&z=12&output=embed"
+            width="600" height="400" style="border:0;" allowfullscreen loading="lazy"></iframe>
+  </div>
+
+  <section class="mb-16">
+    <h2 class="text-3xl font-bold text-center mb-6">Địa điểm nổi bật</h2>
+    <div class="grid overflow-x-auto">
+      <a href="#" class="card"><img src="/images/lang-hoa-sa-dec.jpg"><div class="card-content"><h3>Làng hoa Sa Đéc</h3><p>Thiên đường của hàng trăm loài hoa rực rỡ quanh năm.</p></div></a>
+      <a href="#" class="card"><img src="/images/khu-du-lich-dong-sen-thap-muoi.jpg"><div class="card-content"><h3>Đồng sen Tháp Mười</h3><p>Điểm check-in giữa hồ sen bát ngát, đậm hồn quê Nam Bộ.</p></div></a>
+      <a href="#" class="card"><img src="/images/nha-co-huynh-thuy-le.jpg"><div class="card-content"><h3>Nhà cổ Huỳnh Thủy Lê</h3><p>Ngôi nhà mang kiến trúc Pháp – Hoa, gắn liền chuyện tình “Người tình”.</p></div></a>
+      <a href="#" class="card"><img src="/images/khu-sinh-thai-go-thap.jpg"><div class="card-content"><h3>Khu di tích Gò Tháp</h3><p>Di tích quốc gia đặc biệt, lưu giữ dấu ấn văn hóa Óc Eo cổ.</p></div></a>
+      <a href="#" class="card"><img src="/images/chua-phuoc-kien.jpg"><div class="card-content"><h3>Chùa Phước Kiển</h3><p>Chùa nổi tiếng với “sen vua” khổng lồ, có thể đứng được trên lá.</p></div></a>
+    </div>
+  </section>
+
+  <section class="mb-16">
+    <h2 class="text-3xl font-bold text-center mb-6">Ẩm thực đặc trưng</h2>
+    <div class="grid overflow-x-auto">
+      <a href="#" class="card"><img src="/images/com-hen.jpg"><div class="card-content"><h3>Cơm hến Đồng Tháp</h3><p>Món ăn dân dã với vị hến ngọt thanh, đậm hương đồng nội.</p></div></a>
+      <a href="#" class="card"><img src="/images/ca-loc-nuong-trui.jpg"><div class="card-content"><h3>Cá lóc nướng trui</h3><p>Đặc sản miệt vườn được nướng thơm lừng trên rơm khô.</p></div></a>
+      <a href="#" class="card"><img src="/images/hu-tieu-sa-dec.jpg"><div class="card-content"><h3>Hủ tiếu Sa Đéc</h3><p>Món ăn trứ danh với sợi hủ tiếu mềm dai, nước lèo ngọt thanh.</p></div></a>
+      <a href="#" class="card"><img src="/images/banh-canh-ca-loc.jpg"><div class="card-content"><h3>Bánh canh cá lóc</h3><p>Hương vị đặc trưng của miền sông nước, thơm ngon và bổ dưỡng.</p></div></a>
+      <a href="#" class="card"><img src="/images/che-sen.jpg"><div class="card-content"><h3>Chè sen</h3><p>Món ngọt thanh mát từ hạt sen Đồng Tháp – đặc sản trứ danh.</p></div></a>
+    </div>
+  </section>
+</main>
+
+<script>
+function toggleMap(){document.getElementById('map-container').classList.toggle('hidden');}
+</script>
+</body>
+</html>

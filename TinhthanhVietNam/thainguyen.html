@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thái Nguyên – Thủ Phủ Trà Việt | Hello-Vietnam</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="text-gray-900">
+
+
+
+<section class="hero-section text-white flex items-center justify-center text-center p-8 md:p-16 h-96 md:h-[500px] rounded-b-xl overflow-hidden"
+         style="background-image: url('/images/thai-nguyen.jpg'); background-size: cover; background-position: center;">
+  <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+  <div class="relative z-10">
+    <h1 class="text-4xl md:text-5xl font-extrabold">Thái Nguyên</h1>
+    <p class="text-lg md:text-2xl mt-4 font-light">Thủ phủ trà Việt – Vùng đất trung du yên bình</p>
+  </div>
+</section>
+
+<main class="container mx-auto px-4 py-12">
+  <section class="mb-16">
+    <h2 class="text-3xl font-bold text-center mb-6">Khám phá Thái Nguyên</h2>
+    <div class="bg-white p-6 md:p-10 rounded-xl shadow-lg leading-relaxed">
+      <p>
+        Thái Nguyên được biết đến là thủ phủ chè của Việt Nam, với những đồi trà xanh bát ngát. 
+        Không chỉ nổi tiếng với thiên nhiên tươi đẹp, Thái Nguyên còn có nhiều di tích lịch sử và văn hóa đặc sắc.
+      </p>
+    </div>
+  </section>
+
+  <button onclick="toggleMap()" class="mt-4 bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-full flex items-center space-x-2 mx-auto shadow-lg">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M12 11c1.104 0 2-.896 2-2s-.896-2-2-2-2 .896-2 2 .896 2 2 2zM12 22s8-7.58 8-13a8 8 0 10-16 0c0 5.42 8 13 8 13z"/>
+    </svg>
+    <span>Xem vị trí</span>
+  </button>
+
+  <div id="map-container" class="hidden mt-6 flex justify-center">
+    <iframe src="https://www.google.com/maps?q=Thai+Nguyen,Vietnam&hl=vi&z=12&output=embed"
+            width="600" height="400" style="border:0;" allowfullscreen loading="lazy"></iframe>
+  </div>
+
+  <section class="mb-16">
+    <h2 class="text-3xl font-bold text-center mb-6">Địa điểm nổi bật</h2>
+    <div class="grid overflow-x-auto">
+      <a href="#" class="card"><img src="/images/ho-nui-coc.jpg" alt=""><div class="card-content"><h3 class="text-lg font-semibold"></h3><h3>Hồ Núi Cốc</h3><p>Biểu tượng du lịch Thái Nguyên, nơi gắn liền với huyền thoại Nàng Công – Chàng Cốc.</p></div></a>
+      <a href="#" class="card"><img src="/images/bao-tang-tra.jpg" alt=""><div class="card-content"><h3>Bảo tàng Trà Việt Nam</h3><p>Nơi lưu giữ lịch sử, văn hóa và quy trình sản xuất trà Thái Nguyên.</p></div></a>
+      <a href="#" class="card"><img src="/images/den-ong-cu.jpg" alt=""><div class="card-content"><h3>Đền Đuổm</h3><p>Đền thờ danh tướng Dương Tự Minh – người có công bảo vệ biên cương Tổ quốc.</p></div></a>
+      <a href="#" class="card"><img src="/images/lang-van-hoa.jpg" alt=""><div class="card-content"><h3>Làng văn hóa dân tộc Tày</h3><p>Khám phá nếp sống truyền thống giữa núi rừng trung du.</p></div></a>
+      <a href="#" class="card"><img src="/images/" alt=""><div class="card-content"><h3>Thác Mưa Rơi</h3><p>Thắng cảnh thiên nhiên hùng vĩ với dòng thác trắng xóa giữa rừng núi.</p></div></a>
+    </div>
+  </section>
+
+  <section class="mb-16">
+    <h2 class="text-3xl font-bold text-center mb-6">Ẩm thực đặc trưng</h2>
+    <div class="grid overflow-x-auto">
+      <a href="#" class="card"><img src="/images/tra-thai-nguyen.jpg" alt=""><div class="card-content"><h3>Trà Tân Cương</h3><p>Thức uống đặc sản mang hương vị tinh tế của vùng trung du.</p></div></a>
+      <a href="#" class="card"><img src="/images/com-lam.jpg" alt=""><div class="card-content"><h3>Cơm lam Định Hóa</h3><p>Món ăn dân dã của đồng bào dân tộc thiểu số, thơm nồng hương tre nứa.</p></div></a>
+      <a href="#" class="card"><img src="/images/banh-chung-den.jpg" alt=""><div class="card-content"><h3>Bánh chưng đen</h3><p>Đặc sản độc đáo, thường có trong dịp lễ Tết ở miền núi phía Bắc.</p></div></a>
+      <a href="#" class="card"><img src="/images/ca-lang-chien.jpg" alt=""><div class="card-content"><h3>Cá lăng chiên</h3><p>Đặc sản của vùng hồ Núi Cốc, thịt cá ngọt và dai.</p></div></a>
+      <a href="#" class="card"><img src="/images/ga-doi.jpg" alt=""><div class="card-content"><h3>Gà đồi Thái Nguyên</h3><p>Thịt chắc, thơm ngon, thường được nướng hoặc hấp lá chanh.</p></div></a>
+    </div>
+  </section>
+</main>
+
+<script>
+function toggleMap(){document.getElementById('map-container').classList.toggle('hidden');}
+</script>
+</body>
+</html>

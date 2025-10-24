@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vĩnh Long – Miền Tây Thanh Bình | Hello-Vietnam</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="text-gray-900">
+
+<header class="navbar">
+  <a href="../index.html" class="logo">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg" class="flag" />
+    <span>Hello-Vietnam</span>
+  </a>
+  <div class="actions">
+    <a href="#" class="btn primary">Đăng Nhập</a>
+    <button class="icon-btn"><i class="fa-solid fa-user-circle"></i></button>
+  </div>
+</header>
+
+<section class="hero-section text-white flex items-center justify-center text-center p-8 md:p-16 h-96 md:h-[500px] rounded-b-xl overflow-hidden"
+         style="background-image: url('/images/vinh-long.jpg'); background-size: cover; background-position: center;">
+  <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+  <div class="relative z-10">
+    <h1 class="text-4xl md:text-5xl font-extrabold">Vĩnh Long</h1>
+    <p class="text-lg md:text-2xl mt-4 font-light">Miền sông nước hiền hòa, đậm chất miệt vườn Nam Bộ</p>
+  </div>
+</section>
+
+<main class="container mx-auto px-4 py-12">
+  <section class="mb-16">
+    <h2 class="text-3xl font-bold text-center mb-6">Khám phá Vĩnh Long</h2>
+    <div class="bg-white p-6 md:p-10 rounded-xl shadow-lg leading-relaxed">
+      <p>
+        Vĩnh Long nằm giữa sông Tiền và sông Hậu, nổi tiếng với những khu miệt vườn trĩu quả, 
+        cùng nét văn hóa miệt sông hiền hòa, gần gũi và thân thiện.
+      </p>
+    </div>
+  </section>
+
+  <button onclick="toggleMap()" class="mt-4 bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-full flex items-center space-x-2 mx-auto shadow-lg">
+    <i class="fa-solid fa-location-dot"></i>
+    <span>Xem vị trí</span>
+  </button>
+
+  <div id="map-container" class="hidden mt-6 flex justify-center">
+    <iframe src="https://www.google.com/maps?q=Vinh+Long,Vietnam&hl=vi&z=11&output=embed"
+            width="600" height="400" style="border:0;" allowfullscreen loading="lazy"></iframe>
+  </div>
+
+  <section class="mb-16">
+    <h2 class="text-3xl font-bold text-center mb-6">Địa điểm nổi bật</h2>
+    <div class="grid overflow-x-auto">
+      <a href="#" class="card"><img src="/images/lang-hoa-sadec.jpg"><div class="card-content"><h3>Làng hoa Sa Đéc</h3><p>Không gian ngập tràn sắc màu của hoa và cây cảnh.</p></div></a>
+      <a href="#" class="card"><img src="/images/cu-lao-an-binh.jpg"><div class="card-content"><h3>Cù lao An Bình</h3><p>Khu du lịch sinh thái nổi tiếng, đậm chất miệt vườn.</p></div></a>
+      <a href="#" class="card"><img src="/images/chua-ong-vinh-long.jpg"><div class="card-content"><h3>Chùa Ông</h3><p>Ngôi chùa cổ kính mang đậm dấu ấn văn hóa Hoa kiều.</p></div></a>
+      <a href="#" class="card"><img src="/images/cho-vinh-long.jpg"><div class="card-content"><h3>Chợ Vĩnh Long</h3><p>Trung tâm mua sắm sầm uất, nơi giao thoa văn hóa sông nước.</p></div></a>
+      <a href="#" class="card"><img src="/images/nha-co-tan-hoa.jpg"><div class="card-content"><h3>Nhà cổ Tân Hòa</h3><p>Di tích kiến trúc cổ điển, gắn liền với lịch sử vùng đất.</p></div></a>
+    </div>
+  </section>
+
+  <section class="mb-16">
+    <h2 class="text-3xl font-bold text-center mb-6">Ẩm thực đặc trưng</h2>
+    <div class="grid overflow-x-auto">
+      <a href="#" class="card"><img src="/images/lau-ca-khoai.jpg"><div class="card-content"><h3>Lẩu cá khoai</h3><p>Món lẩu dân dã, vị ngọt thanh và hấp dẫn.</p></div></a>
+      <a href="#" class="card"><img src="/images/banh-xeo-mien-tay.jpg"><div class="card-content"><h3>Bánh xèo miệt vườn</h3><p>Bánh xèo vàng giòn, nhân tôm thịt và giá đỗ thơm ngon.</p></div></a>
+      <a href="#" class="card"><img src="/images/ca-loc-nuong-trui.jpg"><div class="card-content"><h3>Cá lóc nướng trui</h3><p>Món ăn dân dã mang đậm hương vị miền Tây.</p></div></a>
+      <a href="#" class="card"><img src="/images/che-bap.jpg"><div class="card-content"><h3>Chè bắp</h3><p>Món chè ngọt dịu, mộc mạc và dễ ăn.</p></div></a>
+      <a href="#" class="card"><img src="/images/keo-dua.jpg"><div class="card-content"><h3>Kẹo dừa Vĩnh Long</h3><p>Đặc sản làm quà nổi tiếng của vùng đất miền Tây.</p></div></a>
+    </div>
+  </section>
+</main>
+
+<script>
+function toggleMap(){document.getElementById('map-container').classList.toggle('hidden');}
+</script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hello-Vietnam - Cao Bằng</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="text-gray-900">
+
+<header class="navbar">
+  <a href="../index.html" class="logo">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg" alt="VN Flag" class="flag" />
+    <span>Hello-Vietnam</span>
+  </a>
+  <div class="actions">
+    <a href="#" class="btn primary">Đăng Nhập</a>
+    <button class="icon-btn"><i class="fa-solid fa-user-circle"></i></button>
+  </div>
+</header>
+
+<section class="hero-section text-white flex items-center justify-center text-center p-8 md:p-16 h-96 md:h-[500px] rounded-b-xl overflow-hidden" style="background-image: url('/images/cao-bang.jpg'); background-size: cover; background-position: center;">
+  <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+  <div class="relative z-10">
+    <h1 class="text-4xl md:text-5xl font-extrabold leading-tight tracking-wide">Cao Bằng</h1>
+    <p class="text-lg md:text-2xl mt-4 font-light">Vùng đất non nước hùng vĩ và di tích lịch sử thiêng liêng</p>
+  </div>
+</section>
+
+<main class="container mx-auto px-4 py-12">
+  <section class="mb-16">
+    <h2 class="text-3xl font-bold text-center mb-6">Giới thiệu về Cao Bằng</h2>
+    <div class="bg-white p-6 md:p-10 rounded-xl shadow-lg">
+      <p>
+        Cao Bằng là vùng đất địa đầu Tổ quốc, nổi tiếng với phong cảnh núi non trùng điệp và những thác nước kỳ vĩ. 
+        Đây cũng là nơi lưu dấu nhiều sự kiện quan trọng trong lịch sử cách mạng Việt Nam.
+      </p>
+    </div>
+  </section>
+
+  <button onclick="toggleMap()" class="mt-4 bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-full flex items-center space-x-2 mx-auto shadow-lg">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c1.104 0 2-.896 2-2s-.896-2-2-2-2 .896-2 2 .896 2 2 2zM12 22s8-7.58 8-13a8 8 0 10-16 0c0 5.42 8 13 8 13z" />
+    </svg>
+    <span>Xem vị trí</span>
+  </button>
+
+  <div id="map-container" class="hidden mt-6 w-full flex justify-center">
+    <iframe src="https://www.google.com/maps?q=Cao+Bang,Vietnam&hl=vi&z=12&output=embed" width="600" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+  </div>
+
+  <section class="mb-16">
+    <h2 class="text-3xl font-bold text-center mb-6">Địa điểm tham quan nổi bật</h2>
+    <div class="grid overflow-x-auto">
+      <a href="#" class="card"><img src="/images/thac-ban-gioc.jpg"><div class="card-content"><h3 class="text-lg font-semibold">Thác Bản Giốc</h3><p class="text-sm text-gray-600">Một trong những thác nước đẹp nhất thế giới, biểu tượng của Cao Bằng.</p></div></a>
+      <a href="#" class="card"><img src="/images/dong-nguom-nga.jpg"><div class="card-content"><h3 class="text-lg font-semibold">Động Ngườm Ngao</h3><p class="text-sm text-gray-600">Hang động kỳ ảo với vô số nhũ đá lung linh.</p></div></a>
+      <a href="#" class="card"><img src="/images/pac-bo.jpg"><div class="card-content"><h3 class="text-lg font-semibold">Khu di tích Pác Bó</h3><p class="text-sm text-gray-600">Nơi Bác Hồ từng sống và làm việc trong thời kỳ đầu kháng chiến.</p></div></a>
+      <a href="#" class="card"><img src="/images/ho-thang-hen.jpg"><div class="card-content"><h3 class="text-lg font-semibold">Hồ Thăng Hen</h3><p class="text-sm text-gray-600">Cụm hồ trên núi tuyệt đẹp giữa đại ngàn Trùng Khánh.</p></div></a>
+      <a href="#" class="card"><img src="/images/lang-dan-toc-cao-bang.jpg"><div class="card-content"><h3 class="text-lg font-semibold">Làng dân tộc Tày Trùng Khánh</h3><p class="text-sm text-gray-600">Khám phá văn hóa bản địa của người Tày vùng núi phía Bắc.</p></div></a>
+    </div>
+  </section>
+
+  <section class="mb-16">
+    <h2 class="text-3xl font-bold text-center mb-6">Ẩm thực đặc trưng Cao Bằng</h2>
+    <div class="grid overflow-x-auto">
+      <a href="#" class="card"><img src="/images/banh-ap-chao.jpg"><div class="card-content"><h3 class="text-lg font-semibold">Bánh áp chao</h3><p class="text-sm text-gray-600">Món bánh rán nhân vịt béo ngậy, giòn rụm đặc trưng Cao Bằng.</p></div></a>
+      <a href="#" class="card"><img src="/images/pho-chua-cao-bang.jpg"><div class="card-content"><h3 class="text-lg font-semibold">Phở chua Cao Bằng</h3><p class="text-sm text-gray-600">Món phở lạ miệng với vị chua thanh, ăn kèm thịt quay.</p></div></a>
+      <a href="#" class="card"><img src="/images/lap-xuong.jpg"><div class="card-content"><h3 class="text-lg font-semibold">Lạp xưởng hun khói</h3><p class="text-sm text-gray-600">Đặc sản vùng cao, thơm nức mùi khói bếp.</p></div></a>
+      <a href="#" class="card"><img src="/images/com-lam.jpg"><div class="card-content"><h3 class="text-lg font-semibold">Cơm lam Cao Bằng</h3><p class="text-sm text-gray-600">Cơm nếp dẻo nướng trong ống tre, hương vị rừng núi.</p></div></a>
+      <a href="#" class="card"><img src="/images/mat-ong-nui-da.jpg"><div class="card-content"><h3 class="text-lg font-semibold">Mật ong núi đá</h3><p class="text-sm text-gray-600">Sản vật quý từ thiên nhiên, nổi tiếng vùng Trùng Khánh.</p></div></a>
+    </div>
+  </section>
+</main>
+
+<script>
+  function toggleMap() { document.getElementById('map-container').classList.toggle('hidden'); }
+</script>
+</body>
+</html>

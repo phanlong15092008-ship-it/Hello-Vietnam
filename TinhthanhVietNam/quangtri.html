@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quảng Trị – Mảnh Đất Anh Hùng | Hello-Vietnam</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="text-gray-900">
+
+<header class="navbar">
+  <a href="../index.html" class="logo">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg" class="flag" />
+    <span>Hello-Vietnam</span>
+  </a>
+  <div class="actions">
+    <a href="#" class="btn primary">Đăng Nhập</a>
+    <button class="icon-btn"><i class="fa-solid fa-user-circle"></i></button>
+  </div>
+</header>
+
+<section class="hero-section text-white flex items-center justify-center text-center p-8 md:p-16 h-96 md:h-[500px] rounded-b-xl overflow-hidden"
+         style="background-image: url('/images/quang-tri.jpg'); background-size: cover; background-position: center;">
+  <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+  <div class="relative z-10">
+    <h1 class="text-4xl md:text-5xl font-extrabold">Quảng Trị</h1>
+    <p class="text-lg md:text-2xl mt-4 font-light">Mảnh đất anh hùng, nơi ghi dấu lịch sử hào hùng</p>
+  </div>
+</section>
+
+<main class="container mx-auto px-4 py-12">
+  <section class="mb-16">
+    <h2 class="text-3xl font-bold text-center mb-6">Khám phá Quảng Trị</h2>
+    <div class="bg-white p-6 md:p-10 rounded-xl shadow-lg leading-relaxed">
+      <p>
+        Quảng Trị nằm ở miền Trung Việt Nam, là vùng đất lịch sử oai hùng, nơi có cầu Hiền Lương chia cắt hai miền Nam – Bắc,
+        cùng nhiều di tích kháng chiến hào hùng.
+      </p>
+    </div>
+  </section>
+
+  <button onclick="toggleMap()" class="mt-4 bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-full flex items-center space-x-2 mx-auto shadow-lg">
+    <i class="fa-solid fa-location-dot"></i>
+    <span>Xem vị trí</span>
+  </button>
+
+  <div id="map-container" class="hidden mt-6 flex justify-center">
+    <iframe src="https://www.google.com/maps?q=Quang+Tri,Vietnam&hl=vi&z=11&output=embed"
+            width="600" height="400" style="border:0;" allowfullscreen loading="lazy"></iframe>
+  </div>
+
+  <section class="mb-16">
+    <h2 class="text-3xl font-bold text-center mb-6">Địa điểm nổi bật</h2>
+    <div class="grid overflow-x-auto">
+      <a href="#" class="card"><img src="/images/cau-hien-luong.jpg"><div class="card-content"><h3>Cầu Hiền Lương</h3><p>Biểu tượng chia cắt hai miền trong thời chiến.</p></div></a>
+      <a href="#" class="card"><img src="/images/thanh-co-quang-tri.jpg"><div class="card-content"><h3>Thành cổ Quảng Trị</h3><p>Di tích lịch sử thiêng liêng, nơi ghi dấu chiến dịch 81 ngày đêm.</p></div></a>
+      <a href="#" class="card"><img src="/images/nghia-trang-truong-son.jpg"><div class="card-content"><h3>Nghĩa trang Trường Sơn</h3><p>Nơi yên nghỉ của hàng vạn liệt sĩ hy sinh cho Tổ quốc.</p></div></a>
+      <a href="#" class="card"><img src="/images/bien-cua-tung.jpg"><div class="card-content"><h3>Biển Cửa Tùng</h3><p>Bãi biển đẹp hiền hòa, từng được mệnh danh là “nữ hoàng của các bãi tắm”.</p></div></a>
+      <a href="#" class="card"><img src="/images/nha-tu-la-vang.jpg"><div class="card-content"><h3>Thánh địa La Vang</h3><p>Điểm hành hương nổi tiếng của Công giáo Việt Nam.</p></div></a>
+    </div>
+  </section>
+
+  <section class="mb-16">
+    <h2 class="text-3xl font-bold text-center mb-6">Ẩm thực đặc trưng</h2>
+    <div class="grid overflow-x-auto">
+      <a href="#" class="card"><img src="/images/bun-nghe.jpg"><div class="card-content"><h3>Bún nghệ Quảng Trị</h3><p>Món ăn dân dã với mùi thơm đặc trưng của nghệ.</p></div></a>
+      <a href="#" class="card"><img src="/images/chao-vinh-dinh.jpg"><div class="card-content"><h3>Cháo vĩnh định</h3><p>Món cháo ngon ngọt, nổi tiếng từ lâu đời ở vùng quê Quảng Trị.</p></div></a>
+      <a href="#" class="card"><img src="/images/banh-ep-la-khe.jpg"><div class="card-content"><h3>Bánh ép Lá Khe</h3><p>Đặc sản đường phố hấp dẫn của giới trẻ địa phương.</p></div></a>
+      <a href="#" class="card"><img src="/images/bun-hen.jpg"><div class="card-content"><h3>Bún hến</h3><p>Món ăn đậm đà hương vị miền Trung.</p></div></a>
+      <a href="#" class="card"><img src="/images/ca-kho-que.jpg"><div class="card-content"><h3>Cá kho quê</h3><p>Món ăn dân dã, đậm tình quê hương Quảng Trị.</p></div></a>
+    </div>
+  </section>
+</main>
+
+<script>
+function toggleMap(){document.getElementById('map-container').classList.toggle('hidden');}
+</script>
+</body>
+</html>

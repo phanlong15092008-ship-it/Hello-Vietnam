@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đắk Lắk – Đại Ngàn Tây Nguyên | Hello-Vietnam</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="text-gray-900">
+
+<header class="navbar">
+  <a href="../index.html" class="logo">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg" class="flag" />
+    <span>Hello-Vietnam</span>
+  </a>
+  <div class="actions">
+    <a href="#" class="btn primary">Đăng Nhập</a>
+    <button class="icon-btn"><i class="fa-solid fa-user-circle"></i></button>
+  </div>
+</header>
+
+<section class="hero-section text-white flex items-center justify-center text-center p-8 md:p-16 h-96 md:h-[500px] rounded-b-xl overflow-hidden"
+         style="background-image: url('/images/dak-lak.jpg'); background-size: cover; background-position: center;">
+  <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+  <div class="relative z-10">
+    <h1 class="text-4xl md:text-5xl font-extrabold">Đắk Lắk</h1>
+    <p class="text-lg md:text-2xl mt-4 font-light">Trái tim Tây Nguyên hùng vĩ – quê hương cà phê Buôn Ma Thuột</p>
+  </div>
+</section>
+
+<main class="container mx-auto px-4 py-12">
+  <section class="mb-16">
+    <h2 class="text-3xl font-bold text-center mb-6">Khám phá Đắk Lắk</h2>
+    <div class="bg-white p-6 md:p-10 rounded-xl shadow-lg leading-relaxed">
+      <p>Đắk Lắk nổi tiếng với văn hóa cồng chiêng, những rừng cà phê bạt ngàn và vẻ đẹp hoang sơ của núi rừng Tây Nguyên.</p>
+    </div>
+  </section>
+
+  <button onclick="toggleMap()" class="mt-4 bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-full flex items-center space-x-2 mx-auto shadow-lg">
+    <i class="fa-solid fa-location-dot"></i><span>Xem vị trí</span>
+  </button>
+
+  <div id="map-container" class="hidden mt-6 flex justify-center">
+    <iframe src="https://www.google.com/maps?q=Dak+Lak,Vietnam&hl=vi&z=10&output=embed"
+            width="600" height="400" style="border:0;" allowfullscreen loading="lazy"></iframe>
+  </div>
+
+  <section class="mb-16">
+    <h2 class="text-3xl font-bold text-center mb-6">Địa điểm nổi bật</h2>
+    <div class="grid overflow-x-auto">
+      <a href="#" class="card"><img src="/images/ho-lak.jpg"><div class="card-content"><h3>Hồ Lắk</h3><p>Hồ nước tự nhiên lớn nhất Tây Nguyên, cảnh sắc yên bình thơ mộng.</p></div></a>
+      <a href="#" class="card"><img src="/images/buon-don.jpg"><div class="card-content"><h3>Buôn Đôn</h3><p>Nổi tiếng với nghề săn voi và cầu treo bắt qua sông Sêrêpôk.</p></div></a>
+      <a href="#" class="card"><img src="/images/thac-dray-nur.jpg"><div class="card-content"><h3>Thác Dray Nur</h3><p>Thác nước hùng vĩ giữa đại ngàn, biểu tượng của Đắk Lắk.</p></div></a>
+      <a href="#" class="card"><img src="/images/buon-ma-thuot.jpg"><div class="card-content"><h3>Buôn Ma Thuột</h3><p>Thủ phủ cà phê Việt Nam với không khí mát mẻ quanh năm.</p></div></a>
+      <a href="#" class="card"><img src="/images/bao-tang-ca-phe.jpg"><div class="card-content"><h3>Bảo tàng Cà phê</h3><p>Không gian trưng bày nghệ thuật và văn hóa cà phê độc đáo.</p></div></a>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="text-3xl font-bold text-center mb-6">Ẩm thực đặc trưng</h2>
+    <div class="grid overflow-x-auto">
+      <a href="#" class="card"><img src="/images/com-lam.jpg"><div class="card-content"><h3>Cơm lam</h3><p>Món ăn truyền thống của người Ê Đê, nấu trong ống nứa thơm dẻo.</p></div></a>
+      <a href="#" class="card"><img src="/images/ca-phe-chon.jpg"><div class="card-content"><h3>Cà phê chồn</h3><p>Đặc sản nổi tiếng của Buôn Ma Thuột, hương vị đậm đà khó quên.</p></div></a>
+      <a href="#" class="card"><img src="/images/thit-nuong-tay-nguyen.jpg"><div class="card-content"><h3>Thịt nướng Tây Nguyên</h3><p>Món ăn dân dã nhưng hấp dẫn, thường dùng trong lễ hội.</p></div></a>
+      <a href="#" class="card"><img src="/images/ruou-can.jpg"><div class="card-content"><h3>Rượu cần</h3><p>Thức uống truyền thống gắn liền với văn hóa cồng chiêng.</p></div></a>
+      <a href="#" class="card"><img src="/images/banh-khoai-mi.jpg"><div class="card-content"><h3>Bánh khoai mì nướng</h3><p>Món ăn ngọt dân dã, thơm mùi khoai mì và dừa nướng.</p></div></a>
+    </div>
+  </section>
+</main>
+
+<script>
+function toggleMap(){document.getElementById('map-container').classList.toggle('hidden');}
+</script>
+</body>
+</html>
