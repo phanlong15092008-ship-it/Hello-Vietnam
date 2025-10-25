@@ -66,16 +66,133 @@
     .magazine-carousel .carousel-btn.prev { left: 12px; }
     .magazine-carousel .carousel-btn.next { right: 12px; }
 
-    /* TOUR */
-    .tour-booking-section { background:var(--card-bg); border-radius:8px; padding:20px 25px; box-shadow:0 4px 10px rgba(0,0,0,0.05); margin-top:50px; margin-bottom:50px; border:1px solid var(--border-color); display:flex; flex-direction:column; gap:20px; }
-    .tour-booking-section h2 { font-size:24px; font-weight:800; margin:0; color:var(--text); }
-    .tour-form { display:flex; gap:15px; align-items:flex-end; }
-    .form-group { flex:1; display:flex; flex-direction:column; }
-    .form-group label { font-size:12px; font-weight:600; color:var(--secondary-text); margin-bottom:5px; text-transform:uppercase; }
-    .form-group select, .form-group input { padding:10px 12px; border:1px solid var(--border-color); border-radius:6px; font-size:15px; color:var(--text); outline:none; background-color:#fff; height:40px; box-sizing:border-box; }
-    .form-group select:focus, .form-group input:focus { border-color:var(--primary); }
-    .price-display { background:#FEF2F2; color:#B91C1C; padding:10px; border-radius:6px; font-weight:700; text-align:center; white-space:nowrap; display:flex; align-items:center; justify-content:center; height:40px; box-sizing:border-box; font-size:16px; }
-    .tour-search-btn { padding:10px 20px; height:40px; min-width:120px; align-self:flex-end; }
+    .booking-section {
+  background: #f9fafc;
+  padding: 60px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.booking-container {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1100px;
+  background: #fff;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.booking-left {
+  flex: 1;
+  min-width: 320px;
+  padding: 40px 50px;
+}
+
+.booking-left h2 {
+  font-size: 24px;
+  font-weight: 800;
+  color: #0b2239;
+  margin-bottom: 30px;
+}
+
+.booking-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: #333;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.form-group select,
+.form-group input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  outline: none;
+  transition: 0.3s;
+}
+
+.form-group select:focus,
+.form-group input:focus {
+  border-color: #ff6021;
+  box-shadow: 0 0 0 3px rgba(255, 96, 33, 0.15);
+}
+
+.price-box {
+  background: #fff4f0;
+  border-radius: 12px;
+  padding: 15px 20px;
+  text-align: center;
+}
+
+.price-box p {
+  margin: 0;
+  color: #555;
+  font-weight: 500;
+}
+
+.price-box h3 {
+  margin: 8px 0 0;
+  color: #c23c2d;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.find-tour-btn {
+  background: #ff6021;
+  border: none;
+  color: #fff;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.find-tour-btn:hover {
+  background: #ffc97a;
+  color: #000;
+}
+
+.booking-right {
+  flex: 1;
+  min-width: 320px;
+  max-height: 450px;
+  overflow: hidden;
+}
+
+.booking-right img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .booking-container {
+    flex-direction: column;
+  }
+
+  .booking-left {
+    padding: 30px 25px;
+  }
+
+  .booking-right {
+    height: 200px;
+  }
+}
 
     /* MAP CỐ ĐỊNH THU GỌN */
     .fixed-map {
@@ -436,44 +553,62 @@
 
 
 
-    <section class="tour-booking-section">
-        <h2>ĐẶT TOUR DU LỊCH TRỌN GÓI</h2>
-        <div class="tour-form">
-            <div class="form-group">
-                <label for="destination">Điểm đến</label>
-                <select id="destination">
-                    <option>Hạ Long (Mặc định)</option>
-                    <option>Hà Nội</option>
-                    <option>TP Hồ Chí Minh</option>
-                    <option>Đà Nẵng</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="startDate">Ngày đi</label>
-                <input type="date" id="startDate" value="2025-10-10">
-            </div>
-            <div class="form-group">
-                <label for="duration">Số ngày</label>
-                <select id="duration">
-                    <option>3 Ngày 2 Đêm</option>
-                    <option>4 Ngày 3 Đêm</option>
-                    <option>5 Ngày 4 Đêm</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label>Giá từ</label>
-                <div class="price-display">2.890.000 đ</div>
-            </div>
-            <button class="btn primary tour-search-btn">TÌM TOUR</button>
+   <!-- 🌴 SECTION: ĐẶT TOUR DU LỊCH TRỌN GÓI -->
+<section class="booking-section">
+  <div class="booking-container">
+    <div class="booking-left">
+      <h2>✈️ ĐẶT TOUR DU LỊCH TRỌN GÓI</h2>
+
+      <form class="booking-form">
+        <div class="form-group">
+          <label>Điểm đến</label>
+          <select>
+            <option>Hạ Long (Mặc định)</option>
+            <option>Đà Nẵng</option>
+            <option>Nha Trang</option>
+            <option>Phú Quốc</option>
+          </select>
         </div>
-    </section>
-  </main>
+
+        <div class="form-group">
+          <label>Ngày đi</label>
+          <input type="date" value="2025-10-10">
+        </div>
+
+        <div class="form-group">
+          <label>Số ngày</label>
+          <select>
+            <option>3 Ngày 2 Đêm</option>
+            <option>4 Ngày 3 Đêm</option>
+            <option>2 Ngày 1 Đêm</option>
+          </select>
+        </div>
+
+        <div class="price-box">
+          <p>Giá từ</p>
+          <h3>2.890.000 đ</h3>
+        </div>
+
+        <button type="submit" class="find-tour-btn">
+          <i class="fa-solid fa-magnifying-glass"></i> TÌM TOUR
+        </button>
+      </form>
+    </div>
+
+    <div class="booking-right">
+      <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" alt="Du lịch biển" />
+    </div>
+  </div>
+</section>
+
+<!-- Font Awesome (icon tìm kiếm) -->
+<script src="https://kit.fontawesome.com/a2d9b2e9ef.js" crossorigin="anonymous"></script>
 
  
   <script>
-    function toggleMap() {
+ function toggleMap() {
       const mapBox = document.getElementById("mapBox");
-      const icon = document.getElementById("mapToggleIcon");
+      const icon =    document.getElementById("mapToggleIcon");
       mapBox.classList.toggle("collapsed");
       if (mapBox.classList.contains("collapsed")) {
         icon.innerHTML = '<i class="fa-solid fa-chevron-down"></i>';

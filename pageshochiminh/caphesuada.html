@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Cà Phê Sữa Đá - Hello Vietnam</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <link rel="stylesheet" href="/styles2.css">
+</head>
+
+<body class="bg-gray-50">
+  <header class="navbar">
+    <a href="../index.html" class="logo">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg" alt="VN Flag" class="flag" />
+      <span>Hello-Vietnam</span>
+    </a>
+    <div class="actions">
+      <a href="#" class="btn primary">Đăng Nhập</a>
+      <button class="icon-btn"><i class="fa-solid fa-user-circle"></i></button>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto my-6 px-4">
+    <h1 class="text-3xl font-bold text-black mb-2">Cà Phê Sữa Đá Sài Gòn</h1>
+
+    <div class="flex items-center space-x-3 mb-4">
+      <div class="text-yellow-400 text-lg">★★★★★</div>
+      <div class="text-sm text-gray-600">4.9 (12.4k đánh giá)</div>
+    </div>
+
+    <div class="swiper mySwiper rounded-xl shadow-lg">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img src="/images/caphe1.jpg" alt="Cà phê sữa đá Sài Gòn" class="w-full h-[500px] object-cover rounded-xl">
+        </div>
+        <div class="swiper-slide">
+          <img src="/images/caphe2.jpg" alt="Cà phê phin Sài Gòn" class="w-full h-[500px] object-cover rounded-xl">
+        </div>
+        <div class="swiper-slide">
+          <img src="/images/caphe3.jpg" alt="Ly cà phê sữa đá" class="w-full h-[500px] object-cover rounded-xl">
+        </div>
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-pagination"></div>
+    </div>
+
+    <p class="mt-4 text-gray-700 leading-relaxed">
+      Cà phê sữa đá là linh hồn của Sài Gòn – một nét văn hóa đặc trưng gắn liền với nhịp sống hối hả nơi đây.  
+      Một ly cà phê phin đậm đà, pha cùng sữa đặc và vài viên đá lạnh, mang đến hương vị vừa béo, vừa đắng, vừa ngọt ngào.  
+      Dù sáng sớm hay chiều muộn, quán cà phê vỉa hè Sài Gòn luôn đông khách, nơi mọi người trò chuyện, chia sẻ và tận hưởng nhịp sống bình dị.
+    </p>
+
+    <p class="mt-3 text-gray-700 leading-relaxed">
+      Cà phê sữa đá không chỉ là thức uống – đó là biểu tượng của sự thân quen, là “chất” riêng của người Sài Gòn: giản dị, gần gũi mà vẫn đậm đà phong vị Việt.
+    </p>
+  </main>
+
+  <script>
+    new Swiper(".mySwiper", {
+      loop: true,
+      pagination: { el: ".swiper-pagination", clickable: true },
+      navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+    });
+  </script>
+</body>
+</html>

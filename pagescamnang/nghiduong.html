@@ -5,62 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hello-Vietnam | Nghỉ Dưỡng & Đi Lại</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="/styles.css">
   <style>
-    :root {
-      --primary: #d4a657;
-      --primary-hover: #c2923f;
-      --text: #333;
-      --bg: #fdfaf4;
-      --card-bg: #fff;
-    }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      margin: 0;
-    }
-
-    /* NAVBAR */
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 12px 24px;
-      background: var(--card-bg);
-      border-bottom: 1px solid #eee;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      font-weight: 800;
-      font-size: 20px;
-      gap: 8px;
-      color: var(--primary);
-      text-decoration: none;
-    }
-    .flag { width: 24px; height: 24px; border-radius: 2px; }
-
-    .btn.primary {
-      background: var(--primary);
-      color: white;
-      border: none;
-      padding: 8px 16px;
-      border-radius: 20px;
-      cursor: pointer;
-      font-weight: 600;
-      transition: 0.2s;
-      text-decoration: none;
-    }
-    .btn.primary:hover { background: var(--primary-hover); }
 
     /* HERO */
     .hero-section {
-      background: url('/images/nghiduong-banner.jpg') center/cover no-repeat;
+      background: url('/images/nghiduong.jpg') center/cover no-repeat;
       color: #fff;
       text-align: center;
       padding: 60px 20px;
@@ -72,9 +22,7 @@
     }
 
     .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background-color: rgba(212,166,87,0.55);
+      display: none;
     }
 
     .hero-content { position: relative; z-index: 2; }
@@ -206,13 +154,15 @@ color: var(--primary);
 </head>
 <body>
 
-  <!-- Navbar -->
-  <header class="navbar">
-    <a href="../index.html" class="logo">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg" class="flag" alt="VN Flag">
-      <span>Hello-Vietnam</span>
-    </a>
+ <header class="navbar">
+  <a href="../index.html" class="logo">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg" alt="VN Flag" class="flag" />
+    <span>Hello-Vietnam</span>
+  </a>
+  <div class="actions">
     <a href="#" class="btn primary">Đăng Nhập</a>
+    <button class="icon-btn"><i class="fa-solid fa-user-circle"></i></button>
+  </div>
   </header>
 
   <!-- HERO -->

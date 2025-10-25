@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Chợ Bến Thành - Hello Vietnam</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <link rel="stylesheet" href="/styles2.css">
+</head>
+<body class="bg-gray-50">
+  <header class="navbar">
+    <a href="../index.html" class="logo">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg" alt="VN Flag" class="flag" />
+      <span>Hello-Vietnam</span>
+    </a>
+    <div class="actions">
+      <a href="#" class="btn primary">Đăng Nhập</a>
+      <button class="icon-btn"><i class="fa-solid fa-user-circle"></i></button>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto my-6 px-4">
+    <h1 class="text-3xl font-bold text-black mb-2">Chợ Bến Thành</h1>
+
+    <div class="flex items-center space-x-3 mb-4">
+      <div class="text-yellow-400 text-lg">★★★★★</div>
+      <div class="text-sm text-gray-600">4.8 (6.3k đánh giá)</div>
+    </div>
+
+    <div class="swiper mySwiper rounded-xl shadow-lg">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="/images/chobenhthanh1.jpg" alt="Chợ Bến Thành" class="w-full h-[500px] object-cover rounded-xl"></div>
+        <div class="swiper-slide"><img src="/images/chobenhthanh2.jpg" alt="Chợ Bến Thành" class="w-full h-[500px] object-cover rounded-xl"></div>
+        <div class="swiper-slide"><img src="/images/chobenhthanh3.jpg" alt="Chợ Bến Thành" class="w-full h-[500px] object-cover rounded-xl"></div>
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-pagination"></div>
+    </div>
+
+    <p class="mt-4 text-gray-700 leading-relaxed">
+      Chợ Bến Thành là biểu tượng lịch sử của Sài Gòn, được xây dựng từ thế kỷ 19. Nơi đây là trung tâm buôn bán sầm uất với hàng ngàn gian hàng,
+      từ quà lưu niệm, thủ công mỹ nghệ đến đặc sản địa phương. Đây cũng là điểm đến quen thuộc của khách du lịch trong và ngoài nước.
+    </p>
+  </main>
+
+  <script>
+    new Swiper(".mySwiper", {
+      loop: true,
+      pagination: { el: ".swiper-pagination", clickable: true },
+      navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+    });
+  </script>
+</body>
+</html>
