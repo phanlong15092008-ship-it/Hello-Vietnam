@@ -307,15 +307,110 @@
     </div>
     
   </section>
+  <div class="vehicle-filters">
+  <div class="vehicle-card" onclick="showBooking('plane')">
+    <span class="icon">✈️</span><span class="label">Máy Bay</span>
+  </div>
+  <div class="vehicle-card" onclick="showBooking('train')">
+    <span class="icon">🚂</span><span class="label">Tàu Hỏa</span>
+  </div>
+  <div class="vehicle-card" onclick="showBooking('bus')">
+    <span class="icon">🚌</span><span class="label">Xe Khách</span>
+  </div>
+</div>
 
-    <!-- FILTER -->
-    <h2 class="section-title">Lọc Nhanh Theo Phương Tiện</h2>
-    <div class="vehicle-filters">
-      <div class="vehicle-card"><a href="/pagesdilai/datvemaybay.html"><span class="icon">✈️</span><span class="label">Máy Bay</span></a></div>
-      <div class="vehicle-card"><a href="/pagesdilai/datvetauhoa.html"><span class="icon">🚂</span><span class="label">Tàu Hỏa</span></a></div>
-      <div class="vehicle-card"><a href="/pagesdilai/xekhach.html"><span class="icon">🚌</span><span class="label">Xe Khách</span></a></div>
-      <div class="vehicle-card"><a href="/pagesdilai/xemay.html"><span class="icon">🏍️</span><span class="label">Xe Máy (Phượt)</span></a></div>
+
+   <!-- PHẦN ĐẶT VÉ -->
+<div id="plane" class="booking-section" style="display:none;">
+  <h2 class="content-block-title">Đặt Vé Máy Bay</h2>
+  <div class="toolbox-section">
+    <div class="input-group">
+      <div class="input-item">
+        <label>Điểm đi</label>
+        <input type="text" placeholder="VD: TP.HCM">
+      </div>
+      <div class="input-item">
+        <label>Điểm đến</label>
+        <input type="text" placeholder="VD: Hà Nội">
+      </div>
+      <div class="input-item">
+        <label>Ngày đi</label>
+        <input type="date">
+      </div>
+      <div class="input-item">
+        <label>Ngày về</label>
+        <input type="date">
+      </div>
+      <div class="input-item">
+        <label>Hành khách</label>
+        <select>
+          <option>1 người lớn</option>
+          <option>2 người lớn</option>
+          <option>Gia đình</option>
+        </select>
+      </div>
+      <button class="btn-search-guide">Tìm chuyến bay</button>
     </div>
+  </div>
+</div>
+
+<div id="train" class="booking-section" style="display:none;">
+  <h2 class="content-block-title">Đặt Vé Tàu Hỏa</h2>
+  <div class="toolbox-section">
+    <div class="input-group">
+      <div class="input-item">
+        <label>Ga đi</label>
+        <input type="text" placeholder="VD: Sài Gòn">
+      </div>
+      <div class="input-item">
+        <label>Ga đến</label>
+        <input type="text" placeholder="VD: Đà Nẵng">
+      </div>
+      <div class="input-item">
+        <label>Ngày khởi hành</label>
+        <input type="date">
+      </div>
+      <div class="input-item">
+        <label>Loại ghế</label>
+        <select>
+          <option>Ghế mềm</option>
+          <option>Giường nằm</option>
+        </select>
+      </div>
+      <button class="btn-search-guide">Tìm vé tàu</button>
+    </div>
+  </div>
+</div>
+
+<div id="bus" class="booking-section" style="display:none;">
+  <h2 class="content-block-title">Đặt Vé Xe Khách</h2>
+  <div class="toolbox-section">
+    <div class="input-group">
+      <div class="input-item">
+        <label>Bến đi</label>
+        <input type="text" placeholder="VD: Bến xe Miền Đông">
+      </div>
+      <div class="input-item">
+        <label>Bến đến</label>
+        <input type="text" placeholder="VD: Bến xe Gia Lai">
+      </div>
+      <div class="input-item">
+        <label>Ngày khởi hành</label>
+        <input type="date">
+      </div>
+      <div class="input-item">
+        <label>Số ghế</label>
+        <select>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+        </select>
+      </div>
+      <button class="btn-search-guide">Tìm chuyến</button>
+    </div>
+  </div>
+</div>
+
 
     <!-- CONTENT BLOCK -->
     <h2 class="content-block-title">CHUẨN BỊ: Mẹo Săn Vé & Đồ Đạc</h2>
@@ -387,4 +482,18 @@
     </div>
   </div>
 </body>
+<script>
+  function showBooking(type) {
+    // Ẩn tất cả các phần đặt vé
+    document.querySelectorAll('.booking-section').forEach(el => el.style.display = 'none');
+
+    // Hiện phần tương ứng
+    const selected = document.getElementById(type);
+    if (selected) selected.style.display = 'block';
+
+    // Cuộn xuống phần đặt vé
+    selected.scrollIntoView({ behavior: 'smooth' });
+  }
+</script>
+
 </html>
