@@ -8,6 +8,10 @@
   <link rel="stylesheet" href="/styles.css">
   <style>
 
+    :root {
+      --primary: #d4a017;
+    }
+
     /* HERO */
     .hero-section {
       background: url('/images/nghiduong.jpg') center/cover no-repeat;
@@ -19,10 +23,6 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-    }
-
-    .hero-overlay {
-      display: none;
     }
 
     .hero-content { position: relative; z-index: 2; }
@@ -51,7 +51,7 @@
       justify-content: center;
       flex-wrap: wrap;
       gap: 20px;
-      margin-bottom: 50px;
+      margin-bottom: 30px;
     }
 
     .filter-card {
@@ -74,12 +74,65 @@
     .filter-card .icon {
       font-size: 2.3em;
       margin-bottom: 10px;
-color: var(--primary);
+      color: var(--primary);
     }
 
     .filter-card .label {
       font-weight: bold;
       color: #604a1b;
+    }
+
+    /* BOOKING FORM */
+    .booking-section {
+      background: #fff9f1;
+      padding: 30px 20px;
+      border-radius: 16px;
+      max-width: 800px;
+      margin: 0 auto 60px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+    }
+
+    .booking-title {
+      text-align: center;
+      font-size: 1.6em;
+      color: #604a1b;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .booking-form {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 15px;
+    }
+
+    .booking-form input, .booking-form select {
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 1em;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    .booking-form input:focus, .booking-form select:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 5px rgba(212,160,23,0.4);
+    }
+
+    .booking-btn {
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .booking-btn:hover {
+      background: #b68b13;
+      transform: translateY(-2px);
     }
 
     /* CONTENT */
@@ -154,7 +207,7 @@ color: var(--primary);
 </head>
 <body>
 
- <header class="navbar">
+<header class="navbar">
   <a href="../index.html" class="logo">
     <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg" alt="VN Flag" class="flag" />
     <span>Hello-Vietnam</span>
@@ -163,98 +216,124 @@ color: var(--primary);
     <a href="#" class="btn primary">Đăng Nhập</a>
     <button class="icon-btn"><i class="fa-solid fa-user-circle"></i></button>
   </div>
-  </header>
+</header>
 
-  <!-- HERO -->
-  <section class="hero-section">
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <h1 class="hero-title">Nghỉ Dưỡng & Đi Lại</h1>
-      <p class="hero-subtitle">Khám phá hành trình nghỉ dưỡng hoàn hảo: từ chuyến đi an toàn đến nơi lưu trú đáng nhớ.</p>
-    </div>
-  </section>
-
-  <!-- FILTER -->
-  <h2 class="section-title">Lọc Nhanh Theo Loại Hình Nghỉ Dưỡng</h2>
-  <div class="filter-grid">
-    <div class="filter-card"><span class="icon">🏖️</span><span class="label">Resort</span></div>
-    <div class="filter-card"><span class="icon">🏨</span><span class="label">Khách Sạn</span></div>
-    <div class="filter-card"><span class="icon">🏡</span><span class="label">Homestay</span></div>
-    <div class="filter-card"><span class="icon">🌅</span><span class="label">Villa Cao Cấp</span></div>
+<!-- HERO -->
+<section class="hero-section">
+  <div class="hero-content">
+    <h1 class="hero-title">Nghỉ Dưỡng & Đi Lại</h1>
+    <p class="hero-subtitle">Khám phá hành trình nghỉ dưỡng hoàn hảo: từ chuyến đi an toàn đến nơi lưu trú đáng nhớ.</p>
   </div>
+</section>
 
-  <!-- CONTENT 1 -->
+<!-- FILTER -->
+<h2 class="section-title">Lọc Nhanh Theo Loại Hình Nghỉ Dưỡng</h2>
+<div class="filter-grid">
+  <div class="filter-card"><span class="icon">🏖️</span><span class="label">Resort</span></div>
+  <div class="filter-card"><span class="icon">🏨</span><span class="label">Khách Sạn</span></div>
+  <div class="filter-card"><span class="icon">🏡</span><span class="label">Homestay</span></div>
+  <div class="filter-card"><span class="icon">🌅</span><span class="label">Villa Cao Cấp</span></div>
+</div>
+
+<!-- BOOKING FORM -->
+<section class="booking-section">
+  <h2 class="booking-title">Đặt Vé Ngay</h2>
+  <form class="booking-form">
+    <input type="text" placeholder="Nơi đi (VD: TP.HCM)">
+    <input type="text" placeholder="Nơi đến (VD: Đà Nẵng)">
+    <input type="date" placeholder="Ngày đi">
+    <input type="date" placeholder="Ngày về">
+    <button class="booking-btn" type="submit">Tìm vé</button>
+  </form>
+</section>
+
+<!-- CONTENT 1 -->
 <h2 class="content-block-title">CHUẨN BỊ: Chọn Nơi Nghỉ & Mẹo Đặt Phòng</h2>
-  <div class="content-grid">
-    <div class="guide-card">
-      <div class="card-image-wrapper">
-        <img src="/images/nghiduong1.jpg" alt="Resort ven biển" class="card-image">
-        <span class="card-tag">#RESORT</span>
-      </div>
-      <div class="card-content">
-        <h3 class="card-title-guide">Top 10 Resort Ven Biển Đẹp Như Tranh Ở Việt Nam</h3>
-        <p class="card-meta">4 phút đọc | Đánh giá: 4.8⭐</p>
-      </div>
+<div class="content-grid">
+  <div class="guide-card">
+    <div class="card-image-wrapper">
+      <img src="/images/nghiduong1.jpg" alt="Resort ven biển" class="card-image">
+      <span class="card-tag">#RESORT</span>
     </div>
-
-    <div class="guide-card">
-      <div class="card-image-wrapper">
-        <img src="/images/nghiduong2.jpg" alt="Mẹo đặt phòng" class="card-image">
-        <span class="card-tag">#LƯU-TRÚ</span>
-      </div>
-      <div class="card-content">
-        <h3 class="card-title-guide">5 Mẹo Đặt Phòng Khách Sạn Giá Tốt & View Đẹp</h3>
-        <p class="card-meta">3 phút đọc | Áp dụng: Toàn quốc</p>
-      </div>
-    </div>
-
-    <div class="guide-card">
-      <div class="card-image-wrapper">
-        <img src="/images/nghiduong3.jpg" alt="Homestay" class="card-image">
-        <span class="card-tag">#HOMESTAY</span>
-      </div>
-      <div class="card-content">
-        <h3 class="card-title-guide">Những Homestay “Nghệ” Được Giới Trẻ Săn Đón Năm Nay</h3>
-        <p class="card-meta">6 phút đọc | Cập nhật: 2025</p>
-      </div>
+    <div class="card-content">
+      <h3 class="card-title-guide">Top 10 Resort Ven Biển Đẹp Như Tranh Ở Việt Nam</h3>
+      <p class="card-meta">4 phút đọc | Đánh giá: 4.8⭐</p>
     </div>
   </div>
 
-  <!-- CONTENT 2 -->
-  <h2 class="content-block-title">TRONG KỲ NGHỈ: Trải Nghiệm & Thư Giãn</h2>
-  <div class="content-grid">
-    <div class="guide-card">
-      <div class="card-image-wrapper">
-        <img src="/images/nghiduong4.jpg" alt="Spa thư giãn" class="card-image">
-        <span class="card-tag">#SPA</span>
-      </div>
-      <div class="card-content">
-        <h3 class="card-title-guide">Top Dịch Vụ Spa & Massage Đáng Thử Khi Du Lịch</h3>
-        <p class="card-meta">4 phút đọc | Review từ khách thật</p>
-      </div>
+  <div class="guide-card">
+    <div class="card-image-wrapper">
+      <img src="/images/nghiduong2.jpg" alt="Mẹo đặt phòng" class="card-image">
+      <span class="card-tag">#LƯU-TRÚ</span>
     </div>
-
-    <div class="guide-card">
-      <div class="card-image-wrapper">
-        <img src="/images/nghiduong5.jpg" alt="Villa view biển" class="card-image">
-        <span class="card-tag">#VILLA</span>
-      </div>
-      <div class="card-content">
-        <h3 class="card-title-guide">Những Villa View Biển Siêu Đẹp Cho Team Bạn Thân</h3>
-        <p class="card-meta">5 phút đọc | Khu vực: Miền Trung</p>
-      </div>
-    </div>
-
-    <div class="guide-card">
-      <div class="card-image-wrapper">
-        <img src="/images/nghiduong6.jpg" alt="Ăn sáng sang trọng" class="card-image">
-        <span class="card-tag">#TRẢI-NGHIỆM</span>
-      </div>
-      <div class="card-content">
-        <h3 class="card-title-guide">Thưởng Thức Bữa Sáng Chuẩn 5 Sao Khi Nghỉ Dưỡng</h3>
-        <p class="card-meta">3 phút đọc | Gợi ý từ Hello Vietnam</p>
-      </div>
+    <div class="card-content">
+      <h3 class="card-title-guide">5 Mẹo Đặt Phòng Khách Sạn Giá Tốt & View Đẹp</h3>
+      <p class="card-meta">3 phút đọc | Áp dụng: Toàn quốc</p>
     </div>
   </div>
+
+  <div class="guide-card">
+    <div class="card-image-wrapper">
+      <img src="/images/nghiduong3.jpg" alt="Homestay" class="card-image">
+      <span class="card-tag">#HOMESTAY</span>
+    </div>
+    <div class="card-content">
+      <h3 class="card-title-guide">Những Homestay “Nghệ” Được Giới Trẻ Săn Đón Năm Nay</h3>
+      <p class="card-meta">6 phút đọc | Cập nhật: 2025</p>
+    </div>
+  </div>
+</div>
+
+<!-- CONTENT 2 -->
+<h2 class="content-block-title">TRONG KỲ NGHỈ: Trải Nghiệm & Thư Giãn</h2>
+<div class="content-grid">
+  <div class="guide-card">
+    <div class="card-image-wrapper">
+      <img src="/images/nghiduong4.jpg" alt="Spa thư giãn" class="card-image">
+      <span class="card-tag">#SPA</span>
+    </div>
+    <div class="card-content">
+      <h3 class="card-title-guide">Top Dịch Vụ Spa & Massage Đáng Thử Khi Du Lịch</h3>
+      <p class="card-meta">4 phút đọc | Review từ khách thật</p>
+    </div>
+  </div>
+
+  <div class="guide-card">
+    <div class="card-image-wrapper">
+      <img src="/images/nghiduong5.jpg" alt="Villa view biển" class="card-image">
+      <span class="card-tag">#VILLA</span>
+    </div>
+    <div class="card-content">
+      <h3 class="card-title-guide">Những Villa View Biển Siêu Đẹp Cho Team Bạn Thân</h3>
+      <p class="card-meta">5 phút đọc | Khu vực: Miền Trung</p>
+    </div>
+  </div>
+
+  <div class="guide-card">
+    <div class="card-image-wrapper">
+      <img src="/images/nghiduong6.jpg" alt="Ăn sáng sang trọng" class="card-image">
+      <span class="card-tag">#TRẢI-NGHIỆM</span>
+    </div>
+    <div class="card-content">
+      <h3 class="card-title-guide">Thưởng Thức Bữa Sáng Chuẩn 5 Sao Khi Nghỉ Dưỡng</h3>
+      <p class="card-meta">3 phút đọc | Gợi ý từ Hello Vietnam</p>
+    </div>
+  </div>
+</div>
+
 </body>
+<script>
+  function showBooking(type) {
+    // Ẩn tất cả các phần đặt vé
+    document.querySelectorAll('.booking-section').forEach(el => el.style.display = 'none');
+
+    // Hiện phần tương ứng
+    const selected = document.getElementById(type);
+    if (selected) selected.style.display = 'block';
+
+    // Cuộn xuống phần đặt vé
+    selected.scrollIntoView({ behavior: 'smooth' });
+  }
+</script>
+
 </html>
