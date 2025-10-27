@@ -8,9 +8,7 @@
   <link rel="stylesheet" href="/styles.css">
   <style>
 
-    :root {
-      --primary: #d4a017;
-    }
+
 
     /* HERO */
     .hero-section {
@@ -229,23 +227,57 @@
 <!-- FILTER -->
 <h2 class="section-title">Lọc Nhanh Theo Loại Hình Nghỉ Dưỡng</h2>
 <div class="filter-grid">
-  <div class="filter-card"><span class="icon">🏖️</span><span class="label">Resort</span></div>
-  <div class="filter-card"><span class="icon">🏨</span><span class="label">Khách Sạn</span></div>
-  <div class="filter-card"><span class="icon">🏡</span><span class="label">Homestay</span></div>
-  <div class="filter-card"><span class="icon">🌅</span><span class="label">Villa Cao Cấp</span></div>
+  <div class="filter-card" onclick="showBooking('resort')"><span class="icon">🏖️</span><span class="label">Resort</span></div>
+  <div class="filter-card" onclick="showBooking('hotel')"><span class="icon">🏨</span><span class="label">Khách Sạn</span></div>
+  <div class="filter-card" onclick="showBooking('homestay')"><span class="icon">🏡</span><span class="label">Homestay</span></div>
+  <div class="filter-card" onclick="showBooking('villa')"><span class="icon">🌅</span><span class="label">Villa Cao Cấp</span></div>
 </div>
 
-<!-- BOOKING FORM -->
-<section class="booking-section">
-  <h2 class="booking-title">Đặt Vé Ngay</h2>
+<!-- BOOKING SECTIONS -->
+<section id="resort" class="booking-section">
+  <h2 class="booking-title">Đặt Phòng Resort</h2>
   <form class="booking-form">
-    <input type="text" placeholder="Nơi đi (VD: TP.HCM)">
-    <input type="text" placeholder="Nơi đến (VD: Đà Nẵng)">
-    <input type="date" placeholder="Ngày đi">
-    <input type="date" placeholder="Ngày về">
-    <button class="booking-btn" type="submit">Tìm vé</button>
+    <input type="text" placeholder="Tên resort">
+    <input type="text" placeholder="Địa điểm (VD: Nha Trang)">
+    <input type="date" placeholder="Ngày nhận phòng">
+    <input type="date" placeholder="Ngày trả phòng">
+    <button class="booking-btn" type="submit">Tìm phòng</button>
   </form>
 </section>
+
+<section id="hotel" class="booking-section" style="display:none;">
+  <h2 class="booking-title">Đặt Phòng Khách Sạn</h2>
+  <form class="booking-form">
+    <input type="text" placeholder="Tên khách sạn">
+    <input type="text" placeholder="Địa điểm (VD: Đà Lạt)">
+    <input type="date" placeholder="Ngày nhận phòng">
+    <input type="date" placeholder="Ngày trả phòng">
+    <button class="booking-btn" type="submit">Tìm phòng</button>
+  </form>
+</section>
+
+<section id="homestay" class="booking-section" style="display:none;">
+  <h2 class="booking-title">Đặt Homestay</h2>
+  <form class="booking-form">
+    <input type="text" placeholder="Tên homestay">
+    <input type="text" placeholder="Khu vực (VD: Hà Nội)">
+    <input type="date" placeholder="Ngày đến">
+    <input type="date" placeholder="Ngày đi">
+    <button class="booking-btn" type="submit">Tìm homestay</button>
+  </form>
+</section>
+
+<section id="villa" class="booking-section" style="display:none;">
+  <h2 class="booking-title">Đặt Villa Cao Cấp</h2>
+  <form class="booking-form">
+    <input type="text" placeholder="Tên villa">
+    <input type="text" placeholder="Thành phố (VD: Phú Quốc)">
+    <input type="date" placeholder="Ngày đến">
+    <input type="date" placeholder="Ngày đi">
+    <button class="booking-btn" type="submit">Tìm villa</button>
+  </form>
+</section>
+
 
 <!-- CONTENT 1 -->
 <h2 class="content-block-title">CHUẨN BỊ: Chọn Nơi Nghỉ & Mẹo Đặt Phòng</h2>
