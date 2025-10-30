@@ -245,6 +245,24 @@
     align-self: flex-end;
   }
 }
+/* --- Ẩn / hiện filter-box có hiệu ứng mượt --- */
+.filter-box {
+  transition: max-height 0.4s ease, opacity 0.3s ease, margin 0.3s ease;
+  overflow: hidden;
+}
+.filter-box.hidden {
+  max-height: 0;
+  opacity: 0;
+  margin: 0;
+  padding: 0 14px;
+}
+
+/* Tối ưu cho mobile */
+@media (max-width: 640px) {
+  .filter-box {
+    max-height: 1000px; /* chiều cao mở tối đa khi hiển thị */
+  }
+}
 
   </style>
 </head>
@@ -446,6 +464,17 @@
     btn.addEventListener('click', applyFilter);
     // Filter ngay khi gõ tìm kiếm nhanh
     quickSearch.addEventListener('input', applyFilter);
+    // Thu gọn / mở rộng bộ lọc khi bấm ☰ Lọc
+const filterBtn = document.querySelector('.filter-button-group');
+const filterBox = document.querySelector('.filter-box');
+
+filterBtn.addEventListener('click', () => {
+  filterBox.classList.toggle('hidden');
+  // Đổi chữ "Lọc" thành "Đóng" khi mở
+  const span = filterBtn.querySelector('span');
+  span.textContent = filterBox.classList.contains('hidden') ? 'Lọc' : 'Đóng';
+});
+
   </script>
 </body>
 </html>
